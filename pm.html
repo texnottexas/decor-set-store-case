@@ -1,0 +1,878 @@
+<!-- VIEW: "The Scorecard", the product and live-ops manager console. One of seven toggleable views of the Decor Set Store graduation business case for RiverGame, Top War Server 2864. Light SaaS product-tooling surface (Linear, Amplitude, Notion-doc), indigo accent, Space Grotesk and Inter. Framed as live-ops ticket DSS-417. All figures illustrative; scope is token-store revenue from the 10 older shelved sets only, never total game revenue. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23f0b429' stroke='%23b9821a' stroke-width='2'/%3E%3Ccircle cx='16' cy='16' r='8.5' fill='none' stroke='%23d4920f' stroke-width='1.5'/%3E%3Ctext x='16' y='21' font-size='11' font-family='sans-serif' font-weight='700' text-anchor='middle' fill='%238a5e08'%3ET%3C/text%3E%3C/svg%3E">
+<title>DSS-417 / Decor Set Store graduation cadence / Live-ops review</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#eef0f5;
+    --surface:#f7f8fb;
+    --card:#ffffff;
+    --ink:#15171f;
+    --ink2:#3c4150;
+    --muted:#727a8c;
+    --faint:#9aa1b2;
+    --line:#e4e7ef;
+    --line2:#eef0f6;
+    --accent:#5b5bd6;
+    --accent-soft:#edecfb;
+    --accent-ink:#3d3da8;
+    --up:#1f9d6b;
+    --up-soft:#e3f5ec;
+    --down:#d8533f;
+    --down-soft:#fbe7e2;
+    --amber:#c98a12;
+    --amber-soft:#fbf2dd;
+    --teal:#0f9b8e;
+    --shadow:0 1px 2px rgba(20,23,31,.04), 0 4px 14px rgba(20,23,31,.05);
+    --shadow-lg:0 8px 34px rgba(40,38,90,.10);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:15px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+    background-image:
+      radial-gradient(circle at 12% -5%, rgba(91,91,214,.08), transparent 45%),
+      radial-gradient(circle at 95% 0%, rgba(15,155,142,.06), transparent 40%);
+    background-attachment:fixed;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:26px 20px 70px}
+  h1,h2,h3,h4{font-family:'Space Grotesk',sans-serif;margin:0;line-height:1.15;letter-spacing:-.01em}
+  .mono{font-family:'IBM Plex Mono',monospace}
+  a{color:var(--accent-ink);text-decoration:none}
+
+  /* ============ top bar / ticket header ============ */
+  .topbar{
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:12px 16px;box-shadow:var(--shadow);margin-bottom:18px;
+  }
+  .crumbs{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:12.5px;color:var(--muted)}
+  .crumbs .sep{color:var(--faint)}
+  .chip{
+    display:inline-flex;align-items:center;gap:6px;font-family:'IBM Plex Mono',monospace;
+    font-size:11.5px;font-weight:600;padding:4px 9px;border-radius:7px;border:1px solid var(--line);
+    background:var(--surface);color:var(--ink2);letter-spacing:.02em;
+  }
+  .chip.id{background:var(--accent-soft);border-color:#dcdbf7;color:var(--accent-ink)}
+  .chip.p1{background:var(--down-soft);border-color:#f3cfc7;color:var(--down)}
+  .chip.area{background:var(--amber-soft);border-color:#efe0bb;color:#8a5e08}
+  .status{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink2)}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 0 3px var(--amber-soft)}
+
+  /* ============ hero / title block ============ */
+  .hero{
+    background:var(--card);border:1px solid var(--line);border-radius:var(--radius);
+    padding:26px 26px 24px;box-shadow:var(--shadow);margin-bottom:18px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;top:0;left:0;width:5px;height:100%;
+    background:linear-gradient(180deg,var(--accent),var(--teal));
+  }
+  .eyebrow{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+  .hero h1{font-size:clamp(26px,4.4vw,40px);font-weight:700;letter-spacing:-.025em}
+  .hero h1 em{font-style:normal;color:var(--accent)}
+  .lede{color:var(--ink2);font-size:16px;max-width:64ch;margin-top:12px}
+  .ownerrow{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;padding-top:16px;border-top:1px solid var(--line2);font-size:12.5px;color:var(--muted)}
+  .ownerrow b{color:var(--ink2);font-weight:600;display:block;font-size:13px;margin-bottom:1px}
+  .scope-note{
+    margin-top:16px;font-size:12.5px;color:var(--muted);background:var(--surface);
+    border:1px dashed var(--line);border-radius:9px;padding:9px 12px;display:flex;gap:9px;align-items:flex-start;
+  }
+  .scope-note svg{flex:none;margin-top:2px}
+
+  /* ============ section scaffolding ============ */
+  section{margin-top:30px}
+  .sechead{display:flex;align-items:baseline;gap:12px;margin-bottom:14px}
+  .secnum{font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;color:var(--accent);border:1px solid #dcdbf7;background:var(--accent-soft);border-radius:6px;padding:2px 7px;flex:none}
+  .sechead h2{font-size:20px;font-weight:600}
+  .sechead .sub{font-size:13px;color:var(--muted);margin-left:auto;text-align:right}
+
+  .card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+  .pad{padding:20px}
+
+  /* ============ KPI tiles ============ */
+  .kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:16px 16px 14px;box-shadow:var(--shadow);position:relative}
+  .kpi .label{font-size:11.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding-right:90px}
+  .kpi .val{font-family:'Space Grotesk',sans-serif;font-size:30px;font-weight:600;letter-spacing:-.02em;margin-top:6px;line-height:1}
+  .kpi .sub{font-size:11.5px;color:var(--faint);margin-top:7px}
+  .delta{display:inline-flex;align-items:center;gap:4px;font-family:'IBM Plex Mono',monospace;font-size:12px;font-weight:600;padding:2px 7px;border-radius:20px;margin-top:9px}
+  .delta.up{color:var(--up);background:var(--up-soft)}
+  .delta.down{color:var(--down);background:var(--down-soft)}
+  .delta.flat{color:var(--amber);background:var(--amber-soft)}
+  .delta svg{width:11px;height:11px}
+  .kpi .capnote{position:absolute;top:14px;right:14px;font-size:10px;font-weight:600;letter-spacing:.04em;color:var(--faint);text-transform:uppercase}
+
+  /* ============ blind-spot callout ============ */
+  .blindspot{
+    margin-top:18px;display:grid;grid-template-columns:1.1fr 1fr;gap:0;overflow:hidden;
+    border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);background:var(--card);
+  }
+  .blindspot .left{padding:22px 24px;border-right:1px solid var(--line2)}
+  .blindspot .right{padding:22px 24px;background:linear-gradient(180deg,#fbfbfe,#f5f5fc)}
+  .blindspot h3{font-size:17px;margin-bottom:9px}
+  .blindspot p{color:var(--ink2);font-size:14px;margin:0 0 10px}
+  .blindspot .tag{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--down);margin-bottom:6px}
+  .blindspot .tag.fix{color:var(--up)}
+  .biglever{display:flex;align-items:baseline;gap:9px;margin-top:4px}
+  .biglever .num{font-family:'Space Grotesk',sans-serif;font-size:34px;font-weight:700;color:var(--accent);letter-spacing:-.02em}
+  .biglever .cap{font-size:12.5px;color:var(--muted)}
+
+  /* ============ hypothesis ============ */
+  .hypo{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start}
+  .hypo .mark{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:13px;color:#fff;background:var(--accent);border-radius:8px;padding:8px 10px;white-space:nowrap}
+  .hypo p{margin:0;font-size:16px;color:var(--ink);line-height:1.5}
+  .hypo b{color:var(--accent-ink)}
+
+  /* ============ metric tree ============ */
+  .tree{font-size:13.5px}
+  .tree .node{display:flex;gap:11px;align-items:flex-start;padding:10px 0;border-top:1px solid var(--line2)}
+  .tree .node:first-child{border-top:none}
+  .tree .glyph{flex:none;width:30px;height:30px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px}
+  .glyph.root{background:var(--accent);color:#fff}
+  .glyph.cap{background:var(--down-soft);color:var(--down)}
+  .glyph.win{background:var(--up-soft);color:var(--up)}
+  .tree .body .nm{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px}
+  .tree .body .dsc{color:var(--muted);font-size:12.5px;margin-top:1px}
+  .tree .indent{margin-left:26px}
+  .tree .arrow{color:var(--faint);font-size:11px}
+
+  /* ============ funnel ============ */
+  .funnel{display:flex;flex-direction:column;gap:8px}
+  .frow{display:grid;grid-template-columns:1fr;gap:4px}
+  .fbar-wrap{display:flex;align-items:center;gap:12px}
+  .fbar-track{flex:1;background:var(--surface);border-radius:8px;height:38px;position:relative;overflow:hidden;border:1px solid var(--line2)}
+  .fbar{height:100%;border-radius:7px;display:flex;align-items:center;padding-left:13px;color:#fff;font-weight:600;font-size:13px;font-family:'Space Grotesk',sans-serif;transition:width .9s cubic-bezier(.2,.8,.2,1);white-space:nowrap}
+  .fbar.s1{background:linear-gradient(90deg,#6e6ee0,#5b5bd6)}
+  .fbar.s2{background:linear-gradient(90deg,#5b5bd6,#4f9bd0)}
+  .fbar.s3{background:linear-gradient(90deg,#3fa8a0,#0f9b8e)}
+  .fbar.s4{background:linear-gradient(90deg,#d9a23a,#c98a12)}
+  .fbar.dead{background:repeating-linear-gradient(45deg,#c9b9a0,#c9b9a0 6px,#bdac90 6px,#bdac90 12px)}
+  .fmeta{flex:none;width:auto;font-size:12px;color:var(--muted);text-align:right;min-width:120px}
+  .fmeta b{color:var(--ink);font-family:'IBM Plex Mono',monospace;font-weight:600}
+  .flabel{font-size:12.5px;font-weight:600;color:var(--ink2)}
+  .funnel-foot{display:flex;gap:18px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+  .funnel-foot .lg{display:inline-flex;align-items:center;gap:6px}
+  .funnel-foot .sw{width:12px;height:12px;border-radius:3px}
+
+  /* ============ live model ============ */
+  .model-grid{display:grid;grid-template-columns:300px 1fr;gap:0}
+  .controls{padding:22px;border-right:1px solid var(--line2);background:linear-gradient(180deg,#fbfbfe,#f6f6fc)}
+  .controls h4{font-size:14px;margin-bottom:4px}
+  .controls .hint{font-size:12px;color:var(--muted);margin-bottom:16px}
+  .seg{display:flex;background:var(--surface);border:1px solid var(--line);border-radius:9px;padding:3px;gap:2px;margin-bottom:18px;flex-wrap:wrap}
+  .seg button{flex:1;min-width:42px;border:none;background:none;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;color:var(--muted);padding:7px 4px;border-radius:6px;cursor:pointer;transition:.15s}
+  .seg button.on{background:var(--accent);color:#fff;box-shadow:0 1px 4px rgba(91,91,214,.4)}
+  .seg button:not(.on):hover{color:var(--ink);background:#fff}
+  .field{margin-bottom:16px}
+  .field .flab{display:flex;justify-content:space-between;align-items:baseline;font-size:12.5px;font-weight:600;margin-bottom:7px}
+  .field .flab span:last-child{font-family:'IBM Plex Mono',monospace;color:var(--accent-ink);font-weight:600}
+  input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;border-radius:6px;background:#dcdef0;outline:none}
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(91,91,214,.5)}
+  input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--accent);cursor:pointer;border:3px solid #fff;box-shadow:0 1px 4px rgba(91,91,214,.5)}
+  .policytag{font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;padding:8px 11px;border-radius:8px;margin-top:4px;line-height:1.35}
+  .policytag.now{background:var(--down-soft);color:var(--down);border:1px solid #f3cfc7}
+  .policytag.prop{background:var(--up-soft);color:var(--up);border:1px solid #c4e8d5}
+
+  .viz{padding:22px}
+  .ro{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+  .ro .rc{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:11px 13px}
+  .ro .rl{font-size:10.5px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted)}
+  .ro .rv{font-family:'Space Grotesk',sans-serif;font-size:23px;font-weight:600;margin-top:3px;letter-spacing:-.01em}
+  .chartbox{border:1px solid var(--line2);border-radius:10px;padding:12px 8px 4px;background:#fff}
+  .chartbox svg{display:block;width:100%;height:auto}
+  .chartlegend{display:flex;gap:16px;flex-wrap:wrap;font-size:12px;color:var(--muted);padding:8px 8px 2px}
+  .chartlegend .lg{display:inline-flex;align-items:center;gap:7px}
+  .chartlegend .ln{width:16px;height:3px;border-radius:2px}
+  .verdict{margin-top:14px;font-size:13.5px;color:var(--ink2);background:var(--surface);border:1px solid var(--line2);border-left:3px solid var(--faint);border-radius:8px;padding:12px 14px}
+  .verdict.good{border-left-color:var(--up);background:var(--up-soft)}
+  .verdict b{color:var(--ink)}
+
+  /* ============ before/after impact table ============ */
+  table{width:100%;border-collapse:collapse;font-size:13.5px}
+  thead th{text-align:left;font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);padding:11px 14px;border-bottom:1px solid var(--line)}
+  thead th.r,tbody td.r{text-align:right}
+  tbody td{padding:12px 14px;border-bottom:1px solid var(--line2);color:var(--ink2)}
+  tbody tr:last-child td{border-bottom:none}
+  tbody td.metric{font-weight:600;color:var(--ink)}
+  tbody .frozen{color:var(--down);font-family:'IBM Plex Mono',monospace;font-weight:600}
+  tbody .steady{color:var(--up);font-family:'IBM Plex Mono',monospace;font-weight:600}
+  tbody tr.total{background:var(--accent-soft)}
+  tbody tr.total td{color:var(--accent-ink);font-weight:700;font-family:'Space Grotesk',sans-serif}
+
+  /* ============ experiment + rollout ============ */
+  .two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+  .ab{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+  .arm{border:1px solid var(--line);border-radius:11px;padding:14px;background:var(--surface)}
+  .arm.ctrl{border-style:dashed}
+  .arm.treat{border-color:#cfcef5;background:var(--accent-soft)}
+  .arm .h{font-family:'IBM Plex Mono',monospace;font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:5px}
+  .arm.treat .h{color:var(--accent-ink)}
+  .arm .t{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px;margin-bottom:4px}
+  .arm .d{font-size:12.5px;color:var(--muted)}
+  .speclist{list-style:none;margin:0;padding:0;font-size:13px}
+  .speclist li{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line2)}
+  .speclist li:first-child{border-top:none}
+  .speclist .k{flex:none;width:96px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;font-weight:600;color:var(--accent);padding-top:1px}
+  .speclist .v{color:var(--ink2)}
+
+  .steps{list-style:none;margin:0;padding:0;counter-reset:step}
+  .steps li{position:relative;padding:10px 0 10px 42px;border-top:1px solid var(--line2);counter-increment:step}
+  .steps li:first-child{border-top:none}
+  .steps li::before{content:counter(step);position:absolute;left:0;top:9px;width:26px;height:26px;border-radius:50%;background:var(--accent-soft);color:var(--accent-ink);font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:12px;display:flex;align-items:center;justify-content:center;border:1px solid #dcdbf7}
+  .steps .st{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:13.5px;color:var(--ink)}
+  .steps .sd{font-size:12.5px;color:var(--muted)}
+
+  /* ============ risks ============ */
+  .risk{display:grid;grid-template-columns:auto 1fr auto;gap:14px;align-items:start;padding:14px 0;border-top:1px solid var(--line2)}
+  .risk:first-child{border-top:none}
+  .risk .ic{flex:none;width:30px;height:30px;border-radius:8px;background:var(--up-soft);display:flex;align-items:center;justify-content:center}
+  .risk .ic svg{width:16px;height:16px}
+  .risk .rt{font-family:'Space Grotesk',sans-serif;font-weight:600;font-size:14px}
+  .risk .rd{font-size:13px;color:var(--ink2);margin-top:2px}
+  .risk .rstat{flex:none;font-family:'IBM Plex Mono',monospace;font-size:10.5px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--up);background:var(--up-soft);border:1px solid #c4e8d5;border-radius:20px;padding:4px 10px;white-space:nowrap;align-self:center}
+
+  /* ============ closing ============ */
+  .ship{
+    margin-top:30px;background:linear-gradient(135deg,#5b5bd6,#7a5be0 60%,#0f9b8e);
+    border-radius:var(--radius);padding:30px;color:#fff;box-shadow:var(--shadow-lg);position:relative;overflow:hidden;
+  }
+  .ship::after{content:"";position:absolute;right:-40px;top:-40px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.08)}
+  .ship h2{font-size:23px;color:#fff;position:relative}
+  .ship p{color:rgba(255,255,255,.9);font-size:15px;margin:12px 0 0;max-width:62ch;position:relative}
+  .ship .acts{display:flex;flex-wrap:wrap;gap:18px;margin-top:20px;position:relative}
+  .ship .act{font-size:13px}
+  .ship .act b{display:block;font-family:'Space Grotesk',sans-serif;font-size:15px;margin-bottom:1px}
+  .ship .act span{color:rgba(255,255,255,.78)}
+
+  footer{margin-top:26px;text-align:center;font-size:12px;color:var(--faint);font-family:'IBM Plex Mono',monospace}
+  footer .credit{margin-top:4px}
+
+  .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease, transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.fbar{transition:none}}
+
+  /* ============ responsive ============ */
+  @media (max-width:880px){
+    .kpis{grid-template-columns:repeat(2,1fr)}
+    .blindspot{grid-template-columns:1fr}
+    .blindspot .left{border-right:none;border-bottom:1px solid var(--line2)}
+    .model-grid{grid-template-columns:1fr}
+    .controls{border-right:none;border-bottom:1px solid var(--line2)}
+    .two{grid-template-columns:1fr}
+    .hypo p{font-size:15px}
+  }
+  @media (max-width:560px){
+    .wrap{padding:18px 13px 60px}
+    .hero{padding:22px 18px}
+    .kpis{grid-template-columns:1fr}
+    .ab{grid-template-columns:1fr}
+    .ro{grid-template-columns:1fr}
+    .hypo{grid-template-columns:1fr}
+    .risk{grid-template-columns:auto 1fr;}
+    .risk .rstat{grid-column:1 / -1;justify-self:start;margin-top:2px}
+    .fmeta{min-width:0}
+    .funnel .fbar-wrap{flex-wrap:wrap}
+    .fmeta{width:100%;text-align:left}
+    thead th,tbody td{padding:9px 9px;font-size:11.5px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- ===== ticket top bar ===== -->
+  <div class="topbar">
+    <div class="crumbs">
+      <span class="chip id">DSS-417</span>
+      <span class="sep">/</span>
+      <span class="chip area">Live-ops</span>
+      <span class="sep">/</span>
+      <span class="chip p1">P1</span>
+      <span class="sep">/</span>
+      <span>Decor Set Store</span>
+    </div>
+    <div class="status"><span class="dot"></span>Open for review&nbsp;&middot;&nbsp;Owner: store config</div>
+  </div>
+
+  <!-- ===== hero ===== -->
+  <div class="hero reveal">
+    <div class="eyebrow">Product review &middot; Store configuration</div>
+    <h1>The scorecard line <em>nobody is watching</em></h1>
+    <p class="lede">Our store conversion and engaged-spender curves are quietly capped by one setting that has not been revisited in roughly a year: older decoration sets stopped graduating into the Decor Set Token store. This doc reframes that frozen setting as an unowned metric, and proposes the lowest-risk lever we own to lift it.</p>
+    <div class="ownerrow">
+      <div><b>Surface</b>Decor Set Store, token economy</div>
+      <div><b>Lever</b>Graduation cadence for older sets</div>
+      <div><b>Effort</b>Config change, no new art or code</div>
+      <div><b>Reviewed by</b>By a Server 2864 player</div>
+    </div>
+    <div class="scope-note">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#727a8c" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 8v5M12 16h.01"/></svg>
+      <span>All figures on this page are illustrative and scoped to token-store revenue from the 10 older shelved sets only. They are not a forecast of total game revenue.</span>
+    </div>
+  </div>
+
+  <!-- ===== 01 KPI tiles ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">01</span>
+      <h2>The dashboard we are not looking at</h2>
+      <span class="sub">Backlog scope &middot; illustrative, one year</span>
+    </div>
+    <div class="kpis">
+      <div class="kpi">
+        <div class="capnote">store config</div>
+        <div class="label">Sets graduated</div>
+        <div class="val">0</div>
+        <div class="delta flat"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12h14"/></svg>~12 months</div>
+        <div class="sub">Older sets moved into the token store in the last year.</div>
+      </div>
+      <div class="kpi">
+        <div class="capnote">conversion</div>
+        <div class="label">Backlog store revenue</div>
+        <div class="val">$28,825</div>
+        <div class="delta down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 19V5M5 12l7 7 7-7"/></svg>capped</div>
+        <div class="sub">Hold-and-dump path. The reachable goal is missing.</div>
+      </div>
+      <div class="kpi">
+        <div class="capnote">opportunity</div>
+        <div class="label">Revenue left on table</div>
+        <div class="val">$47,676</div>
+        <div class="delta up"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 5v14M5 12l7-7 7 7"/></svg>recoverable</div>
+        <div class="sub">Gap to the steady-graduation path, same population.</div>
+      </div>
+      <div class="kpi">
+        <div class="capnote">inventory</div>
+        <div class="label">Shelved sets idle</div>
+        <div class="val">10</div>
+        <div class="delta down"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 19V5M5 12l7 7 7-7"/></svg>$0 today</div>
+        <div class="sub">Released 2021 to 2024, premium window long closed.</div>
+      </div>
+    </div>
+
+    <div class="blindspot">
+      <div class="left">
+        <div class="tag">The blind spot</div>
+        <h3>A config nobody revisits is capping a line we are graded on</h3>
+        <p>Store conversion and engaged-spender retention both depend on players having a next reachable goal. When older sets stopped graduating, that goal quietly disappeared, and the line flattened on its own. No dashboard alerts on a setting that simply never changes, so the cap looks like a baseline.</p>
+        <p>Patient players now bank free tokens with nothing to claim. Paying players, with no reachable target, stop topping up. The 10-set backlog earns nothing while it sits.</p>
+      </div>
+      <div class="right">
+        <div class="tag fix">The lever</div>
+        <h3>Tie graduation to the cadence we already run</h3>
+        <p>Every time a brand-new set launches, about one every 2.5 months, the oldest shelved set graduates into the token store. One launches, one graduates. Premium launches stay premium and the monthly pop-up pack re-releases stay intact.</p>
+        <div class="biglever">
+          <span class="num">2.7x</span>
+          <span class="cap">the backlog token revenue versus leaving the cadence frozen, on the illustrative model below.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 02 hypothesis ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">02</span>
+      <h2>Hypothesis</h2>
+    </div>
+    <div class="card pad">
+      <div class="hypo">
+        <span class="mark">IF / THEN</span>
+        <p><b>If</b> the oldest shelved set graduates into the Decor Set Token store on each new-set launch (about 5 per year), <b>then</b> store conversion and weekly top-up rate among engaged spenders recover, because every player again has a reachable goal to spend toward, <b>without</b> reducing premium launch-pack sales, since the graduating sets earn nothing under the frozen setting today.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 03 metric tree ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">03</span>
+      <h2>Metric tree: where the cap propagates</h2>
+      <span class="sub">North-star down to the lever we own</span>
+    </div>
+    <div class="card pad">
+      <div class="tree">
+        <div class="node">
+          <span class="glyph root">NSM</span>
+          <div class="body">
+            <div class="nm">Engaged-spender retention (D30)</div>
+            <div class="dsc">Players who keep finding a reason to come back and convert. The line this surface contributes to.</div>
+          </div>
+        </div>
+        <div class="node indent">
+          <span class="arrow">&#8627;</span>
+          <span class="glyph cap">L1</span>
+          <div class="body">
+            <div class="nm">Store conversion rate &middot; capped</div>
+            <div class="dsc">No reachable token-store goal means fewer first and repeat purchases. Flat because the catalog stopped refreshing.</div>
+          </div>
+        </div>
+        <div class="node indent">
+          <span class="arrow">&#8627;</span>
+          <span class="glyph cap">L2</span>
+          <div class="body">
+            <div class="nm">Repeat top-up rate &middot; capped</div>
+            <div class="dsc">Once a paying player owns everything reachable, the chase ends and weekly top-ups drop toward zero.</div>
+          </div>
+        </div>
+        <div class="node indent">
+          <span class="arrow">&#8627;</span>
+          <span class="glyph win">FIX</span>
+          <div class="body">
+            <div class="nm">Graduation cadence &middot; the lever, currently 0 per year</div>
+            <div class="dsc">A single store-config setting. Moving it from frozen to one set per new-set launch lifts every node above it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 04 funnel ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">04</span>
+      <h2>Spend funnel under the frozen setting</h2>
+      <span class="sub">Illustrative population of 600 active players</span>
+    </div>
+    <div class="card pad">
+      <div class="funnel">
+        <div class="frow">
+          <div class="flabel">Active players banking free tokens (~300 a week)</div>
+          <div class="fbar-wrap">
+            <div class="fbar-track"><div class="fbar s1" data-w="100">600</div></div>
+            <div class="fmeta">base &middot; <b>100%</b></div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Have any reachable goal to spend toward</div>
+          <div class="fbar-wrap">
+            <div class="fbar-track"><div class="fbar dead" data-w="6">few</div></div>
+            <div class="fmeta">store frozen &middot; <b>capped</b></div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Top up weekly while a goal exists</div>
+          <div class="fbar-wrap">
+            <div class="fbar-track"><div class="fbar dead" data-w="5">stalls</div></div>
+            <div class="fmeta">spenders &middot; <b>idle</b></div>
+          </div>
+        </div>
+        <div class="frow">
+          <div class="flabel">Convert backlog tokens into the studio earning</div>
+          <div class="fbar-wrap">
+            <div class="fbar-track"><div class="fbar dead" data-w="4">$0</div></div>
+            <div class="fmeta">backlog &middot; <b>$0</b></div>
+          </div>
+        </div>
+      </div>
+      <div class="funnel-foot">
+        <span class="lg"><span class="sw" style="background:#5b5bd6"></span>Healthy flow</span>
+        <span class="lg"><span class="sw" style="background:#bdac90"></span>Capped by frozen config</span>
+        <span class="lg">The funnel does not break at acquisition. It breaks at the goal step, which we control.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 05 live model ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">05</span>
+      <h2>Live model: per-player chase</h2>
+      <span class="sub">Same model and constants as the figures above</span>
+    </div>
+    <div class="card">
+      <div class="model-grid">
+        <div class="controls">
+          <h4>Inputs</h4>
+          <p class="hint">Pick a spender tier and a graduation cadence. Everything recomputes from the shared model.</p>
+          <div class="field">
+            <div class="flab"><span>Spender tier</span></div>
+            <div class="seg" id="seg-tier">
+              <button data-tier="free">Free</button>
+              <button data-tier="drip" class="on">$5/wk</button>
+              <button data-tier="mid">$25/wk</button>
+              <button data-tier="whale">$100/wk</button>
+            </div>
+          </div>
+          <div class="field">
+            <div class="flab"><span>Months between graduations</span><span id="rel-v">2.5</span></div>
+            <input type="range" id="rel" min="1.5" max="6" step="0.5" value="2.5">
+          </div>
+          <div class="policytag prop" id="policy">Proposed: graduate the oldest at the pace new sets ship</div>
+        </div>
+        <div class="viz">
+          <div class="ro">
+            <div class="rc"><div class="rl">Sets completed</div><div class="rv" id="ro-sets">0</div></div>
+            <div class="rc"><div class="rl">Player spend</div><div class="rv" id="ro-rev">$0</div></div>
+            <div class="rc"><div class="rl">Tokens stranded</div><div class="rv" id="ro-dead">0</div></div>
+          </div>
+          <div class="chartbox">
+            <svg id="chart" viewBox="0 0 640 320" role="img" aria-label="Tokens earned versus tokens spent over one year"></svg>
+            <div class="chartlegend">
+              <span class="lg"><span class="ln" style="background:#5b5bd6"></span>Tokens converted to sets (spent)</span>
+              <span class="lg"><span class="ln" style="background:#c98a12"></span>Total tokens earned</span>
+              <span class="lg"><span class="ln" style="background:rgba(201,138,18,.35);height:9px;border-radius:3px"></span>Stranded, unspendable</span>
+            </div>
+          </div>
+          <div class="verdict" id="verdict"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 06 before/after impact ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">06</span>
+      <h2>Before and after: the metric impact</h2>
+      <span class="sub">600 players &middot; 55 / 30 / 12 / 3 tier mix &middot; one year</span>
+    </div>
+    <div class="card" style="overflow-x:auto">
+      <table>
+        <thead>
+          <tr>
+            <th>Metric</th>
+            <th class="r">Frozen (control)</th>
+            <th class="r">Steady graduation</th>
+            <th class="r">Delta</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="metric">Graduation cadence</td>
+            <td class="r"><span class="frozen">0 / yr</span></td>
+            <td class="r"><span class="steady">~5 / yr</span></td>
+            <td class="r">+5 sets</td>
+          </tr>
+          <tr>
+            <td class="metric">$5-a-week player: sets completed</td>
+            <td class="r"><span class="frozen">0</span></td>
+            <td class="r"><span class="steady">3</span></td>
+            <td class="r">+3</td>
+          </tr>
+          <tr>
+            <td class="metric">$5-a-week player: spend for the year</td>
+            <td class="r"><span class="frozen">$0</span></td>
+            <td class="r"><span class="steady">~$203</span></td>
+            <td class="r">+$203</td>
+          </tr>
+          <tr>
+            <td class="metric">$25-a-week player: spend (still strands ~2,200 tokens)</td>
+            <td class="r"><span class="frozen">$0</span></td>
+            <td class="r"><span class="steady">~$424</span></td>
+            <td class="r">+$424</td>
+          </tr>
+          <tr>
+            <td class="metric">$100-a-week player: spend (still strands ~5,640 tokens)</td>
+            <td class="r"><span class="frozen">$0</span></td>
+            <td class="r"><span class="steady">~$525</span></td>
+            <td class="r">+$525</td>
+          </tr>
+          <tr class="total">
+            <td class="metric">Backlog token-store revenue, full population</td>
+            <td class="r">$28,825</td>
+            <td class="r">$76,501</td>
+            <td class="r">+$47,676</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="font-size:12px;color:var(--muted);margin-top:10px">Even the biggest spender runs out of reachable sets and strands tokens, so this lift comes from breadth of engaged spenders, not from squeezing anyone. Free players still complete one set at no spend.</p>
+  </section>
+
+  <!-- ===== 07 experiment design + rollout ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">07</span>
+      <h2>Experiment design and rollout</h2>
+    </div>
+    <div class="two">
+      <div class="card pad">
+        <h3 style="font-size:15px;margin-bottom:12px">A/B: frozen versus steady</h3>
+        <div class="ab">
+          <div class="arm ctrl">
+            <div class="h">Control / A</div>
+            <div class="t">Frozen cadence</div>
+            <div class="d">Backlog stays shelved, current setting. Measures the silent cap as it stands.</div>
+          </div>
+          <div class="arm treat">
+            <div class="h">Treatment / B</div>
+            <div class="t">Steady graduation</div>
+            <div class="d">Oldest shelved set graduates on each new-set launch. One in, one graduates.</div>
+          </div>
+        </div>
+        <ul class="speclist">
+          <li><span class="k">Unit</span><span class="v">Server cohort, or staged servers if a clean split is easier than a per-player split.</span></li>
+          <li><span class="k">Primary</span><span class="v">Backlog store conversion rate and weekly top-up rate among engaged spenders.</span></li>
+          <li><span class="k">Guardrail</span><span class="v">Premium launch-pack revenue for the newest 5 sets must hold flat.</span></li>
+          <li><span class="k">Window</span><span class="v">2 to 3 graduation cycles, roughly one to two quarters.</span></li>
+        </ul>
+      </div>
+      <div class="card pad">
+        <h3 style="font-size:15px;margin-bottom:12px">Rollout plan</h3>
+        <ol class="steps">
+          <li><div class="st">Flip the cadence setting</div><div class="sd">Queue the 10 older sets oldest-first behind the existing new-set launch trigger.</div></li>
+          <li><div class="st">Graduate one on next launch</div><div class="sd">The oldest shelved set enters the token store the day the next new set ships.</div></li>
+          <li><div class="st">Watch the guardrail</div><div class="sd">Confirm premium launch-pack revenue holds while conversion lifts.</div></li>
+          <li><div class="st">Continue oldest-first</div><div class="sd">Repeat each launch until the 10-set backlog is cleared, then the lever rests.</div></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 08 risks addressed ===== -->
+  <section class="reveal">
+    <div class="sechead">
+      <span class="secnum">08</span>
+      <h2>Risks addressed</h2>
+    </div>
+    <div class="card pad">
+      <div class="risk">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1f9d6b" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div>
+          <div class="rt">"This cannibalizes premium launch-pack sales."</div>
+          <div class="rd">The 10 graduating sets are the older backlog whose premium windows closed years ago. They earn $0 today, so there is no premium revenue to cannibalize. The newest 5 sets stay premium and untouched, and a reachable token-store goal is what keeps players topping up at all. This grows revenue rather than trading it.</div>
+        </div>
+        <span class="rstat">Mitigated</span>
+      </div>
+      <div class="risk">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1f9d6b" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div>
+          <div class="rt">"It dilutes the pop-up packs."</div>
+          <div class="rd">The monthly pop-up pack re-releases stay exactly as they are. Only the 10 older sets ever graduate, and only into the token store. The two systems run side by side.</div>
+        </div>
+        <span class="rstat">No change</span>
+      </div>
+      <div class="risk">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1f9d6b" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div>
+          <div class="rt">"The backlog could run out and over-supply the store."</div>
+          <div class="rd">It is finite by design. After 10 graduations the lever simply rests. Cadence is tied to launches we already run, so the store never outpaces new content.</div>
+        </div>
+        <span class="rstat">Self-limiting</span>
+      </div>
+      <div class="risk">
+        <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="#1f9d6b" stroke-width="2.2"><path d="M20 6L9 17l-5-5"/></svg></span>
+        <div>
+          <div class="rd" style="margin-top:0">As a gentle side benefit, completed sets grant a small permanent march-size bonus, so steady graduation also narrows the army-size gap a little for players who spend less. This is a neutral fairness note, not a request, and it is fully optional to the revenue case above.</div>
+        </div>
+        <span class="rstat">Bonus</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== closing ===== -->
+  <div class="ship reveal">
+    <h2>The highest-leverage, lowest-risk lever on this surface</h2>
+    <p>No new art, no new code, no new system. One store-config setting moved from frozen to a cadence we already run. It lifts store conversion and engaged-spender retention, clears a backlog that earns nothing today, and on the illustrative model leaves roughly $47,676 a year on the table for as long as it stays frozen. This is an easy win to capture whenever the team is ready.</p>
+    <div class="acts">
+      <div class="act"><b>Decision needed</b><span>Approve the cadence change for the next graduation cycle.</span></div>
+      <div class="act"><b>Cost to ship</b><span>One config edit, oldest-first queue.</span></div>
+      <div class="act"><b>Reversible</b><span>Pause the cadence any time.</span></div>
+    </div>
+  </div>
+
+  <footer>
+    DSS-417 &middot; Decor Set Store graduation cadence &middot; illustrative model, backlog scope only
+    <div class="credit">By a Server 2864 player</div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =================== canonical model, ported verbatim from the shared brief =================== */
+  var SET_COST = 11340;       // tokens for one full set (level 1)
+  var FREE_WK  = 300;         // free tokens per week
+  var WEEKS    = 52;
+  var BACKLOG  = 10;          // older shelved sets the cadence could release
+
+  var TIERS = {
+    free:  {label:'a free player',      paidTokens:0,    usd:0},
+    drip:  {label:'a $5-a-week player',  paidTokens:600,  usd:4.95},
+    mid:   {label:'a $25-a-week player', paidTokens:1880, usd:24.94},
+    whale: {label:'a $100-a-week player',paidTokens:7080, usd:104.93}
+  };
+
+  // per-player simulation engine
+  function simulate(tier, cumAvailFn){
+    var onHand=0, owned=0, dollars=0;
+    var earnedCum=[], spentCum=[];
+    for(var w=1; w<=WEEKS; w++){
+      var avail = Math.min(BACKLOG, cumAvailFn(w));
+      onHand += FREE_WK;                       // free always banks
+      var goal = owned < avail;                // an unowned, available set exists
+      if(goal && tier.paidTokens>0){           // pay only while chasing a reachable set
+        onHand += tier.paidTokens;
+        dollars += tier.usd;
+      }
+      while(owned < avail && onHand >= SET_COST){ onHand -= SET_COST; owned++; }
+      earnedCum.push(owned*SET_COST + onHand);
+      spentCum.push(owned*SET_COST);
+    }
+    var stranded = (owned >= Math.min(BACKLOG, cumAvailFn(WEEKS))) ? onHand : 0;
+    return {owned:owned, dollars:dollars, stranded:stranded, earnedCum:earnedCum, spentCum:spentCum};
+  }
+
+  /* =================== svg helpers =================== */
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs){var e=document.createElementNS(NS,tag);for(var k in attrs){e.setAttribute(k,attrs[k]);}return e;}
+  function fmt(n){return Math.round(n).toLocaleString();}
+
+  /* =================== live per-player chart =================== */
+  var curTier='drip';
+  var relEl = document.getElementById('rel');
+  var relVEl = document.getElementById('rel-v');
+  var chartEl = document.getElementById('chart');
+
+  function relPerYear(){ return relEl ? parseFloat(relEl.value) : 2.5; }
+
+  function drawChart(){
+    if(!chartEl){ return; }
+    var tier = TIERS[curTier];
+    var months = relPerYear();
+    var everyWk = (52/12)*months;
+    var cumAvail = function(w){ return Math.floor(w/everyWk); };
+    var r = simulate(tier, cumAvail);
+
+    var W=640, H=320, pad={l:54,r:18,t:18,b:34};
+    var ix=W-pad.l-pad.r, iy=H-pad.t-pad.b;
+    var maxArr = r.earnedCum.slice(); maxArr.push(SET_COST);
+    var maxY = Math.max.apply(null, maxArr) * 1.05;
+    var X=function(i){ return pad.l + (i/(WEEKS-1))*ix; };
+    var Y=function(v){ return pad.t + iy - (v/maxY)*iy; };
+
+    chartEl.innerHTML='';
+
+    // gridlines + y labels (token thousands)
+    var steps=4, g, v, y;
+    for(g=0; g<=steps; g++){
+      v = maxY*g/steps; y = Y(v);
+      chartEl.appendChild(el('line',{x1:pad.l,y1:y,x2:W-pad.r,y2:y,stroke:'#eef0f6','stroke-width':1}));
+      var t=el('text',{x:pad.l-10,y:y+4,'text-anchor':'end',fill:'#9aa1b2','font-size':11,'font-family':'IBM Plex Mono'});
+      t.textContent = (v>=1000 ? (v/1000).toFixed(0)+'k' : Math.round(v));
+      chartEl.appendChild(t);
+    }
+    // x labels (months)
+    for(var m=0; m<=12; m+=3){
+      var i=Math.min(WEEKS-1, Math.round(m*52/12));
+      var x=X(i);
+      var tx=el('text',{x:x,y:H-12,'text-anchor':'middle',fill:'#9aa1b2','font-size':11,'font-family':'IBM Plex Mono'});
+      tx.textContent = m+'mo';
+      chartEl.appendChild(tx);
+    }
+
+    // stranded area = earned minus spent
+    var top = r.earnedCum.map(function(vv,ii){ return X(ii)+','+Y(vv); });
+    var bot = r.spentCum.map(function(vv,ii){ return X(ii)+','+Y(vv); }).reverse();
+    chartEl.appendChild(el('polygon',{points:top.concat(bot).join(' '),fill:'rgba(201,138,18,0.14)'}));
+
+    function path(arr,color,wdt){
+      var d='M'+arr.map(function(vv,ii){ return X(ii)+','+Y(vv); }).join(' L');
+      chartEl.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':wdt,'stroke-linejoin':'round','stroke-linecap':'round'}));
+    }
+    path(r.spentCum,'#5b5bd6',2.6);   // spent, indigo accent
+    path(r.earnedCum,'#c98a12',2.6);  // earned, amber
+
+    chartEl.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.earnedCum[WEEKS-1]),r:4,fill:'#c98a12'}));
+    chartEl.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.spentCum[WEEKS-1]),r:4,fill:'#5b5bd6'}));
+
+    // readouts
+    var sets=document.getElementById('ro-sets');
+    var rev=document.getElementById('ro-rev');
+    var dead=document.getElementById('ro-dead');
+    if(sets){ sets.textContent=r.owned; }
+    if(rev){ rev.textContent='$'+fmt(r.dollars); }
+    if(dead){ dead.textContent=fmt(r.stranded); }
+
+    // policy tag
+    var pol=document.getElementById('policy');
+    if(pol){
+      if(months<2){ pol.className='policytag prop'; pol.textContent='Faster than the launch pace: would start crowding the pop-up packs'; }
+      else if(months<=3){ pol.className='policytag prop'; pol.textContent='Proposed: graduate the oldest at the pace new sets ship'; }
+      else { pol.className='policytag prop'; pol.textContent='Slower than the launch pace: the backlog still clears, just gradually'; }
+    }
+
+    // verdict
+    var vd=document.getElementById('verdict');
+    if(vd){
+      var mTxt = (months % 1 === 0) ? months.toFixed(0) : String(months);
+      vd.className='verdict good';
+      vd.innerHTML = 'At one set every '+mTxt+' months, '+tier.label+' completes <b>'+r.owned+' set'+(r.owned===1?'':'s')+'</b>, spends <b>$'+fmt(r.dollars)+'</b>'+(r.stranded>0 ? ', and still strands <b>'+fmt(r.stranded)+' tokens</b> with nothing left to buy. The goal is back, and even the top tier hits a ceiling.' : ', and little is stranded. The goal is back.');
+    }
+  }
+
+  // tier segment buttons
+  var segWrap=document.getElementById('seg-tier');
+  if(segWrap){
+    var btns=segWrap.querySelectorAll('button');
+    Array.prototype.forEach.call(btns,function(b){
+      b.addEventListener('click',function(){
+        Array.prototype.forEach.call(btns,function(x){ x.classList.remove('on'); });
+        b.classList.add('on');
+        curTier=b.getAttribute('data-tier');
+        drawChart();
+      });
+    });
+  }
+  if(relEl){
+    relEl.addEventListener('input',function(e){
+      if(relVEl){ relVEl.textContent=parseFloat(e.target.value); }
+      drawChart();
+    });
+  }
+
+  drawChart();
+
+  /* =================== funnel bar fill on reveal =================== */
+  function fillFunnel(){
+    var bars=document.querySelectorAll('.fbar');
+    Array.prototype.forEach.call(bars,function(bar){
+      var w=bar.getAttribute('data-w');
+      if(w){ bar.style.width=w+'%'; }
+    });
+  }
+
+  /* =================== reveal on scroll =================== */
+  var reveals=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){
+          en.target.classList.add('in');
+          io.unobserve(en.target);
+        }
+      });
+    },{threshold:0.12});
+    Array.prototype.forEach.call(reveals,function(e,i){
+      e.style.transitionDelay=(Math.min(i,6)*55)+'ms';
+      io.observe(e);
+    });
+    // fill funnel shortly after load so the animation reads as intentional
+    setTimeout(fillFunnel,250);
+  } else {
+    Array.prototype.forEach.call(reveals,function(e){ e.classList.add('in'); });
+    fillFunnel();
+  }
+})();
+</script>
+</body>
+</html>

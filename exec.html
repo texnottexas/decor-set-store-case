@@ -1,0 +1,863 @@
+<!-- VIEW: The Ledger. Executive / finance shareholder-letter framing of the Decor Set Store backlog as a parked asset and forgone revenue. One of seven toggleable views of the same business case for RiverGame (Top War, Server 2864). -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23c9a24a'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%238a6d27' stroke-width='1.4'/%3E%3Ctext x='16' y='21' font-size='12' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%236b5316'%3E%24%3C/text%3E%3C/svg%3E">
+<title>The Ledger: A Parked Asset</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-0:#0a1020;
+    --navy-1:#0b1733;
+    --navy-2:#0e1d3d;
+    --panel:#101f41;
+    --panel-2:#0c1832;
+    --line:#1d3158;
+    --line-soft:#16284a;
+    --gold:#c9a24a;
+    --gold-bright:#e7c878;
+    --gold-deep:#8a6d27;
+    --ink:#f4f1e9;
+    --ink-soft:#cdd6e6;
+    --muted:#8294b4;
+    --muted-2:#6478a0;
+    --green:#5cba9f;
+    --rust:#dc6b4b;
+    --serif:'Fraunces',Georgia,'Times New Roman',serif;
+    --grotesk:'Archivo',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--navy-0);
+    color:var(--ink);
+    font-family:var(--grotesk);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+  /* ============ document frame ============ */
+  .doc{
+    max-width:980px;
+    margin:0 auto;
+    background:
+      radial-gradient(1100px 520px at 78% -8%, rgba(201,162,74,.10), transparent 60%),
+      linear-gradient(180deg, var(--navy-1) 0%, var(--navy-0) 60%, #080d1a 100%);
+    border-left:1px solid var(--line-soft);
+    border-right:1px solid var(--line-soft);
+    position:relative;
+    overflow:hidden;
+  }
+  .doc::before{
+    /* subtle paper grain via layered gradients */
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;
+  }
+  .pad{padding:0 clamp(20px,5vw,72px)}
+
+  /* ============ masthead ============ */
+  .mast{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding-top:26px;padding-bottom:18px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    position:relative;z-index:2;
+  }
+  .mast .brandwrap{display:flex;align-items:center;gap:12px}
+  .seal{
+    width:38px;height:38px;flex:0 0 auto;border-radius:50%;
+    border:1.5px solid var(--gold-deep);
+    display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%, #e7c878, #c9a24a 55%, #9a7a2e);
+    color:#3c2f0e;font-family:var(--serif);font-weight:700;font-size:18px;
+    box-shadow:0 2px 10px rgba(201,162,74,.25), inset 0 1px 2px rgba(255,255,255,.4);
+  }
+  .brand .k{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .brand .s{font-size:12px;color:var(--muted);margin-top:1px}
+  .mast .filed{text-align:right;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+  .mast .filed b{display:block;color:var(--ink-soft);font-size:12px;letter-spacing:.1em;margin-top:2px}
+
+  /* ============ cover ============ */
+  .cover{position:relative;z-index:2;padding-top:clamp(34px,7vw,72px);padding-bottom:clamp(30px,6vw,58px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700;
+    margin-bottom:22px;
+  }
+  .eyebrow .ln{width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .cover h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(30px,6.4vw,58px);line-height:1.04;letter-spacing:-.015em;
+    color:var(--ink);max-width:16ch;
+  }
+  .cover h1 em{font-style:italic;color:var(--gold-bright);font-weight:500}
+  .cover .lede{
+    margin-top:20px;max-width:60ch;color:var(--ink-soft);font-size:clamp(14px,1.9vw,17px);line-height:1.62;
+  }
+
+  /* the one enormous headline number */
+  .hero-fig{
+    margin-top:clamp(30px,5vw,48px);
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,4vw,40px);align-items:center;
+    padding:clamp(20px,4vw,34px) 0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .hero-fig .big{
+    font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:.9;
+    font-size:clamp(56px,15vw,140px);color:var(--ink);white-space:nowrap;
+    text-shadow:0 0 40px rgba(201,162,74,.12);
+  }
+  .hero-fig .big .pre{color:var(--gold);font-size:.5em;vertical-align:.32em;margin-right:.04em}
+  .hero-fig .cap{font-size:13px;color:var(--ink-soft);line-height:1.55;max-width:34ch}
+  .hero-fig .cap .lbl{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+  .hero-fig .cap b{color:var(--ink)}
+  .illus{display:inline-block;margin-top:14px;font-size:10.5px;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
+
+  /* ============ section scaffolding ============ */
+  section{position:relative;z-index:2;padding:clamp(38px,6vw,62px) 0;border-top:1px solid var(--line-soft)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+  .sec-no{
+    font-family:var(--serif);font-style:italic;font-weight:500;font-size:15px;color:var(--gold);
+    border:1px solid var(--gold-deep);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;flex:0 0 auto;
+  }
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,3.4vw,30px);letter-spacing:-.01em;color:var(--ink)}
+  .sec-head .sub{flex-basis:100%;color:var(--muted);font-size:13.5px;margin-top:2px;max-width:64ch}
+
+  p.body{color:var(--ink-soft);font-size:15px;line-height:1.66;max-width:66ch;margin-bottom:14px}
+  p.body b{color:var(--ink)}
+  .gold{color:var(--gold-bright)}
+
+  /* ============ P&L statement table ============ */
+  .pnl{
+    width:100%;border-collapse:collapse;margin-top:8px;
+    background:linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  }
+  .pnl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:4px}
+  .pnl caption{
+    caption-side:top;text-align:left;padding:16px 20px 12px;
+    font-family:var(--serif);font-style:italic;font-weight:500;color:var(--ink-soft);font-size:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .pnl caption .cx{display:block;font-family:var(--grotesk);font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .pnl th,.pnl td{padding:13px 20px;text-align:left;font-size:14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  .pnl thead th{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);font-weight:700;background:rgba(0,0,0,.18)}
+  .pnl td.amt,.pnl th.amt{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pnl .ln-item .nm{color:var(--ink-soft);font-weight:500}
+  .pnl .ln-item .note{display:block;color:var(--muted-2);font-size:11.5px;margin-top:3px;line-height:1.4;max-width:46ch}
+  .pnl tr.zero td.amt{color:var(--muted)}
+  .pnl tr.forgone{background:rgba(220,107,75,.05)}
+  .pnl tr.forgone td.amt{color:var(--rust);font-weight:700}
+  .pnl tr.realized td.amt{color:var(--green);font-weight:700}
+  .pnl tr.sub td{border-top:1px solid var(--line);background:rgba(0,0,0,.14)}
+  .pnl tr.sub td{font-weight:600;color:var(--ink)}
+  .pnl tr.total td{
+    border-top:2px solid var(--gold-deep);border-bottom:none;
+    background:linear-gradient(90deg, rgba(201,162,74,.14), rgba(201,162,74,.04));
+  }
+  .pnl tr.total td{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);padding-top:16px;padding-bottom:16px}
+  .pnl tr.total td.amt{color:var(--gold-bright);font-size:21px;letter-spacing:-.01em}
+  .tag{display:inline-block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:2px 7px;border-radius:3px;margin-left:0;vertical-align:1px}
+  .tag.off{background:rgba(220,107,75,.16);color:#f0a488;border:1px solid rgba(220,107,75,.3)}
+  .tag.on{background:rgba(92,186,159,.16);color:#8fd9c4;border:1px solid rgba(92,186,159,.3)}
+
+  /* ============ waterfall ============ */
+  .water-wrap{
+    margin-top:10px;background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:22px clamp(12px,3vw,26px) 14px;
+  }
+  .water-wrap svg{display:block;width:100%;height:auto}
+  .wf-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px;font-size:11.5px;color:var(--muted)}
+  .wf-legend span{display:inline-flex;align-items:center;gap:7px}
+  .wf-legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
+
+  /* ============ exhibit grid (player desks) ============ */
+  .exh{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:6px}
+  .exh .card{
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:18px 18px 16px;position:relative;overflow:hidden;
+  }
+  .exh .card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-deep),var(--gold),transparent)}
+  .exh .card .tier{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .exh .card .spend{font-family:var(--serif);font-weight:600;font-size:30px;color:var(--ink);margin:8px 0 2px;letter-spacing:-.01em}
+  .exh .card .sub{font-size:12px;color:var(--muted);line-height:1.45}
+  .exh .card .strand{margin-top:11px;padding-top:11px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--ink-soft)}
+  .exh .card .strand b{color:var(--rust);font-variant-numeric:tabular-nums}
+  .exh .card .strand.none b{color:var(--green)}
+
+  /* ============ live model ============ */
+  .model{
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:clamp(16px,3vw,26px);margin-top:6px;
+  }
+  .controls{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:18px}
+  .ctl{flex:1 1 220px;min-width:200px}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:8px}
+  .ctl label .v{font-family:var(--serif);font-style:normal;font-weight:600;font-size:15px;color:var(--gold-bright);letter-spacing:0;text-transform:none}
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:3px;
+    background:linear-gradient(90deg,var(--gold-deep),var(--line));outline:none;cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e7c878,#c9a24a);border:1.5px solid #6b5316;cursor:pointer;box-shadow:0 1px 5px rgba(0,0,0,.4)}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#c9a24a;border:1.5px solid #6b5316;cursor:pointer}
+  .readouts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:18px}
+  .readouts .ro{background:var(--panel-2);padding:15px 16px}
+  .readouts .ro .rl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);font-weight:700}
+  .readouts .ro .rv{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4vw,30px);color:var(--ink);margin-top:5px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .readouts .ro.rev .rv{color:var(--green)}
+  .readouts .ro.dead .rv{color:var(--rust)}
+  .model .verdict{margin-top:16px;font-size:13.5px;line-height:1.6;color:var(--ink-soft);padding:14px 16px;border-left:2px solid var(--gold-deep);background:rgba(201,162,74,.05);border-radius:0 4px 4px 0}
+  .model .verdict.good{border-left-color:var(--green);background:rgba(92,186,159,.06)}
+  .model .verdict b{color:var(--ink)}
+  .policytag{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:3px;margin-bottom:14px}
+  .policytag.now{background:rgba(220,107,75,.14);color:#f0a488;border:1px solid rgba(220,107,75,.3)}
+  .policytag.prop{background:rgba(92,186,159,.14);color:#8fd9c4;border:1px solid rgba(92,186,159,.3)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:6px;flex-wrap:wrap}
+  .seg button{
+    background:transparent;border:none;color:var(--muted);font-family:var(--grotesk);font-weight:600;
+    font-size:12px;padding:8px 13px;cursor:pointer;border-right:1px solid var(--line);transition:.15s;
+  }
+  .seg button:last-child{border-right:none}
+  .seg button:hover{color:var(--ink-soft)}
+  .seg button.on{background:linear-gradient(180deg,rgba(201,162,74,.22),rgba(201,162,74,.08));color:var(--gold-bright)}
+  .chartwrap{margin-top:16px}
+  .chartwrap svg{display:block;width:100%;height:auto}
+  .chart-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;font-size:11.5px;color:var(--muted)}
+  .chart-legend span{display:inline-flex;align-items:center;gap:7px}
+  .chart-legend i{width:18px;height:3px;border-radius:2px;display:inline-block}
+
+  /* ============ the ask box ============ */
+  .ask{
+    position:relative;z-index:2;margin:clamp(24px,5vw,40px) 0 0;
+    background:
+      radial-gradient(700px 220px at 85% 0%, rgba(201,162,74,.16), transparent 60%),
+      linear-gradient(180deg,#0f2046,#0a142c);
+    border:1px solid var(--gold-deep);border-radius:6px;overflow:hidden;
+    box-shadow:0 14px 50px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .ask .inner{padding:clamp(24px,5vw,42px)}
+  .ask .lbl{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+  .ask h3{font-family:var(--serif);font-weight:600;font-size:clamp(20px,3.6vw,30px);line-height:1.18;color:var(--ink);letter-spacing:-.01em;max-width:24ch}
+  .ask h3 em{font-style:italic;color:var(--gold-bright);font-weight:500}
+  .ask .one{margin-top:18px;color:var(--ink-soft);font-size:15px;line-height:1.62;max-width:62ch}
+  .ask .one b{color:var(--ink)}
+  .ask .qline{
+    margin-top:22px;padding:16px 18px;border-radius:5px;border:1px dashed var(--gold-deep);
+    background:rgba(201,162,74,.06);font-family:var(--serif);font-style:italic;font-size:clamp(15px,2.4vw,19px);color:var(--gold-bright);line-height:1.45;
+  }
+  .ask .qline .who{display:block;font-family:var(--grotesk);font-style:normal;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:8px}
+
+  /* ============ risk line ============ */
+  .risk{
+    margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+    padding:18px 20px;background:rgba(0,0,0,.2);border:1px solid var(--line);border-radius:4px;
+  }
+  .risk .ico{width:34px;height:34px;flex:0 0 auto;border-radius:50%;border:1px solid var(--gold-deep);display:grid;place-items:center;color:var(--gold)}
+  .risk .ttl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .risk p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;max-width:74ch}
+  .risk p b{color:var(--ink)}
+
+  /* ============ colophon ============ */
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:26px 0 40px;margin-top:clamp(30px,5vw,52px)}
+  footer .row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+  footer .note{font-size:11.5px;color:var(--muted-2);line-height:1.55;max-width:60ch}
+  footer .sig{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-soft)}
+  footer .sig .by{display:block;font-family:var(--grotesk);font-style:normal;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:4px}
+
+  @media (max-width:560px){
+    .hero-fig{grid-template-columns:1fr}
+    .readouts{grid-template-columns:1fr}
+    .risk{grid-template-columns:1fr}
+    .pnl th,.pnl td{padding:10px 9px;font-size:12.5px}
+    .pnl thead th.amt{white-space:normal}
+    .pnl .ln-item .note{font-size:11px}
+    .pnl tr.total td.amt{font-size:18px}
+    .pad{padding:0 18px}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- masthead -->
+  <div class="pad">
+    <div class="mast">
+      <div class="brandwrap">
+        <div class="seal">$</div>
+        <div class="brand">
+          <div class="k">The Ledger</div>
+          <div class="s">Decor Set Store, a finance review</div>
+        </div>
+      </div>
+      <div class="filed">
+        Prepared for studio leadership
+        <b>Top War, Server 2864</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- COVER -->
+  <div class="pad">
+    <div class="cover">
+      <span class="eyebrow"><span class="ln"></span> Statement of forgone revenue</span>
+      <h1>We are holding a finished asset <em>off the books,</em> and willing buyers are banking currency they cannot spend.</h1>
+      <p class="lede">Ten completed decoration sets sit fully built and shelved. Their paid launch windows closed years ago, so today they earn nothing. Meanwhile players keep saving the in-game token they would use to claim them. The gap below is not a cost to build anything. It is revenue already in reach, waiting to be booked.</p>
+
+      <div class="hero-fig">
+        <div class="big"><span class="pre">+$</span>47,676</div>
+        <div class="cap">
+          <span class="lbl">The bottom line, up front</span>
+          One backlog. One server. <b>One year.</b> The difference between leaving these sets frozen and graduating them at the pace new sets already ship. That is roughly <b>2.7 times</b> the token revenue of letting them out in a single late burst, and it generalizes across the wider server base.
+        </div>
+      </div>
+      <span class="illus">All figures illustrative, scope: token store revenue from the 10 older sets only, never total game revenue</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1: P&L -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">I</span>
+        <h2>The position today</h2>
+        <span class="sub">A simple statement of what this single backlog is realizing versus what it could realize, on an illustrative population of 600 active players over one year.</span>
+      </div>
+
+      <p class="body">There is nothing to build and nothing to discount. The product is finished and sitting in inventory. The only line that has changed is the path to acquire it: graduation of older sets into the token store has been effectively paused for about a year. The effect of that pause reads cleanly as two columns.</p>
+
+      <div class="pnl-wrap">
+      <table class="pnl num">
+        <caption><span class="cx">Exhibit A</span>Backlog token revenue, illustrative, one year, one server</caption>
+        <thead>
+          <tr><th>Line item</th><th class="amt">Hold and freeze</th><th class="amt">Steady graduation</th></tr>
+        </thead>
+        <tbody>
+          <tr class="ln-item">
+            <td class="nm">Backlog token revenue realized <span class="note">What the 10 shelved sets actually bring in over the year.</span></td>
+            <td class="amt">$28,825</td>
+            <td class="amt">$76,501</td>
+          </tr>
+          <tr class="ln-item zero">
+            <td class="nm">Sets reachable for paying players <span class="note">A reachable goal is what keeps players topping up at all.</span></td>
+            <td class="amt">deferred</td>
+            <td class="amt">1 every 2.5 mo</td>
+          </tr>
+          <tr class="ln-item">
+            <td class="nm">Willing buyers turned away <span class="note">Patient savers who give up when there is nothing to claim, an illustrative 30% under hoarding.</span></td>
+            <td class="amt">about 30%</td>
+            <td class="amt">retained</td>
+          </tr>
+          <tr class="ln-item">
+            <td class="nm">Tokens banked but unspendable <span class="note">Currency players hold with no available set to buy. Even the largest spender strands thousands.</span></td>
+            <td class="amt">stockpiled</td>
+            <td class="amt">mostly spent</td>
+          </tr>
+          <tr class="sub">
+            <td>Asset earning status</td>
+            <td class="amt"><span class="tag off">Parked</span></td>
+            <td class="amt"><span class="tag on">Working</span></td>
+          </tr>
+          <tr class="realized">
+            <td>Revenue realized</td>
+            <td class="amt">$28,825</td>
+            <td class="amt">$76,501</td>
+          </tr>
+          <tr class="forgone">
+            <td>Revenue forgone vs steady plan</td>
+            <td class="amt">$47,676</td>
+            <td class="amt">$0</td>
+          </tr>
+          <tr class="total">
+            <td>Net opportunity, this backlog, this year</td>
+            <td class="amt">+$47,676</td>
+            <td class="amt" style="color:var(--green)">captured</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p class="body" style="margin-top:18px">Read plainly: freezing the backlog does not save money, it forgoes it. The asset stays parked, the willing buyer walks, and the difference, an illustrative <b class="gold">+$47,676</b> on this one backlog and one server, is the amount currently being left on the table each year.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: WATERFALL -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">II</span>
+        <h2>Where the forgone revenue goes</h2>
+        <span class="sub">From the revenue this backlog could realize under a steady cadence, down to what it realizes while frozen. Each step is money that exists today and is simply not being collected.</span>
+      </div>
+
+      <div class="water-wrap">
+        <svg id="waterfall" viewBox="0 0 720 320" role="img" aria-label="Opportunity cost waterfall from steady graduation revenue down to frozen revenue"></svg>
+        <div class="wf-legend">
+          <span><i style="background:var(--green)"></i> Revenue realized</span>
+          <span><i style="background:var(--rust)"></i> Revenue forgone</span>
+          <span><i style="background:var(--gold)"></i> Bottom line, what is collected today</span>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:18px">The tall bar on the left is the reachable figure under steady graduation. The rust step is the gap created by the freeze: an illustrative <b class="gold">$47,676</b> of token demand that the willing buyers would spend if there were something to claim. The short gold bar on the right is what the asset actually books today.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: EXHIBIT, per-player -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">III</span>
+        <h2>The buyer runs out of things to buy</h2>
+        <span class="sub">One player over one year at the proposed cadence, one set every 2.5 months. Note that even the largest spender hits a ceiling and strands currency. That stranded balance is unmet demand.</span>
+      </div>
+
+      <div class="exh">
+        <div class="card">
+          <div class="tier">Free player</div>
+          <div class="spend">$0</div>
+          <div class="sub">Completes 1 set on free income alone.</div>
+          <div class="strand none">Stranded tokens: <b>minimal</b></div>
+        </div>
+        <div class="card">
+          <div class="tier">$5 a week</div>
+          <div class="spend">about $203</div>
+          <div class="sub">Completes 3 sets across the year.</div>
+          <div class="strand none">Stranded tokens: <b>little</b></div>
+        </div>
+        <div class="card">
+          <div class="tier">$25 a week</div>
+          <div class="spend">about $424</div>
+          <div class="sub">Completes 4 sets across the year.</div>
+          <div class="strand">Stranded tokens: <b>about 2,200</b></div>
+        </div>
+        <div class="card">
+          <div class="tier">$100 a week</div>
+          <div class="spend">about $525</div>
+          <div class="sub">Completes 4 sets across the year.</div>
+          <div class="strand">Stranded tokens: <b>about 5,640</b></div>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:20px">Two readings follow. First, the demand is real and it has a ceiling: even at $100 a week the buyer completes only 4 sets and is left holding thousands of tokens with nothing to claim. Supply is the constraint, not willingness to pay. Second, under the frozen status quo the chase disappears entirely: paying players stop topping up, spend <b>$0</b> for the year, and quietly bank currency they cannot use.</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LIVE MODEL -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">IV</span>
+        <h2>Test the assumptions</h2>
+        <span class="sub">A working model on the same figures used above. Move the cadence and the population and watch realized revenue against the wall of stranded tokens. Set the cadence to zero to see today's freeze.</span>
+      </div>
+
+      <div class="model">
+        <div id="policy" class="policytag now">Today's policy: graduation frozen</div>
+
+        <div class="seg" id="seg-tier" role="group" aria-label="Spender tier">
+          <button data-tier="free">Free player</button>
+          <button data-tier="drip" class="on">$5 a week</button>
+          <button data-tier="mid">$25 a week</button>
+          <button data-tier="whale">$100 a week</button>
+        </div>
+
+        <div class="controls" style="margin-top:14px">
+          <div class="ctl">
+            <label for="rel">Months between graduations <span class="v"><span id="rel-v">2.5</span></span></label>
+            <input type="range" id="rel" min="1.5" max="6" step="0.5" value="2.5">
+          </div>
+        </div>
+
+        <div class="chartwrap">
+          <svg id="chart" viewBox="0 0 640 320" role="img" aria-label="Tokens earned versus tokens spent for the selected player over one year"></svg>
+          <div class="chart-legend">
+            <span><i style="background:#e7b24a"></i> Total tokens earned</span>
+            <span><i style="background:#5cba9f"></i> Tokens spent on sets</span>
+            <span><i style="background:rgba(220,107,75,.6)"></i> Stranded, unspendable</span>
+          </div>
+        </div>
+
+        <div class="readouts">
+          <div class="ro"><div class="rl">Sets completed</div><div class="rv num" id="ro-sets">0</div></div>
+          <div class="ro rev"><div class="rl">Paid this year</div><div class="rv num" id="ro-rev">$0</div></div>
+          <div class="ro dead"><div class="rl">Tokens stranded</div><div class="rv num" id="ro-dead">0</div></div>
+        </div>
+
+        <div class="verdict" id="verdict"></div>
+      </div>
+
+      <div class="model" style="margin-top:18px">
+        <div class="sec-head" style="margin-bottom:18px">
+          <h2 style="font-size:clamp(17px,2.6vw,21px)">Strategy comparison: hold and dump vs steady graduation</h2>
+          <span class="sub">Across the whole illustrative population. Hold and freeze, then a late burst, against one set graduating every 2.5 months.</span>
+        </div>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="pop">Active players <span class="v"><span id="pop-v">600</span></span></label>
+            <input type="range" id="pop" min="100" max="2000" step="50" value="600">
+          </div>
+          <div class="ctl">
+            <label for="giveup">Give up rate under hoarding <span class="v"><span id="giveup-v">30</span>%</span></label>
+            <input type="range" id="giveup" min="0" max="60" step="5" value="30">
+          </div>
+        </div>
+
+        <div class="exh" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+          <div class="card">
+            <div class="tier" style="color:var(--rust)">Hold and dump</div>
+            <div class="spend" id="rev-dump" style="color:var(--rust)">$0</div>
+            <div class="sub">Frozen all year, then one late burst.</div>
+            <svg id="mc-dump" viewBox="0 0 320 110" style="width:100%;height:auto;margin-top:12px" role="img" aria-label="Cumulative revenue under hold and dump"></svg>
+          </div>
+          <div class="card">
+            <div class="tier" style="color:var(--green)">Steady graduation</div>
+            <div class="spend" id="rev-drip" style="color:var(--green)">$0</div>
+            <div class="sub">One older set every 2.5 months.</div>
+            <svg id="mc-drip" viewBox="0 0 320 110" style="width:100%;height:auto;margin-top:12px" role="img" aria-label="Cumulative revenue under steady graduation"></svg>
+          </div>
+        </div>
+
+        <div class="verdict good" id="strat-verdict" style="margin-top:18px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: THE ASK -->
+  <section style="border-top:none;padding-bottom:0">
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">V</span>
+        <h2>The ask</h2>
+        <span class="sub">No new build, no discount to premium, no change to live operations. One scheduling rule.</span>
+      </div>
+
+      <div class="ask">
+        <div class="inner">
+          <div class="lbl">Recommendation</div>
+          <h3>Tie graduation to the cadence that already exists: <em>each time a brand-new set launches, the oldest shelved set graduates into the token store.</em></h3>
+          <p class="one">One in, one graduates, about every 2.5 months. Premium launches stay premium. The monthly pop-up pack re-releases stay intact. Only the 10 older sets ever graduate, oldest first, and the schedule is already on the calendar. This is a parked asset being switched on, not a project to fund.</p>
+          <p class="one" style="margin-top:12px">A quiet secondary benefit: because a completed set grants a permanent boost to army size, steady graduation also gently narrows the gap for players who spend less, with no demand on anyone, simply a healthier curve.</p>
+
+          <div class="qline">
+            <span class="who">The single question for the product team</span>
+            We have a finished asset earning $0 and buyers who want to pay for it. What is keeping us from graduating one older set on the cadence we already ship new ones?
+          </div>
+        </div>
+      </div>
+
+      <!-- risk -->
+      <div class="risk">
+        <div class="ico" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.4 9 10 5.2-1.6 9-5 9-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </div>
+        <div>
+          <div class="ttl">The cannibalization question, addressed</div>
+          <p>The likely concern is that graduating older sets eats premium launch-pack sales. It does not. The <b>premium windows on these 10 older sets closed years ago and earn $0 today</b>, so there is nothing to cannibalize. The newest 5 sets stay premium and untouched by this proposal. And a reachable token-store goal is precisely what keeps players topping up at all. On this view the change grows revenue rather than competing with it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- colophon -->
+  <footer>
+    <div class="pad">
+      <div class="row">
+        <div class="note">Illustrative model, prepared for studio leadership. All figures are scoped strictly to token store revenue from the 10 older decoration sets on a single server and are not a statement of total game revenue. Constants and formulas are shared across every view of this case so the numbers reconcile.</div>
+        <div class="sig">Respectfully submitted<span class="by">By a Server 2864 player</span></div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =================== canonical model (ported exactly) =================== */
+  var SET_COST = 11340;       // tokens for one full set (level 1)
+  var FREE_WK  = 300;         // free tokens per week
+  var WEEKS    = 52;
+  var BACKLOG  = 10;          // older shelved sets the drip could release
+
+  var TIERS = {
+    free:  {label:'a free player',      paidTokens:0,    usd:0},
+    drip:  {label:'a $5-a-week player', paidTokens:600,  usd:4.95},
+    mid:   {label:'a $25-a-week player',paidTokens:1880, usd:24.94},
+    whale: {label:'a $100-a-week player',paidTokens:7080,usd:104.93}
+  };
+
+  function simulate(tier, cumAvailFn){
+    var onHand=0, owned=0, dollars=0;
+    var earnedCum=[], spentCum=[];
+    for(var w=1; w<=WEEKS; w++){
+      var avail = Math.min(BACKLOG, cumAvailFn(w));
+      onHand += FREE_WK;                       // free always banks
+      var goal = owned < avail;                // an unowned, available set exists
+      if(goal && tier.paidTokens>0){           // pay only while chasing a reachable set
+        onHand += tier.paidTokens;
+        dollars += tier.usd;
+      }
+      while(owned < avail && onHand >= SET_COST){ onHand -= SET_COST; owned++; }
+      earnedCum.push(owned*SET_COST + onHand);
+      spentCum.push(owned*SET_COST);
+    }
+    var stranded = (owned >= Math.min(BACKLOG, cumAvailFn(WEEKS))) ? onHand : 0;
+    return {owned:owned, dollars:dollars, stranded:stranded, earnedCum:earnedCum, spentCum:spentCum};
+  }
+
+  var TIER_MIX = [
+    {tier:'free',  share:0.55},
+    {tier:'drip',  share:0.30},
+    {tier:'mid',   share:0.12},
+    {tier:'whale', share:0.03}
+  ];
+
+  function strategyRevenue(cumAvailFn, opts){
+    var pop=opts.pop, giveUp=opts.giveUp||0;
+    var total=0; var weekly=new Array(WEEKS).fill(0);
+    TIER_MIX.forEach(function(m){
+      var n=pop*m.share;
+      if(opts.dump) n = n*(1-giveUp); // some disengage when faced with a wall
+      var tier=TIERS[m.tier];
+      var onHand=0,owned=0;
+      for(var w=1;w<=WEEKS;w++){
+        var avail=Math.min(BACKLOG,cumAvailFn(w));
+        onHand+=FREE_WK;
+        var goal=owned<avail;
+        if(goal && tier.paidTokens>0){ onHand+=tier.paidTokens; weekly[w-1]+=tier.usd*n; total+=tier.usd*n; }
+        while(owned<avail && onHand>=SET_COST){onHand-=SET_COST;owned++;}
+      }
+    });
+    var cum=[]; var run=0; weekly.forEach(function(v){run+=v;cum.push(run);});
+    return {total:total, cum:cum};
+  }
+
+  /* =================== svg helpers =================== */
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
+  function fmt(n){return Math.round(n).toLocaleString();}
+  function byId(id){return document.getElementById(id);}
+
+  /* =================== SECTION IV chart =================== */
+  var curTier='drip';
+  function relPerYear(){var r=byId('rel');return r?parseFloat(r.value):2.5;}
+
+  function drawWall(){
+    var svg=byId('chart'); if(!svg) return;
+    var tier=TIERS[curTier];
+    var months=relPerYear();
+    var everyWk = (52/12)*months;
+    var cumAvail = function(w){ return Math.floor(w/everyWk); };
+    var r = simulate(tier, cumAvail);
+
+    var W=640,H=320, pad={l:54,r:18,t:18,b:34};
+    var ix=W-pad.l-pad.r, iy=H-pad.t-pad.b;
+    var maxY=Math.max(SET_COST, Math.max.apply(null,r.earnedCum))*1.05;
+    var X=function(i){return pad.l + (i/(WEEKS-1))*ix;};
+    var Y=function(v){return pad.t + iy - (v/maxY)*iy;};
+
+    svg.innerHTML='';
+
+    var steps=4;
+    for(var g=0;g<=steps;g++){
+      var v=maxY*g/steps, y=Y(v);
+      svg.appendChild(el('line',{x1:pad.l,y1:y,x2:W-pad.r,y2:y,stroke:'#1d3158','stroke-width':1}));
+      var t=el('text',{x:pad.l-10,y:y+4,'text-anchor':'end',fill:'#6478a0','font-size':11,'font-family':'Archivo'});
+      t.textContent = (v>=1000? (v/1000).toFixed(0)+'k':Math.round(v)); svg.appendChild(t);
+    }
+    for(var m=0;m<=12;m+=3){
+      var i=Math.min(WEEKS-1, Math.round(m*52/12));
+      var x=X(i);
+      var tx=el('text',{x:x,y:H-12,'text-anchor':'middle',fill:'#6478a0','font-size':11,'font-family':'Archivo'});
+      tx.textContent = m+'mo'; svg.appendChild(tx);
+    }
+
+    var top=r.earnedCum.map(function(v,i){return X(i)+','+Y(v);});
+    var bot=r.spentCum.map(function(v,i){return X(i)+','+Y(v);}).reverse();
+    svg.appendChild(el('polygon',{points:top.concat(bot).join(' '),fill:'rgba(220,107,75,0.16)'}));
+
+    function path(arr,color,wdt,dash){
+      var d='M'+arr.map(function(v,i){return X(i)+','+Y(v);}).join(' L');
+      var a={d:d,fill:'none',stroke:color,'stroke-width':wdt,'stroke-linejoin':'round','stroke-linecap':'round'};
+      if(dash)a['stroke-dasharray']=dash;
+      svg.appendChild(el('path',a));
+    }
+    path(r.spentCum,'#5cba9f',2.6);
+    path(r.earnedCum,'#e7b24a',2.6);
+
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.earnedCum[WEEKS-1]),r:4,fill:'#e7b24a'}));
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.spentCum[WEEKS-1]),r:4,fill:'#5cba9f'}));
+
+    var roSets=byId('ro-sets'); if(roSets)roSets.textContent=r.owned;
+    var roRev=byId('ro-rev'); if(roRev)roRev.textContent='$'+fmt(r.dollars);
+    var roDead=byId('ro-dead'); if(roDead)roDead.textContent=fmt(r.stranded);
+
+    var pol=byId('policy');
+    if(pol){
+      if(months<2){pol.className='policytag prop';pol.textContent='Faster than the launch pace: would start crowding the pop-up packs';}
+      else if(months<=3){pol.className='policytag prop';pol.textContent='Proposed: graduate the oldest at the pace new sets ship';}
+      else {pol.className='policytag prop';pol.textContent='Slower than the launch pace: the backlog still clears, just gradually';}
+    }
+
+    var vd=byId('verdict');
+    if(vd){
+      var mTxt = (months % 1 === 0) ? months.toFixed(0) : String(months);
+      vd.className='verdict good';
+      vd.innerHTML = 'At one set every '+mTxt+' months, '+tier.label+' completes <b>'+r.owned+' set'+(r.owned===1?'':'s')+'</b>, pays <b>$'+fmt(r.dollars)+'</b>'+(r.stranded>0 ? ', and still strands <b>'+fmt(r.stranded)+' tokens</b> with nothing left to buy. Even the largest spender hits a ceiling, and that stranded balance is unmet demand.' : ', and little is stranded. The goal is back.');
+    }
+  }
+
+  /* =================== SECTION IV strategy comparison =================== */
+  function drawMini(id,cum,maxAll,color){
+    var svg=byId(id); if(!svg) return; svg.innerHTML='';
+    var W=320,H=110,pad=6;
+    var X=function(i){return pad+(i/(WEEKS-1))*(W-2*pad);};
+    var Y=function(v){return H-pad-(v/maxAll)*(H-2*pad);};
+    svg.appendChild(el('line',{x1:pad,y1:H-pad,x2:W-pad,y2:H-pad,stroke:'#1d3158','stroke-width':1}));
+    var area='M'+X(0)+','+(H-pad)+' L'+cum.map(function(v,i){return X(i)+','+Y(v);}).join(' L')+' L'+X(WEEKS-1)+','+(H-pad)+' Z';
+    svg.appendChild(el('path',{d:area,fill:color.replace('rgb','rgba').replace(')',',0.18)')}));
+    var d='M'+cum.map(function(v,i){return X(i)+','+Y(v);}).join(' L');
+    svg.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':2.4,'stroke-linejoin':'round'}));
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(cum[WEEKS-1]),r:3.5,fill:color}));
+  }
+
+  function drawStrategies(){
+    var popEl=byId('pop'), guEl=byId('giveup');
+    if(!popEl||!guEl) return;
+    var pop=parseInt(popEl.value,10);
+    var giveUp=parseInt(guEl.value,10)/100;
+    var dumpFn = function(w){ return w>=44 ? BACKLOG : 0; };
+    var everyWk=(52/12)*2.5;
+    var dripFn = function(w){ return Math.floor(w/everyWk); };
+
+    var dump=strategyRevenue(dumpFn,{pop:pop,giveUp:giveUp,dump:true});
+    var drip=strategyRevenue(dripFn,{pop:pop,giveUp:0,dump:false});
+    var maxAll=Math.max(dump.cum[WEEKS-1],drip.cum[WEEKS-1],1);
+
+    var rd=byId('rev-dump'); if(rd)rd.textContent='$'+fmt(dump.total);
+    var rp=byId('rev-drip'); if(rp)rp.textContent='$'+fmt(drip.total);
+    drawMini('mc-dump',dump.cum,maxAll,'rgb(220,107,75)');
+    drawMini('mc-drip',drip.cum,maxAll,'rgb(92,186,159)');
+
+    var mult = dump.total>0 ? (drip.total/dump.total) : Infinity;
+    var sv=byId('strat-verdict');
+    if(sv){
+      var multTxt = isFinite(mult) ? mult.toFixed(1)+'x' : 'many times';
+      sv.innerHTML = 'On these illustrative assumptions, steady graduation realizes about <b>$'+fmt(drip.total-dump.total)+' more</b> from this older backlog over the year (roughly '+multTxt+' the backlog token revenue under hold and dump), and it keeps players engaged the whole time instead of for one burst.';
+    }
+  }
+
+  /* =================== SECTION II waterfall =================== */
+  function drawWaterfall(){
+    var svg=byId('waterfall'); if(!svg) return;
+    svg.innerHTML='';
+    var W=720,H=320, pad={l:18,r:18,t:26,b:54};
+    var ix=W-pad.l-pad.r, iy=H-pad.t-pad.b;
+
+    var steadyTotal=76501, forgone=47676, frozen=28825;
+    var maxY=steadyTotal*1.12;
+    var Y=function(v){return pad.t + iy - (v/maxY)*iy;};
+    var base=pad.t+iy;
+
+    // four columns: Reachable, minus Forgone (floating), equals Frozen, then a Bottom-line marker
+    var cols=[
+      {x:pad.l+ix*0.04, w:ix*0.20, label:'Reachable', sub:'steady plan', val:steadyTotal, y0:0,        y1:steadyTotal, fill:'#5cba9f'},
+      {x:pad.l+ix*0.30, w:ix*0.20, label:'Forgone',   sub:'the freeze',  val:forgone,     y0:frozen,    y1:steadyTotal, fill:'#dc6b4b'},
+      {x:pad.l+ix*0.56, w:ix*0.20, label:'Frozen',    sub:'today',       val:frozen,      y0:0,         y1:frozen,      fill:'#7a8aa8'},
+      {x:pad.l+ix*0.80, w:ix*0.16, label:'Bottom line',sub:'collected',  val:frozen,      y0:0,         y1:frozen,      fill:'#c9a24a'}
+    ];
+
+    // gridlines
+    var steps=4;
+    for(var g=0;g<=steps;g++){
+      var v=maxY*g/steps, y=Y(v);
+      svg.appendChild(el('line',{x1:pad.l,y1:y,x2:W-pad.r,y2:y,stroke:'#16284a','stroke-width':1}));
+      var t=el('text',{x:pad.l+2,y:y-5,fill:'#6478a0','font-size':10.5,'font-family':'Archivo'});
+      t.textContent = '$'+(v/1000).toFixed(0)+'k'; svg.appendChild(t);
+    }
+
+    cols.forEach(function(c,idx){
+      var yTop=Y(c.y1), yBot=Y(c.y0), h=Math.max(2,yBot-yTop);
+      // connector dashed line from previous top of stack (visual flow)
+      if(idx===1){
+        svg.appendChild(el('line',{x1:cols[0].x+cols[0].w,y1:Y(steadyTotal),x2:c.x,y2:Y(steadyTotal),stroke:'#2a4068','stroke-width':1,'stroke-dasharray':'4 4'}));
+      }
+      if(idx===2){
+        svg.appendChild(el('line',{x1:cols[1].x+cols[1].w,y1:Y(frozen),x2:c.x,y2:Y(frozen),stroke:'#2a4068','stroke-width':1,'stroke-dasharray':'4 4'}));
+      }
+      // bar
+      var grad='url(#wf'+idx+')';
+      svg.appendChild(el('rect',{x:c.x,y:yTop,width:c.w,height:h,fill:c.fill,rx:2,opacity:0.92}));
+      // top highlight line
+      svg.appendChild(el('rect',{x:c.x,y:yTop,width:c.w,height:Math.min(3,h),fill:'rgba(255,255,255,.22)',rx:1}));
+      // value label
+      var vt=el('text',{x:c.x+c.w/2,y:yTop-9,'text-anchor':'middle',fill:'#f4f1e9','font-size':14,'font-weight':700,'font-family':'Archivo'});
+      vt.textContent = (idx===1?'+$':'$')+fmt(c.val); svg.appendChild(vt);
+      // x label
+      var lt=el('text',{x:c.x+c.w/2,y:base+20,'text-anchor':'middle',fill:'#cdd6e6','font-size':12,'font-weight':600,'font-family':'Archivo'});
+      lt.textContent = c.label; svg.appendChild(lt);
+      var st=el('text',{x:c.x+c.w/2,y:base+36,'text-anchor':'middle',fill:'#6478a0','font-size':10.5,'font-family':'Archivo'});
+      st.textContent = c.sub; svg.appendChild(st);
+    });
+  }
+
+  /* =================== wire up listeners =================== */
+  function init(){
+    var segBtns=document.querySelectorAll('#seg-tier button');
+    segBtns.forEach(function(b){
+      b.addEventListener('click',function(){
+        segBtns.forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on'); curTier=b.dataset.tier; drawWall();
+      });
+    });
+
+    var relEl=byId('rel');
+    if(relEl){
+      relEl.addEventListener('input',function(e){
+        var rv=byId('rel-v'); if(rv)rv.textContent=parseFloat(e.target.value);
+        drawWall();
+      });
+    }
+
+    ['pop','giveup'].forEach(function(id){
+      var elx=byId(id);
+      if(elx){
+        elx.addEventListener('input',function(e){
+          var v=byId(id+'-v'); if(v)v.textContent=e.target.value;
+          drawStrategies();
+        });
+      }
+    });
+
+    drawWaterfall();
+    drawWall();
+    drawStrategies();
+
+    // redraw responsive bits on resize (svg uses viewBox so mostly handled, but mini charts benefit)
+    var rt;
+    window.addEventListener('resize',function(){
+      clearTimeout(rt);
+      rt=setTimeout(function(){ drawWall(); drawStrategies(); drawWaterfall(); },150);
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>
