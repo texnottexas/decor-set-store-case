@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fff6e6'/%3E%3Cpath d='M6 20l5-6 4 4 5-8 6 10z' fill='none' stroke='%23e8694e' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='9' r='2.4' fill='%23f0a93a'/%3E%3C/svg%3E">
+<title>Nothing Left to Chase: A Player's Story About the Decor Set Store</title>
+<meta name="description" content="A friendly, illustrated business case for letting older decoration sets graduate into the Decor Set Store on a steady cadence, told through one Server 2864 player's journey.">
+<script>
+/* Gate scroll-reveal behind .js so content is never permanently hidden.
+   Honor reduced motion by leaving everything visible. */
+(function(){
+  var d=document.documentElement;
+  try{
+    var rm=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!rm){ d.classList.add('js'); }
+  }catch(e){}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbf4e6;
+  --paper2:#f5ead3;
+  --card:#fffdf7;
+  --ink:#2a2419;
+  --ink2:#5b5141;
+  --muted:#8a7d66;
+  --line:#e6d8bd;
+  --line2:#d8c39c;
+  --coral:#e8694e;
+  --coral-deep:#cf4d33;
+  --coral-soft:#fbe2da;
+  --sun:#f0a93a;
+  --sun-deep:#d68a16;
+  --sun-soft:#fbeccb;
+  --teal:#1f9e8c;
+  --teal-soft:#d6efe8;
+  --maxw:1060px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+/* warm paper grain via layered gradients, no external images */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(820px 520px at 84% -6%, rgba(240,169,58,.18), transparent 60%),
+    radial-gradient(760px 600px at -8% 8%, rgba(232,105,78,.10), transparent 55%),
+    radial-gradient(700px 700px at 50% 118%, rgba(31,158,140,.08), transparent 60%);
+}
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.narrow{max-width:720px;margin-left:auto;margin-right:auto}
+
+h1,h2,h3,.kicker,.bignum,.tag,.btn,.chip,.barlbl{font-family:'Bricolage Grotesque','Newsreader',sans-serif}
+a{color:var(--coral-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- scroll reveal ---------- */
+.reveal{opacity:1;transform:none;transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+html.js .reveal{opacity:0;transform:translateY(26px)}
+html.js .reveal.in{opacity:1;transform:none}
+@media print{ html.js .reveal{opacity:1!important;transform:none!important} }
+
+/* ---------- progress bar ---------- */
+.progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:50;
+  background:linear-gradient(90deg,var(--sun),var(--coral));transition:width .12s linear}
+
+/* ---------- hero ---------- */
+header.hero{padding:74px 0 30px;text-align:center}
+.eyebrow{display:inline-block;font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--coral-deep);background:var(--coral-soft);border:1px solid var(--line2);
+  padding:7px 14px;border-radius:999px;margin-bottom:22px}
+h1{font-size:clamp(40px,8vw,80px);line-height:.98;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+h1 .pop{color:var(--coral)}
+.dek{font-size:clamp(20px,2.7vw,26px);line-height:1.45;color:var(--ink2);margin:24px auto 0;max-width:680px;font-style:italic}
+.byline{margin-top:30px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.scrollcue{margin:46px auto 0;width:30px;height:48px;border:2px solid var(--line2);border-radius:16px;position:relative;opacity:.8}
+.scrollcue::after{content:"";position:absolute;left:50%;top:9px;width:5px;height:9px;margin-left:-2.5px;border-radius:3px;background:var(--coral);
+  animation:cue 1.6s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(16px);opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.scrollcue::after{animation:none}}
+
+/* ---------- chapters ---------- */
+section{padding:58px 0;position:relative}
+.kicker{display:flex;align-items:center;gap:12px;font-family:'DM Mono',monospace;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--coral-deep);margin-bottom:14px;font-weight:500}
+.kicker .num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:var(--coral);color:#fff;font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:14px;letter-spacing:0}
+h2{font-size:clamp(28px,4.6vw,46px);line-height:1.04;font-weight:800;letter-spacing:-.015em;margin-bottom:18px;color:var(--ink)}
+.lede{font-size:clamp(19px,2.3vw,23px);color:var(--ink2);line-height:1.5}
+p{margin:0 0 18px}
+p.body{color:var(--ink2)}
+em{font-style:italic;color:var(--ink)}
+strong{font-weight:600;color:var(--ink)}
+
+/* persona card */
+.persona{display:flex;gap:22px;align-items:center;flex-wrap:wrap;background:var(--card);
+  border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 14px 36px -22px rgba(120,80,20,.4)}
+.avatar{flex:0 0 auto;width:84px;height:84px;border-radius:22px;background:linear-gradient(135deg,var(--sun),var(--coral));
+  display:grid;place-items:center;box-shadow:0 8px 22px -10px rgba(232,105,78,.6)}
+.avatar svg{width:50px;height:50px}
+.persona .meta{min-width:200px;flex:1}
+.persona h3{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.persona .role{font-family:'DM Mono',monospace;font-size:12.5px;color:var(--muted);letter-spacing:.03em;margin-top:3px}
+.persona .quote{font-style:italic;font-size:18px;color:var(--ink2);margin-top:10px;border-left:3px solid var(--sun);padding-left:14px}
+
+/* big stat row */
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;text-align:center}
+.stat.accent{background:linear-gradient(180deg,#fff,var(--sun-soft));border-color:var(--line2)}
+.bignum{font-size:clamp(34px,6vw,52px);font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--coral-deep)}
+.stat.accent .bignum{color:var(--sun-deep)}
+.stat .lbl{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--muted);margin-top:10px;text-transform:uppercase;line-height:1.4}
+
+/* figure / chart frame */
+figure{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 24px 22px;margin:30px 0;
+  box-shadow:0 18px 44px -28px rgba(120,80,20,.45)}
+figure .figtitle{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
+figure .figsub{font-size:15px;color:var(--muted);margin-bottom:18px;line-height:1.45}
+figcaption{font-size:14px;color:var(--muted);margin-top:14px;font-style:italic;line-height:1.5}
+.disclaimer{font-family:'DM Mono',monospace;font-size:11.5px;letter-spacing:.02em;color:var(--muted);
+  background:var(--paper2);border:1px dashed var(--line2);border-radius:10px;padding:9px 12px;margin-top:14px;line-height:1.55}
+
+/* svg chart helpers */
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.axis{stroke:var(--line2);stroke-width:1.5}
+.gridln{stroke:var(--line);stroke-width:1}
+.axtxt{font-family:'DM Mono',monospace;font-size:11px;fill:var(--muted)}
+.serieslbl{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:13px}
+
+/* two path contrast */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.path{border-radius:20px;padding:24px;border:1px solid var(--line)}
+.path.premium{background:linear-gradient(180deg,#fff,var(--coral-soft));border-color:var(--line2)}
+.path.token{background:linear-gradient(180deg,#fff,var(--teal-soft));border-color:#bfe3d9}
+.path .ptag{font-family:'DM Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.path.premium .ptag{color:var(--coral-deep)}
+.path.token .ptag{color:var(--teal)}
+.path .pprice{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(30px,5vw,44px);line-height:1;margin:8px 0 4px;letter-spacing:-.02em}
+.path.premium .pprice{color:var(--coral-deep)}
+.path.token .pprice{color:var(--teal)}
+.path .psub{font-size:15px;color:var(--ink2);margin-bottom:14px}
+.path ul{list-style:none;font-size:15.5px;color:var(--ink2)}
+.path li{padding:6px 0 6px 24px;position:relative;line-height:1.45}
+.path li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;border-radius:50%}
+.path.premium li::before{background:var(--coral)}
+.path.token li::before{background:var(--teal)}
+
+/* catalogue */
+.cat{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:24px 0}
+.setchip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 13px;position:relative;overflow:hidden}
+.setchip .sname{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14.5px;line-height:1.15;letter-spacing:-.01em}
+.setchip .syr{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:5px}
+.setchip .dot{position:absolute;right:11px;top:11px;width:10px;height:10px;border-radius:50%}
+.setchip.store{border-left:4px solid var(--teal)}
+.setchip.store .dot{background:var(--teal)}
+.setchip.shelved{border-left:4px solid var(--coral)}
+.setchip.shelved .dot{background:var(--coral)}
+.setchip.recent{border-left:4px solid var(--sun)}
+.setchip.recent .dot{background:var(--sun)}
+.catlegend{display:flex;gap:20px;flex-wrap:wrap;font-family:'DM Mono',monospace;font-size:12.5px;color:var(--ink2);margin:6px 0 4px}
+.catlegend span{display:inline-flex;align-items:center;gap:7px}
+.catlegend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.catgroup-title{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:16px;margin:22px 0 4px;display:flex;align-items:center;gap:9px}
+.catgroup-title .ct{font-family:'DM Mono',monospace;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:.02em}
+
+/* interactive slider module */
+.lab{background:linear-gradient(165deg,#fffdf7, var(--paper2));border:1px solid var(--line2);border-radius:24px;
+  padding:28px 26px;margin:30px 0;box-shadow:0 20px 50px -30px rgba(120,80,20,.5)}
+.lab h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:23px;letter-spacing:-.01em}
+.lab .labsub{font-size:15.5px;color:var(--ink2);margin:6px 0 20px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-bottom:8px}
+.ctrl label{display:block;font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:14px;margin-bottom:9px;letter-spacing:-.005em}
+.ctrl label .v{float:right;font-family:'DM Mono',monospace;font-weight:400;color:var(--coral-deep)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;
+  background:linear-gradient(90deg,var(--sun),var(--coral));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;
+  background:#fff;border:3px solid var(--coral);box-shadow:0 3px 8px -2px rgba(207,77,51,.6);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--coral);cursor:pointer}
+.segwrap{display:flex;gap:8px;flex-wrap:wrap}
+.seg{flex:1 1 auto;min-width:60px;text-align:center;font-family:'DM Mono',monospace;font-size:12.5px;
+  padding:9px 6px;border-radius:11px;border:1px solid var(--line2);background:#fff;color:var(--ink2);cursor:pointer;transition:all .15s}
+.seg.on{background:var(--coral);color:#fff;border-color:var(--coral);font-weight:500}
+.seg:hover:not(.on){background:var(--coral-soft)}
+
+.goalmeter{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.goalmeter .gl{display:flex;justify-content:space-between;align-items:baseline;font-family:'DM Mono',monospace;font-size:12.5px;color:var(--muted);margin-bottom:9px}
+.track{height:18px;border-radius:99px;background:var(--paper2);overflow:hidden;position:relative;border:1px solid var(--line)}
+.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--sun),var(--coral));width:0;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.goalout{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.go{text-align:center;background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:16px 10px}
+.go .gn{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:clamp(26px,4.5vw,38px);line-height:1;color:var(--coral-deep);letter-spacing:-.02em}
+.go .gt{font-family:'DM Mono',monospace;font-size:11px;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:.05em;line-height:1.4}
+.verdict{margin-top:18px;font-size:16.5px;line-height:1.5;color:var(--ink);background:var(--sun-soft);border:1px solid var(--line2);border-radius:14px;padding:15px 18px}
+.verdict b{font-weight:600}
+
+/* proposal callout */
+.ask{background:linear-gradient(135deg,var(--coral),var(--coral-deep));color:#fff;border-radius:26px;
+  padding:38px 32px;margin:30px 0;box-shadow:0 26px 60px -30px rgba(207,77,51,.8)}
+.ask .ak{font-family:'DM Mono',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:12px}
+.ask h2{color:#fff;font-size:clamp(26px,4.4vw,40px);margin-bottom:14px}
+.ask p{color:rgba(255,255,255,.94);font-size:19px}
+.ask .oneone{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:18px 20px}
+.ask .oneone .big{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em}
+.ask .oneone .lab2{font-size:15px;color:rgba(255,255,255,.9)}
+
+/* rebuttal */
+.qa{display:grid;gap:14px;margin:24px 0}
+.qa .item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;border-left:4px solid var(--teal)}
+.qa .q{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:17px;margin-bottom:6px;color:var(--ink)}
+.qa .a{font-size:16px;color:var(--ink2);line-height:1.5}
+
+/* close */
+.close{text-align:center;padding:64px 0 30px}
+.close .mark{width:54px;height:54px;margin:0 auto 20px;display:grid;place-items:center;border-radius:16px;
+  background:linear-gradient(135deg,var(--sun),var(--coral))}
+.close .mark svg{width:30px;height:30px}
+.close h2{font-size:clamp(26px,4.4vw,42px)}
+.close p{max-width:600px;margin:0 auto 18px;color:var(--ink2);font-size:20px}
+.signoff{font-family:'DM Mono',monospace;font-size:13.5px;letter-spacing:.04em;color:var(--muted);margin-top:24px}
+
+footer{border-top:1px solid var(--line);margin-top:30px;padding:30px 0 60px;text-align:center;
+  font-family:'DM Mono',monospace;font-size:12px;color:var(--muted);line-height:1.7}
+
+/* responsive */
+@media (max-width:760px){
+  body{font-size:18px}
+  section{padding:46px 0}
+  .statrow{grid-template-columns:1fr;gap:12px}
+  .paths{grid-template-columns:1fr}
+  .controls{grid-template-columns:1fr}
+  .goalout{grid-template-columns:1fr 1fr}
+  .persona{padding:20px}
+}
+@media (max-width:420px){
+  .goalout{grid-template-columns:1fr}
+  .cat{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <span class="eyebrow reveal">Top War &middot; A Player Story for RiverGame</span>
+    <h1 class="reveal">Nothing left<br>to <span class="pop">chase.</span></h1>
+    <p class="dek reveal">A long time commander finished every set the store could offer, and the game went quiet. Here is their year, drawn out in numbers, and a gentle idea that could fill it back up.</p>
+    <div class="byline reveal">Told by a Server 2864 player</div>
+    <div class="scrollcue reveal" aria-hidden="true"></div>
+  </header>
+
+  <!-- ============ CHAPTER 1 - THE PLAYER ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">1</span> Meet the commander</div>
+    <h2 class="reveal">A collector with an empty wishlist.</h2>
+    <div class="persona reveal">
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/><path d="M3 21h18"/>
+        </svg>
+      </div>
+      <div class="meta">
+        <h3>Commander Birch</h3>
+        <div class="role">Server 2864 &middot; playing since 2022 &middot; mid tier spender</div>
+        <div class="quote">"I collect the pretty sets because they help my marches grow. But I have run out of things I can actually reach."</div>
+      </div>
+    </div>
+    <p class="body reveal" style="margin-top:26px">Birch is a made up handle standing in for thousands of steady, friendly players who keep a server alive. They are not a whale and not a free rider. They log in, they earn, and they like having a goal in front of them.</p>
+    <p class="body reveal">Decoration sets are perfect for that. Complete a set and it grants a permanent march size bonus, and the bonuses stack across sets, so a collector always has a reason to keep going. There are <strong>23 sets in the game</strong>. Birch owns all <strong>8</strong> that the token store currently offers. The store just cycles those same 8 on rotation, so for Birch the shelves are bare.</p>
+
+    <div class="statrow reveal">
+      <div class="stat"><div class="bignum">23</div><div class="lbl">Decoration sets in the game</div></div>
+      <div class="stat accent"><div class="bignum">8</div><div class="lbl">In the token store, on rotation</div></div>
+      <div class="stat"><div class="bignum">10</div><div class="lbl">Older sets shelved with no affordable path</div></div>
+    </div>
+    <p class="body reveal">The remaining 5 are recent sets, still sold fresh as premium packs. This story does not touch those. It is about the <strong>10 older sets</strong>, released between 2021 and 2024, whose launch windows closed years ago and which never reached the store. A simple, verifiable fact frames the whole problem: not one of the nine sets released since December 2023 has reached the token store.</p>
+  </section>
+
+  <!-- ============ CHAPTER 2 - THE PILE ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">2</span> The tokens pile up</div>
+    <h2 class="reveal">Earning with nowhere to spend.</h2>
+    <p class="lede reveal">The store currency is Decor Set Tokens. Birch earns about <strong>300 free tokens a week</strong>, automatically, just by playing. When there is a set to chase, those tokens flow straight toward it. When there is not, they simply stack up and go stale.</p>
+
+    <figure class="reveal">
+      <div class="figtitle">A frozen year of saving</div>
+      <div class="figsub">Free tokens Birch banks over 52 weeks while no new set ever opens. A full set costs 11,340 tokens, so the savings drift far past one set's worth with no goal to spend them on.</div>
+      <svg class="chart" viewBox="0 0 640 300" role="img" aria-label="Line chart showing free tokens piling up to about 15,600 over 52 weeks with no set available to spend them on.">
+        <!-- gridlines + y labels -->
+        <g>
+          <line class="gridln" x1="64" y1="40" x2="610" y2="40"/>
+          <line class="gridln" x1="64" y1="100" x2="610" y2="100"/>
+          <line class="gridln" x1="64" y1="160" x2="610" y2="160"/>
+          <line class="gridln" x1="64" y1="220" x2="610" y2="220"/>
+          <text class="axtxt" x="58" y="44" text-anchor="end">16k</text>
+          <text class="axtxt" x="58" y="104" text-anchor="end">12k</text>
+          <text class="axtxt" x="58" y="164" text-anchor="end">8k</text>
+          <text class="axtxt" x="58" y="224" text-anchor="end">4k</text>
+        </g>
+        <!-- "one full set" threshold -->
+        <line x1="64" y1="90" x2="610" y2="90" stroke="#1f9e8c" stroke-width="1.6" stroke-dasharray="6 5"/>
+        <text class="axtxt" x="606" y="84" text-anchor="end" fill="#1f9e8c">one full set = 11,340</text>
+        <!-- area + line: 0..15600 over 52 wks -->
+        <polygon points="64,260 610,32 610,260" fill="rgba(232,105,78,.14)"/>
+        <line x1="64" y1="260" x2="610" y2="32" stroke="#e8694e" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="610" cy="32" r="6" fill="#cf4d33"/>
+        <text class="serieslbl" x="600" y="22" text-anchor="end" fill="#cf4d33">~15,600 stranded</text>
+        <!-- x axis -->
+        <line class="axis" x1="64" y1="260" x2="610" y2="260"/>
+        <text class="axtxt" x="64" y="278">Week 1</text>
+        <text class="axtxt" x="337" y="278" text-anchor="middle">Week 26</text>
+        <text class="axtxt" x="610" y="278" text-anchor="end">Week 52</text>
+      </svg>
+      <figcaption>By the end of a frozen year a paying collector strands thousands of tokens, and a paying player spends $0 all year, because there is simply nothing in the store left to buy.</figcaption>
+    </figure>
+
+    <p class="body reveal">That last line is the quiet part worth repeating. When Birch has already bought everything available, the store stops earning. The tokens keep coming and keep going nowhere. A motivated, willing customer sits idle, not because they refuse to spend, but because the shelf is empty.</p>
+  </section>
+
+  <!-- ============ CHAPTER 3 - THE WALL ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">3</span> The wall and the locked door</div>
+    <h2 class="reveal">Two paths to a set, and only one is open.</h2>
+    <p class="lede reveal">Every set has two routes. One is fast and premium. One is patient and affordable. For the 10 older sets, the affordable door is locked.</p>
+
+    <div class="paths reveal">
+      <div class="path premium">
+        <div class="ptag">Path one &middot; launch packs</div>
+        <div class="pprice">~$175</div>
+        <div class="psub">to reach level 1 during the launch window</div>
+        <ul>
+          <li>A premium ladder: $4.99, $19.99, $49.99, $99.99</li>
+          <li>About $525 for level 2 (a set must be collected three times)</li>
+          <li>Time limited: when the launch window closes, this door closes too</li>
+        </ul>
+      </div>
+      <div class="path token">
+        <div class="ptag">Path two &middot; the store</div>
+        <div class="pprice">~$94 or less</div>
+        <div class="psub">at most in cash, and far less once free tokens count</div>
+        <ul>
+          <li>A full set is 11,340 tokens of soft currency</li>
+          <li>Free for a patient earner in about 9 months, about 3 months at a steady $5 a week</li>
+          <li>The catch: for the 10 older sets, this door is shut</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="body reveal">Top up options keep the patient path gentle: the best value is a $0.99 pack of 120 tokens, capped at 5 buys a week, about $5 for 600 tokens. Larger packs ($4.99 for 300, $19.99 for 1,280, $49.99 for 3,280, $99.99 for 6,480) have no weekly cap for players in a hurry.</p>
+    <p class="body reveal">So for the 10 older sets, the premium door shut years ago and the affordable door was never opened. Birch cannot buy them at any reasonable price. The result is not more premium spending. It is a player gently disengaging from the part of the game they enjoyed most.</p>
+  </section>
+
+  <!-- ============ CHAPTER 4 - THE CATALOGUE ============ -->
+  <section>
+    <div class="narrow">
+      <div class="kicker reveal"><span class="num">4</span> The whole shelf</div>
+      <h2 class="reveal">All 23 sets, at a glance.</h2>
+      <p class="lede reveal">Here is the full catalogue, colour coded. The story is about the coral group: the older sets waiting quietly with no way in.</p>
+    </div>
+
+    <div class="catlegend reveal" style="margin-top:22px">
+      <span><i style="background:#1f9e8c"></i> In the token store now (8)</span>
+      <span><i style="background:#e8694e"></i> Older, shelved, no affordable path (10)</span>
+      <span><i style="background:#f0a93a"></i> Recent, premium for now, not contested (5)</span>
+    </div>
+
+    <div class="catgroup-title reveal">In the token store now <span class="ct">/ rotating</span></div>
+    <div class="cat reveal" id="cat-store"></div>
+
+    <div class="catgroup-title reveal">The backlog this proposal releases <span class="ct">/ oldest first</span></div>
+    <div class="cat reveal" id="cat-shelved"></div>
+
+    <div class="catgroup-title reveal">Recent, premium for now <span class="ct">/ left untouched</span></div>
+    <div class="cat reveal" id="cat-recent"></div>
+
+    <div class="narrow">
+      <p class="body reveal" style="margin-top:26px">Meanwhile the studio keeps the catalogue lively, shipping a brand new set about every 2.4 months. Recent gaps between launches were 48, 80, 73 and 93 days, roughly 4 to 5 fresh sets a year. The pipeline is healthy. The only thing missing is a graceful exit for the oldest sets.</p>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 5 - INTERACTIVE ============ -->
+  <section>
+    <div class="narrow">
+      <div class="kicker reveal"><span class="num">5</span> Put a goal back in front of Birch</div>
+      <h2 class="reveal">Try it: speed up releases, watch the goal come closer.</h2>
+      <p class="lede reveal">When a set finally opens, Birch has a target again, and the saved tokens have somewhere to go. Move the controls and see how a single year plays out for one player. Every assumption is yours to adjust.</p>
+    </div>
+
+    <div class="lab reveal">
+      <h3>The next goal slider</h3>
+      <div class="labsub">A per player simulation over 52 weeks. Faster graduation means more sets become available, which means more weeks Birch is actively chasing (and spending) instead of stranding free tokens.</div>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label for="cadence">Release cadence <span class="v" id="cadence-v"></span></label>
+          <input type="range" id="cadence" min="0" max="6" step="1" value="5" aria-label="New sets released per year">
+        </div>
+        <div class="ctrl">
+          <label>Birch's spending habit</label>
+          <div class="segwrap" id="tiers">
+            <div class="seg" data-tier="0">Free</div>
+            <div class="seg on" data-tier="1">$5 / wk</div>
+            <div class="seg" data-tier="2">$25 / wk</div>
+            <div class="seg" data-tier="3">$100 / wk</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="goalmeter">
+        <div class="gl"><span id="goal-line">Next set within reach</span><span id="goal-pct">0%</span></div>
+        <div class="track"><div class="fill" id="goal-fill"></div></div>
+      </div>
+
+      <div class="goalout">
+        <div class="go"><div class="gn" id="o-sets">0</div><div class="gt">Sets completed this year</div></div>
+        <div class="go"><div class="gn" id="o-cash">$0</div><div class="gt">Cash Birch spends</div></div>
+        <div class="go"><div class="gn" id="o-stranded">0</div><div class="gt">Free tokens stranded</div></div>
+      </div>
+
+      <div class="verdict" id="verdict"></div>
+      <div class="disclaimer">Illustrative single player model, scoped to the older backlog of 10 sets only. Constants: 11,340 tokens per set, 300 free tokens a week, 52 week horizon. Launch pack and monthly pop up revenue are unchanged by this slider.</div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 6 - STEADY VS DUMP ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">6</span> The population view</div>
+    <h2 class="reveal">Steady beats a big dump.</h2>
+    <p class="lede reveal">Zoom out from Birch to a whole server of set buyers. There are two ways to release the backlog. Hold everything and dump all 10 sets at once near year end, or let the oldest set graduate steadily, about every 2.5 months. The patient path keeps players engaged, and that engagement is where the revenue lives.</p>
+
+    <figure class="reveal">
+      <div class="figtitle">Backlog token revenue over one year</div>
+      <div class="figsub">A population of 600 active set buyers (mix: 55% free, 30% at $5 a week, 12% at $25 a week, 3% at $100 a week). Bars show only the token store revenue from the 10 older sets.</div>
+      <svg class="chart" viewBox="0 0 640 320" role="img" aria-label="Bar chart comparing hold and dump at about 28,825 dollars versus steady graduation at about 76,501 dollars in older backlog token revenue.">
+        <g>
+          <line class="gridln" x1="150" y1="40" x2="610" y2="40"/>
+          <line class="gridln" x1="150" y1="100" x2="610" y2="100"/>
+          <line class="gridln" x1="150" y1="160" x2="610" y2="160"/>
+          <line class="gridln" x1="150" y1="220" x2="610" y2="220"/>
+          <text class="axtxt" x="144" y="44" text-anchor="end">$80k</text>
+          <text class="axtxt" x="144" y="104" text-anchor="end">$60k</text>
+          <text class="axtxt" x="144" y="164" text-anchor="end">$40k</text>
+          <text class="axtxt" x="144" y="224" text-anchor="end">$20k</text>
+          <line class="axis" x1="150" y1="262" x2="610" y2="262"/>
+        </g>
+        <!-- hold and dump bar: 28825 -> height. scale: $80k over 222px (262-40). px per $ = 222/80000 -->
+        <rect x="210" y="182" width="120" height="80" rx="8" fill="#d8c39c"/>
+        <text class="serieslbl" x="270" y="172" text-anchor="middle" fill="#8a7d66">$28,825</text>
+        <text class="axtxt" x="270" y="282" text-anchor="middle" font-size="12.5">Hold and dump</text>
+        <text class="axtxt" x="270" y="300" text-anchor="middle">~30% disengage at the dump</text>
+        <!-- steady bar: 76501 -> height = 76501 * 222/80000 = 212 -->
+        <rect x="430" y="50" width="120" height="212" rx="8" fill="#e8694e"/>
+        <text class="serieslbl" x="490" y="40" text-anchor="middle" fill="#cf4d33" font-size="15">$76,501</text>
+        <text class="axtxt" x="490" y="282" text-anchor="middle" font-size="12.5" fill="#cf4d33">Steady graduation</text>
+        <text class="axtxt" x="490" y="300" text-anchor="middle" fill="#cf4d33">oldest set every ~2.5 months</text>
+      </svg>
+      <figcaption>Steady graduation earns about $47,676 more across the year, roughly 2.7 times the backlog token revenue of holding and dumping.</figcaption>
+      <div class="disclaimer">These figures are illustrative and scoped to the token store revenue from the 10 older sets only. They are not total game revenue. Launch and monthly pop up pack revenue is identical under both paths.</div>
+    </figure>
+
+    <p class="body reveal">A dump floods players with more than they can act on, so most of it strands and a chunk of the audience simply checks out. A steady drip keeps a goal on the horizon all year long, which is exactly what turns a willing earner into a recurring small spender.</p>
+  </section>
+
+  <!-- ============ CHAPTER 7 - THE ASK ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">7</span> The single ask</div>
+    <div class="ask reveal">
+      <div class="ak">One in, one graduates</div>
+      <h2>Let the oldest shelved set step into the store with each new launch.</h2>
+      <p>Each time a new set launches (about every 2 to 3 months), the oldest shelved set graduates into the token store. The newest sets stay premium, the monthly pop up packs stay intact, and only ever the single oldest set moves. It costs nothing to build, because the sets already exist.</p>
+      <div class="oneone">
+        <div class="big">+1 in &rarr; +1 graduates</div>
+        <div class="lab2">A self clearing backlog that always keeps the freshest content premium and gives patient players a goal again.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 8 - REBUTTAL ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">8</span> The fair question</div>
+    <h2 class="reveal">Won't free token sets undercut pack sales?</h2>
+    <p class="lede reveal">It is the right question to ask, and the honest answer is no. Here is why graduation reaches a different player than the packs do.</p>
+    <div class="qa reveal">
+      <div class="item"><div class="q">Only the oldest graduates</div><div class="a">Recent sets stay premium. The packs keep selling exactly what they sell today. Nothing fresh ever leaves the premium shelf.</div></div>
+      <div class="item"><div class="q">The token path still takes months</div><div class="a">Reaching a set through the store is a patient grind. Players who want a set now keep buying packs to skip the wait.</div></div>
+      <div class="item"><div class="q">Levelling still costs money</div><div class="a">Level 2 means collecting a set three times. The store opens a door to level 1, it does not hand out maxed sets.</div></div>
+      <div class="item"><div class="q">Pop up packs bundle far more</div><div class="a">The monthly pop up packs wrap the bare set in extra value. Buyers there are paying for the whole bundle, not just the set.</div></div>
+    </div>
+    <p class="body reveal" style="margin-top:8px">Graduation reaches the patient earner who was never going to pay full launch price anyway. It does not move a single premium buyer to the slow path. It turns a dead end into a small, steady, recurring source of spend, and it keeps a softly widening power gap from leaving mid tier players behind.</p>
+  </section>
+
+  <!-- ============ CLOSE ============ -->
+  <section class="close narrow">
+    <div class="mark reveal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 13l4 4L19 7"/>
+      </svg>
+    </div>
+    <h2 class="reveal">Give Birch something to chase again.</h2>
+    <p class="reveal">The content already exists. The currency already flows. The willing players are already here, logging in and earning toward a goal that is currently locked away. One small, recurring graduation turns a quiet shelf into a steady, friendly source of revenue, and turns a drifting collector back into a happy one.</p>
+    <p class="reveal">Thank you for reading, and for building a game worth collecting in.</p>
+    <div class="signoff reveal">With respect, a Server 2864 player</div>
+  </section>
+
+</div>
+
+<footer>
+  An independent, player made proposal for RiverGame &middot; Top War &middot; Server 2864<br>
+  All revenue figures are illustrative and scoped to older backlog token revenue, not total game revenue.
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- catalogue data ---------- */
+  var STORE = [
+    "The Wizard of TW","Home Sweet Home","Military Life","Moon and Starlight",
+    "Industrial Era","Rip Tides","Just For You","Happy 24h"
+  ];
+  var SHELVED = [
+    ["Holiday Decor Set","2021"],["Giggling Castle","2022"],["Thanksgiving Feast","2022"],
+    ["Magic Christmas","2022"],["Christmas Season","2023"],["Pawsome Moments","2023"],
+    ["Snowfall Season","Dec 2023"],["Metal Music Fans","May 2024"],
+    ["Kung Fu Saga","Sep 2024"],["Penguin World","Dec 2024"]
+  ];
+  var RECENT = [
+    ["Sea of Stars","Aug 2025"],["Magic and Dragons","Sep 2025"],["Sweet Haven","Dec 2025"],
+    ["Spring Festival Games","Feb 2026"],["World Tour","May 2026"]
+  ];
+
+  function esc(s){ return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+
+  function fillCat(id, items, cls, withYear){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var html = "";
+    items.forEach(function(it){
+      var name = withYear ? it[0] : it;
+      var yr = withYear ? it[1] : "store rotation";
+      html += '<div class="setchip '+cls+'"><span class="dot" aria-hidden="true"></span>'
+            + '<div class="sname">'+esc(name)+'</div>'
+            + '<div class="syr">'+esc(yr)+'</div></div>';
+    });
+    el.innerHTML = html;
+  }
+  fillCat("cat-store", STORE, "store", false);
+  fillCat("cat-shelved", SHELVED, "shelved", true);
+  fillCat("cat-recent", RECENT, "recent", true);
+
+  /* ---------- interactive model ---------- */
+  var SET_COST   = 11340;   // tokens per full set, level 1
+  var FREE_WK    = 300;     // free tokens per week
+  var WEEKS      = 52;
+  var BACKLOG    = 10;      // older sets available to graduate
+
+  // spender tiers: [weekly paid tokens beyond free, weekly cash]
+  var TIERS = [
+    {paid:0,    cash:0,      label:"Free"},
+    {paid:600,  cash:4.95,   label:"$5 a week"},
+    {paid:1880, cash:24.94,  label:"$25 a week"},
+    {paid:7080, cash:104.93, label:"$100 a week"}
+  ];
+
+  // cadence index 0..6 -> sets released across the year
+  var CADENCE = [0,1,2,3,4,5,6];
+
+  /* For a given cadence (sets/year over 52 weeks), how many older sets are
+     available by each week. Releases are spread evenly across the horizon,
+     with the last one landing near week 52. */
+  function availabilityByWeek(setsPerYear){
+    var avail = new Array(WEEKS+1).fill(0);
+    var n = Math.min(setsPerYear, BACKLOG);
+    var times = [];
+    for(var k=1;k<=n;k++){
+      var wk = Math.min(WEEKS, Math.round(k * WEEKS / n));
+      times.push(wk);
+    }
+    for(var w=1;w<=WEEKS;w++){
+      var c=0;
+      for(var i=0;i<times.length;i++){ if(times[i]<=w) c++; }
+      avail[w]=c;
+    }
+    return avail;
+  }
+
+  /* Per player simulation following the exact rules:
+     each week bank 300 free tokens; if an unowned available set exists (a goal)
+     and the tier pays, add tier paid tokens and spend tier cash; then complete
+     as many full sets as tokens allow; if no goal, paid buying stops (zero cash)
+     and free tokens pile up as stranded. */
+  function simulate(setsPerYear, tier){
+    var avail = availabilityByWeek(setsPerYear);
+    var tokens = 0, owned = 0, cash = 0, stranded = 0;
+    var t = TIERS[tier];
+    for(var w=1; w<=WEEKS; w++){
+      tokens += FREE_WK;                 // bank free tokens
+      var goalExists = avail[w] > owned; // an unowned, available set
+      if(goalExists && t.paid > 0){
+        tokens += t.paid;                // top up toward the goal
+        cash   += t.cash;
+      }
+      // complete as many full sets as tokens + availability allow
+      while(tokens >= SET_COST && owned < avail[w]){
+        tokens -= SET_COST;
+        owned  += 1;
+      }
+    }
+    // any tokens left when no further goal is reachable count as stranded
+    // (free tokens that piled up with nowhere to go)
+    stranded = tokens;
+    return { sets:owned, cash:cash, stranded:stranded, finalGoalAvail:avail[WEEKS], tokens:tokens };
+  }
+
+  /* progress toward NEXT goal at end of year, for the meter:
+     how close are banked tokens to the next full set the player could still want */
+  function nextGoalProgress(res, setsPerYear){
+    // if more sets are available than owned, show progress of leftover tokens
+    // toward one more set; otherwise show stranded saturation
+    var pct;
+    if(res.finalGoalAvail > res.sets){
+      pct = Math.min(100, Math.round((res.tokens / SET_COST) * 100));
+    } else {
+      // no goal: meter reflects how far past a set's worth the strand has gone
+      pct = Math.min(100, Math.round((res.tokens / SET_COST) * 100));
+    }
+    return pct;
+  }
+
+  var elCad   = document.getElementById("cadence");
+  var elCadV  = document.getElementById("cadence-v");
+  var segs    = Array.prototype.slice.call(document.querySelectorAll("#tiers .seg"));
+  var oSets   = document.getElementById("o-sets");
+  var oCash   = document.getElementById("o-cash");
+  var oStr    = document.getElementById("o-stranded");
+  var gFill   = document.getElementById("goal-fill");
+  var gPct    = document.getElementById("goal-pct");
+  var gLine   = document.getElementById("goal-line");
+  var vBox    = document.getElementById("verdict");
+
+  var curTier = 1;
+
+  function fmtCash(n){ return "$" + (Math.round(n)).toLocaleString("en-US"); }
+  function fmtNum(n){ return Math.round(n).toLocaleString("en-US"); }
+
+  function render(){
+    var ci = parseInt(elCad.value,10);
+    var setsPerYear = CADENCE[ci];
+    elCadV.textContent = (setsPerYear === 0) ? "frozen, 0 sets a year" : (setsPerYear + " new set" + (setsPerYear===1?"":"s") + " a year");
+
+    var res = simulate(setsPerYear, curTier);
+    oSets.textContent = res.sets;
+    oCash.textContent = fmtCash(res.cash);
+    oStr.textContent  = fmtNum(res.stranded);
+
+    var pct = nextGoalProgress(res, setsPerYear);
+    gFill.style.width = pct + "%";
+    gPct.textContent = pct + "%";
+
+    var t = TIERS[curTier];
+
+    if(setsPerYear === 0){
+      gLine.textContent = "Store frozen, no goal opens";
+      vBox.innerHTML = "With the store <b>frozen</b>, even a paying collector spends <b>"+fmtCash(res.cash)
+        +"</b> all year and strands <b>"+fmtNum(res.stranded)+" tokens</b>. A willing customer, sitting idle.";
+    } else if(res.sets === 0){
+      gLine.textContent = "Goal opening soon";
+      vBox.innerHTML = "At "+setsPerYear+" set"+(setsPerYear===1?"":"s")+" a year on the <b>"+t.label+"</b> habit, the first goal opens but the free path is slow. Speed up releases or add a little spend to close a set.";
+    } else {
+      gLine.textContent = "Chasing the next set";
+      vBox.innerHTML = "At a steady "+setsPerYear+" set"+(setsPerYear===1?"":"s")+" a year, a <b>"+t.label
+        +"</b> player completes about <b>"+res.sets+" set"+(res.sets===1?"":"s")
+        +"</b> and spends about <b>"+fmtCash(res.cash)
+        +"</b> on the older backlog. The tokens flow instead of stranding.";
+    }
+  }
+
+  elCad.addEventListener("input", render);
+  segs.forEach(function(s){
+    s.addEventListener("click", function(){
+      segs.forEach(function(x){ x.classList.remove("on"); });
+      s.classList.add("on");
+      curTier = parseInt(s.getAttribute("data-tier"),10);
+      render();
+    });
+  });
+  render();
+
+  /* ---------- scroll reveal ---------- */
+  if(document.documentElement.classList.contains("js") && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold:0.12, rootMargin:"0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(function(n){ io.observe(n); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(n){ n.classList.add("in"); });
+  }
+
+  /* ---------- progress bar ---------- */
+  var prog = document.getElementById("progress");
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    prog.style.width = p + "%";
+  }
+  window.addEventListener("scroll", onScroll, { passive:true });
+  onScroll();
+
+})();
+</script>
+</body>
+</html>

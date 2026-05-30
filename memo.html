@@ -1,0 +1,989 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<title>Decision Memo: Releasing the Decor Set Store Backlog</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f2a37'/%3E%3Crect x='8' y='7' width='16' height='2' fill='%2390a4bd'/%3E%3Crect x='8' y='13' width='16' height='2' fill='%2390a4bd'/%3E%3Crect x='8' y='19' width='11' height='2' fill='%2390a4bd'/%3E%3Crect x='8' y='25' width='16' height='1.5' fill='%234f9a86'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script>
+/* Gate scroll-reveal behind a class so content is never permanently hidden.
+   Skip when the visitor prefers reduced motion. */
+(function () {
+  try {
+    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!mq.matches) { document.documentElement.className += ' js-reveal'; }
+  } catch (e) { /* leave content visible */ }
+})();
+</script>
+<style>
+  :root {
+    --paper: #f4f6f8;
+    --card: #ffffff;
+    --ink: #1c2530;
+    --ink-soft: #44525f;
+    --muted: #6c7a88;
+    --faint: #97a4b1;
+    --rule: #d3dbe3;
+    --rule-soft: #e4e9ee;
+    --slate: #1f2a37;
+    --slate-2: #34465a;
+    --accent: #2f6f8f;
+    --accent-deep: #1f4d63;
+    --green: #2f7d68;
+    --warn: #9a5b2b;
+    --box-bg: #eef2f6;
+    --max: 880px;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
+    --sans: 'Archivo', system-ui, sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding: 28px 18px 64px;
+  }
+
+  .sheet {
+    max-width: var(--max);
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--slate);
+    box-shadow: 0 1px 0 rgba(28,37,48,0.04), 0 18px 44px -28px rgba(28,37,48,0.35);
+    padding: 44px clamp(22px, 5vw, 56px) 52px;
+  }
+
+  /* ---- Letterhead ---- */
+  .letterhead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--slate);
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mark svg { display: block; flex: none; }
+  .mark .org {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--slate);
+    line-height: 1.3;
+  }
+  .mark .org span {
+    display: block;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+  .doc-kind {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 1.7;
+  }
+  .doc-kind strong {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--slate);
+  }
+
+  h1.subject {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(22px, 4vw, 30px);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin: 22px 0 18px;
+    color: var(--ink);
+  }
+
+  /* ---- Routing block (To / From / Date / Re) ---- */
+  .routing {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+    font-size: 14.5px;
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    padding: 14px 0;
+    margin-bottom: 26px;
+  }
+  .routing dt {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+  .routing dd {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .routing dd strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- BLUF box ---- */
+  .bluf {
+    background: var(--box-bg);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent-deep);
+    padding: 22px clamp(18px, 3vw, 28px) 24px;
+    margin-bottom: 38px;
+  }
+  .bluf .tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .bluf .ask {
+    font-family: var(--serif);
+    font-size: clamp(17px, 2.6vw, 20px);
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .bluf .ask b { font-weight: 700; color: var(--accent-deep); }
+
+  .bluf-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 4px;
+  }
+  .bluf-grid .cell {
+    background: var(--card);
+    padding: 12px 14px;
+  }
+  .bluf-grid .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .bluf-grid .v {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .bluf-grid .v small {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 3px;
+    letter-spacing: 0;
+  }
+  .bluf-grid .v.good { color: var(--green); }
+  .bluf-grid .v.low { color: var(--accent); }
+
+  /* ---- Section scaffolding ---- */
+  section { margin-bottom: 34px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    border-bottom: 1px solid var(--slate);
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+  }
+  .sec-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .sec-head h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0;
+    color: var(--slate);
+    letter-spacing: -0.005em;
+  }
+  p { margin: 0 0 13px; }
+  p.lead { color: var(--ink-soft); }
+  .fig { font-family: var(--mono); font-weight: 600; color: var(--accent-deep); }
+  .note { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+  /* ---- Catalogue split ---- */
+  .catalogue {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .cat-col {
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--rule);
+    padding: 13px 15px 15px;
+    background: #fbfcfd;
+  }
+  .cat-col.live { border-top-color: var(--green); }
+  .cat-col.shelved { border-top-color: var(--warn); }
+  .cat-col.recent { border-top-color: var(--faint); }
+  .cat-col .count {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--slate);
+    line-height: 1;
+  }
+  .cat-col .label {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    margin: 4px 0 9px;
+    color: var(--ink);
+  }
+  .cat-col .desc { font-size: 12px; color: var(--muted); margin-bottom: 10px; line-height: 1.45; }
+  .set-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .set-list li {
+    padding: 3px 0;
+    border-top: 1px dotted var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .set-list li:first-child { border-top: none; }
+  .set-list li .yr { font-family: var(--mono); font-size: 11px; color: var(--faint); flex: none; }
+  .cat-col.shelved .set-list li:first-child .nm { font-weight: 700; }
+  .next-up {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warn);
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* ---- Two-path price contrast ---- */
+  .paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .path {
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+  }
+  .path.premium { background: #fbfcfd; }
+  .path.store { background: var(--box-bg); border-color: var(--accent); }
+  .path .ptitle {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 3px;
+  }
+  .path .psub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .path .pbig {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .path.store .pbig { color: var(--accent-deep); }
+  .path .pbig small {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+  .path ul {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .path ul li {
+    padding: 5px 0;
+    border-top: 1px solid var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .path ul li span:last-child { font-family: var(--mono); color: var(--slate); }
+
+  /* ---- Cadence strip ---- */
+  .cadence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: #fbfcfd;
+  }
+  .cadence .stat {
+    flex: 1 1 150px;
+    padding: 14px 16px;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .cadence .stat:last-child { border-right: none; }
+  .cadence .big {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--slate);
+    line-height: 1.05;
+  }
+  .cadence .cap {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+  .cadence .big.flag { color: var(--warn); }
+
+  /* ---- Chart ---- */
+  .chart-wrap {
+    border: 1px solid var(--rule);
+    background: #fbfcfd;
+    padding: 20px clamp(16px, 3vw, 26px) 18px;
+  }
+  .chart-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .chart-head .ct {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--slate);
+  }
+  .chart-head .delta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 600;
+  }
+  .bars { display: grid; gap: 16px; }
+  .bar-row { display: grid; grid-template-columns: 132px 1fr; align-items: center; gap: 14px; }
+  .bar-row .blabel { font-size: 12.5px; color: var(--ink-soft); line-height: 1.25; }
+  .bar-row .blabel b { display: block; color: var(--ink); font-weight: 700; font-size: 13px; }
+  .track {
+    position: relative;
+    background: var(--rule-soft);
+    height: 30px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    border-radius: 2px;
+    transition: width 900ms cubic-bezier(.22,.61,.36,1);
+  }
+  html:not(.js-reveal) .fill { transition: none; }
+  .fill.hold { background: linear-gradient(90deg, #9a5b2b, #b97a44); }
+  .fill.steady { background: linear-gradient(90deg, #1f4d63, #2f7d68); }
+  .fill .amt {
+    position: absolute;
+    right: 9px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .chart-foot {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dotted var(--rule);
+    line-height: 1.5;
+  }
+  .scope {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    background: #dfeaf0;
+    border: 1px solid #c2d6e0;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  /* ---- toggle ---- */
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .toggle-row .tlabel {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .seg {
+    display: inline-flex;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .seg button {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    padding: 7px 14px;
+    cursor: pointer;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .seg button:last-child { border-right: none; }
+  .seg button[aria-pressed="true"] {
+    background: var(--slate);
+    color: #fff;
+  }
+  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  /* ---- Objections ---- */
+  .obj-grid { display: grid; gap: 10px; }
+  .obj {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 14px;
+    align-items: start;
+    border-left: 2px solid var(--rule);
+    padding: 4px 0 4px 14px;
+  }
+  .obj .qmark {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+  .obj .qt { font-weight: 600; font-size: 13.5px; color: var(--ink); margin: 0 0 3px; }
+  .obj .at { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+
+  /* ---- Recommendation restate ---- */
+  .recommend {
+    background: var(--slate);
+    color: #e8eef4;
+    padding: 22px clamp(20px, 4vw, 30px);
+    margin-bottom: 30px;
+    border-radius: 2px;
+  }
+  .recommend .rk {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8fb3c7;
+    margin-bottom: 9px;
+  }
+  .recommend p {
+    font-family: var(--serif);
+    font-size: clamp(16px, 2.4vw, 19px);
+    line-height: 1.42;
+    margin: 0;
+    color: #f1f5f9;
+  }
+  .recommend p b { color: #fff; }
+
+  /* ---- Sign-off ---- */
+  .signoff {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .signoff .from {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .signoff .from span {
+    display: block;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+  .signoff .seal {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--faint);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ---- scroll reveal ---- */
+  html.js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+  html.js-reveal .reveal.shown { opacity: 1; transform: none; }
+
+  /* ---- responsive ---- */
+  @media (max-width: 720px) {
+    body { padding: 16px 10px 48px; }
+    .sheet { padding: 30px 18px 38px; }
+    .bluf-grid { grid-template-columns: repeat(2, 1fr); }
+    .catalogue { grid-template-columns: 1fr; }
+    .paths { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 100px 1fr; }
+    .letterhead { flex-direction: column; gap: 12px; }
+    .doc-kind { text-align: left; }
+  }
+  @media (max-width: 430px) {
+    .bluf-grid { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 1fr; gap: 5px; }
+  }
+
+  /* ---- print ---- */
+  @media print {
+    @page { margin: 14mm; }
+    html, body { background: #fff; }
+    body { padding: 0; font-size: 11.5px; }
+    .sheet {
+      max-width: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      border-top: 3px solid #000;
+    }
+    .toggle-row { display: none; }
+    html.js-reveal .reveal { opacity: 1 !important; transform: none !important; }
+    .fill { transition: none !important; }
+    .recommend { background: #fff; color: #000; border: 1.5px solid #000; }
+    .recommend .rk { color: #000; }
+    .recommend p, .recommend p b { color: #000; }
+    .bluf { background: #fff; border: 1px solid #000; border-left: 4px solid #000; }
+    section, .bluf, .recommend { break-inside: avoid; }
+    .sec-head { break-after: avoid; }
+    .catalogue, .paths, .chart-wrap, .cadence { break-inside: avoid; }
+    .fill.hold { background: #888 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fill.steady { background: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fill .amt { color: #fff; }
+    #row-hold .fill { width: 38% !important; }
+    #row-steady .fill { width: 100% !important; }
+  }
+</style>
+</head>
+<body>
+<main class="sheet" role="document">
+
+  <!-- LETTERHEAD -->
+  <header class="letterhead">
+    <div class="mark">
+      <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect width="38" height="38" rx="7" fill="#1f2a37"/>
+        <rect x="9" y="9" width="20" height="2.4" rx="1" fill="#90a4bd"/>
+        <rect x="9" y="15" width="20" height="2.4" rx="1" fill="#90a4bd"/>
+        <rect x="9" y="21" width="13" height="2.4" rx="1" fill="#90a4bd"/>
+        <rect x="9" y="27.5" width="20" height="2" rx="1" fill="#4f9a86"/>
+      </svg>
+      <div class="org">Server 2864<span>Player Proposal</span></div>
+    </div>
+    <div class="doc-kind">
+      <strong>Decision Memo</strong>
+      Reanalysis &amp; Recommendation<br>
+      One page, for skim review
+    </div>
+  </header>
+
+  <h1 class="subject">Releasing the older Decor Set Store backlog</h1>
+
+  <!-- ROUTING -->
+  <dl class="routing">
+    <dt>To</dt><dd>The Top War product and revenue team, <strong>RiverGame</strong></dd>
+    <dt>From</dt><dd>A Server 2864 player</dd>
+    <dt>Date</dt><dd>May 2026</dd>
+    <dt>Re</dt><dd><strong>A one in, one graduates rule for the Decor Set Token store</strong></dd>
+  </dl>
+
+  <!-- BLUF -->
+  <div class="bluf reveal">
+    <div class="tag">Bottom line up front</div>
+    <p class="ask">
+      Each time a new decoration set launches, let the <b>oldest shelved set graduate</b>
+      into the Decor Set Token store. One set comes in, one graduates. The newest sets stay
+      premium, the monthly pop up packs stay intact, and only the oldest set ever moves.
+    </p>
+    <div class="bluf-grid">
+      <div class="cell">
+        <div class="k">The ask</div>
+        <div class="v">One in, one out<small>oldest set graduates per launch</small></div>
+      </div>
+      <div class="cell">
+        <div class="k">Cost to build</div>
+        <div class="v good">Zero<small>the sets already exist</small></div>
+      </div>
+      <div class="cell">
+        <div class="k">Risk</div>
+        <div class="v low">Low<small>recent sets stay premium</small></div>
+      </div>
+      <div class="cell">
+        <div class="k">Illustrative upside</div>
+        <div class="v">+$47,676<small>per year, older backlog only</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. CATALOGUE -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">01</span><h2>The catalogue today</h2></div>
+    <p class="lead">
+      Top War has <span class="fig">23</span> decoration sets. Every completed set grants a
+      permanent march size bonus, and those bonuses stack, so owning more sets quietly widens
+      the gap between veteran and mid tier players. There are <span class="fig">8</span> sets a
+      player can earn affordably through tokens. The rest sit behind closed launch windows.
+    </p>
+    <div class="catalogue">
+      <div class="cat-col live">
+        <div class="count">8</div>
+        <div class="label">In the token store now</div>
+        <div class="desc">Affordable path is open. These cycle on rotation.</div>
+        <ul class="set-list">
+          <li><span class="nm">The Wizard of TW</span></li>
+          <li><span class="nm">Home Sweet Home</span></li>
+          <li><span class="nm">Military Life</span></li>
+          <li><span class="nm">Moon and Starlight</span></li>
+          <li><span class="nm">Industrial Era</span></li>
+          <li><span class="nm">Rip Tides</span></li>
+          <li><span class="nm">Just For You</span></li>
+          <li><span class="nm">Happy 24h</span></li>
+        </ul>
+      </div>
+      <div class="cat-col shelved">
+        <div class="count">10</div>
+        <div class="label">Shelved, no affordable path</div>
+        <div class="desc">Launch window closed, never entered the store. This is the backlog.</div>
+        <ul class="set-list">
+          <li><span class="nm">Holiday Decor Set</span><span class="yr">2021</span></li>
+          <li><span class="nm">Giggling Castle</span><span class="yr">2022</span></li>
+          <li><span class="nm">Thanksgiving Feast</span><span class="yr">2022</span></li>
+          <li><span class="nm">Magic Christmas</span><span class="yr">2022</span></li>
+          <li><span class="nm">Christmas Season</span><span class="yr">2023</span></li>
+          <li><span class="nm">Pawsome Moments</span><span class="yr">2023</span></li>
+          <li><span class="nm">Snowfall Season</span><span class="yr">Dec 2023</span></li>
+          <li><span class="nm">Metal Music Fans</span><span class="yr">May 2024</span></li>
+          <li><span class="nm">Kung Fu Saga</span><span class="yr">Sep 2024</span></li>
+          <li><span class="nm">Penguin World</span><span class="yr">Dec 2024</span></li>
+        </ul>
+        <div class="next-up">Holiday Decor Set graduates first</div>
+      </div>
+      <div class="cat-col recent">
+        <div class="count">5</div>
+        <div class="label">Recent, premium for now</div>
+        <div class="desc">Not contested by this proposal. They keep selling as packs.</div>
+        <ul class="set-list">
+          <li><span class="nm">Sea of Stars</span><span class="yr">Aug 2025</span></li>
+          <li><span class="nm">Magic and Dragons</span><span class="yr">Sep 2025</span></li>
+          <li><span class="nm">Sweet Haven</span><span class="yr">Dec 2025</span></li>
+          <li><span class="nm">Spring Festival Games</span><span class="yr">Feb 2026</span></li>
+          <li><span class="nm">World Tour</span><span class="yr">May 2026</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">The 10 shelved sets are the entire scope of this memo. The 8 live sets and the 5 recent premium sets are unchanged.</p>
+  </section>
+
+  <!-- 2. TWO PATHS -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Two ways to own a set</h2></div>
+    <p class="lead">
+      A set can be bought outright at launch, or earned patiently through the token store.
+      The two paths reach two very different players, and they do not compete for the same wallet.
+    </p>
+    <div class="paths">
+      <div class="path premium">
+        <div class="ptitle">Launch packs</div>
+        <div class="psub">Premium, real money. Time limited to the launch window.</div>
+        <div class="pbig">~$175 <small>for level 1</small></div>
+        <ul>
+          <li><span>Pack ladder</span><span>$4.99 to $99.99</span></li>
+          <li><span>Level 2 (three copies)</span><span>~$525</span></li>
+          <li><span>Availability</span><span>launch only</span></li>
+        </ul>
+      </div>
+      <div class="path store">
+        <div class="ptitle">Decor Set Token store</div>
+        <div class="psub">Soft currency. A full level 1 set costs 11,340 tokens.</div>
+        <div class="pbig">~$94 <small>at most, or free over time</small></div>
+        <ul>
+          <li><span>Free weekly income</span><span>~300 tokens</span></li>
+          <li><span>Best value top up</span><span>$0.99 / 120</span></li>
+          <li><span>At $5 a week</span><span>~3 months</span></li>
+          <li><span>Patient, paying nothing</span><span>~9 months</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">Top ups scale to $4.99 (300), $19.99 (1,280), $49.99 (3,280), $99.99 (6,480) with no weekly cap. The store path still takes months, which is exactly why it does not cannibalize the launch packs.</p>
+  </section>
+
+  <!-- 3. CADENCE -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">03</span><h2>The cadence problem</h2></div>
+    <p class="lead">
+      New sets ship steadily, but the affordable store has stalled. The backlog is not a
+      pipeline issue, it is a graduation issue.
+    </p>
+    <div class="cadence">
+      <div class="stat">
+        <div class="big">~2.4 mo</div>
+        <div class="cap">average gap between new set launches (recent gaps: 48, 80, 73, 93 days)</div>
+      </div>
+      <div class="stat">
+        <div class="big">4 to 5</div>
+        <div class="cap">brand new sets shipped per year</div>
+      </div>
+      <div class="stat">
+        <div class="big flag">0 of 9</div>
+        <div class="cap">sets released since December 2023 that have reached the token store</div>
+      </div>
+      <div class="stat">
+        <div class="big flag">10</div>
+        <div class="cap">older sets shelved with no affordable path</div>
+      </div>
+    </div>
+    <p class="note">Supply of new content is healthy. What is missing is a rule that moves the oldest content into the affordable lane as new content arrives.</p>
+  </section>
+
+  <!-- 4. THE CHART -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Steady graduation versus hold and dump</h2></div>
+    <div class="scope">Illustrative, older backlog token revenue only</div>
+    <p class="lead">
+      Modelled over one year across a default population of 600 active set buyers (mix: 55% free,
+      30% the $5 a week tier, 12% the $25 tier, 3% the $100 tier). The choice is not whether to
+      release the backlog, but how.
+    </p>
+
+    <div class="toggle-row">
+      <span class="tlabel">Compare</span>
+      <div class="seg" role="group" aria-label="Compare release strategies">
+        <button type="button" id="seg-both" aria-pressed="true">Both</button>
+        <button type="button" id="seg-hold" aria-pressed="false">Hold and dump</button>
+        <button type="button" id="seg-steady" aria-pressed="false">Steady graduation</button>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-head">
+        <span class="ct">Annual token revenue from the 10 older sets</span>
+        <span class="delta" id="delta-line">Steady earns ~$47,676 more, roughly 2.7&times;</span>
+      </div>
+      <div class="bars">
+        <div class="bar-row" id="row-hold">
+          <div class="blabel"><b>Hold and dump</b>nothing for ~10 months, then all 10 at once (~30% disengage)</div>
+          <div class="track"><div class="fill hold" data-target="28825" data-pct="38"><span class="amt">$28,825</span></div></div>
+        </div>
+        <div class="bar-row" id="row-steady">
+          <div class="blabel"><b>Steady graduation</b>oldest set graduates about every 2.5 months</div>
+          <div class="track"><div class="fill steady" data-target="76501" data-pct="100"><span class="amt">$76,501</span></div></div>
+        </div>
+      </div>
+      <p class="chart-foot">
+        These figures are the token store revenue from the 10 older sets only. They are not
+        total game revenue: launch and pop up pack revenue is identical under both paths.
+        Steady graduation keeps the patient earner spending small amounts all year instead of
+        stranding free tokens and losing players at a single dump.
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. OBJECTIONS -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Objections, answered</h2></div>
+    <div class="obj-grid">
+      <div class="obj">
+        <div class="qmark">Q</div>
+        <div>
+          <p class="qt">Will free token sets undercut pack sales?</p>
+          <p class="at">No. Only the oldest set graduates, so every recent set stays premium and keeps its full launch revenue. The graduation reaches the patient earner who was never going to pay full launch price.</p>
+        </div>
+      </div>
+      <div class="obj">
+        <div class="qmark">Q</div>
+        <div>
+          <p class="qt">Won't paying players just wait for the free version?</p>
+          <p class="at">The token path still takes months. Impatient players keep buying packs to skip the wait, and levelling still costs money: level 2 requires three copies of a set.</p>
+        </div>
+      </div>
+      <div class="obj">
+        <div class="qmark">Q</div>
+        <div>
+          <p class="qt">Does this devalue the monthly pop up packs?</p>
+          <p class="at">No. The pop up packs bundle far more than the bare set, and they stay exactly as they are. Only a single shelved set, already years past its launch, moves into the affordable lane.</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">Framed softly: this is about keeping mid tier players engaged and closing a gap that grows on its own, not about anyone holding too much.</p>
+  </section>
+
+  <!-- RECOMMENDATION RESTATE -->
+  <div class="recommend reveal">
+    <div class="rk">Recommendation</div>
+    <p>Adopt a <b>one in, one graduates</b> rule for the Decor Set Token store: at every new launch, the oldest shelved set joins the store. <b>Zero build cost, low risk, and an illustrative +$47,676 a year</b> from the older backlog alone, with newest sets and pop up packs untouched.</p>
+  </div>
+
+  <!-- SIGN-OFF -->
+  <div class="signoff reveal">
+    <div class="from">
+      Respectfully,
+      <span>A Server 2864 player</span>
+    </div>
+    <div class="seal">
+      Top War &middot; RiverGame<br>
+      Decor Set Store Proposal<br>
+      May 2026
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---- scroll reveal (only active when js-reveal is set on <html>) ----
+  var revealOn = document.documentElement.classList.contains('js-reveal');
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+
+  function fillBars() {
+    var fills = document.querySelectorAll('.fill');
+    for (var i = 0; i < fills.length; i++) {
+      var pct = parseFloat(fills[i].getAttribute('data-pct')) || 0;
+      fills[i].style.width = pct + '%';
+    }
+  }
+
+  if (revealOn && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('shown');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('shown'); });
+  }
+
+  // Fill the chart bars shortly after load so the animation reads.
+  if (revealOn) {
+    window.setTimeout(fillBars, 260);
+  } else {
+    fillBars();
+  }
+
+  // ---- single toggle: which strategy bars are shown ----
+  var btnBoth = document.getElementById('seg-both');
+  var btnHold = document.getElementById('seg-hold');
+  var btnSteady = document.getElementById('seg-steady');
+  var rowHold = document.getElementById('row-hold');
+  var rowSteady = document.getElementById('row-steady');
+  var deltaLine = document.getElementById('delta-line');
+
+  function setView(mode) {
+    var showHold = (mode === 'both' || mode === 'hold');
+    var showSteady = (mode === 'both' || mode === 'steady');
+    rowHold.style.display = showHold ? '' : 'none';
+    rowSteady.style.display = showSteady ? '' : 'none';
+    btnBoth.setAttribute('aria-pressed', String(mode === 'both'));
+    btnHold.setAttribute('aria-pressed', String(mode === 'hold'));
+    btnSteady.setAttribute('aria-pressed', String(mode === 'steady'));
+
+    if (mode === 'hold') {
+      deltaLine.textContent = 'Hold and dump: about $28,825 for the year';
+    } else if (mode === 'steady') {
+      deltaLine.textContent = 'Steady graduation: about $76,501 for the year';
+    } else {
+      deltaLine.innerHTML = 'Steady earns ~$47,676 more, roughly 2.7×';
+    }
+  }
+
+  if (btnBoth && btnHold && btnSteady) {
+    btnBoth.addEventListener('click', function () { setView('both'); });
+    btnHold.addEventListener('click', function () { setView('hold'); });
+    btnSteady.addEventListener('click', function () { setView('steady'); });
+  }
+})();
+</script>
+</body>
+</html>
