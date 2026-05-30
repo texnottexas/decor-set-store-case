@@ -1,0 +1,864 @@
+<!-- 视图：账本（The Ledger）。以财务 / 致股东信的口吻，把装饰套装商店的积压套装看作一项闲置资产与白白流失的收入。这是同一份商业提案的七个可切换视图之一，面向口袋奇兵 2864 服。本文件为该视图的简体中文版本。 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="一份财务视角的提案：十套已完工的装饰套装被长期搁置、零收入产出，而愿意付费的玩家正囤积着花不出去的代币。让旧套装按既有节奏稳定进入套装商店，本服一年示意性可多实现约 47,676 美元的代币收入。仅作示意，范围限于 10 套旧套装的代币商店收入，非全游戏收入。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23c9a24a'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%238a6d27' stroke-width='1.4'/%3E%3Ctext x='16' y='21' font-size='12' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%236b5316'%3E%24%3C/text%3E%3C/svg%3E">
+<title>账本：一项被搁置的资产</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,400&family=Archivo:wght@400;500;600;700;800&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy-0:#0a1020;
+    --navy-1:#0b1733;
+    --navy-2:#0e1d3d;
+    --panel:#101f41;
+    --panel-2:#0c1832;
+    --line:#1d3158;
+    --line-soft:#16284a;
+    --gold:#c9a24a;
+    --gold-bright:#e7c878;
+    --gold-deep:#8a6d27;
+    --ink:#f4f1e9;
+    --ink-soft:#cdd6e6;
+    --muted:#8294b4;
+    --muted-2:#6478a0;
+    --green:#5cba9f;
+    --rust:#dc6b4b;
+    --serif:'Fraunces','Noto Serif SC',Georgia,'Times New Roman',serif;
+    --grotesk:'Archivo','Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{-webkit-text-size-adjust:100%}
+  body{
+    background:var(--navy-0);
+    color:var(--ink);
+    font-family:var(--grotesk);
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  .num{font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1}
+
+  /* ============ document frame ============ */
+  .doc{
+    max-width:980px;
+    margin:0 auto;
+    background:
+      radial-gradient(1100px 520px at 78% -8%, rgba(201,162,74,.10), transparent 60%),
+      linear-gradient(180deg, var(--navy-1) 0%, var(--navy-0) 60%, #080d1a 100%);
+    border-left:1px solid var(--line-soft);
+    border-right:1px solid var(--line-soft);
+    position:relative;
+    overflow:hidden;
+  }
+  .doc::before{
+    /* subtle paper grain via layered gradients */
+    content:"";position:absolute;inset:0;pointer-events:none;opacity:.4;
+    background-image:
+      repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+    mix-blend-mode:overlay;
+  }
+  .pad{padding:0 clamp(20px,5vw,72px)}
+
+  /* ============ masthead ============ */
+  .mast{
+    display:flex;align-items:center;justify-content:space-between;gap:16px;
+    padding-top:26px;padding-bottom:18px;flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    position:relative;z-index:2;
+  }
+  .mast .brandwrap{display:flex;align-items:center;gap:12px}
+  .seal{
+    width:38px;height:38px;flex:0 0 auto;border-radius:50%;
+    border:1.5px solid var(--gold-deep);
+    display:grid;place-items:center;
+    background:radial-gradient(circle at 35% 30%, #e7c878, #c9a24a 55%, #9a7a2e);
+    color:#3c2f0e;font-family:var(--serif);font-weight:700;font-size:18px;
+    box-shadow:0 2px 10px rgba(201,162,74,.25), inset 0 1px 2px rgba(255,255,255,.4);
+  }
+  .brand .k{font-size:10.5px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .brand .s{font-size:12px;color:var(--muted);margin-top:1px}
+  .mast .filed{text-align:right;font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2)}
+  .mast .filed b{display:block;color:var(--ink-soft);font-size:12px;letter-spacing:.1em;margin-top:2px}
+
+  /* ============ cover ============ */
+  .cover{position:relative;z-index:2;padding-top:clamp(34px,7vw,72px);padding-bottom:clamp(30px,6vw,58px)}
+  .eyebrow{
+    display:inline-flex;align-items:center;gap:10px;
+    font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);font-weight:700;
+    margin-bottom:22px;
+  }
+  .eyebrow .ln{width:34px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+  .cover h1{
+    font-family:var(--serif);font-weight:600;
+    font-size:clamp(30px,6.4vw,58px);line-height:1.04;letter-spacing:-.015em;
+    color:var(--ink);max-width:16ch;
+  }
+  .cover h1 em{font-style:italic;color:var(--gold-bright);font-weight:500}
+  .cover .lede{
+    margin-top:20px;max-width:60ch;color:var(--ink-soft);font-size:clamp(14px,1.9vw,17px);line-height:1.62;
+  }
+
+  /* the one enormous headline number */
+  .hero-fig{
+    margin-top:clamp(30px,5vw,48px);
+    display:grid;grid-template-columns:auto 1fr;gap:clamp(18px,4vw,40px);align-items:center;
+    padding:clamp(20px,4vw,34px) 0;
+    border-top:1px solid var(--line);border-bottom:1px solid var(--line);
+  }
+  .hero-fig .big{
+    font-family:var(--serif);font-weight:600;letter-spacing:-.02em;line-height:.9;
+    font-size:clamp(56px,15vw,140px);color:var(--ink);white-space:nowrap;
+    text-shadow:0 0 40px rgba(201,162,74,.12);
+  }
+  .hero-fig .big .pre{color:var(--gold);font-size:.5em;vertical-align:.32em;margin-right:.04em}
+  .hero-fig .cap{font-size:13px;color:var(--ink-soft);line-height:1.55;max-width:34ch}
+  .hero-fig .cap .lbl{display:block;font-size:10.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:8px}
+  .hero-fig .cap b{color:var(--ink)}
+  .illus{display:inline-block;margin-top:14px;font-size:10.5px;letter-spacing:.06em;color:var(--muted-2);text-transform:uppercase}
+
+  /* ============ section scaffolding ============ */
+  section{position:relative;z-index:2;padding:clamp(38px,6vw,62px) 0;border-top:1px solid var(--line-soft)}
+  .sec-head{display:flex;align-items:baseline;gap:14px;margin-bottom:26px;flex-wrap:wrap}
+  .sec-no{
+    font-family:var(--serif);font-style:italic;font-weight:500;font-size:15px;color:var(--gold);
+    border:1px solid var(--gold-deep);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;flex:0 0 auto;
+  }
+  .sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(21px,3.4vw,30px);letter-spacing:-.01em;color:var(--ink)}
+  .sec-head .sub{flex-basis:100%;color:var(--muted);font-size:13.5px;margin-top:2px;max-width:64ch}
+
+  p.body{color:var(--ink-soft);font-size:15px;line-height:1.66;max-width:66ch;margin-bottom:14px}
+  p.body b{color:var(--ink)}
+  .gold{color:var(--gold-bright)}
+
+  /* ============ P&L statement table ============ */
+  .pnl{
+    width:100%;border-collapse:collapse;margin-top:8px;
+    background:linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  }
+  .pnl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:4px}
+  .pnl caption{
+    caption-side:top;text-align:left;padding:16px 20px 12px;
+    font-family:var(--serif);font-style:italic;font-weight:500;color:var(--ink-soft);font-size:14px;
+    border-bottom:1px solid var(--line);
+  }
+  .pnl caption .cx{display:block;font-family:var(--grotesk);font-style:normal;font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .pnl th,.pnl td{padding:13px 20px;text-align:left;font-size:14px;border-bottom:1px solid var(--line-soft);vertical-align:top}
+  .pnl thead th{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);font-weight:700;background:rgba(0,0,0,.18)}
+  .pnl td.amt,.pnl th.amt{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+  .pnl .ln-item .nm{color:var(--ink-soft);font-weight:500}
+  .pnl .ln-item .note{display:block;color:var(--muted-2);font-size:11.5px;margin-top:3px;line-height:1.4;max-width:46ch}
+  .pnl tr.zero td.amt{color:var(--muted)}
+  .pnl tr.forgone{background:rgba(220,107,75,.05)}
+  .pnl tr.forgone td.amt{color:var(--rust);font-weight:700}
+  .pnl tr.realized td.amt{color:var(--green);font-weight:700}
+  .pnl tr.sub td{border-top:1px solid var(--line);background:rgba(0,0,0,.14)}
+  .pnl tr.sub td{font-weight:600;color:var(--ink)}
+  .pnl tr.total td{
+    border-top:2px solid var(--gold-deep);border-bottom:none;
+    background:linear-gradient(90deg, rgba(201,162,74,.14), rgba(201,162,74,.04));
+  }
+  .pnl tr.total td{font-family:var(--serif);font-size:16px;font-weight:600;color:var(--ink);padding-top:16px;padding-bottom:16px}
+  .pnl tr.total td.amt{color:var(--gold-bright);font-size:21px;letter-spacing:-.01em}
+  .tag{display:inline-block;font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:2px 7px;border-radius:3px;margin-left:0;vertical-align:1px}
+  .tag.off{background:rgba(220,107,75,.16);color:#f0a488;border:1px solid rgba(220,107,75,.3)}
+  .tag.on{background:rgba(92,186,159,.16);color:#8fd9c4;border:1px solid rgba(92,186,159,.3)}
+
+  /* ============ waterfall ============ */
+  .water-wrap{
+    margin-top:10px;background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:22px clamp(12px,3vw,26px) 14px;
+  }
+  .water-wrap svg{display:block;width:100%;height:auto}
+  .wf-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:6px;font-size:11.5px;color:var(--muted)}
+  .wf-legend span{display:inline-flex;align-items:center;gap:7px}
+  .wf-legend i{width:11px;height:11px;border-radius:2px;display:inline-block}
+
+  /* ============ exhibit grid (player desks) ============ */
+  .exh{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin-top:6px}
+  .exh .card{
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:18px 18px 16px;position:relative;overflow:hidden;
+  }
+  .exh .card::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--gold-deep),var(--gold),transparent)}
+  .exh .card .tier{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);font-weight:700}
+  .exh .card .spend{font-family:var(--serif);font-weight:600;font-size:30px;color:var(--ink);margin:8px 0 2px;letter-spacing:-.01em}
+  .exh .card .sub{font-size:12px;color:var(--muted);line-height:1.45}
+  .exh .card .strand{margin-top:11px;padding-top:11px;border-top:1px solid var(--line-soft);font-size:12px;color:var(--ink-soft)}
+  .exh .card .strand b{color:var(--rust);font-variant-numeric:tabular-nums}
+  .exh .card .strand.none b{color:var(--green)}
+
+  /* ============ live model ============ */
+  .model{
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:clamp(16px,3vw,26px);margin-top:6px;
+  }
+  .controls{display:flex;gap:22px;flex-wrap:wrap;margin-bottom:18px}
+  .ctl{flex:1 1 220px;min-width:200px}
+  .ctl label{display:flex;justify-content:space-between;align-items:baseline;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:8px}
+  .ctl label .v{font-family:var(--serif);font-style:normal;font-weight:600;font-size:15px;color:var(--gold-bright);letter-spacing:0;text-transform:none}
+  input[type=range]{
+    -webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:3px;
+    background:linear-gradient(90deg,var(--gold-deep),var(--line));outline:none;cursor:pointer;
+  }
+  input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:17px;height:17px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#e7c878,#c9a24a);border:1.5px solid #6b5316;cursor:pointer;box-shadow:0 1px 5px rgba(0,0,0,.4)}
+  input[type=range]::-moz-range-thumb{width:15px;height:15px;border-radius:50%;background:#c9a24a;border:1.5px solid #6b5316;cursor:pointer}
+  .readouts{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:18px}
+  .readouts .ro{background:var(--panel-2);padding:15px 16px}
+  .readouts .ro .rl{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);font-weight:700}
+  .readouts .ro .rv{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4vw,30px);color:var(--ink);margin-top:5px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .readouts .ro.rev .rv{color:var(--green)}
+  .readouts .ro.dead .rv{color:var(--rust)}
+  .model .verdict{margin-top:16px;font-size:13.5px;line-height:1.6;color:var(--ink-soft);padding:14px 16px;border-left:2px solid var(--gold-deep);background:rgba(201,162,74,.05);border-radius:0 4px 4px 0}
+  .model .verdict.good{border-left-color:var(--green);background:rgba(92,186,159,.06)}
+  .model .verdict b{color:var(--ink)}
+  .policytag{display:inline-block;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;font-weight:700;padding:4px 10px;border-radius:3px;margin-bottom:14px}
+  .policytag.now{background:rgba(220,107,75,.14);color:#f0a488;border:1px solid rgba(220,107,75,.3)}
+  .policytag.prop{background:rgba(92,186,159,.14);color:#8fd9c4;border:1px solid rgba(92,186,159,.3)}
+  .seg{display:inline-flex;border:1px solid var(--line);border-radius:5px;overflow:hidden;margin-bottom:6px;flex-wrap:wrap}
+  .seg button{
+    background:transparent;border:none;color:var(--muted);font-family:var(--grotesk);font-weight:600;
+    font-size:12px;padding:8px 13px;cursor:pointer;border-right:1px solid var(--line);transition:.15s;
+  }
+  .seg button:last-child{border-right:none}
+  .seg button:hover{color:var(--ink-soft)}
+  .seg button.on{background:linear-gradient(180deg,rgba(201,162,74,.22),rgba(201,162,74,.08));color:var(--gold-bright)}
+  .chartwrap{margin-top:16px}
+  .chartwrap svg{display:block;width:100%;height:auto}
+  .chart-legend{display:flex;gap:18px;flex-wrap:wrap;margin-top:8px;font-size:11.5px;color:var(--muted)}
+  .chart-legend span{display:inline-flex;align-items:center;gap:7px}
+  .chart-legend i{width:18px;height:3px;border-radius:2px;display:inline-block}
+
+  /* ============ the ask box ============ */
+  .ask{
+    position:relative;z-index:2;margin:clamp(24px,5vw,40px) 0 0;
+    background:
+      radial-gradient(700px 220px at 85% 0%, rgba(201,162,74,.16), transparent 60%),
+      linear-gradient(180deg,#0f2046,#0a142c);
+    border:1px solid var(--gold-deep);border-radius:6px;overflow:hidden;
+    box-shadow:0 14px 50px rgba(0,0,0,.4), inset 0 1px 0 rgba(255,255,255,.04);
+  }
+  .ask .inner{padding:clamp(24px,5vw,42px)}
+  .ask .lbl{font-size:10.5px;letter-spacing:.26em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:14px}
+  .ask h3{font-family:var(--serif);font-weight:600;font-size:clamp(20px,3.6vw,30px);line-height:1.18;color:var(--ink);letter-spacing:-.01em;max-width:24ch}
+  .ask h3 em{font-style:italic;color:var(--gold-bright);font-weight:500}
+  .ask .one{margin-top:18px;color:var(--ink-soft);font-size:15px;line-height:1.62;max-width:62ch}
+  .ask .one b{color:var(--ink)}
+  .ask .qline{
+    margin-top:22px;padding:16px 18px;border-radius:5px;border:1px dashed var(--gold-deep);
+    background:rgba(201,162,74,.06);font-family:var(--serif);font-style:italic;font-size:clamp(15px,2.4vw,19px);color:var(--gold-bright);line-height:1.45;
+  }
+  .ask .qline .who{display:block;font-family:var(--grotesk);font-style:normal;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2);margin-bottom:8px}
+
+  /* ============ risk line ============ */
+  .risk{
+    margin-top:20px;display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:start;
+    padding:18px 20px;background:rgba(0,0,0,.2);border:1px solid var(--line);border-radius:4px;
+  }
+  .risk .ico{width:34px;height:34px;flex:0 0 auto;border-radius:50%;border:1px solid var(--gold-deep);display:grid;place-items:center;color:var(--gold)}
+  .risk .ttl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);font-weight:700;margin-bottom:6px}
+  .risk p{font-size:13.5px;color:var(--ink-soft);line-height:1.6;max-width:74ch}
+  .risk p b{color:var(--ink)}
+
+  /* ============ colophon ============ */
+  footer{position:relative;z-index:2;border-top:1px solid var(--line);padding:26px 0 40px;margin-top:clamp(30px,5vw,52px)}
+  footer .row{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;align-items:center}
+  footer .note{font-size:11.5px;color:var(--muted-2);line-height:1.55;max-width:60ch}
+  footer .sig{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-soft)}
+  footer .sig .by{display:block;font-family:var(--grotesk);font-style:normal;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:4px}
+
+  @media (max-width:560px){
+    .hero-fig{grid-template-columns:1fr}
+    .readouts{grid-template-columns:1fr}
+    .risk{grid-template-columns:1fr}
+    .pnl th,.pnl td{padding:10px 9px;font-size:12.5px}
+    .pnl thead th.amt{white-space:normal}
+    .pnl .ln-item .note{font-size:11px}
+    .pnl tr.total td.amt{font-size:18px}
+    .pad{padding:0 18px}
+  }
+</style>
+</head>
+<body>
+<div class="doc">
+
+  <!-- masthead -->
+  <div class="pad">
+    <div class="mast">
+      <div class="brandwrap">
+        <div class="seal">$</div>
+        <div class="brand">
+          <div class="k">账本</div>
+          <div class="s">装饰套装商店，一份财务复盘</div>
+        </div>
+      </div>
+      <div class="filed">
+        呈送研发团队管理层
+        <b>口袋奇兵 · 2864 服</b>
+      </div>
+    </div>
+  </div>
+
+  <!-- COVER -->
+  <div class="pad">
+    <div class="cover">
+      <span class="eyebrow"><span class="ln"></span> 收入流失情况说明</span>
+      <h1>我们把一项已完工的资产 <em>挂在账外，</em>而愿意掏钱的买家正攒着一笔花不出去的代币。</h1>
+      <p class="lede">十套已经完整做好的装饰套装被原封不动地搁置着。它们的付费上新窗口几年前就关闭了，所以今天它们一分钱都赚不到。与此同时，玩家仍在不断攒着原本用来兑换它们的游戏内代币。下面这道缺口并不是再去开发什么所要花的成本，而是一笔早已触手可及、只等入账的收入。</p>
+
+      <div class="hero-fig">
+        <div class="big"><span class="pre">+$</span>47,676</div>
+        <div class="cap">
+          <span class="lbl">先把结论摆在前面</span>
+          一批积压套装。一个服务器。<b>一整年。</b>把这些套装继续冻在账上，与按照新套装本就在用的节奏让它们逐步进入商店，两者之间的差额就是这个数。这大约是把它们攒到最后一次性集中放出所能带来的代币收入的 <b>2.7 倍</b>，而且这一规律可以推广到更广泛的服务器群体。
+        </div>
+      </div>
+      <span class="illus">所有数字仅作示意，范围限于 10 套旧套装的代币商店收入，绝非全游戏收入</span>
+    </div>
+  </div>
+
+  <!-- SECTION 1: P&L -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">I</span>
+        <h2>当下的处境</h2>
+        <span class="sub">以一个示意性的 600 名活跃玩家群体、为期一年为口径，简单陈述这一批积压套装当前正在实现的收入，与它本可实现的收入之间的差距。</span>
+      </div>
+
+      <p class="body">没有什么要开发，也没有什么要打折。产品已经完工，就躺在库存里。唯一发生变化的，是获取它的途径：让旧套装进入代币商店这件事，已经实质性地停摆了约一年。这次停摆的影响，可以干净利落地用两栏数字读出来。</p>
+
+      <div class="pnl-wrap">
+      <table class="pnl num">
+        <caption><span class="cx">附表 A</span>积压套装代币收入，仅作示意，为期一年，单一服务器</caption>
+        <thead>
+          <tr><th>项目</th><th class="amt">冻结搁置</th><th class="amt">稳定进入商店</th></tr>
+        </thead>
+        <tbody>
+          <tr class="ln-item">
+            <td class="nm">已实现的积压套装代币收入 <span class="note">这 10 套被搁置的套装在一年里实际带来的收入。</span></td>
+            <td class="amt">$28,825</td>
+            <td class="amt">$76,501</td>
+          </tr>
+          <tr class="ln-item zero">
+            <td class="nm">付费玩家够得着的套装 <span class="note">有一个够得着的目标，玩家才会持续充值。</span></td>
+            <td class="amt">无限期推迟</td>
+            <td class="amt">每 2.5 个月 1 套</td>
+          </tr>
+          <tr class="ln-item">
+            <td class="nm">被劝退的潜在买家 <span class="note">耐心攒币的玩家发现无物可兑后选择放弃，囤积情形下示意性取 30%。</span></td>
+            <td class="amt">约 30%</td>
+            <td class="amt">得以留存</td>
+          </tr>
+          <tr class="ln-item">
+            <td class="nm">攒下却花不出去的代币 <span class="note">玩家手握却没有套装可买的代币。哪怕是消费最高的玩家也会积压数千枚。</span></td>
+            <td class="amt">大量囤积</td>
+            <td class="amt">大体花得掉</td>
+          </tr>
+          <tr class="sub">
+            <td>资产的产出状态</td>
+            <td class="amt"><span class="tag off">闲置</span></td>
+            <td class="amt"><span class="tag on">在产出</span></td>
+          </tr>
+          <tr class="realized">
+            <td>已实现收入</td>
+            <td class="amt">$28,825</td>
+            <td class="amt">$76,501</td>
+          </tr>
+          <tr class="forgone">
+            <td>相对稳定方案流失的收入</td>
+            <td class="amt">$47,676</td>
+            <td class="amt">$0</td>
+          </tr>
+          <tr class="total">
+            <td>净机会，本批积压，本年度</td>
+            <td class="amt">+$47,676</td>
+            <td class="amt" style="color:var(--green)">已捕获</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p class="body" style="margin-top:18px">说白了：冻结这批积压套装并不是省钱，而是在让钱白白溜走。资产继续闲置，愿意付费的买家转身离开，而两者之间的差额，也就是本批积压、本服务器一年示意性的 <b class="gold">+$47,676</b>，正是眼下每年被白白放在桌上没人去拿的那笔钱。</p>
+    </div>
+  </section>
+
+  <!-- SECTION 2: WATERFALL -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">II</span>
+        <h2>流失的收入去了哪里</h2>
+        <span class="sub">从这批积压套装在稳定节奏下本可实现的收入，一步步降到它在冻结状态下实际实现的收入。每一步落差都是今天就存在、却根本没有去收的钱。</span>
+      </div>
+
+      <div class="water-wrap">
+        <svg id="waterfall" viewBox="0 0 720 320" role="img" aria-label="从稳定进入商店的收入逐级递减到冻结收入的机会成本瀑布图"></svg>
+        <div class="wf-legend">
+          <span><i style="background:var(--green)"></i> 已实现收入</span>
+          <span><i style="background:var(--rust)"></i> 流失的收入</span>
+          <span><i style="background:var(--gold)"></i> 结论：今天实际收到的</span>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:18px">左侧那根高高的柱子，是稳定进入商店方案下够得着的收入数字。锈红色那一段，是冻结造成的缺口：示意性的 <b class="gold">$47,676</b> 代币需求——只要有套装可兑，这些愿意付费的买家本会把它花出去。右侧那根矮矮的金色柱子，才是这项资产今天实际入账的数额。</p>
+    </div>
+  </section>
+
+  <!-- SECTION 3: EXHIBIT, per-player -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">III</span>
+        <h2>买家会买无可买</h2>
+        <span class="sub">在所提议的节奏下，一名玩家一整年的情况，即每 2.5 个月放出 1 套。请注意：哪怕是消费最高的玩家也会撞到天花板、积压代币。那笔积压的余额，就是没有被满足的需求。</span>
+      </div>
+
+      <div class="exh">
+        <div class="card">
+          <div class="tier">免费玩家</div>
+          <div class="spend">$0</div>
+          <div class="sub">仅靠免费收入即可完成 1 套。</div>
+          <div class="strand none">积压代币：<b>极少</b></div>
+        </div>
+        <div class="card">
+          <div class="tier">每周 5 美元</div>
+          <div class="spend">约 $203</div>
+          <div class="sub">一年内完成 3 套。</div>
+          <div class="strand none">积压代币：<b>少量</b></div>
+        </div>
+        <div class="card">
+          <div class="tier">每周 25 美元</div>
+          <div class="spend">约 $424</div>
+          <div class="sub">一年内完成 4 套。</div>
+          <div class="strand">积压代币：<b>约 2,200 枚</b></div>
+        </div>
+        <div class="card">
+          <div class="tier">每周 100 美元</div>
+          <div class="spend">约 $525</div>
+          <div class="sub">一年内完成 4 套。</div>
+          <div class="strand">积压代币：<b>约 5,640 枚</b></div>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:20px">由此可读出两点。第一，需求是真实存在的，但它有上限：即便每周花 100 美元，买家也只能完成 4 套，最后还手握数千枚代币却无物可兑。供给才是瓶颈，付费意愿并不是。第二，在冻结的现状之下，这场追逐彻底消失：付费玩家停止充值，全年只花 <b>$0</b>，悄悄攒着一堆用不出去的代币。</p>
+    </div>
+  </section>
+
+  <!-- SECTION 4: LIVE MODEL -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">IV</span>
+        <h2>检验这些假设</h2>
+        <span class="sub">一个建立在上文同一组数字上的可交互模型。拖动放出节奏和玩家规模，看着已实现收入与那堵积压代币之墙此消彼长。把节奏拉到零，就能看到今天的冻结状态。</span>
+      </div>
+
+      <div class="model">
+        <div id="policy" class="policytag now">当前策略：进入商店已冻结</div>
+
+        <div class="seg" id="seg-tier" role="group" aria-label="付费档位">
+          <button data-tier="free">免费玩家</button>
+          <button data-tier="drip" class="on">每周 5 美元</button>
+          <button data-tier="mid">每周 25 美元</button>
+          <button data-tier="whale">每周 100 美元</button>
+        </div>
+
+        <div class="controls" style="margin-top:14px">
+          <div class="ctl">
+            <label for="rel">每隔几个月放出一套 <span class="v"><span id="rel-v">2.5</span></span></label>
+            <input type="range" id="rel" min="1.5" max="6" step="0.5" value="2.5">
+          </div>
+        </div>
+
+        <div class="chartwrap">
+          <svg id="chart" viewBox="0 0 640 320" role="img" aria-label="所选玩家一年内攒到的代币与花掉的代币对比"></svg>
+          <div class="chart-legend">
+            <span><i style="background:#e7b24a"></i> 累计攒到的代币</span>
+            <span><i style="background:#5cba9f"></i> 花在套装上的代币</span>
+            <span><i style="background:rgba(220,107,75,.6)"></i> 积压、花不出去的</span>
+          </div>
+        </div>
+
+        <div class="readouts">
+          <div class="ro"><div class="rl">完成套装数</div><div class="rv num" id="ro-sets">0</div></div>
+          <div class="ro rev"><div class="rl">本年度付费</div><div class="rv num" id="ro-rev">$0</div></div>
+          <div class="ro dead"><div class="rl">积压代币</div><div class="rv num" id="ro-dead">0</div></div>
+        </div>
+
+        <div class="verdict" id="verdict"></div>
+      </div>
+
+      <div class="model" style="margin-top:18px">
+        <div class="sec-head" style="margin-bottom:18px">
+          <h2 style="font-size:clamp(17px,2.6vw,21px)">策略对比：囤积后集中倾销 vs 稳定进入商店</h2>
+          <span class="sub">放到整个示意性玩家群体上看。先全年冻结、再一次性集中放出，对比每 2.5 个月稳定放出一套。</span>
+        </div>
+
+        <div class="controls">
+          <div class="ctl">
+            <label for="pop">活跃玩家数 <span class="v"><span id="pop-v">600</span></span></label>
+            <input type="range" id="pop" min="100" max="2000" step="50" value="600">
+          </div>
+          <div class="ctl">
+            <label for="giveup">囤积情形下的放弃率 <span class="v"><span id="giveup-v">30</span>%</span></label>
+            <input type="range" id="giveup" min="0" max="60" step="5" value="30">
+          </div>
+        </div>
+
+        <div class="exh" style="grid-template-columns:repeat(auto-fit,minmax(240px,1fr))">
+          <div class="card">
+            <div class="tier" style="color:var(--rust)">囤积后集中倾销</div>
+            <div class="spend" id="rev-dump" style="color:var(--rust)">$0</div>
+            <div class="sub">全年冻结，最后一次性集中放出。</div>
+            <svg id="mc-dump" viewBox="0 0 320 110" style="width:100%;height:auto;margin-top:12px" role="img" aria-label="囤积后集中倾销策略下的累计收入"></svg>
+          </div>
+          <div class="card">
+            <div class="tier" style="color:var(--green)">稳定进入商店</div>
+            <div class="spend" id="rev-drip" style="color:var(--green)">$0</div>
+            <div class="sub">每 2.5 个月放出一套旧套装。</div>
+            <svg id="mc-drip" viewBox="0 0 320 110" style="width:100%;height:auto;margin-top:12px" role="img" aria-label="稳定进入商店策略下的累计收入"></svg>
+          </div>
+        </div>
+
+        <div class="verdict good" id="strat-verdict" style="margin-top:18px"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION 5: THE ASK -->
+  <section style="border-top:none;padding-bottom:0">
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">V</span>
+        <h2>我们的诉求</h2>
+        <span class="sub">不必新做内容，不必给付费套装打折，不必改动线上运营。只需一条排期规则。</span>
+      </div>
+
+      <div class="ask">
+        <div class="inner">
+          <div class="lbl">建议</div>
+          <h3>把进入商店这件事绑定到本就存在的节奏上：<em>每当一套全新套装上线时，最旧的那套被搁置套装就进入代币商店。</em></h3>
+          <p class="one">一进一出，大约每 2.5 个月一次。付费上新依旧维持付费。每月的限时礼包返场也原封不动。永远只有这 10 套旧套装会进入商店，先旧后新，而这套排期早已写在日历上。这是把一项闲置资产开关打开，而不是要立项投钱的新项目。</p>
+          <p class="one" style="margin-top:12px">还有一个不动声色的附带好处：由于完成一套套装会带来永久的行军规模提升，稳定进入商店也能温和地缩小消费较少玩家的差距——不向任何人施压，只是让整体曲线更健康。</p>
+
+          <div class="qline">
+            <span class="who">给产品团队的唯一一个问题</span>
+            我们手里有一项零收入的成品资产，还有愿意为它付费的买家。那么，是什么在阻止我们按照新套装本就在用的节奏，放出一套旧套装呢？
+          </div>
+        </div>
+      </div>
+
+      <!-- risk -->
+      <div class="risk">
+        <div class="ico" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 3 6v6c0 5 3.8 8.4 9 10 5.2-1.6 9-5 9-10V6z"></path><path d="M9 12l2 2 4-4"></path></svg>
+        </div>
+        <div>
+          <div class="ttl">正面回应"会不会抢生意"的顾虑</div>
+          <p>最可能的担忧是：放出旧套装会蚕食付费上新礼包的销量。其实并不会。<b>这 10 套旧套装的付费窗口几年前就已关闭，今天产出的收入是 $0</b>，所以根本没有什么可被蚕食。最新的 5 套依旧维持付费，本提案丝毫不触碰它们。而代币商店里一个够得着的目标，恰恰是促使玩家持续充值的根本所在。从这个角度看，这项改动是在做大收入，而不是在和现有收入抢生意。</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- colophon -->
+  <footer>
+    <div class="pad">
+      <div class="row">
+        <div class="note">示意性模型，呈送研发团队管理层。所有数字严格限定在单一服务器上 10 套旧装饰套装的代币商店收入范围内，并不代表全游戏收入。本案各视图共用同一套常量与公式，以保证数字彼此对得上。</div>
+        <div class="sig">谨呈<span class="by">由一名 2864 服玩家敬上</span></div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =================== canonical model (ported exactly) =================== */
+  var SET_COST = 11340;       // tokens for one full set (level 1)
+  var FREE_WK  = 300;         // free tokens per week
+  var WEEKS    = 52;
+  var BACKLOG  = 10;          // older shelved sets the drip could release
+
+  var TIERS = {
+    free:  {label:'免费玩家',          paidTokens:0,    usd:0},
+    drip:  {label:'每周 5 美元的玩家',  paidTokens:600,  usd:4.95},
+    mid:   {label:'每周 25 美元的玩家', paidTokens:1880, usd:24.94},
+    whale: {label:'每周 100 美元的玩家',paidTokens:7080,usd:104.93}
+  };
+
+  function simulate(tier, cumAvailFn){
+    var onHand=0, owned=0, dollars=0;
+    var earnedCum=[], spentCum=[];
+    for(var w=1; w<=WEEKS; w++){
+      var avail = Math.min(BACKLOG, cumAvailFn(w));
+      onHand += FREE_WK;                       // free always banks
+      var goal = owned < avail;                // an unowned, available set exists
+      if(goal && tier.paidTokens>0){           // pay only while chasing a reachable set
+        onHand += tier.paidTokens;
+        dollars += tier.usd;
+      }
+      while(owned < avail && onHand >= SET_COST){ onHand -= SET_COST; owned++; }
+      earnedCum.push(owned*SET_COST + onHand);
+      spentCum.push(owned*SET_COST);
+    }
+    var stranded = (owned >= Math.min(BACKLOG, cumAvailFn(WEEKS))) ? onHand : 0;
+    return {owned:owned, dollars:dollars, stranded:stranded, earnedCum:earnedCum, spentCum:spentCum};
+  }
+
+  var TIER_MIX = [
+    {tier:'free',  share:0.55},
+    {tier:'drip',  share:0.30},
+    {tier:'mid',   share:0.12},
+    {tier:'whale', share:0.03}
+  ];
+
+  function strategyRevenue(cumAvailFn, opts){
+    var pop=opts.pop, giveUp=opts.giveUp||0;
+    var total=0; var weekly=new Array(WEEKS).fill(0);
+    TIER_MIX.forEach(function(m){
+      var n=pop*m.share;
+      if(opts.dump) n = n*(1-giveUp); // some disengage when faced with a wall
+      var tier=TIERS[m.tier];
+      var onHand=0,owned=0;
+      for(var w=1;w<=WEEKS;w++){
+        var avail=Math.min(BACKLOG,cumAvailFn(w));
+        onHand+=FREE_WK;
+        var goal=owned<avail;
+        if(goal && tier.paidTokens>0){ onHand+=tier.paidTokens; weekly[w-1]+=tier.usd*n; total+=tier.usd*n; }
+        while(owned<avail && onHand>=SET_COST){onHand-=SET_COST;owned++;}
+      }
+    });
+    var cum=[]; var run=0; weekly.forEach(function(v){run+=v;cum.push(run);});
+    return {total:total, cum:cum};
+  }
+
+  /* =================== svg helpers =================== */
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs){var e=document.createElementNS(NS,tag);for(var k in attrs)e.setAttribute(k,attrs[k]);return e;}
+  function fmt(n){return Math.round(n).toLocaleString();}
+  function byId(id){return document.getElementById(id);}
+
+  /* =================== SECTION IV chart =================== */
+  var curTier='drip';
+  function relPerYear(){var r=byId('rel');return r?parseFloat(r.value):2.5;}
+
+  function drawWall(){
+    var svg=byId('chart'); if(!svg) return;
+    var tier=TIERS[curTier];
+    var months=relPerYear();
+    var everyWk = (52/12)*months;
+    var cumAvail = function(w){ return Math.floor(w/everyWk); };
+    var r = simulate(tier, cumAvail);
+
+    var W=640,H=320, pad={l:54,r:18,t:18,b:34};
+    var ix=W-pad.l-pad.r, iy=H-pad.t-pad.b;
+    var maxY=Math.max(SET_COST, Math.max.apply(null,r.earnedCum))*1.05;
+    var X=function(i){return pad.l + (i/(WEEKS-1))*ix;};
+    var Y=function(v){return pad.t + iy - (v/maxY)*iy;};
+
+    svg.innerHTML='';
+
+    var steps=4;
+    for(var g=0;g<=steps;g++){
+      var v=maxY*g/steps, y=Y(v);
+      svg.appendChild(el('line',{x1:pad.l,y1:y,x2:W-pad.r,y2:y,stroke:'#1d3158','stroke-width':1}));
+      var t=el('text',{x:pad.l-10,y:y+4,'text-anchor':'end',fill:'#6478a0','font-size':11,'font-family':'Archivo'});
+      t.textContent = (v>=1000? (v/1000).toFixed(0)+'k':Math.round(v)); svg.appendChild(t);
+    }
+    for(var m=0;m<=12;m+=3){
+      var i=Math.min(WEEKS-1, Math.round(m*52/12));
+      var x=X(i);
+      var tx=el('text',{x:x,y:H-12,'text-anchor':'middle',fill:'#6478a0','font-size':11,'font-family':'Archivo'});
+      tx.textContent = m+'个月'; svg.appendChild(tx);
+    }
+
+    var top=r.earnedCum.map(function(v,i){return X(i)+','+Y(v);});
+    var bot=r.spentCum.map(function(v,i){return X(i)+','+Y(v);}).reverse();
+    svg.appendChild(el('polygon',{points:top.concat(bot).join(' '),fill:'rgba(220,107,75,0.16)'}));
+
+    function path(arr,color,wdt,dash){
+      var d='M'+arr.map(function(v,i){return X(i)+','+Y(v);}).join(' L');
+      var a={d:d,fill:'none',stroke:color,'stroke-width':wdt,'stroke-linejoin':'round','stroke-linecap':'round'};
+      if(dash)a['stroke-dasharray']=dash;
+      svg.appendChild(el('path',a));
+    }
+    path(r.spentCum,'#5cba9f',2.6);
+    path(r.earnedCum,'#e7b24a',2.6);
+
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.earnedCum[WEEKS-1]),r:4,fill:'#e7b24a'}));
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.spentCum[WEEKS-1]),r:4,fill:'#5cba9f'}));
+
+    var roSets=byId('ro-sets'); if(roSets)roSets.textContent=r.owned;
+    var roRev=byId('ro-rev'); if(roRev)roRev.textContent='$'+fmt(r.dollars);
+    var roDead=byId('ro-dead'); if(roDead)roDead.textContent=fmt(r.stranded);
+
+    var pol=byId('policy');
+    if(pol){
+      if(months<2){pol.className='policytag prop';pol.textContent='快于上新节奏：会开始挤压限时礼包';}
+      else if(months<=3){pol.className='policytag prop';pol.textContent='所提议方案：按新套装上线的节奏放出最旧的一套';}
+      else {pol.className='policytag prop';pol.textContent='慢于上新节奏：积压依旧会清完，只是更慢一些';}
+    }
+
+    var vd=byId('verdict');
+    if(vd){
+      var mTxt = (months % 1 === 0) ? months.toFixed(0) : String(months);
+      vd.className='verdict good';
+      vd.innerHTML = '在每 '+mTxt+' 个月放出一套的节奏下，'+tier.label+'完成 <b>'+r.owned+' 套</b>，付费 <b>$'+fmt(r.dollars)+'</b>'+(r.stranded>0 ? '，并且仍有 <b>'+fmt(r.stranded)+' 枚代币</b>积压、无物可买。哪怕是消费最高的玩家也会撞到天花板，而那笔积压余额就是没有被满足的需求。' : '，几乎没有积压。目标又回来了。');
+    }
+  }
+
+  /* =================== SECTION IV strategy comparison =================== */
+  function drawMini(id,cum,maxAll,color){
+    var svg=byId(id); if(!svg) return; svg.innerHTML='';
+    var W=320,H=110,pad=6;
+    var X=function(i){return pad+(i/(WEEKS-1))*(W-2*pad);};
+    var Y=function(v){return H-pad-(v/maxAll)*(H-2*pad);};
+    svg.appendChild(el('line',{x1:pad,y1:H-pad,x2:W-pad,y2:H-pad,stroke:'#1d3158','stroke-width':1}));
+    var area='M'+X(0)+','+(H-pad)+' L'+cum.map(function(v,i){return X(i)+','+Y(v);}).join(' L')+' L'+X(WEEKS-1)+','+(H-pad)+' Z';
+    svg.appendChild(el('path',{d:area,fill:color.replace('rgb','rgba').replace(')',',0.18)')}));
+    var d='M'+cum.map(function(v,i){return X(i)+','+Y(v);}).join(' L');
+    svg.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':2.4,'stroke-linejoin':'round'}));
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(cum[WEEKS-1]),r:3.5,fill:color}));
+  }
+
+  function drawStrategies(){
+    var popEl=byId('pop'), guEl=byId('giveup');
+    if(!popEl||!guEl) return;
+    var pop=parseInt(popEl.value,10);
+    var giveUp=parseInt(guEl.value,10)/100;
+    var dumpFn = function(w){ return w>=44 ? BACKLOG : 0; };
+    var everyWk=(52/12)*2.5;
+    var dripFn = function(w){ return Math.floor(w/everyWk); };
+
+    var dump=strategyRevenue(dumpFn,{pop:pop,giveUp:giveUp,dump:true});
+    var drip=strategyRevenue(dripFn,{pop:pop,giveUp:0,dump:false});
+    var maxAll=Math.max(dump.cum[WEEKS-1],drip.cum[WEEKS-1],1);
+
+    var rd=byId('rev-dump'); if(rd)rd.textContent='$'+fmt(dump.total);
+    var rp=byId('rev-drip'); if(rp)rp.textContent='$'+fmt(drip.total);
+    drawMini('mc-dump',dump.cum,maxAll,'rgb(220,107,75)');
+    drawMini('mc-drip',drip.cum,maxAll,'rgb(92,186,159)');
+
+    var mult = dump.total>0 ? (drip.total/dump.total) : Infinity;
+    var sv=byId('strat-verdict');
+    if(sv){
+      var multTxt = isFinite(mult) ? mult.toFixed(1)+' 倍' : '好多倍';
+      sv.innerHTML = '在这些示意性假设下，稳定进入商店能从这批旧积压套装在一年内多实现约 <b>$'+fmt(drip.total-dump.total)+'</b> 的收入（大约是囤积后集中倾销所得代币收入的 '+multTxt+'），而且能让玩家全程保持参与，而不是只在一次集中放出时短暂活跃。';
+    }
+  }
+
+  /* =================== SECTION II waterfall =================== */
+  function drawWaterfall(){
+    var svg=byId('waterfall'); if(!svg) return;
+    svg.innerHTML='';
+    var W=720,H=320, pad={l:18,r:18,t:26,b:54};
+    var ix=W-pad.l-pad.r, iy=H-pad.t-pad.b;
+
+    var steadyTotal=76501, forgone=47676, frozen=28825;
+    var maxY=steadyTotal*1.12;
+    var Y=function(v){return pad.t + iy - (v/maxY)*iy;};
+    var base=pad.t+iy;
+
+    // four columns: Reachable, minus Forgone (floating), equals Frozen, then a Bottom-line marker
+    var cols=[
+      {x:pad.l+ix*0.04, w:ix*0.20, label:'够得着', sub:'稳定方案', val:steadyTotal, y0:0,        y1:steadyTotal, fill:'#5cba9f'},
+      {x:pad.l+ix*0.30, w:ix*0.20, label:'流失',   sub:'因冻结',  val:forgone,     y0:frozen,    y1:steadyTotal, fill:'#dc6b4b'},
+      {x:pad.l+ix*0.56, w:ix*0.20, label:'冻结',    sub:'今天',       val:frozen,      y0:0,         y1:frozen,      fill:'#7a8aa8'},
+      {x:pad.l+ix*0.80, w:ix*0.16, label:'结论',sub:'实际收到',  val:frozen,      y0:0,         y1:frozen,      fill:'#c9a24a'}
+    ];
+
+    // gridlines
+    var steps=4;
+    for(var g=0;g<=steps;g++){
+      var v=maxY*g/steps, y=Y(v);
+      svg.appendChild(el('line',{x1:pad.l,y1:y,x2:W-pad.r,y2:y,stroke:'#16284a','stroke-width':1}));
+      var t=el('text',{x:pad.l+2,y:y-5,fill:'#6478a0','font-size':10.5,'font-family':'Archivo'});
+      t.textContent = '$'+(v/1000).toFixed(0)+'k'; svg.appendChild(t);
+    }
+
+    cols.forEach(function(c,idx){
+      var yTop=Y(c.y1), yBot=Y(c.y0), h=Math.max(2,yBot-yTop);
+      // connector dashed line from previous top of stack (visual flow)
+      if(idx===1){
+        svg.appendChild(el('line',{x1:cols[0].x+cols[0].w,y1:Y(steadyTotal),x2:c.x,y2:Y(steadyTotal),stroke:'#2a4068','stroke-width':1,'stroke-dasharray':'4 4'}));
+      }
+      if(idx===2){
+        svg.appendChild(el('line',{x1:cols[1].x+cols[1].w,y1:Y(frozen),x2:c.x,y2:Y(frozen),stroke:'#2a4068','stroke-width':1,'stroke-dasharray':'4 4'}));
+      }
+      // bar
+      var grad='url(#wf'+idx+')';
+      svg.appendChild(el('rect',{x:c.x,y:yTop,width:c.w,height:h,fill:c.fill,rx:2,opacity:0.92}));
+      // top highlight line
+      svg.appendChild(el('rect',{x:c.x,y:yTop,width:c.w,height:Math.min(3,h),fill:'rgba(255,255,255,.22)',rx:1}));
+      // value label
+      var vt=el('text',{x:c.x+c.w/2,y:yTop-9,'text-anchor':'middle',fill:'#f4f1e9','font-size':14,'font-weight':700,'font-family':'Archivo'});
+      vt.textContent = (idx===1?'+$':'$')+fmt(c.val); svg.appendChild(vt);
+      // x label
+      var lt=el('text',{x:c.x+c.w/2,y:base+20,'text-anchor':'middle',fill:'#cdd6e6','font-size':12,'font-weight':600,'font-family':'Archivo,\"Noto Sans SC\"'});
+      lt.textContent = c.label; svg.appendChild(lt);
+      var st=el('text',{x:c.x+c.w/2,y:base+36,'text-anchor':'middle',fill:'#6478a0','font-size':10.5,'font-family':'Archivo,\"Noto Sans SC\"'});
+      st.textContent = c.sub; svg.appendChild(st);
+    });
+  }
+
+  /* =================== wire up listeners =================== */
+  function init(){
+    var segBtns=document.querySelectorAll('#seg-tier button');
+    segBtns.forEach(function(b){
+      b.addEventListener('click',function(){
+        segBtns.forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on'); curTier=b.dataset.tier; drawWall();
+      });
+    });
+
+    var relEl=byId('rel');
+    if(relEl){
+      relEl.addEventListener('input',function(e){
+        var rv=byId('rel-v'); if(rv)rv.textContent=parseFloat(e.target.value);
+        drawWall();
+      });
+    }
+
+    ['pop','giveup'].forEach(function(id){
+      var elx=byId(id);
+      if(elx){
+        elx.addEventListener('input',function(e){
+          var v=byId(id+'-v'); if(v)v.textContent=e.target.value;
+          drawStrategies();
+        });
+      }
+    });
+
+    drawWaterfall();
+    drawWall();
+    drawStrategies();
+
+    // redraw responsive bits on resize (svg uses viewBox so mostly handled, but mini charts benefit)
+    var rt;
+    window.addEventListener('resize',function(){
+      clearTimeout(rt);
+      rt=setTimeout(function(){ drawWall(); drawStrategies(); drawWaterfall(); },150);
+    });
+  }
+
+  if(document.readyState==='loading'){
+    document.addEventListener('DOMContentLoaded',init);
+  } else {
+    init();
+  }
+})();
+</script>
+</body>
+</html>

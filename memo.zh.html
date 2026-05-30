@@ -1,0 +1,989 @@
+<!-- Simplified Chinese (zh-CN) version of "The Memo" view (memo.html). Decision memo proposing a steady-cadence graduation of older Decor Set Store backlog into the in-game token store. -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'none'">
+<meta name="description" content="决策备忘录：建议《口袋奇兵》按稳定节奏，让积压的旧版装饰套装逐步进入套装代币商店。每上新一套，最旧的一套进入商店；最新的 5 套保持付费，仅 10 套旧套装进入商店。仅就 10 套旧套装的代币商店收入做示意性估算。">
+<title>决策备忘录：让积压的旧版装饰套装进入套装商店</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%231f2a37'/%3E%3Crect x='8' y='7' width='16' height='2' fill='%2390a4bd'/%3E%3Crect x='8' y='13' width='16' height='2' fill='%2390a4bd'/%3E%3Crect x='8' y='19' width='11' height='2' fill='%2390a4bd'/%3E%3Crect x='8' y='25' width='16' height='1.5' fill='%234f9a86'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,500;0,8..60,600;0,8..60,700;1,8..60,400&family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>
+/* Gate scroll-reveal behind a class so content is never permanently hidden.
+   Skip when the visitor prefers reduced motion. */
+(function () {
+  try {
+    var mq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    if (!mq.matches) { document.documentElement.className += ' js-reveal'; }
+  } catch (e) { /* leave content visible */ }
+})();
+</script>
+<style>
+  :root {
+    --paper: #f4f6f8;
+    --card: #ffffff;
+    --ink: #1c2530;
+    --ink-soft: #44525f;
+    --muted: #6c7a88;
+    --faint: #97a4b1;
+    --rule: #d3dbe3;
+    --rule-soft: #e4e9ee;
+    --slate: #1f2a37;
+    --slate-2: #34465a;
+    --accent: #2f6f8f;
+    --accent-deep: #1f4d63;
+    --green: #2f7d68;
+    --warn: #9a5b2b;
+    --box-bg: #eef2f6;
+    --max: 880px;
+    --serif: 'Source Serif 4', Georgia, 'Times New Roman', 'Noto Serif SC', serif;
+    --sans: 'Archivo', system-ui, 'Noto Sans SC', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, 'Noto Sans SC', monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  html { -webkit-text-size-adjust: 100%; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Archivo', system-ui, 'Noto Sans SC', sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    padding: 28px 18px 64px;
+  }
+
+  .sheet {
+    max-width: var(--max);
+    margin: 0 auto;
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--slate);
+    box-shadow: 0 1px 0 rgba(28,37,48,0.04), 0 18px 44px -28px rgba(28,37,48,0.35);
+    padding: 44px clamp(22px, 5vw, 56px) 52px;
+  }
+
+  /* ---- Letterhead ---- */
+  .letterhead {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 18px;
+    padding-bottom: 16px;
+    border-bottom: 2px solid var(--slate);
+  }
+  .mark {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  .mark svg { display: block; flex: none; }
+  .mark .org {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--slate);
+    line-height: 1.3;
+  }
+  .mark .org span {
+    display: block;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0.12em;
+  }
+  .doc-kind {
+    text-align: right;
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+    text-transform: uppercase;
+    line-height: 1.7;
+  }
+  .doc-kind strong {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.18em;
+    color: var(--slate);
+  }
+
+  h1.subject {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: clamp(22px, 4vw, 30px);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin: 22px 0 18px;
+    color: var(--ink);
+  }
+
+  /* ---- Routing block (To / From / Date / Re) ---- */
+  .routing {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 4px 16px;
+    font-size: 14.5px;
+    border-top: 1px solid var(--rule-soft);
+    border-bottom: 1px solid var(--rule-soft);
+    padding: 14px 0;
+    margin-bottom: 26px;
+  }
+  .routing dt {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    padding-top: 2px;
+  }
+  .routing dd {
+    margin: 0;
+    color: var(--ink-soft);
+  }
+  .routing dd strong { color: var(--ink); font-weight: 600; }
+
+  /* ---- BLUF box ---- */
+  .bluf {
+    background: var(--box-bg);
+    border: 1px solid var(--rule);
+    border-left: 4px solid var(--accent-deep);
+    padding: 22px clamp(18px, 3vw, 28px) 24px;
+    margin-bottom: 38px;
+  }
+  .bluf .tag {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+  .bluf .ask {
+    font-family: var(--serif);
+    font-size: clamp(17px, 2.6vw, 20px);
+    line-height: 1.4;
+    color: var(--ink);
+    margin: 0 0 18px;
+  }
+  .bluf .ask b { font-weight: 700; color: var(--accent-deep); }
+
+  .bluf-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+    margin-top: 4px;
+  }
+  .bluf-grid .cell {
+    background: var(--card);
+    padding: 12px 14px;
+  }
+  .bluf-grid .k {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 5px;
+  }
+  .bluf-grid .v {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 17px;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .bluf-grid .v small {
+    display: block;
+    font-family: var(--sans);
+    font-weight: 500;
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 3px;
+    letter-spacing: 0;
+  }
+  .bluf-grid .v.good { color: var(--green); }
+  .bluf-grid .v.low { color: var(--accent); }
+
+  /* ---- Section scaffolding ---- */
+  section { margin-bottom: 34px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 12px;
+    border-bottom: 1px solid var(--slate);
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+  }
+  .sec-num {
+    font-family: var(--mono);
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.05em;
+  }
+  .sec-head h2 {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 19px;
+    margin: 0;
+    color: var(--slate);
+    letter-spacing: -0.005em;
+  }
+  p { margin: 0 0 13px; }
+  p.lead { color: var(--ink-soft); }
+  .fig { font-family: var(--mono); font-weight: 600; color: var(--accent-deep); }
+  .note { font-size: 12.5px; color: var(--muted); line-height: 1.5; }
+
+  /* ---- Catalogue split ---- */
+  .catalogue {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+    margin-bottom: 14px;
+  }
+  .cat-col {
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--rule);
+    padding: 13px 15px 15px;
+    background: #fbfcfd;
+  }
+  .cat-col.live { border-top-color: var(--green); }
+  .cat-col.shelved { border-top-color: var(--warn); }
+  .cat-col.recent { border-top-color: var(--faint); }
+  .cat-col .count {
+    font-family: var(--mono);
+    font-size: 26px;
+    font-weight: 600;
+    color: var(--slate);
+    line-height: 1;
+  }
+  .cat-col .label {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12.5px;
+    letter-spacing: 0.04em;
+    margin: 4px 0 9px;
+    color: var(--ink);
+  }
+  .cat-col .desc { font-size: 12px; color: var(--muted); margin-bottom: 10px; line-height: 1.45; }
+  .set-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .set-list li {
+    padding: 3px 0;
+    border-top: 1px dotted var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+  .set-list li:first-child { border-top: none; }
+  .set-list li .yr { font-family: var(--mono); font-size: 11px; color: var(--faint); flex: none; }
+  .cat-col.shelved .set-list li:first-child .nm { font-weight: 700; }
+  .next-up {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--warn);
+    margin-top: 8px;
+    font-weight: 600;
+  }
+
+  /* ---- Two-path price contrast ---- */
+  .paths {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+  .path {
+    border: 1px solid var(--rule);
+    padding: 16px 18px;
+  }
+  .path.premium { background: #fbfcfd; }
+  .path.store { background: var(--box-bg); border-color: var(--accent); }
+  .path .ptitle {
+    font-family: var(--sans);
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 3px;
+  }
+  .path .psub { font-size: 12px; color: var(--muted); margin-bottom: 12px; }
+  .path .pbig {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 30px;
+    line-height: 1;
+    color: var(--ink);
+  }
+  .path.store .pbig { color: var(--accent-deep); }
+  .path .pbig small {
+    font-family: var(--sans);
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--muted);
+    letter-spacing: 0;
+  }
+  .path ul {
+    list-style: none;
+    margin: 12px 0 0;
+    padding: 0;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .path ul li {
+    padding: 5px 0;
+    border-top: 1px solid var(--rule-soft);
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+  }
+  .path ul li span:last-child { font-family: var(--mono); color: var(--slate); }
+
+  /* ---- Cadence strip ---- */
+  .cadence {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0;
+    border: 1px solid var(--rule);
+    background: #fbfcfd;
+  }
+  .cadence .stat {
+    flex: 1 1 150px;
+    padding: 14px 16px;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .cadence .stat:last-child { border-right: none; }
+  .cadence .big {
+    font-family: var(--mono);
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--slate);
+    line-height: 1.05;
+  }
+  .cadence .cap {
+    font-size: 11.5px;
+    color: var(--muted);
+    margin-top: 5px;
+    line-height: 1.4;
+  }
+  .cadence .big.flag { color: var(--warn); }
+
+  /* ---- Chart ---- */
+  .chart-wrap {
+    border: 1px solid var(--rule);
+    background: #fbfcfd;
+    padding: 20px clamp(16px, 3vw, 26px) 18px;
+  }
+  .chart-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-bottom: 18px;
+  }
+  .chart-head .ct {
+    font-family: var(--serif);
+    font-weight: 600;
+    font-size: 15px;
+    color: var(--slate);
+  }
+  .chart-head .delta {
+    font-family: var(--mono);
+    font-size: 12px;
+    color: var(--green);
+    font-weight: 600;
+  }
+  .bars { display: grid; gap: 16px; }
+  .bar-row { display: grid; grid-template-columns: 132px 1fr; align-items: center; gap: 14px; }
+  .bar-row .blabel { font-size: 12.5px; color: var(--ink-soft); line-height: 1.25; }
+  .bar-row .blabel b { display: block; color: var(--ink); font-weight: 700; font-size: 13px; }
+  .track {
+    position: relative;
+    background: var(--rule-soft);
+    height: 30px;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .fill {
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 0;
+    border-radius: 2px;
+    transition: width 900ms cubic-bezier(.22,.61,.36,1);
+  }
+  html:not(.js-reveal) .fill { transition: none; }
+  .fill.hold { background: linear-gradient(90deg, #9a5b2b, #b97a44); }
+  .fill.steady { background: linear-gradient(90deg, #1f4d63, #2f7d68); }
+  .fill .amt {
+    position: absolute;
+    right: 9px; top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--mono);
+    font-size: 12.5px;
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+  }
+  .chart-foot {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 16px;
+    padding-top: 12px;
+    border-top: 1px dotted var(--rule);
+    line-height: 1.5;
+  }
+  .scope {
+    display: inline-block;
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--accent-deep);
+    background: #dfeaf0;
+    border: 1px solid #c2d6e0;
+    padding: 2px 7px;
+    border-radius: 3px;
+    margin-bottom: 10px;
+    font-weight: 600;
+  }
+
+  /* ---- toggle ---- */
+  .toggle-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+  }
+  .toggle-row .tlabel {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+  .seg {
+    display: inline-flex;
+    border: 1px solid var(--rule);
+    border-radius: 4px;
+    overflow: hidden;
+    background: var(--card);
+  }
+  .seg button {
+    font-family: var(--sans);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+    border: none;
+    background: transparent;
+    color: var(--muted);
+    padding: 7px 14px;
+    cursor: pointer;
+    border-right: 1px solid var(--rule-soft);
+  }
+  .seg button:last-child { border-right: none; }
+  .seg button[aria-pressed="true"] {
+    background: var(--slate);
+    color: #fff;
+  }
+  .seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+
+  /* ---- Objections ---- */
+  .obj-grid { display: grid; gap: 10px; }
+  .obj {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 14px;
+    align-items: start;
+    border-left: 2px solid var(--rule);
+    padding: 4px 0 4px 14px;
+  }
+  .obj .qmark {
+    font-family: var(--serif);
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--accent);
+    line-height: 1.4;
+  }
+  .obj .qt { font-weight: 600; font-size: 13.5px; color: var(--ink); margin: 0 0 3px; }
+  .obj .at { font-size: 13px; color: var(--ink-soft); margin: 0; line-height: 1.5; }
+
+  /* ---- Recommendation restate ---- */
+  .recommend {
+    background: var(--slate);
+    color: #e8eef4;
+    padding: 22px clamp(20px, 4vw, 30px);
+    margin-bottom: 30px;
+    border-radius: 2px;
+  }
+  .recommend .rk {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8fb3c7;
+    margin-bottom: 9px;
+  }
+  .recommend p {
+    font-family: var(--serif);
+    font-size: clamp(16px, 2.4vw, 19px);
+    line-height: 1.42;
+    margin: 0;
+    color: #f1f5f9;
+  }
+  .recommend p b { color: #fff; }
+
+  /* ---- Sign-off ---- */
+  .signoff {
+    border-top: 1px solid var(--rule);
+    padding-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .signoff .from {
+    font-family: var(--serif);
+    font-style: italic;
+    font-size: 16px;
+    color: var(--ink);
+  }
+  .signoff .from span {
+    display: block;
+    font-family: var(--mono);
+    font-style: normal;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+  .signoff .seal {
+    font-family: var(--mono);
+    font-size: 10.5px;
+    letter-spacing: 0.06em;
+    color: var(--faint);
+    text-align: right;
+    line-height: 1.7;
+  }
+
+  /* ---- scroll reveal ---- */
+  html.js-reveal .reveal {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 600ms ease, transform 600ms ease;
+  }
+  html.js-reveal .reveal.shown { opacity: 1; transform: none; }
+
+  /* ---- responsive ---- */
+  @media (max-width: 720px) {
+    body { padding: 16px 10px 48px; }
+    .sheet { padding: 30px 18px 38px; }
+    .bluf-grid { grid-template-columns: repeat(2, 1fr); }
+    .catalogue { grid-template-columns: 1fr; }
+    .paths { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 100px 1fr; }
+    .letterhead { flex-direction: column; gap: 12px; }
+    .doc-kind { text-align: left; }
+  }
+  @media (max-width: 430px) {
+    .bluf-grid { grid-template-columns: 1fr; }
+    .bar-row { grid-template-columns: 1fr; gap: 5px; }
+  }
+
+  /* ---- print ---- */
+  @media print {
+    @page { margin: 14mm; }
+    html, body { background: #fff; }
+    body { padding: 0; font-size: 11.5px; }
+    .sheet {
+      max-width: none;
+      border: none;
+      box-shadow: none;
+      padding: 0;
+      border-top: 3px solid #000;
+    }
+    .toggle-row { display: none; }
+    html.js-reveal .reveal { opacity: 1 !important; transform: none !important; }
+    .fill { transition: none !important; }
+    .recommend { background: #fff; color: #000; border: 1.5px solid #000; }
+    .recommend .rk { color: #000; }
+    .recommend p, .recommend p b { color: #000; }
+    .bluf { background: #fff; border: 1px solid #000; border-left: 4px solid #000; }
+    section, .bluf, .recommend { break-inside: avoid; }
+    .sec-head { break-after: avoid; }
+    .catalogue, .paths, .chart-wrap, .cadence { break-inside: avoid; }
+    .fill.hold { background: #888 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fill.steady { background: #333 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    .fill .amt { color: #fff; }
+    #row-hold .fill { width: 38% !important; }
+    #row-steady .fill { width: 100% !important; }
+  }
+</style>
+</head>
+<body>
+<main class="sheet" role="document">
+
+  <!-- LETTERHEAD -->
+  <header class="letterhead">
+    <div class="mark">
+      <svg width="38" height="38" viewBox="0 0 38 38" aria-hidden="true">
+        <rect width="38" height="38" rx="7" fill="#1f2a37"/>
+        <rect x="9" y="9" width="20" height="2.4" rx="1" fill="#90a4bd"/>
+        <rect x="9" y="15" width="20" height="2.4" rx="1" fill="#90a4bd"/>
+        <rect x="9" y="21" width="13" height="2.4" rx="1" fill="#90a4bd"/>
+        <rect x="9" y="27.5" width="20" height="2" rx="1" fill="#4f9a86"/>
+      </svg>
+      <div class="org">2864 服<span>玩家提案</span></div>
+    </div>
+    <div class="doc-kind">
+      <strong>决策备忘录</strong>
+      重新分析与建议<br>
+      仅一页，便于快速浏览
+    </div>
+  </header>
+
+  <h1 class="subject">让积压的旧版装饰套装进入套装商店</h1>
+
+  <!-- ROUTING -->
+  <dl class="routing">
+    <dt>致</dt><dd><strong>贵公司</strong>《口袋奇兵》产品与营收团队</dd>
+    <dt>来自</dt><dd>一位 2864 服玩家</dd>
+    <dt>日期</dt><dd>2026 年 5 月</dd>
+    <dt>主题</dt><dd><strong>为套装代币商店设立「一进一出」的上架规则</strong></dd>
+  </dl>
+
+  <!-- BLUF -->
+  <div class="bluf reveal">
+    <div class="tag">先说结论</div>
+    <p class="ask">
+      每当一套新装饰套装上线，就让<b>最旧的一套库存套装进入</b>套装代币商店。
+      一套进来，最旧的一套进入商店。最新的几套继续保持付费，每月的限时礼包原封不动，
+      每次只有最旧的那一套会进入商店。
+    </p>
+    <div class="bluf-grid">
+      <div class="cell">
+        <div class="k">提案核心</div>
+        <div class="v">一进一出<small>每次上新，最旧一套进入商店</small></div>
+      </div>
+      <div class="cell">
+        <div class="k">开发成本</div>
+        <div class="v good">零<small>这些套装早已存在</small></div>
+      </div>
+      <div class="cell">
+        <div class="k">风险</div>
+        <div class="v low">低<small>近期套装仍保持付费</small></div>
+      </div>
+      <div class="cell">
+        <div class="k">示意性增量</div>
+        <div class="v">+$47,676<small>每年，仅限旧版库存</small></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 1. CATALOGUE -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">01</span><h2>当前的套装目录</h2></div>
+    <p class="lead">
+      《口袋奇兵》共有 <span class="fig">23</span> 套装饰套装。每集齐一套，都会带来一份永久的
+      行军规模加成，而这些加成可以叠加；因此拥有的套装越多，老牌玩家与中坚玩家之间的差距就在
+      不知不觉中越拉越大。其中有 <span class="fig">8</span> 套玩家可以通过代币以亲民的方式获得，
+      其余的则只停留在已经关闭的上线窗口之后。
+    </p>
+    <div class="catalogue">
+      <div class="cat-col live">
+        <div class="count">8</div>
+        <div class="label">当前已在代币商店</div>
+        <div class="desc">亲民获取通道已开放，这些套装轮换上架。</div>
+        <ul class="set-list">
+          <li><span class="nm">The Wizard of TW</span></li>
+          <li><span class="nm">Home, Sweet Home</span></li>
+          <li><span class="nm">Military Life</span></li>
+          <li><span class="nm">Moon and Starlight</span></li>
+          <li><span class="nm">Industrial Era</span></li>
+          <li><span class="nm">Rip Tides</span></li>
+          <li><span class="nm">Just For You</span></li>
+          <li><span class="nm">Happy 24h</span></li>
+        </ul>
+      </div>
+      <div class="cat-col shelved">
+        <div class="count">10</div>
+        <div class="label">已下架，无亲民获取通道</div>
+        <div class="desc">上线窗口已关闭，从未进入商店。这就是积压的库存。</div>
+        <ul class="set-list">
+          <li><span class="nm">Holiday Decor Set</span><span class="yr">2021</span></li>
+          <li><span class="nm">Giggling Castle</span><span class="yr">2022</span></li>
+          <li><span class="nm">Thanksgiving Feast</span><span class="yr">2022</span></li>
+          <li><span class="nm">Magic Christmas</span><span class="yr">2022</span></li>
+          <li><span class="nm">Christmas Season</span><span class="yr">2023</span></li>
+          <li><span class="nm">Pawsome Moments</span><span class="yr">2023</span></li>
+          <li><span class="nm">Snowfall Season</span><span class="yr">2023 年 12 月</span></li>
+          <li><span class="nm">Metal Music Fans</span><span class="yr">2024 年 5 月</span></li>
+          <li><span class="nm">Kung Fu Saga</span><span class="yr">2024 年 9 月</span></li>
+          <li><span class="nm">Penguin World</span><span class="yr">2024 年 12 月</span></li>
+        </ul>
+        <div class="next-up">Holiday Decor Set 率先进入商店</div>
+      </div>
+      <div class="cat-col recent">
+        <div class="count">5</div>
+        <div class="label">近期套装，暂时保持付费</div>
+        <div class="desc">本提案不涉及这几套，它们继续以礼包形式正常销售。</div>
+        <ul class="set-list">
+          <li><span class="nm">Sea of Stars</span><span class="yr">2025 年 8 月</span></li>
+          <li><span class="nm">Magic &amp; Dragons</span><span class="yr">2025 年 9 月</span></li>
+          <li><span class="nm">Sweet Haven</span><span class="yr">2025 年 12 月</span></li>
+          <li><span class="nm">Spring Festival Games</span><span class="yr">2026 年 2 月</span></li>
+          <li><span class="nm">World Tour</span><span class="yr">2026 年 5 月</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">这 10 套已下架的套装就是本备忘录的全部范围。已上架的 8 套和近期的 5 套付费套装均保持不变。</p>
+  </section>
+
+  <!-- 2. TWO PATHS -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">02</span><h2>获得套装的两种途径</h2></div>
+    <p class="lead">
+      一套装饰套装，要么在上线时直接花钱买下，要么通过代币商店耐心攒齐。
+      这两条途径面向的是两类截然不同的玩家，他们并不会去争抢同一个钱包。
+    </p>
+    <div class="paths">
+      <div class="path premium">
+        <div class="ptitle">上新礼包</div>
+        <div class="psub">付费购买，真金白银。仅限上线窗口期，过期不候。</div>
+        <div class="pbig">约 $175 <small>1 级</small></div>
+        <ul>
+          <li><span>礼包档位</span><span>$4.99 至 $99.99</span></li>
+          <li><span>2 级（需三份）</span><span>约 $525</span></li>
+          <li><span>可获取时间</span><span>仅上线期间</span></li>
+        </ul>
+      </div>
+      <div class="path store">
+        <div class="ptitle">套装代币商店</div>
+        <div class="psub">使用软通货。集齐一套 1 级套装需 11,340 代币。</div>
+        <div class="pbig">约 $94 <small>最多，或长期免费攒齐</small></div>
+        <ul>
+          <li><span>每周免费收入</span><span>约 300 代币</span></li>
+          <li><span>最划算的充值</span><span>$0.99 / 120</span></li>
+          <li><span>每周投入 $5</span><span>约 3 个月</span></li>
+          <li><span>耐心攒、不花钱</span><span>约 9 个月</span></li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">充值档位向上为 $4.99（300）、$19.99（1,280）、$49.99（3,280）、$99.99（6,480），且没有每周上限。商店途径仍需好几个月，这恰恰是它不会蚕食上新礼包的原因。</p>
+  </section>
+
+  <!-- 3. CADENCE -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">03</span><h2>节奏失衡的问题</h2></div>
+    <p class="lead">
+      新套装稳定地推出，但亲民的商店却停滞了。积压并不是产能问题，而是「进入商店」这一环节的问题。
+    </p>
+    <div class="cadence">
+      <div class="stat">
+        <div class="big">约 2.4 个月</div>
+        <div class="cap">两次新套装上线之间的平均间隔（近几次间隔：48、80、73、93 天）</div>
+      </div>
+      <div class="stat">
+        <div class="big">4 至 5</div>
+        <div class="cap">每年推出的全新套装数量</div>
+      </div>
+      <div class="stat">
+        <div class="big flag">9 套中 0 套</div>
+        <div class="cap">2023 年 12 月以来上线、且已进入代币商店的套装</div>
+      </div>
+      <div class="stat">
+        <div class="big flag">10</div>
+        <div class="cap">已下架、无亲民获取通道的旧套装</div>
+      </div>
+    </div>
+    <p class="note">新内容的供给十分健康。缺的是一条规则：随着新内容到来，把最旧的内容移入亲民通道。</p>
+  </section>
+
+  <!-- 4. THE CHART -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">04</span><h2>稳定进入商店 对比 囤积后集中倾销</h2></div>
+    <div class="scope">仅作示意，只计旧版库存的代币收入</div>
+    <p class="lead">
+      以一年为周期建模，默认人群为 600 名活跃的套装买家（构成：55% 免费玩家、
+      30% 每周投入 $5 的档位、12% $25 档位、3% $100 档位）。问题不在于要不要释放这些库存，
+      而在于怎么释放。
+    </p>
+
+    <div class="toggle-row">
+      <span class="tlabel">对比</span>
+      <div class="seg" role="group" aria-label="对比两种释放策略">
+        <button type="button" id="seg-both" aria-pressed="true">两者</button>
+        <button type="button" id="seg-hold" aria-pressed="false">囤积后倾销</button>
+        <button type="button" id="seg-steady" aria-pressed="false">稳定进入商店</button>
+      </div>
+    </div>
+
+    <div class="chart-wrap">
+      <div class="chart-head">
+        <span class="ct">10 套旧套装带来的年度代币收入</span>
+        <span class="delta" id="delta-line">稳定进入商店多赚约 $47,676，约为 2.7&times;</span>
+      </div>
+      <div class="bars">
+        <div class="bar-row" id="row-hold">
+          <div class="blabel"><b>囤积后倾销</b>约 10 个月毫无动静，然后 10 套一次性全放（约 30% 玩家流失）</div>
+          <div class="track"><div class="fill hold" data-target="28825" data-pct="38"><span class="amt">$28,825</span></div></div>
+        </div>
+        <div class="bar-row" id="row-steady">
+          <div class="blabel"><b>稳定进入商店</b>最旧的一套约每 2.5 个月进入一次商店</div>
+          <div class="track"><div class="fill steady" data-target="76501" data-pct="100"><span class="amt">$76,501</span></div></div>
+        </div>
+      </div>
+      <p class="chart-foot">
+        这些数字仅指 10 套旧套装在代币商店产生的收入，并非游戏总收入：在两条途径下，
+        上新礼包与限时礼包的收入完全相同。稳定进入商店能让耐心攒攒的玩家全年都持续地小额消费，
+        而不是让免费代币花不出去、又在一次集中倾销时流失大批玩家。
+      </p>
+    </div>
+  </section>
+
+  <!-- 5. OBJECTIONS -->
+  <section class="reveal">
+    <div class="sec-head"><span class="sec-num">05</span><h2>逐一回应顾虑</h2></div>
+    <div class="obj-grid">
+      <div class="obj">
+        <div class="qmark">问</div>
+        <div>
+          <p class="qt">免费的代币套装会不会抢了礼包的销量？</p>
+          <p class="at">不会。每次只有最旧的一套进入商店，因此每一套近期套装都继续保持付费，完整保留上线收入。进入商店面向的是那些本来就不会花全价购买上线礼包、只愿耐心攒攒的玩家。</p>
+        </div>
+      </div>
+      <div class="obj">
+        <div class="qmark">问</div>
+        <div>
+          <p class="qt">付费玩家会不会干脆等着拿免费版本？</p>
+          <p class="at">代币途径依然要花好几个月。没耐心的玩家会继续买礼包来省去这段等待，而升级仍然要花钱：升到 2 级需要同一套的三份。</p>
+        </div>
+      </div>
+      <div class="obj">
+        <div class="qmark">问</div>
+        <div>
+          <p class="qt">这会不会让每月的限时礼包贬值？</p>
+          <p class="at">不会。限时礼包打包的内容远不止套装本身，而且它们维持原样、丝毫不变。只有一套早已过了上线期好几年的库存套装，才会进入亲民通道。</p>
+        </div>
+      </div>
+    </div>
+    <p class="note">温和地说：这件事的着眼点，是让中坚玩家保持参与、并弥合一道会自行扩大的差距，而不是针对谁拥有得太多。</p>
+  </section>
+
+  <!-- RECOMMENDATION RESTATE -->
+  <div class="recommend reveal">
+    <div class="rk">建议</div>
+    <p>为套装代币商店采用<b>「一进一出」</b>规则：每当有新套装上线，最旧的一套库存套装就加入商店。<b>开发成本为零、风险低，且仅凭旧版库存就有约每年 +$47,676</b> 的示意性增量，最新的几套套装和限时礼包则完全不受影响。</p>
+  </div>
+
+  <!-- SIGN-OFF -->
+  <div class="signoff reveal">
+    <div class="from">
+      此致敬意，
+      <span>一位 2864 服玩家</span>
+    </div>
+    <div class="seal">
+      口袋奇兵 &middot; 贵公司<br>
+      套装商店提案<br>
+      2026 年 5 月
+    </div>
+  </div>
+
+</main>
+
+<script>
+(function () {
+  'use strict';
+
+  // ---- scroll reveal (only active when js-reveal is set on <html>) ----
+  var revealOn = document.documentElement.classList.contains('js-reveal');
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('.reveal'));
+
+  function fillBars() {
+    var fills = document.querySelectorAll('.fill');
+    for (var i = 0; i < fills.length; i++) {
+      var pct = parseFloat(fills[i].getAttribute('data-pct')) || 0;
+      fills[i].style.width = pct + '%';
+    }
+  }
+
+  if (revealOn && 'IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) {
+          e.target.classList.add('shown');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('shown'); });
+  }
+
+  // Fill the chart bars shortly after load so the animation reads.
+  if (revealOn) {
+    window.setTimeout(fillBars, 260);
+  } else {
+    fillBars();
+  }
+
+  // ---- single toggle: which strategy bars are shown ----
+  var btnBoth = document.getElementById('seg-both');
+  var btnHold = document.getElementById('seg-hold');
+  var btnSteady = document.getElementById('seg-steady');
+  var rowHold = document.getElementById('row-hold');
+  var rowSteady = document.getElementById('row-steady');
+  var deltaLine = document.getElementById('delta-line');
+
+  function setView(mode) {
+    var showHold = (mode === 'both' || mode === 'hold');
+    var showSteady = (mode === 'both' || mode === 'steady');
+    rowHold.style.display = showHold ? '' : 'none';
+    rowSteady.style.display = showSteady ? '' : 'none';
+    btnBoth.setAttribute('aria-pressed', String(mode === 'both'));
+    btnHold.setAttribute('aria-pressed', String(mode === 'hold'));
+    btnSteady.setAttribute('aria-pressed', String(mode === 'steady'));
+
+    if (mode === 'hold') {
+      deltaLine.textContent = '囤积后倾销：全年约 $28,825';
+    } else if (mode === 'steady') {
+      deltaLine.textContent = '稳定进入商店：全年约 $76,501';
+    } else {
+      deltaLine.innerHTML = '稳定进入商店多赚约 $47,676，约为 2.7×';
+    }
+  }
+
+  if (btnBoth && btnHold && btnSteady) {
+    btnBoth.addEventListener('click', function () { setView('both'); });
+    btnHold.addEventListener('click', function () { setView('hold'); });
+    btnSteady.addEventListener('click', function () { setView('steady'); });
+  }
+})();
+</script>
+</body>
+</html>

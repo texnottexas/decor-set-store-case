@@ -1,0 +1,761 @@
+<!-- 视图：「付费玩家」——付费玩家（大额玩家）面向研发团队的发声（本文为该视图的简体中文版本）。高级黑卡会员俱乐部风格：暖调黑曜石 + 金箔、会员卡元素、收据/账单卡片、锁定的钱包计数器。这是「装饰套装商店」商业方案七个可切换视图之一。 -->
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; base-uri 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="description" content="致口袋奇兵研发团队的一封公开信：让我们付钱。手握满钱包却被锁在柜台外的付费玩家，恳请贵公司把积压的旧装饰套装按稳定节奏放入套装代币商店。所有数字均为示意。">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='35%25'%3E%3Cstop offset='0' stop-color='%23ffe9a8'/%3E%3Cstop offset='0.55' stop-color='%23e7b24a'/%3E%3Cstop offset='1' stop-color='%23a9791f'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='13' fill='url(%23g)' stroke='%238a6014' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23fff3cf' stroke-width='1' opacity='0.6'/%3E%3Ctext x='16' y='21' font-size='11' text-anchor='middle' fill='%237a560f' font-family='Georgia,serif'%3ET%3C/text%3E%3C/svg%3E">
+<title>付费玩家：让我们给你付钱</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&family=Cormorant:wght@500;600&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --obsidian:#0c0a08;
+  --char:#141009;
+  --char2:#1c160d;
+  --card:#191307;
+  --ink:#f3e9d2;
+  --ink2:#cdbf9d;
+  --muted:#9b8b68;
+  --faint:#6f6147;
+  --line:#3a2f18;
+  --line2:#2a2210;
+  --gold:#e7b24a;
+  --gold-hi:#ffe9a8;
+  --gold-lo:#a9791f;
+  --teal:#5cba9f;
+  --rust:#dc6b4b;
+  --foil:linear-gradient(135deg,#a9791f 0%,#e7b24a 22%,#fff3cf 38%,#e7b24a 55%,#a9791f 74%,#ffe9a8 90%,#c08f2a 100%);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:var(--obsidian);
+  color:var(--ink);
+  font-family:'Jost','Noto Sans SC',sans-serif;
+  font-weight:300;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+/* atmospheric background: warm pooled light + faint gold grain */
+body::before{
+  content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;
+  background:
+    radial-gradient(120% 80% at 78% -8%, rgba(231,178,74,0.11), transparent 56%),
+    radial-gradient(90% 70% at 8% 108%, rgba(169,121,31,0.10), transparent 60%),
+    var(--obsidian);
+}
+body::after{
+  content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:0.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 22px}
+a{color:var(--gold)}
+
+/* gold foil text */
+.foil{
+  background:var(--foil);
+  background-size:220% 220%;
+  -webkit-background-clip:text;background-clip:text;
+  color:transparent;-webkit-text-fill-color:transparent;
+  animation:shimmer 9s ease-in-out infinite;
+}
+@keyframes shimmer{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
+.rule{height:1px;border:0;margin:0;background:linear-gradient(90deg,transparent,var(--line),transparent)}
+.goldrule{height:1px;border:0;background:var(--foil);opacity:0.7}
+
+/* ===== top band ===== */
+.band{
+  border-bottom:1px solid var(--line2);
+  background:linear-gradient(180deg,rgba(28,22,13,0.6),transparent);
+}
+.band .wrap{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:14px 22px}
+.crest{display:flex;align-items:center;gap:11px}
+.crest .seal{width:34px;height:34px;flex:none}
+.crest .lbl{font-family:'Jost','Noto Sans SC';font-weight:500;letter-spacing:0.34em;font-size:11px;text-transform:uppercase;color:var(--ink2)}
+.crest .lbl small{display:block;letter-spacing:0.2em;font-size:9px;color:var(--faint);font-weight:400}
+.memno{font-family:'Cormorant','Noto Serif SC';font-size:13px;letter-spacing:0.12em;color:var(--faint);text-align:right}
+.memno b{color:var(--gold);font-weight:600}
+
+/* ===== hero ===== */
+.hero{position:relative;padding:64px 0 30px;text-align:center}
+.kicker{
+  display:inline-block;font-weight:500;letter-spacing:0.42em;font-size:11px;text-transform:uppercase;
+  color:var(--gold);padding:7px 18px;border:1px solid var(--line);border-radius:40px;margin-bottom:26px;
+  background:rgba(231,178,74,0.05);
+}
+h1{
+  font-family:'Cormorant Garamond','Noto Serif SC',serif;font-weight:600;
+  font-size:clamp(40px,8.5vw,82px);line-height:0.98;margin:0 0 6px;letter-spacing:-0.01em;
+}
+h1 em{font-style:italic;font-weight:500}
+.subhero{
+  font-family:'Cormorant Garamond','Noto Serif SC',serif;font-style:italic;font-weight:400;
+  font-size:clamp(19px,3.6vw,29px);color:var(--ink2);max-width:680px;margin:14px auto 0;line-height:1.35;
+}
+.signoff{margin-top:24px;font-size:12.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
+.signoff b{color:var(--ink);font-weight:500}
+
+/* ===== membership card ===== */
+.cardstage{padding:30px 0 8px;perspective:1400px}
+.memcard{
+  position:relative;max-width:560px;margin:0 auto;aspect-ratio:1.586/1;border-radius:18px;
+  background:
+    linear-gradient(135deg,#211a0e 0%,#0f0b05 48%,#1a1408 100%);
+  border:1px solid #4a3a1a;
+  box-shadow:0 30px 70px -28px rgba(0,0,0,0.9),inset 0 1px 0 rgba(255,243,207,0.08);
+  padding:clamp(18px,4.4vw,30px);overflow:hidden;
+  transform:rotateX(5deg);transition:transform .5s ease;
+}
+.cardstage:hover .memcard{transform:rotateX(0deg)}
+.memcard::before{
+  content:"";position:absolute;inset:0;opacity:0.14;mix-blend-mode:screen;pointer-events:none;
+  background:conic-gradient(from 210deg at 70% 25%, transparent, rgba(255,243,207,0.9), transparent 28%);
+}
+.memcard .ctop{display:flex;justify-content:space-between;align-items:flex-start;position:relative}
+.memcard .tier{font-family:'Jost','Noto Sans SC';font-weight:600;letter-spacing:0.36em;font-size:11px;text-transform:uppercase;color:var(--gold-hi)}
+.memcard .tier small{display:block;letter-spacing:0.18em;color:var(--muted);font-weight:400;font-size:9px;margin-top:3px}
+.chip{
+  width:46px;height:34px;border-radius:7px;background:var(--foil);background-size:200% 200%;
+  border:1px solid #c79a36;position:relative;box-shadow:inset 0 0 6px rgba(122,86,15,0.6)
+}
+.chip::after{content:"";position:absolute;inset:6px;border:1px solid rgba(122,86,15,0.5);border-radius:3px}
+.memcard .cnum{
+  font-family:'Cormorant','Noto Serif SC';font-weight:500;letter-spacing:0.22em;font-size:clamp(17px,4vw,24px);
+  margin:clamp(14px,4vw,30px) 0 6px;color:var(--ink);position:relative;
+}
+.memcard .cbot{display:flex;justify-content:space-between;align-items:flex-end;position:relative}
+.memcard .cbot .nm{font-family:'Cormorant Garamond','Noto Serif SC';font-size:clamp(15px,3.4vw,20px);color:var(--ink2);font-style:italic}
+.memcard .cbot .vd{text-align:right}
+.memcard .cbot .vd span{display:block;font-size:9px;letter-spacing:0.22em;text-transform:uppercase;color:var(--faint)}
+.memcard .cbot .vd b{font-family:'Cormorant','Noto Serif SC';font-size:clamp(15px,3.4vw,20px);color:var(--gold);font-weight:600;letter-spacing:0.06em}
+
+/* ===== wallet counter ===== */
+.wallet{max-width:560px;margin:22px auto 0;text-align:center}
+.wallet .wlbl{font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--muted)}
+.wallet .wnum{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(46px,11vw,74px);line-height:1;margin:6px 0 2px;letter-spacing:0.01em}
+.wallet .wsub{font-size:12.5px;color:var(--ink2);letter-spacing:0.04em}
+.wallet .wsub b{color:var(--rust);font-weight:500}
+.locktag{
+  display:inline-flex;align-items:center;gap:7px;margin-top:13px;padding:6px 15px;border-radius:30px;
+  border:1px solid var(--line);background:rgba(220,107,75,0.08);color:#e89478;
+  font-size:11px;letter-spacing:0.18em;text-transform:uppercase;font-weight:500;
+}
+.locktag svg{width:13px;height:13px}
+
+/* ===== section frame ===== */
+section{padding:54px 0}
+.eyebrow{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.eyebrow .no{font-family:'Cormorant','Noto Serif SC';font-style:italic;font-size:30px;color:var(--gold-lo);font-weight:600;line-height:1}
+.eyebrow .tx{font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:var(--muted);font-weight:500}
+h2{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-weight:600;font-size:clamp(28px,5.4vw,46px);line-height:1.04;margin:0 0 16px;letter-spacing:-0.005em}
+h2 em{font-style:italic;color:var(--gold)}
+.lede{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:clamp(18px,2.6vw,23px);color:var(--ink2);max-width:680px;line-height:1.45;font-weight:400}
+p{max-width:680px;color:var(--ink2);font-size:15.5px}
+p b{color:var(--ink);font-weight:500}
+
+/* ===== receipts ===== */
+.receipts{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:18px;margin-top:30px}
+.receipt{
+  position:relative;background:
+    linear-gradient(180deg,#1b150b,#15100a);
+  border:1px solid var(--line);border-radius:4px 4px 0 0;padding:20px 20px 0;
+  box-shadow:0 18px 40px -24px rgba(0,0,0,0.85);
+  font-family:'Jost','Noto Sans SC';
+}
+/* zig-zag torn bottom edge */
+.receipt::after{
+  content:"";display:block;height:11px;margin:14px -1px 0;
+  background:
+    linear-gradient(135deg,#15100a 50%,transparent 50%) 0 0/11px 11px repeat-x,
+    linear-gradient(225deg,#15100a 50%,transparent 50%) 0 0/11px 11px repeat-x;
+}
+.receipt .rhead{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px dashed var(--line);padding-bottom:11px;margin-bottom:12px}
+.receipt .who{font-weight:600;letter-spacing:0.04em;color:var(--ink);font-size:14px}
+.receipt .who small{display:block;color:var(--faint);font-weight:400;letter-spacing:0.16em;text-transform:uppercase;font-size:9px;margin-top:2px}
+.receipt .stamp{font-family:'Cormorant','Noto Serif SC';font-style:italic;font-size:13px;color:var(--gold-lo)}
+.li{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:5px 0;color:var(--ink2)}
+.li .v{font-variant-numeric:tabular-nums;color:var(--ink)}
+.li.win .v{color:var(--teal)}
+.li.lose .v{color:var(--rust)}
+.li.big{border-top:1px dashed var(--line);margin-top:8px;padding-top:11px;font-size:14px}
+.li.big .k{color:var(--ink)}
+.li.big .v{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:18px;color:var(--gold);letter-spacing:0.03em}
+.receipt .strand{margin-top:9px;font-size:11px;color:#e89478;letter-spacing:0.02em;font-style:italic;font-family:'Cormorant Garamond','Noto Serif SC'}
+.receipt.spotlight{border-color:#6a4f1c;box-shadow:0 0 0 1px rgba(231,178,74,0.16),0 22px 48px -22px rgba(0,0,0,0.9)}
+.receipt.spotlight .rhead .who small{color:var(--gold)}
+
+/* ===== the frozen counter: declined order slips ===== */
+.declined{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;margin-top:28px}
+.slip{
+  border:1px solid var(--line);border-radius:9px;padding:18px 18px 16px;background:rgba(20,16,9,0.7);position:relative;overflow:hidden;
+}
+.slip .declined-stamp{
+  position:absolute;top:14px;right:-30px;transform:rotate(18deg);
+  font-family:'Jost','Noto Sans SC';font-weight:600;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;
+  color:rgba(220,107,75,0.85);border:2px solid rgba(220,107,75,0.55);padding:3px 34px;border-radius:3px;
+}
+.slip .ord{font-size:11px;letter-spacing:0.18em;text-transform:uppercase;color:var(--faint)}
+.slip .ititle{font-family:'Cormorant Garamond','Noto Serif SC';font-style:italic;font-size:20px;color:var(--ink);margin:6px 0 2px}
+.slip .amt{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:26px;color:var(--muted);letter-spacing:0.02em}
+.slip .rsn{font-size:12px;color:var(--ink2);margin-top:8px;line-height:1.45}
+.slip .rsn b{color:#e89478;font-weight:500}
+
+/* ===== ledger compare ===== */
+.scales{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+@media(max-width:560px){.scales{grid-template-columns:1fr}}
+.pan{border:1px solid var(--line);border-radius:12px;padding:22px;background:linear-gradient(180deg,#17110a,#120d07)}
+.pan h3{margin:0;font-family:'Jost','Noto Sans SC';font-weight:500;letter-spacing:0.22em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.pan .figure{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(34px,7vw,52px);margin:8px 0 2px;line-height:1}
+.pan.cold .figure{color:#9aa8b0}
+.pan.warm .figure{color:var(--gold)}
+.pan .cap{font-size:12.5px;color:var(--ink2);font-style:italic;font-family:'Cormorant Garamond','Noto Serif SC'}
+.pan .barwrap{height:9px;border-radius:6px;background:#231b0e;margin-top:16px;overflow:hidden}
+.pan .bar{height:100%;border-radius:6px;transition:width 1.1s cubic-bezier(.2,.8,.2,1)}
+.pan.cold .bar{background:linear-gradient(90deg,#3a4750,#7d8b94)}
+.pan.warm .bar{background:var(--foil);background-size:200% 200%}
+.delta{
+  text-align:center;margin-top:22px;font-family:'Cormorant Garamond','Noto Serif SC';font-style:italic;
+  font-size:clamp(17px,2.6vw,21px);color:var(--ink2);
+}
+.delta b{color:var(--gold);font-weight:600;font-style:normal;font-family:'Cormorant','Noto Serif SC';letter-spacing:0.02em}
+
+/* ===== live model ===== */
+.model{
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:30px;
+  background:linear-gradient(180deg,#15100a,#100c06);
+  box-shadow:0 26px 60px -30px rgba(0,0,0,0.9);
+}
+.model .mhead{padding:18px 22px;border-bottom:1px solid var(--line2);background:rgba(28,22,13,0.5)}
+.model .mhead .t{font-family:'Cormorant Garamond','Noto Serif SC';font-style:italic;font-size:21px;color:var(--ink)}
+.model .mhead .s{font-size:11.5px;color:var(--muted);letter-spacing:0.04em}
+.mbody{display:grid;grid-template-columns:1.25fr 1fr;gap:0}
+@media(max-width:720px){.mbody{grid-template-columns:1fr}}
+.mchart{padding:18px 14px 8px;min-width:0}
+.mchart svg{width:100%;height:auto;display:block}
+.legend{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;font-size:11px;color:var(--muted);letter-spacing:0.06em;padding:2px 8px 12px}
+.legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
+.mctrl{padding:20px 22px;border-left:1px solid var(--line2);display:flex;flex-direction:column;gap:18px}
+@media(max-width:720px){.mctrl{border-left:0;border-top:1px solid var(--line2)}}
+.seg{display:flex;flex-wrap:wrap;gap:7px}
+.seg button{
+  font-family:'Jost','Noto Sans SC';font-weight:400;font-size:11.5px;letter-spacing:0.06em;cursor:pointer;
+  background:transparent;color:var(--ink2);border:1px solid var(--line);border-radius:30px;padding:7px 13px;transition:.2s;
+}
+.seg button:hover{border-color:var(--gold-lo);color:var(--ink)}
+.seg button.on{background:var(--foil);background-size:200% 200%;color:#1a1305;border-color:transparent;font-weight:600}
+.fld label{display:block;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.fld label b{color:var(--gold);font-family:'Cormorant','Noto Serif SC';font-size:15px;letter-spacing:0.02em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;background:#332811;outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--foil);background-size:200%;border:2px solid #1a1305;cursor:pointer;box-shadow:0 2px 8px rgba(0,0,0,0.6)}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:#e7b24a;border:2px solid #1a1305;cursor:pointer}
+.readouts{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;text-align:center}
+.readouts .ro{border:1px solid var(--line2);border-radius:9px;padding:11px 6px;background:rgba(20,16,9,0.6)}
+.readouts .ro .n{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(20px,5vw,27px);color:var(--ink);line-height:1}
+.readouts .ro .l{font-size:9.5px;letter-spacing:0.12em;text-transform:uppercase;color:var(--faint);margin-top:5px}
+.policytag{font-size:11px;letter-spacing:0.1em;text-transform:uppercase;text-align:center;padding:7px;border-radius:7px;font-weight:500}
+.policytag.now{background:rgba(220,107,75,0.1);color:#e89478;border:1px solid rgba(220,107,75,0.3)}
+.policytag.prop{background:rgba(92,186,159,0.1);color:#7fd0b8;border:1px solid rgba(92,186,159,0.3)}
+.verdict{font-family:'Cormorant Garamond','Noto Serif SC';font-size:16px;line-height:1.45;color:var(--ink2);border-left:2px solid var(--rust);padding-left:14px}
+.verdict.good{border-left-color:var(--teal)}
+.verdict b{color:var(--ink);font-weight:600}
+
+/* ===== objection ===== */
+.obj{border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:24px;background:rgba(20,16,9,0.55)}
+.obj .q{padding:20px 24px;background:linear-gradient(180deg,rgba(28,22,13,0.6),transparent);border-bottom:1px solid var(--line2)}
+.obj .q .tag{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:7px}
+.obj .q .txt{font-family:'Cormorant Garamond','Noto Serif SC';font-style:italic;font-size:clamp(18px,3vw,24px);color:var(--ink)}
+.obj .a{padding:22px 24px}
+.obj .a .tag{font-size:10px;letter-spacing:0.26em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:7px}
+.obj .a p{margin:0 0 12px;max-width:none}
+.obj .a p:last-child{margin-bottom:0}
+
+/* ===== closing ===== */
+.close{
+  text-align:center;border-top:1px solid var(--line2);margin-top:30px;padding:62px 0 30px;
+  background:radial-gradient(80% 120% at 50% 0%,rgba(231,178,74,0.07),transparent 60%);
+}
+.close .crown{width:46px;height:46px;margin:0 auto 18px;display:block}
+.close h2{margin-bottom:14px}
+.ask{
+  max-width:620px;margin:18px auto 0;font-family:'Cormorant Garamond','Noto Serif SC';font-size:clamp(18px,3vw,23px);
+  font-style:italic;color:var(--ink2);line-height:1.5;
+}
+.ask b{color:var(--gold);font-style:normal;font-weight:600}
+.footer{padding:30px 0 60px;text-align:center;color:var(--faint);font-size:11.5px;letter-spacing:0.06em}
+.footer .il{color:var(--muted)}
+.cred{margin-top:8px;font-family:'Cormorant Garamond','Noto Serif SC';font-style:italic;font-size:14px;color:var(--muted)}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.foil{animation:none}}
+</style>
+</head>
+<body>
+
+<!-- routing band -->
+<div class="band">
+  <div class="wrap">
+    <div class="crest">
+      <svg class="seal" viewBox="0 0 32 32" aria-hidden="true">
+        <defs><radialGradient id="sg" cx="40%" cy="35%"><stop offset="0" stop-color="#ffe9a8"/><stop offset="0.55" stop-color="#e7b24a"/><stop offset="1" stop-color="#a9791f"/></radialGradient></defs>
+        <circle cx="16" cy="16" r="13" fill="url(#sg)" stroke="#8a6014" stroke-width="1.5"/>
+        <circle cx="16" cy="16" r="9" fill="none" stroke="#fff3cf" stroke-width="1" opacity="0.6"/>
+        <text x="16" y="21" font-size="11" text-anchor="middle" fill="#7a560f" font-family="Cormorant,Georgia,serif">T</text>
+      </svg>
+      <div class="lbl">2864 服尊享会员<small>装饰套装商店</small></div>
+    </div>
+    <div class="memno">会员俱乐部 &middot; <b>主题：让我们给你付钱</b></div>
+  </div>
+</div>
+
+<!-- hero -->
+<header class="hero wrap">
+  <span class="kicker reveal">来自付费玩家</span>
+  <h1 class="reveal">我们要的不是<br><em class="foil">免费的东西。</em></h1>
+  <p class="subhero reveal">我们要的，是被允许付钱。我们有这份钱、有这份热情，也有满满一墙下不了的订单——只因为商店不让我们买。</p>
+  <div class="signoff reveal">这是一封致工作室的公开信，来自 <b>2864 服的付费玩家</b></div>
+</header>
+
+<!-- membership card + wallet -->
+<div class="cardstage wrap reveal">
+  <div class="memcard" aria-label="付费玩家会员卡">
+    <div class="ctop">
+      <div class="tier">创始尊享会员<small>每周 $100，心甘情愿</small></div>
+      <div class="chip" aria-hidden="true"></div>
+    </div>
+    <div class="cnum">7080 &nbsp; 代币 &nbsp; 每周 &nbsp; 待用</div>
+    <div class="cbot">
+      <div class="nm">持卡人：一位愿意掏钱的买家</div>
+      <div class="vd"><span>状态</span><b>被拒之门外</b></div>
+    </div>
+  </div>
+</div>
+
+<div class="wallet wrap reveal">
+  <div class="wlbl">此刻可用于消费</div>
+  <div class="wnum foil" id="walletNum">0</div>
+  <div class="wsub">我们最大额的玩家整整攒了一年的代币，而 <b>商店里根本没有任何东西可以让他们花掉</b>。</div>
+  <span class="locktag">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+    货架已上锁
+  </span>
+</div>
+
+<hr class="rule wrap" style="margin-top:48px">
+
+<!-- 1: the receipts of demand -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">i.</span><span class="tx">我们需求的收据</span></div>
+    <h2>就连 <em>我们最重的消费</em><br>也会被货架掐断。</h2>
+    <p class="lede">如果最久未上架的套装大约每两个半月就有一套进入套装代币商店，那么一位玩家在一年里会做出怎样的消费？以下就是我们乐意下的那些订单。请留意它们在哪里戛然而止。</p>
+  </div>
+
+  <div class="receipts">
+    <div class="receipt reveal">
+      <div class="rhead"><div class="who">免费玩家<small>无消费</small></div><div class="stamp">已付</div></div>
+      <div class="li"><span class="k">完成套装</span><span class="v">1</span></div>
+      <div class="li"><span class="k">免费获得代币</span><span class="v">15,600</span></div>
+      <div class="li big"><span class="k">合计支付</span><span class="v">$0</span></div>
+      <div class="strand">玩得开心、忙得起劲，稳稳走在台阶上。这就是入门的引路坡。</div>
+    </div>
+
+    <div class="receipt reveal">
+      <div class="rhead"><div class="who">每周 $5<small>轻度消费</small></div><div class="stamp">已付</div></div>
+      <div class="li"><span class="k">完成套装</span><span class="v">3</span></div>
+      <div class="li win"><span class="k">持续补货</span><span class="v">全年不断</span></div>
+      <div class="li big"><span class="k">合计支付</span><span class="v">$203</span></div>
+      <div class="strand">触手可及的目标，让人愿意一直把卡掏出来、随时备着。</div>
+    </div>
+
+    <div class="receipt reveal">
+      <div class="rhead"><div class="who">每周 $25<small>稳定消费</small></div><div class="stamp">已付</div></div>
+      <div class="li"><span class="k">完成套装</span><span class="v">4</span></div>
+      <div class="li lose"><span class="k">无处可用的代币</span><span class="v">约 2,200</span></div>
+      <div class="li big"><span class="k">合计支付</span><span class="v">$424</span></div>
+      <div class="strand">早已追平进度。钱就等在那里，却没有货架可以让它花出去。</div>
+    </div>
+
+    <div class="receipt spotlight reveal">
+      <div class="rhead"><div class="who">每周 $100<small>顶级尊享</small></div><div class="stamp">已付</div></div>
+      <div class="li"><span class="k">完成套装</span><span class="v">4</span></div>
+      <div class="li lose"><span class="k">无处可用的代币</span><span class="v">约 5,640</span></div>
+      <div class="li big"><span class="k">合计支付</span><span class="v">$525</span></div>
+      <div class="strand">就连我们最大额的玩家也撞上了这堵墙，让一笔不小的代币财富白白搁置。我们本想买更多，可没有任何东西可买。</div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">请再看一眼最后这两张收据。手头最阔绰、最愿意掏钱的买家，完成的套装数量和那位稳定消费者一模一样，最后却揣着 <b>数千枚根本变不成任何东西的代币</b> 离场。我们想花却被拦下的那道缺口，并不是流失的需求，而是被搁置的需求，正等着贵公司打开一格货架。</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 2: the orders we could not place -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">ii.</span><span class="tx">在冻结的商店之下</span></div>
+    <h2>那些我们<br><em>下不了的订单。</em></h2>
+    <p class="lede">大约一整年里，没有任何一套旧套装进入过套装代币商店。当没有可触及的目标可追时，追逐本身也就消失了。当货架始终紧闭，同样这几位玩家在整整一年里又做了什么——请看下面。</p>
+  </div>
+
+  <div class="declined">
+    <div class="slip reveal">
+      <span class="declined-stamp">已拒</span>
+      <div class="ord">订单 &middot; $5 玩家</div>
+      <div class="ititle">一套触手可及的套装</div>
+      <div class="amt">$0</div>
+      <div class="rsn">没有目标可追，补货也就停了。<b>全年消费 $0</b>，代币只能囤积，找不到出口。</div>
+    </div>
+    <div class="slip reveal">
+      <span class="declined-stamp">已拒</span>
+      <div class="ord">订单 &middot; $25 玩家</div>
+      <div class="ititle">一套触手可及的套装</div>
+      <div class="amt">$0</div>
+      <div class="rsn">愿意掏钱，却无处可花。<b>全年消费 $0</b>，代币只能越堆越高、闲置一旁。</div>
+    </div>
+    <div class="slip reveal">
+      <span class="declined-stamp">已拒</span>
+      <div class="ord">订单 &middot; $100 玩家</div>
+      <div class="ititle">一套触手可及的套装</div>
+      <div class="amt">$0</div>
+      <div class="rsn">我们最大额的玩家，整装待发却被拒之门外。<b>全年消费 $0</b>，攒下超过 15,000 枚免费代币，却没有任何东西可以兑换。</div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">这就是冻结所带来的、悄无声息的代价。并不是我们主动选择停手，而是再也没有什么值得去追，于是卡又被收回了抽屉。<b>没有目标的付费玩家，就是停下脚步的付费玩家。</b>积压的套装分文不挣，而我们守着整整一年、本可痛痛快快换成消费的代币，干坐着。</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 3: the scales -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">iii.</span><span class="tx">一个可触及的目标值多少</span></div>
+    <h2>同样这群玩家，<br>两扇 <em>不同的门。</em></h2>
+    <p class="lede">以一个示意性的 600 名活跃玩家群体为例，下面是在两种做法下，旧套装积压在一年里各能带来多少收入。唯一的区别，仅在于我们是否得到了一个可以追逐的目标。所有数字均为示意；统计范围仅限那 10 套旧套装在套装代币商店中产生的收入，绝非游戏总收入。</p>
+  </div>
+
+  <div class="scales">
+    <div class="pan cold reveal">
+      <h3>囤着不放，再一次性倾倒</h3>
+      <div class="figure">$28,825</div>
+      <div class="cap">先把货架冻起来，再一股脑全部释放。可我们中很多人，没等到那一刻就已经放弃。</div>
+      <div class="barwrap"><div class="bar" id="barDump" style="width:0%"></div></div>
+    </div>
+    <div class="pan warm reveal">
+      <h3>稳定上架</h3>
+      <div class="figure">$76,501</div>
+      <div class="cap">每两个半月就有一套旧套装毕业上架，搭着贵公司现成的上新节奏走。这一整年里，卡都不会收回去。</div>
+      <div class="barwrap"><div class="bar" id="barDrip" style="width:0%"></div></div>
+    </div>
+  </div>
+  <div class="delta reveal">仅靠这批旧套装积压，稳定上架在一年里就能多挣大约 <b>$47,676</b>，约是囤着不放再倾倒所收的 <b>2.7 倍</b>；而且它能让我们全程保持投入，而不是只在一次短暂的爆发里热闹一阵。</div>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 4: live model -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">iv.</span><span class="tx">看就连付费玩家也会撞墙</span></div>
+    <h2>那堵墙，<em>近在眼前。</em></h2>
+    <p class="lede">选一位玩家，再选一个上架节奏。金线代表我们赚到的全部，青线代表我们被允许花掉的全部。两条线之间那片阴影，就是躺在我们钱包里、却无处可去的钱。所有数字均为示意。</p>
+  </div>
+
+  <div class="model reveal">
+    <div class="mhead">
+      <div class="t">一位玩家，一整年</div>
+      <div class="s">赚到的代币（金）对比可花出去的代币（青）。两者之间的差距，就是搁浅的代币。</div>
+    </div>
+    <div class="mbody">
+      <div class="mchart">
+        <svg id="chart" viewBox="0 0 640 320" role="img" aria-label="一整年里赚到的代币对比可花出去的代币"></svg>
+        <div class="legend">
+          <span><i style="background:#e7b24a"></i>赚到的代币</span>
+          <span><i style="background:#5cba9f"></i>我们得以花出去的代币</span>
+          <span><i style="background:rgba(220,107,75,0.6)"></i>搁浅、花不出去的代币</span>
+        </div>
+      </div>
+      <div class="mctrl">
+        <div class="fld">
+          <label>选择哪位玩家</label>
+          <div class="seg" id="seg-tier">
+            <button data-tier="free">免费</button>
+            <button data-tier="drip" class="on">每周 $5</button>
+            <button data-tier="mid">每周 $25</button>
+            <button data-tier="whale">每周 $100</button>
+          </div>
+        </div>
+        <div class="fld">
+          <label>每隔几个月上架一套：<b id="rel-v">2.5</b></label>
+          <input type="range" id="rel" min="1.5" max="6" step="0.5" value="2.5">
+        </div>
+        <div class="readouts">
+          <div class="ro"><div class="n" id="ro-sets">0</div><div class="l">完成套装</div></div>
+          <div class="ro"><div class="n" id="ro-rev">$0</div><div class="l">我们支付</div></div>
+          <div class="ro"><div class="n" id="ro-dead">0</div><div class="l">搁浅代币</div></div>
+        </div>
+        <div class="policytag prop" id="policy">建议节奏</div>
+        <div class="verdict good" id="verdict"></div>
+      </div>
+    </div>
+  </div>
+  <p class="reveal" style="margin-top:22px;font-size:13.5px;color:var(--faint)">把上架节奏滑到 <b>0</b>，就能看到今天这座冻结的商店：消费读数掉到 $0，搁浅的代币越堆越高。这正是我们一次次撞上的那堵墙。</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 5: objection -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">v.</span><span class="tx">一个合理的顾虑，正面回应</span></div>
+    <h2>「这会不会 <em>抢走</em><br>付费上新礼包的生意？」</h2>
+  </div>
+  <div class="obj reveal">
+    <div class="q">
+      <span class="tag">担忧所在</span>
+      <span class="txt">如果旧套装进入套装代币商店，玩家会干脆等它进商店，而不去买付费的上新礼包。</span>
+    </div>
+    <div class="a">
+      <span class="tag">为什么它反而会做大收入</span>
+      <p>我们所请求的这 10 套旧套装，它们的 <b>付费售卖窗口早在数年前就已关闭</b>。如今它们在任何地方都不再出售，就这样搁着，挣 <b>$0</b>。让它们毕业上架，等于不与任何东西竞争——因为眼下它们根本没在卖。</p>
+      <p>最新的 5 套付费套装则原封不动：依旧 <b>付费、依旧售卖，本方案完全不去碰它们</b>。每月的限时礼包返场也照样保留。我们要动的，自始至终只有那批旧套装积压。</p>
+      <p>而对我们所有人来说最关键的一点是：<b>一个可触及的套装代币商店目标，恰恰是让我们愿意持续充值的根本原因。</b>把目标拿走，消费就停了——我们自己的收据已经证明了这一点。把目标还回来，卡就又会被掏出来。这是把蛋糕做大，而不是把它切开分掉。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6: the soft secondary note -->
+<section class="wrap reveal">
+  <hr class="rule" style="margin-bottom:34px">
+  <div class="eyebrow"><span class="no">vi.</span><span class="tx">一点轻声的题外话</span></div>
+  <h2 style="font-size:clamp(24px,4.6vw,36px)">还有一个更安静的 <em>好处，轻轻奉上。</em></h2>
+  <p class="lede" style="font-size:clamp(17px,2.4vw,21px)">完成的套装会带来一点点永久的行军规模加成，也就是我们军队的规模。随着套装一点一点稳定上架，假以时日，这会温和地缩小消费较少的玩家在军队规模上的差距。我们只是轻轻一提，把它当作这套节奏顺带捎来的一份善意，而绝非一项要求。这个方案本身，单凭实打实的收入就足以立得住脚。</p>
+</section>
+
+<!-- closing -->
+<div class="close">
+  <div class="wrap">
+    <svg class="crown" viewBox="0 0 48 32" fill="none" aria-hidden="true">
+      <defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffe9a8"/><stop offset="0.5" stop-color="#e7b24a"/><stop offset="1" stop-color="#a9791f"/></linearGradient></defs>
+      <path d="M4 28 L8 8 L18 20 L24 4 L30 20 L40 8 L44 28 Z" fill="url(#cg)" stroke="#7a560f" stroke-width="1"/>
+      <circle cx="8" cy="8" r="2.4" fill="#fff3cf"/><circle cx="24" cy="4" r="2.6" fill="#fff3cf"/><circle cx="40" cy="8" r="2.4" fill="#fff3cf"/>
+    </svg>
+    <h2 class="reveal">打开货架。<br><em class="foil">我们乐意把它填满。</em></h2>
+    <p class="ask reveal">把上架与贵公司本就在跑的上新节奏绑在一起。每当一套全新套装上线，就让最久未上架的那套旧套装进入套装代币商店。上一套，毕业一套。付费的依旧付费，限时礼包返场照旧保留。任何时候挪动的，都只有那 10 套旧套装。<b>这就是我们全部的请求。</b></p>
+    <p class="ask reveal" style="margin-top:18px">我们就是那群手握满钱包、却被挡在锁着的柜台外的玩家。我们要的不是折扣，而是那扇门。给我们一个够得着的目标，我们就会让卡整整一年都摆在手边。收入早已在这里，<b>它只是在等着被放进门来。</b></p>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="il">所有数字均为示意，并已清楚标注。统计范围仅限那 10 套积压旧套装在套装代币商店中产生的收入，绝非游戏总收入。</div>
+  <div class="cred">由一位 2864 服玩家执笔，代表那些愿意付出更多的付费玩家</div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  /* =================== canonical model, ported exactly =================== */
+  var SET_COST = 11340;       // tokens for one full set (level 1)
+  var FREE_WK  = 300;         // free tokens per week
+  var WEEKS    = 52;
+  var BACKLOG  = 10;          // older shelved sets the drip could release
+
+  var TIERS = {
+    free:  {label:'一位免费玩家',      paidTokens:0,    usd:0},
+    drip:  {label:'一位每周 $5 的玩家', paidTokens:600,  usd:4.95},
+    mid:   {label:'一位每周 $25 的玩家',paidTokens:1880, usd:24.94},
+    whale: {label:'一位每周 $100 的玩家',paidTokens:7080,usd:104.93}
+  };
+
+  function simulate(tier, cumAvailFn){
+    var onHand=0, owned=0, dollars=0;
+    var earnedCum=[], spentCum=[];
+    for(var w=1; w<=WEEKS; w++){
+      var avail = Math.min(BACKLOG, cumAvailFn(w));
+      onHand += FREE_WK;
+      var goal = owned < avail;
+      if(goal && tier.paidTokens>0){ onHand += tier.paidTokens; dollars += tier.usd; }
+      while(owned < avail && onHand >= SET_COST){ onHand -= SET_COST; owned++; }
+      earnedCum.push(owned*SET_COST + onHand);
+      spentCum.push(owned*SET_COST);
+    }
+    var stranded = (owned >= Math.min(BACKLOG, cumAvailFn(WEEKS))) ? onHand : 0;
+    return {owned:owned, dollars:dollars, stranded:stranded, earnedCum:earnedCum, spentCum:spentCum};
+  }
+
+  /* =================== helpers =================== */
+  var NS='http://www.w3.org/2000/svg';
+  function el(tag,attrs){var e=document.createElementNS(NS,tag);for(var k in attrs){if(attrs.hasOwnProperty(k))e.setAttribute(k,attrs[k]);}return e;}
+  function fmt(n){return Math.round(n).toLocaleString();}
+  function byId(id){return document.getElementById(id);}
+
+  /* =================== live model chart =================== */
+  var curTier='drip';
+  var relEl = byId('rel');
+
+  function relPerYear(){ return relEl ? parseFloat(relEl.value) : 2.5; }
+
+  function drawWall(){
+    var svg = byId('chart');
+    if(!svg) return;
+    var tier = TIERS[curTier];
+    var months = relPerYear();
+    var everyWk = (52/12)*months;
+    var cumAvail = function(w){ return Math.floor(w/everyWk); };
+    var r = simulate(tier, cumAvail);
+
+    var W=640,H=320, pad={l:54,r:18,t:18,b:34};
+    var ix=W-pad.l-pad.r, iy=H-pad.t-pad.b;
+    var maxY=Math.max(SET_COST, Math.max.apply(null, r.earnedCum))*1.05;
+    var X=function(i){ return pad.l + (i/(WEEKS-1))*ix; };
+    var Y=function(v){ return pad.t + iy - (v/maxY)*iy; };
+
+    svg.innerHTML='';
+
+    var g,v,y;
+    var steps=4;
+    for(g=0;g<=steps;g++){
+      v=maxY*g/steps; y=Y(v);
+      svg.appendChild(el('line',{x1:pad.l,y1:y,x2:W-pad.r,y2:y,stroke:'#322811','stroke-width':1}));
+      var t=el('text',{x:pad.l-10,y:y+4,'text-anchor':'end',fill:'#7d6f4f','font-size':11,'font-family':'Jost'});
+      t.textContent = (v>=1000? (v/1000).toFixed(0)+'k' : Math.round(v)); svg.appendChild(t);
+    }
+    for(var m=0;m<=12;m+=3){
+      var i=Math.min(WEEKS-1, Math.round(m*52/12));
+      var x=X(i);
+      var tx=el('text',{x:x,y:H-12,'text-anchor':'middle',fill:'#7d6f4f','font-size':11,'font-family':'Jost'});
+      tx.textContent = m+'个月'; svg.appendChild(tx);
+    }
+
+    var top=r.earnedCum.map(function(vv,ii){return X(ii)+','+Y(vv);});
+    var bot=r.spentCum.map(function(vv,ii){return X(ii)+','+Y(vv);}).reverse();
+    svg.appendChild(el('polygon',{points:top.concat(bot).join(' '),fill:'rgba(220,107,75,0.15)'}));
+
+    function path(arr,color,wdt){
+      var d='M'+arr.map(function(vv,ii){return X(ii)+','+Y(vv);}).join(' L');
+      svg.appendChild(el('path',{d:d,fill:'none',stroke:color,'stroke-width':wdt,'stroke-linejoin':'round','stroke-linecap':'round'}));
+    }
+    path(r.spentCum,'#5cba9f',2.6);
+    path(r.earnedCum,'#e7b24a',2.6);
+
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.earnedCum[WEEKS-1]),r:4,fill:'#e7b24a'}));
+    svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.spentCum[WEEKS-1]),r:4,fill:'#5cba9f'}));
+
+    var roSets=byId('ro-sets'), roRev=byId('ro-rev'), roDead=byId('ro-dead');
+    if(roSets) roSets.textContent=r.owned;
+    if(roRev)  roRev.textContent='$'+fmt(r.dollars);
+    if(roDead) roDead.textContent=fmt(r.stranded);
+
+    var pol=byId('policy');
+    if(pol){
+      if(months<2){pol.className='policytag prop';pol.textContent='快于上新节奏：迅速清空积压';}
+      else if(months<=3){pol.className='policytag prop';pol.textContent='建议方案：每当新套装上线，就让最旧的一套毕业';}
+      else {pol.className='policytag prop';pol.textContent='慢于上新节奏：积压依旧能清空，只是更缓慢';}
+    }
+
+    var vd=byId('verdict');
+    if(vd){
+      var mTxt = (months % 1 === 0) ? months.toFixed(0) : String(months);
+      vd.className='verdict good';
+      vd.innerHTML = "按每 "+mTxt+" 个月上架一套来算，"+tier.label+"完成 <b>"+r.owned+" 套</b>，支付 <b>$"+fmt(r.dollars)+"</b>"+(r.stranded>0 ? "，并且仍有 <b>"+fmt(r.stranded)+" 枚代币</b>搁浅，再无可买之物。我们本愿意花得更多。" : "，几乎没有代币搁浅。目标回来了。");
+    }
+  }
+
+  /* tier buttons */
+  var segBtns = document.querySelectorAll('#seg-tier button');
+  for(var b=0;b<segBtns.length;b++){
+    (function(btn){
+      btn.addEventListener('click',function(){
+        for(var j=0;j<segBtns.length;j++){ segBtns[j].classList.remove('on'); }
+        btn.classList.add('on');
+        curTier=btn.getAttribute('data-tier');
+        drawWall();
+      });
+    })(segBtns[b]);
+  }
+
+  if(relEl){
+    relEl.addEventListener('input',function(e){
+      var rv=byId('rel-v');
+      if(rv) rv.textContent=parseFloat(e.target.value);
+      drawWall();
+    });
+  }
+
+  drawWall();
+
+  /* =================== wallet count-up to 15,600 (free tokens a top spender banks while the store is frozen) =================== */
+  var walletNum = byId('walletNum');
+  function animateWallet(){
+    if(!walletNum) return;
+    var target = 15600;
+    var start = null, dur = 1500;
+    function step(ts){
+      if(start===null) start=ts;
+      var p=Math.min(1,(ts-start)/dur);
+      var eased = 1-Math.pow(1-p,3);
+      walletNum.textContent = Math.round(target*eased).toLocaleString();
+      if(p<1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* =================== reveal + triggered animations =================== */
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){
+        if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    },{threshold:0.12});
+    var revs=document.querySelectorAll('.reveal');
+    for(var ri=0;ri<revs.length;ri++){
+      revs[ri].style.transitionDelay=(Math.min(ri,6)*60)+'ms';
+      io.observe(revs[ri]);
+    }
+
+    /* wallet count-up when its block is seen */
+    if(walletNum){
+      var wio=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){ animateWallet(); wio.unobserve(en.target); }
+        });
+      },{threshold:0.4});
+      wio.observe(walletNum);
+    }
+
+    /* scale bars grow when seen */
+    var barDump=byId('barDump'), barDrip=byId('barDrip');
+    if(barDump && barDrip){
+      var bio=new IntersectionObserver(function(entries){
+        entries.forEach(function(en){
+          if(en.isIntersecting){
+            barDump.style.width='37.7%';   // 28825 / 76501
+            barDrip.style.width='100%';
+            bio.unobserve(en.target);
+          }
+        });
+      },{threshold:0.3});
+      bio.observe(barDump);
+    }
+  } else {
+    var allRev=document.querySelectorAll('.reveal');
+    for(var ai=0;ai<allRev.length;ai++){ allRev[ai].classList.add('in'); }
+    if(walletNum) walletNum.textContent='15,600';
+    var bd=byId('barDump'), bp=byId('barDrip');
+    if(bd) bd.style.width='37.7%';
+    if(bp) bp.style.width='100%';
+  }
+})();
+</script>
+</body>
+</html>

@@ -5,12 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; frame-src 'self'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
-<meta name="description" content="The case for steady Decor Set Store releases in Top War, presented seven ways: an editorial brief, a data dashboard, a visual story, an executive memo, a product scorecard, a financial ledger, and the voice of the paying players.">
+<meta name="description" content="The case for steady Decor Set Store releases in Top War, presented seven ways and in English and Simplified Chinese: an editorial brief, a data dashboard, a visual story, an executive memo, a product scorecard, a financial ledger, and the voice of the paying players.">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e7b24a'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23a8761f' stroke-width='1.4'/%3E%3Cpath d='M16 9v14M11.5 13h7a2.5 2.5 0 010 5h-7' fill='none' stroke='%237a5410' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
-<title>The Decor Set Store: Four Views of One Case</title>
+<title>The Decor Set Store: Seven Views of One Case</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@500;700&display=swap" rel="stylesheet">
 <style>
 :root{
   --bar:#0c0d10; --bar2:#15171c; --line:#262a31; --line2:#363c46;
@@ -18,18 +18,24 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{height:100%}
-body{background:var(--bar);color:var(--text);font-family:'IBM Plex Mono',ui-monospace,monospace;display:flex;flex-direction:column;overflow:hidden}
+body{background:var(--bar);color:var(--text);font-family:'IBM Plex Mono','Noto Sans SC',ui-monospace,monospace;display:flex;flex-direction:column;overflow:hidden}
 
 /* top bar */
 .bar{flex:none;background:linear-gradient(180deg,#101216,#0b0c0f);border-bottom:1px solid var(--line);box-shadow:0 6px 24px rgba(0,0,0,.35);position:relative;z-index:2}
-.bar-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:10px 18px;flex-wrap:wrap}
+.bar-in{max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:10px 18px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:10px;flex:none}
 .brand .coin{width:24px;height:24px;flex:none}
-.brand .wm{font-family:'Fraunces',serif;font-weight:700;font-size:16px;letter-spacing:-.01em;color:#fff;line-height:1}
-.brand .wm small{display:block;font-family:'IBM Plex Mono',monospace;font-weight:400;font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-top:2px}
+.brand .wm{font-family:'Fraunces','Noto Serif SC',serif;font-weight:700;font-size:16px;letter-spacing:-.01em;color:#fff;line-height:1.1}
+.brand .wm small{display:block;font-family:'IBM Plex Mono','Noto Sans SC',monospace;font-weight:400;font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-top:3px}
 
-.tabs{display:flex;gap:6px;margin-left:auto;flex-wrap:wrap}
-.tab{appearance:none;flex:0 0 auto;border:1px solid var(--line2);background:var(--bar2);color:var(--muted);font-family:'IBM Plex Mono',monospace;font-size:12.5px;font-weight:500;padding:8px 13px 7px;border-radius:9px;cursor:pointer;display:flex;flex-direction:column;gap:1px;line-height:1.25;transition:all .16s;text-align:left;min-width:0}
+/* language toggle */
+.langtog{display:flex;flex:none;margin-left:auto;border:1px solid var(--line2);border-radius:8px;overflow:hidden;background:var(--bar2)}
+.langtog button{appearance:none;border:0;background:transparent;color:var(--muted);font-family:'IBM Plex Mono','Noto Sans SC',monospace;font-size:12px;font-weight:600;padding:7px 12px;cursor:pointer;transition:all .16s;line-height:1}
+.langtog button.on{background:var(--gold);color:#241a06}
+.langtog button:not(.on):hover{color:var(--text)}
+
+.tabs{display:flex;gap:6px;margin-left:14px;flex-wrap:wrap}
+.tab{appearance:none;flex:0 0 auto;border:1px solid var(--line2);background:var(--bar2);color:var(--muted);font-family:'IBM Plex Mono','Noto Sans SC',monospace;font-size:12.5px;font-weight:500;padding:8px 13px 7px;border-radius:9px;cursor:pointer;display:flex;flex-direction:column;gap:1px;line-height:1.25;transition:all .16s;text-align:left;min-width:0}
 .tab .n{font-size:8.5px;letter-spacing:.16em;color:var(--muted);opacity:.8}
 .tab .t{font-size:13px;color:var(--text);font-weight:600;white-space:nowrap}
 .tab .d{font-size:9.5px;color:var(--muted);white-space:nowrap}
@@ -47,7 +53,7 @@ body{background:var(--bar);color:var(--text);font-family:'IBM Plex Mono',ui-mono
 
 @media(max-width:640px){
   .brand .wm small{display:none}
-  .tabs{width:100%;margin-left:0;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
+  .tabs{width:100%;margin-left:0;order:3;overflow-x:auto;flex-wrap:nowrap;padding-bottom:2px}
   .tab .d{display:none}
 }
 </style>
@@ -57,7 +63,11 @@ body{background:var(--bar);color:var(--text);font-family:'IBM Plex Mono',ui-mono
     <div class="bar-in">
       <div class="brand">
         <svg class="coin" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="#e7b24a"/><circle cx="16" cy="16" r="10" stroke="#a8761f" stroke-width="1.3" fill="none"/><path d="M16 9v14M11.5 13h7a2.5 2.5 0 010 5h-7" stroke="#7a5410" stroke-width="2.2" stroke-linecap="round" fill="none"/></svg>
-        <div class="wm">Decor Set Store<small>Seven views, one case</small></div>
+        <div class="wm"><span id="wm-title">Decor Set Store</span><small id="wm-sub">Seven views, one case</small></div>
+      </div>
+      <div class="langtog" id="langtog" role="group" aria-label="Language">
+        <button data-lang="en" type="button">EN</button>
+        <button data-lang="zh" type="button">中文</button>
       </div>
       <div class="tabs" id="tabs"></div>
     </div>
@@ -68,20 +78,37 @@ body{background:var(--bar);color:var(--text);font-family:'IBM Plex Mono',ui-mono
 
 <script>
 const VERSIONS = [
-  { key:'brief',    label:'The Brief',     file:'brief.html',    desc:'Editorial strategy brief' },
-  { key:'terminal', label:'The Data Room', file:'terminal.html', desc:'Quant dashboard' },
-  { key:'story',    label:'The Story',     file:'story.html',     desc:'Visual scrollytelling' },
-  { key:'memo',     label:'The Memo',      file:'memo.html',      desc:'Executive one-pager' },
-  { key:'pm',       label:'The Scorecard', file:'pm.html',        desc:'For the product manager' },
-  { key:'exec',     label:'The Ledger',    file:'exec.html',      desc:'For the executive' },
-  { key:'whale',    label:'The Spender',   file:'whale.html',     desc:'For the paying players' },
+  { key:'brief',    file:'brief.html',    en:{label:'The Brief',     desc:'Editorial strategy brief'}, zh:{label:'简报',     desc:'策略简报'} },
+  { key:'terminal', file:'terminal.html', en:{label:'The Data Room', desc:'Quant dashboard'},          zh:{label:'数据室',   desc:'量化看板'} },
+  { key:'story',    file:'story.html',    en:{label:'The Story',     desc:'Visual scrollytelling'},    zh:{label:'故事',     desc:'图文叙事'} },
+  { key:'memo',     file:'memo.html',     en:{label:'The Memo',      desc:'Executive one-pager'},      zh:{label:'备忘录',   desc:'高管一页纸'} },
+  { key:'pm',       file:'pm.html',       en:{label:'The Scorecard', desc:'For the product manager'},  zh:{label:'记分卡',   desc:'写给产品经理'} },
+  { key:'exec',     file:'exec.html',     en:{label:'The Ledger',    desc:'For the executive'},        zh:{label:'账本',     desc:'写给管理层'} },
+  { key:'whale',    file:'whale.html',    en:{label:'The Spender',   desc:'For the paying players'},   zh:{label:'玩家心声', desc:'来自付费玩家'} },
 ];
 
-const stage = document.getElementById('stage');
+const CHROME = {
+  en:{ wm:'Decor Set Store', sub:'Seven views, one case', loading:'Loading view', titlePfx:'Decor Set Store: ', htmlLang:'en' },
+  zh:{ wm:'装饰套装商店',    sub:'七种呈现，一个提案',   loading:'正在载入',     titlePfx:'装饰套装商店 · ', htmlLang:'zh-CN' },
+};
+
+const stage  = document.getElementById('stage');
 const tabsEl = document.getElementById('tabs');
 const loader = document.getElementById('loader');
-const frames = {};
+const langEl = document.getElementById('langtog');
+const wmTitle = document.getElementById('wm-title');
+const wmSub   = document.getElementById('wm-sub');
+const frames = {};            // keyed by  viewKey + '|' + lang
 
+function fileFor(v, lang){ return lang==='zh' ? v.file.replace('.html','.zh.html') : v.file; }
+function frameKey(key, lang){ return key + '|' + lang; }
+
+function pickLang(){
+  const q = new URLSearchParams(location.search).get('lang');
+  if (q==='zh' || q==='en') return q;
+  try { const s = localStorage.getItem('decorcase_lang'); if (s==='zh'||s==='en') return s; } catch(e){}
+  return 'en';
+}
 function pickInitial(){
   const q = new URLSearchParams(location.search).get('v');
   if (q && VERSIONS.some(v=>v.key===q)) return q;
@@ -89,47 +116,85 @@ function pickInitial(){
   return 'brief';
 }
 
+let lang = pickLang();
+let current = pickInitial();
+
+function syncUrl(){
+  const url = new URL(location.href);
+  url.searchParams.set('v', current);
+  url.searchParams.set('lang', lang);
+  history.replaceState(null,'',url);
+}
+
+function renderChrome(){
+  const c = CHROME[lang];
+  document.documentElement.lang = c.htmlLang;
+  wmTitle.textContent = c.wm;
+  wmSub.textContent = c.sub;
+  loader.textContent = c.loading;
+  // tab labels + descriptions for the current language
+  [...tabsEl.children].forEach(b=>{
+    const v = VERSIONS.find(x=>x.key===b.dataset.key);
+    b.querySelector('.t').textContent = v[lang].label;
+    b.querySelector('.d').textContent = v[lang].desc;
+  });
+  // language toggle active state
+  [...langEl.children].forEach(b=>b.classList.toggle('on', b.dataset.lang===lang));
+  const v = VERSIONS.find(x=>x.key===current);
+  document.title = c.titlePfx + v[lang].label;
+}
+
 function show(key){
-  // lazy create the iframe the first time a view is opened
-  if(!frames[key]){
+  current = key;
+  const fk = frameKey(key, lang);
+  if(!frames[fk]){
     const v = VERSIONS.find(x=>x.key===key);
     const f = document.createElement('iframe');
-    f.title = v.label;
+    f.title = v[lang].label;
     f.loading = 'eager';
     loader.classList.add('on');
     f.addEventListener('load', ()=>loader.classList.remove('on'), { once:true });
-    f.src = v.file;
+    f.src = fileFor(v, lang);
     stage.appendChild(f);
-    frames[key] = f;
+    frames[fk] = f;
   }
-  // toggle visibility
-  Object.keys(frames).forEach(k=>{ frames[k].hidden = (k!==key); });
-  // active tab
+  // show only the active view in the active language
+  Object.keys(frames).forEach(k=>{ frames[k].hidden = (k!==fk); });
   [...tabsEl.children].forEach(b=>b.classList.toggle('on', b.dataset.key===key));
-  // persist + url + title
   try { localStorage.setItem('decorcase_v', key); } catch(e){}
-  const url = new URL(location.href); url.searchParams.set('v', key);
-  history.replaceState(null,'',url);
-  const v = VERSIONS.find(x=>x.key===key);
-  document.title = 'Decor Set Store: ' + v.label;
+  renderChrome();
+  syncUrl();
 }
 
-// build tabs
+function setLang(newLang){
+  if(newLang===lang) return;
+  lang = newLang;
+  try { localStorage.setItem('decorcase_lang', lang); } catch(e){}
+  show(current); // loads / reveals the current view in the new language
+}
+
+// build tabs (labels filled by renderChrome)
 VERSIONS.forEach((v,i)=>{
   const b = document.createElement('button');
-  b.className = 'tab'; b.dataset.key = v.key;
-  b.innerHTML = '<span class="n">0'+(i+1)+'</span><span class="t">'+v.label+'</span><span class="d">'+v.desc+'</span>';
+  b.className = 'tab'; b.dataset.key = v.key; b.type = 'button';
+  b.innerHTML = '<span class="n">0'+(i+1)+'</span><span class="t"></span><span class="d"></span>';
   b.addEventListener('click', ()=>show(v.key));
   tabsEl.appendChild(b);
 });
 
-// number-key shortcuts 1 to 7
-addEventListener('keydown', e=>{
-  const n = parseInt(e.key,10);
-  if(n>=1 && n<=VERSIONS.length && !e.metaKey && !e.ctrlKey && !e.altKey){ show(VERSIONS[n-1].key); }
+// language toggle
+[...langEl.children].forEach(btn=>{
+  btn.addEventListener('click', ()=>setLang(btn.dataset.lang));
 });
 
-show(pickInitial());
+// number-key shortcuts 1 to 7
+addEventListener('keydown', e=>{
+  if(e.metaKey||e.ctrlKey||e.altKey) return;
+  const n = parseInt(e.key,10);
+  if(n>=1 && n<=VERSIONS.length){ show(VERSIONS[n-1].key); }
+});
+
+show(current);
 </script>
 </body>
 </html>

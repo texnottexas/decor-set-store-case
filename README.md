@@ -24,6 +24,14 @@ specific reader:
 Switch views with the tabs (or number keys 1 to 7). Deep-link a view with `?v=brief`,
 `?v=terminal`, `?v=story`, `?v=memo`, `?v=pm`, `?v=exec`, or `?v=whale`.
 
+## English and Simplified Chinese
+
+Every view exists in English and in native Simplified Chinese. Use the EN / 中文 toggle in
+the top bar to switch languages while keeping the current view. The Chinese pages are written
+to read naturally for a native speaker, not machine-translated; money figures are kept in `$`.
+The companion file for each view is the same name with a `.zh` suffix (for example
+`exec.zh.html`), and a view can be deep-linked in a language with `&lang=zh` or `&lang=en`.
+
 ## Notes on the numbers
 
 Set names, prices, release dates, and the token economy are read from the live game client.

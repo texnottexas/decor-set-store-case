@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<!-- Simplified Chinese (zh-CN) version of "The Story" view (story.html) for the Decor Set Store steady-graduation case. -->
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fff6e6'/%3E%3Cpath d='M6 20l5-6 4 4 5-8 6 10z' fill='none' stroke='%23e8694e' stroke-width='2.4' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='9' r='2.4' fill='%23f0a93a'/%3E%3C/svg%3E">
+<title>无可追逐：一位玩家关于装饰套装商店的故事</title>
+<meta name="description" content="一份温和、图文并茂的商业建议：让较老的装饰套装按稳定节奏进入装饰套装商店，借由 2864 服一位玩家的经历娓娓道来。">
+<script>
+/* Gate scroll-reveal behind .js so content is never permanently hidden.
+   Honor reduced motion by leaving everything visible. */
+(function(){
+  var d=document.documentElement;
+  try{
+    var rm=window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if(!rm){ d.classList.add('js'); }
+  }catch(e){}
+})();
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=DM+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#fbf4e6;
+  --paper2:#f5ead3;
+  --card:#fffdf7;
+  --ink:#2a2419;
+  --ink2:#5b5141;
+  --muted:#8a7d66;
+  --line:#e6d8bd;
+  --line2:#d8c39c;
+  --coral:#e8694e;
+  --coral-deep:#cf4d33;
+  --coral-soft:#fbe2da;
+  --sun:#f0a93a;
+  --sun-deep:#d68a16;
+  --sun-soft:#fbeccb;
+  --teal:#1f9e8c;
+  --teal-soft:#d6efe8;
+  --maxw:1060px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Newsreader','Noto Serif SC',Georgia,serif;
+  font-size:19px;
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+  text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+/* warm paper grain via layered gradients, no external images */
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background:
+    radial-gradient(820px 520px at 84% -6%, rgba(240,169,58,.18), transparent 60%),
+    radial-gradient(760px 600px at -8% 8%, rgba(232,105,78,.10), transparent 55%),
+    radial-gradient(700px 700px at 50% 118%, rgba(31,158,140,.08), transparent 60%);
+}
+.wrap{position:relative;z-index:1;max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.narrow{max-width:720px;margin-left:auto;margin-right:auto}
+
+h1,h2,h3,.kicker,.bignum,.tag,.btn,.chip,.barlbl{font-family:'Bricolage Grotesque','Noto Serif SC','Newsreader',sans-serif}
+a{color:var(--coral-deep);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ---------- scroll reveal ---------- */
+.reveal{opacity:1;transform:none;transition:opacity .7s ease, transform .7s cubic-bezier(.2,.7,.2,1)}
+html.js .reveal{opacity:0;transform:translateY(26px)}
+html.js .reveal.in{opacity:1;transform:none}
+@media print{ html.js .reveal{opacity:1!important;transform:none!important} }
+
+/* ---------- progress bar ---------- */
+.progress{position:fixed;top:0;left:0;height:4px;width:0;z-index:50;
+  background:linear-gradient(90deg,var(--sun),var(--coral));transition:width .12s linear}
+
+/* ---------- hero ---------- */
+header.hero{padding:74px 0 30px;text-align:center}
+.eyebrow{display:inline-block;font-family:'DM Mono','Noto Sans SC',monospace;font-size:12.5px;letter-spacing:.22em;text-transform:uppercase;
+  color:var(--coral-deep);background:var(--coral-soft);border:1px solid var(--line2);
+  padding:7px 14px;border-radius:999px;margin-bottom:22px}
+h1{font-size:clamp(40px,8vw,80px);line-height:.98;font-weight:800;letter-spacing:-.02em;color:var(--ink)}
+h1 .pop{color:var(--coral)}
+.dek{font-size:clamp(20px,2.7vw,26px);line-height:1.45;color:var(--ink2);margin:24px auto 0;max-width:680px;font-style:italic}
+.byline{margin-top:30px;font-family:'DM Mono','Noto Sans SC',monospace;font-size:13px;letter-spacing:.04em;color:var(--muted)}
+.scrollcue{margin:46px auto 0;width:30px;height:48px;border:2px solid var(--line2);border-radius:16px;position:relative;opacity:.8}
+.scrollcue::after{content:"";position:absolute;left:50%;top:9px;width:5px;height:9px;margin-left:-2.5px;border-radius:3px;background:var(--coral);
+  animation:cue 1.6s ease-in-out infinite}
+@keyframes cue{0%{transform:translateY(0);opacity:1}70%{transform:translateY(16px);opacity:0}100%{opacity:0}}
+@media (prefers-reduced-motion: reduce){.scrollcue::after{animation:none}}
+
+/* ---------- chapters ---------- */
+section{padding:58px 0;position:relative}
+.kicker{display:flex;align-items:center;gap:12px;font-family:'DM Mono','Noto Sans SC',monospace;font-size:13px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--coral-deep);margin-bottom:14px;font-weight:500}
+.kicker .num{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:50%;
+  background:var(--coral);color:#fff;font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:14px;letter-spacing:0}
+h2{font-size:clamp(28px,4.6vw,46px);line-height:1.04;font-weight:800;letter-spacing:-.015em;margin-bottom:18px;color:var(--ink)}
+.lede{font-size:clamp(19px,2.3vw,23px);color:var(--ink2);line-height:1.5}
+p{margin:0 0 18px}
+p.body{color:var(--ink2)}
+em{font-style:italic;color:var(--ink)}
+strong{font-weight:600;color:var(--ink)}
+
+/* persona card */
+.persona{display:flex;gap:22px;align-items:center;flex-wrap:wrap;background:var(--card);
+  border:1px solid var(--line);border-radius:22px;padding:24px 26px;box-shadow:0 14px 36px -22px rgba(120,80,20,.4)}
+.avatar{flex:0 0 auto;width:84px;height:84px;border-radius:22px;background:linear-gradient(135deg,var(--sun),var(--coral));
+  display:grid;place-items:center;box-shadow:0 8px 22px -10px rgba(232,105,78,.6)}
+.avatar svg{width:50px;height:50px}
+.persona .meta{min-width:200px;flex:1}
+.persona h3{font-size:22px;font-weight:800;letter-spacing:-.01em}
+.persona .role{font-family:'DM Mono','Noto Sans SC',monospace;font-size:12.5px;color:var(--muted);letter-spacing:.03em;margin-top:3px}
+.persona .quote{font-style:italic;font-size:18px;color:var(--ink2);margin-top:10px;border-left:3px solid var(--sun);padding-left:14px}
+
+/* big stat row */
+.statrow{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:32px 0}
+.stat{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px 20px;text-align:center}
+.stat.accent{background:linear-gradient(180deg,#fff,var(--sun-soft));border-color:var(--line2)}
+.bignum{font-size:clamp(34px,6vw,52px);font-weight:800;line-height:1;letter-spacing:-.02em;color:var(--coral-deep)}
+.stat.accent .bignum{color:var(--sun-deep)}
+.stat .lbl{font-family:'DM Mono','Noto Sans SC',monospace;font-size:12px;letter-spacing:.06em;color:var(--muted);margin-top:10px;text-transform:uppercase;line-height:1.4}
+
+/* figure / chart frame */
+figure{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 24px 22px;margin:30px 0;
+  box-shadow:0 18px 44px -28px rgba(120,80,20,.45)}
+figure .figtitle{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:20px;letter-spacing:-.01em;margin-bottom:4px}
+figure .figsub{font-size:15px;color:var(--muted);margin-bottom:18px;line-height:1.45}
+figcaption{font-size:14px;color:var(--muted);margin-top:14px;font-style:italic;line-height:1.5}
+.disclaimer{font-family:'DM Mono','Noto Sans SC',monospace;font-size:11.5px;letter-spacing:.02em;color:var(--muted);
+  background:var(--paper2);border:1px dashed var(--line2);border-radius:10px;padding:9px 12px;margin-top:14px;line-height:1.55}
+
+/* svg chart helpers */
+.chart{width:100%;height:auto;display:block;overflow:visible}
+.axis{stroke:var(--line2);stroke-width:1.5}
+.gridln{stroke:var(--line);stroke-width:1}
+.axtxt{font-family:'DM Mono','Noto Sans SC',monospace;font-size:11px;fill:var(--muted)}
+.serieslbl{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:700;font-size:13px}
+
+/* two path contrast */
+.paths{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:28px 0}
+.path{border-radius:20px;padding:24px;border:1px solid var(--line)}
+.path.premium{background:linear-gradient(180deg,#fff,var(--coral-soft));border-color:var(--line2)}
+.path.token{background:linear-gradient(180deg,#fff,var(--teal-soft));border-color:#bfe3d9}
+.path .ptag{font-family:'DM Mono','Noto Sans SC',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500}
+.path.premium .ptag{color:var(--coral-deep)}
+.path.token .ptag{color:var(--teal)}
+.path .pprice{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:clamp(30px,5vw,44px);line-height:1;margin:8px 0 4px;letter-spacing:-.02em}
+.path.premium .pprice{color:var(--coral-deep)}
+.path.token .pprice{color:var(--teal)}
+.path .psub{font-size:15px;color:var(--ink2);margin-bottom:14px}
+.path ul{list-style:none;font-size:15.5px;color:var(--ink2)}
+.path li{padding:6px 0 6px 24px;position:relative;line-height:1.45}
+.path li::before{content:"";position:absolute;left:0;top:11px;width:9px;height:9px;border-radius:50%}
+.path.premium li::before{background:var(--coral)}
+.path.token li::before{background:var(--teal)}
+
+/* catalogue */
+.cat{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin:24px 0}
+.setchip{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 13px;position:relative;overflow:hidden}
+.setchip .sname{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:700;font-size:14.5px;line-height:1.15;letter-spacing:-.01em}
+.setchip .syr{font-family:'DM Mono','Noto Sans SC',monospace;font-size:11px;color:var(--muted);margin-top:5px}
+.setchip .dot{position:absolute;right:11px;top:11px;width:10px;height:10px;border-radius:50%}
+.setchip.store{border-left:4px solid var(--teal)}
+.setchip.store .dot{background:var(--teal)}
+.setchip.shelved{border-left:4px solid var(--coral)}
+.setchip.shelved .dot{background:var(--coral)}
+.setchip.recent{border-left:4px solid var(--sun)}
+.setchip.recent .dot{background:var(--sun)}
+.catlegend{display:flex;gap:20px;flex-wrap:wrap;font-family:'DM Mono','Noto Sans SC',monospace;font-size:12.5px;color:var(--ink2);margin:6px 0 4px}
+.catlegend span{display:inline-flex;align-items:center;gap:7px}
+.catlegend i{width:11px;height:11px;border-radius:50%;display:inline-block}
+.catgroup-title{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:16px;margin:22px 0 4px;display:flex;align-items:center;gap:9px}
+.catgroup-title .ct{font-family:'DM Mono','Noto Sans SC',monospace;font-weight:400;font-size:12px;color:var(--muted);letter-spacing:.02em}
+
+/* interactive slider module */
+.lab{background:linear-gradient(165deg,#fffdf7, var(--paper2));border:1px solid var(--line2);border-radius:24px;
+  padding:28px 26px;margin:30px 0;box-shadow:0 20px 50px -30px rgba(120,80,20,.5)}
+.lab h3{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:23px;letter-spacing:-.01em}
+.lab .labsub{font-size:15.5px;color:var(--ink2);margin:6px 0 20px}
+.controls{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;margin-bottom:8px}
+.ctrl label{display:block;font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:700;font-size:14px;margin-bottom:9px;letter-spacing:-.005em}
+.ctrl label .v{float:right;font-family:'DM Mono','Noto Sans SC',monospace;font-weight:400;color:var(--coral-deep)}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:8px;border-radius:99px;
+  background:linear-gradient(90deg,var(--sun),var(--coral));outline:none;cursor:pointer}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:24px;height:24px;border-radius:50%;
+  background:#fff;border:3px solid var(--coral);box-shadow:0 3px 8px -2px rgba(207,77,51,.6);cursor:pointer}
+input[type=range]::-moz-range-thumb{width:22px;height:22px;border-radius:50%;background:#fff;border:3px solid var(--coral);cursor:pointer}
+.segwrap{display:flex;gap:8px;flex-wrap:wrap}
+.seg{flex:1 1 auto;min-width:60px;text-align:center;font-family:'DM Mono','Noto Sans SC',monospace;font-size:12.5px;
+  padding:9px 6px;border-radius:11px;border:1px solid var(--line2);background:#fff;color:var(--ink2);cursor:pointer;transition:all .15s}
+.seg.on{background:var(--coral);color:#fff;border-color:var(--coral);font-weight:500}
+.seg:hover:not(.on){background:var(--coral-soft)}
+
+.goalmeter{margin-top:22px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px}
+.goalmeter .gl{display:flex;justify-content:space-between;align-items:baseline;font-family:'DM Mono','Noto Sans SC',monospace;font-size:12.5px;color:var(--muted);margin-bottom:9px}
+.track{height:18px;border-radius:99px;background:var(--paper2);overflow:hidden;position:relative;border:1px solid var(--line)}
+.fill{height:100%;border-radius:99px;background:linear-gradient(90deg,var(--sun),var(--coral));width:0;transition:width .45s cubic-bezier(.2,.7,.2,1)}
+.goalout{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:20px}
+.go{text-align:center;background:var(--paper2);border:1px solid var(--line);border-radius:14px;padding:16px 10px}
+.go .gn{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:clamp(26px,4.5vw,38px);line-height:1;color:var(--coral-deep);letter-spacing:-.02em}
+.go .gt{font-family:'DM Mono','Noto Sans SC',monospace;font-size:11px;color:var(--muted);margin-top:8px;text-transform:uppercase;letter-spacing:.05em;line-height:1.4}
+.verdict{margin-top:18px;font-size:16.5px;line-height:1.5;color:var(--ink);background:var(--sun-soft);border:1px solid var(--line2);border-radius:14px;padding:15px 18px}
+.verdict b{font-weight:600}
+
+/* proposal callout */
+.ask{background:linear-gradient(135deg,var(--coral),var(--coral-deep));color:#fff;border-radius:26px;
+  padding:38px 32px;margin:30px 0;box-shadow:0 26px 60px -30px rgba(207,77,51,.8)}
+.ask .ak{font-family:'DM Mono','Noto Sans SC',monospace;font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.85);margin-bottom:12px}
+.ask h2{color:#fff;font-size:clamp(26px,4.4vw,40px);margin-bottom:14px}
+.ask p{color:rgba(255,255,255,.94);font-size:19px}
+.ask .oneone{display:flex;align-items:center;gap:16px;flex-wrap:wrap;margin-top:22px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);border-radius:16px;padding:18px 20px}
+.ask .oneone .big{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:30px;letter-spacing:-.01em}
+.ask .oneone .lab2{font-size:15px;color:rgba(255,255,255,.9)}
+
+/* rebuttal */
+.qa{display:grid;gap:14px;margin:24px 0}
+.qa .item{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;border-left:4px solid var(--teal)}
+.qa .q{font-family:'Bricolage Grotesque','Noto Serif SC',sans-serif;font-weight:800;font-size:17px;margin-bottom:6px;color:var(--ink)}
+.qa .a{font-size:16px;color:var(--ink2);line-height:1.5}
+
+/* close */
+.close{text-align:center;padding:64px 0 30px}
+.close .mark{width:54px;height:54px;margin:0 auto 20px;display:grid;place-items:center;border-radius:16px;
+  background:linear-gradient(135deg,var(--sun),var(--coral))}
+.close .mark svg{width:30px;height:30px}
+.close h2{font-size:clamp(26px,4.4vw,42px)}
+.close p{max-width:600px;margin:0 auto 18px;color:var(--ink2);font-size:20px}
+.signoff{font-family:'DM Mono','Noto Sans SC',monospace;font-size:13.5px;letter-spacing:.04em;color:var(--muted);margin-top:24px}
+
+footer{border-top:1px solid var(--line);margin-top:30px;padding:30px 0 60px;text-align:center;
+  font-family:'DM Mono','Noto Sans SC',monospace;font-size:12px;color:var(--muted);line-height:1.7}
+
+/* responsive */
+@media (max-width:760px){
+  body{font-size:18px}
+  section{padding:46px 0}
+  .statrow{grid-template-columns:1fr;gap:12px}
+  .paths{grid-template-columns:1fr}
+  .controls{grid-template-columns:1fr}
+  .goalout{grid-template-columns:1fr 1fr}
+  .persona{padding:20px}
+}
+@media (max-width:420px){
+  .goalout{grid-template-columns:1fr}
+  .cat{grid-template-columns:1fr 1fr}
+}
+</style>
+</head>
+<body>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<div class="wrap">
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <span class="eyebrow reveal">口袋奇兵 &middot; 写给研发团队的一个玩家故事</span>
+    <h1 class="reveal">已经<br>没什么可<span class="pop">追逐了。</span></h1>
+    <p class="dek reveal">一位老指挥官把商店里能买到的套装全部集齐之后，游戏忽然安静了下来。这是他用数字勾勒出的一整年，以及一个或许能让它重新热闹起来的温和想法。</p>
+    <div class="byline reveal">由一位 2864 服玩家讲述</div>
+    <div class="scrollcue reveal" aria-hidden="true"></div>
+  </header>
+
+  <!-- ============ CHAPTER 1 - THE PLAYER ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">1</span> 认识这位指挥官</div>
+    <h2 class="reveal">一个清空了心愿单的收藏家。</h2>
+    <div class="persona reveal">
+      <div class="avatar" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 21V10l9-6 9 6v11"/><path d="M9 21v-6h6v6"/><path d="M3 21h18"/>
+        </svg>
+      </div>
+      <div class="meta">
+        <h3>Birch 指挥官</h3>
+        <div class="role">2864 服 &middot; 自 2022 年开始游玩 &middot; 中等付费玩家</div>
+        <div class="quote">「我收集这些漂亮的套装，是因为它们能帮我把行军规模做大。可现在我已经没有真正够得着的目标了。」</div>
+      </div>
+    </div>
+    <p class="body reveal" style="margin-top:26px">Birch 是一个虚构的代号，代表着千千万万让一个服活下去的稳定、友善的玩家。他们既不是大额玩家，也不是只蹭不花的人。他们每天上线、努力积攒，并且喜欢眼前一直有个目标。</p>
+    <p class="body reveal">装饰套装恰好就是这样的目标。集齐一套就能获得永久的行军规模加成，而且各套之间的加成可以叠加，所以收藏家永远有继续下去的理由。游戏里一共有 <strong>23 套装饰</strong>。Birch 已经拥有套装代币商店目前提供的全部 <strong>8</strong> 套。商店只是把这同样的 8 套轮换上架，所以对 Birch 来说，货架早已空空如也。</p>
+
+    <div class="statrow reveal">
+      <div class="stat"><div class="bignum">23</div><div class="lbl">游戏中的装饰套装总数</div></div>
+      <div class="stat accent"><div class="bignum">8</div><div class="lbl">代币商店中轮换上架的套装</div></div>
+      <div class="stat"><div class="bignum">10</div><div class="lbl">无负担得起途径、被搁置的较老套装</div></div>
+    </div>
+    <p class="body reveal">剩下的 5 套都是较新的套装，仍以限时礼包的形式新鲜售卖。这个故事完全不触碰它们。它讲的是那 <strong>10 套较老的套装</strong>，发布于 2021 到 2024 年之间，上新窗口早在数年前就已关闭，也从未进入过商店。一个简单、可核实的事实道出了整个问题：自 2023 年 12 月以来发布的九套，没有任何一套进入过套装代币商店。</p>
+  </section>
+
+  <!-- ============ CHAPTER 2 - THE PILE ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">2</span> 代币越积越多</div>
+    <h2 class="reveal">不停地赚，却无处可花。</h2>
+    <p class="lede reveal">商店里的货币是装饰套装代币。Birch 仅仅靠正常游玩，每周就能自动获得大约 <strong>300 枚免费代币</strong>。当有套装可以追逐时，这些代币会径直流向它。当没有目标时，它们就只能堆在那里慢慢发霉。</p>
+
+    <figure class="reveal">
+      <div class="figtitle">凝固的一年储蓄</div>
+      <div class="figsub">在整整 52 周里都没有新套装开放的情况下，Birch 攒下的免费代币。一整套需要 11,340 枚代币，所以这笔积蓄早已远远超过一套的额度，却没有目标可以花出去。</div>
+      <svg class="chart" viewBox="0 0 640 300" role="img" aria-label="折线图，显示在没有套装可买的 52 周里，免费代币累积到约 15,600 枚。">
+        <!-- gridlines + y labels -->
+        <g>
+          <line class="gridln" x1="64" y1="40" x2="610" y2="40"/>
+          <line class="gridln" x1="64" y1="100" x2="610" y2="100"/>
+          <line class="gridln" x1="64" y1="160" x2="610" y2="160"/>
+          <line class="gridln" x1="64" y1="220" x2="610" y2="220"/>
+          <text class="axtxt" x="58" y="44" text-anchor="end">16k</text>
+          <text class="axtxt" x="58" y="104" text-anchor="end">12k</text>
+          <text class="axtxt" x="58" y="164" text-anchor="end">8k</text>
+          <text class="axtxt" x="58" y="224" text-anchor="end">4k</text>
+        </g>
+        <!-- "one full set" threshold -->
+        <line x1="64" y1="90" x2="610" y2="90" stroke="#1f9e8c" stroke-width="1.6" stroke-dasharray="6 5"/>
+        <text class="axtxt" x="606" y="84" text-anchor="end" fill="#1f9e8c">一整套 = 11,340</text>
+        <!-- area + line: 0..15600 over 52 wks -->
+        <polygon points="64,260 610,32 610,260" fill="rgba(232,105,78,.14)"/>
+        <line x1="64" y1="260" x2="610" y2="32" stroke="#e8694e" stroke-width="3.5" stroke-linecap="round"/>
+        <circle cx="610" cy="32" r="6" fill="#cf4d33"/>
+        <text class="serieslbl" x="600" y="22" text-anchor="end" fill="#cf4d33">约 15,600 枚闲置</text>
+        <!-- x axis -->
+        <line class="axis" x1="64" y1="260" x2="610" y2="260"/>
+        <text class="axtxt" x="64" y="278">第 1 周</text>
+        <text class="axtxt" x="337" y="278" text-anchor="middle">第 26 周</text>
+        <text class="axtxt" x="610" y="278" text-anchor="end">第 52 周</text>
+      </svg>
+      <figcaption>到一个凝固之年结束时，一位付费收藏家会闲置数千枚代币，而一位付费玩家整年只花了 $0，原因很简单：商店里再也没有任何可买的东西了。</figcaption>
+    </figure>
+
+    <p class="body reveal">最后那句话，正是值得反复说的那个安静的事实。当 Birch 已经买下了所有能买的东西，商店就停止了进账。代币不断涌来，又不断流向虚空。一位有意愿、有动力的顾客就这样闲置着，不是因为他们拒绝花钱，而是因为货架空了。</p>
+  </section>
+
+  <!-- ============ CHAPTER 3 - THE WALL ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">3</span> 一堵墙与一扇上了锁的门</div>
+    <h2 class="reveal">通往套装有两条路，却只有一条敞开。</h2>
+    <p class="lede reveal">每一套都有两条路径。一条又快又贵。一条耐心而负担得起。而对那 10 套较老的套装来说，那扇负担得起的门被锁上了。</p>
+
+    <div class="paths reveal">
+      <div class="path premium">
+        <div class="ptag">路径一 &middot; 上新礼包</div>
+        <div class="pprice">约 $175</div>
+        <div class="psub">在上新窗口期内达到 1 级</div>
+        <ul>
+          <li>一道高价阶梯：$4.99、$19.99、$49.99、$99.99</li>
+          <li>升到 2 级约需 $525（一套需要集齐三次）</li>
+          <li>限时：一旦上新窗口关闭，这扇门也随之关闭</li>
+        </ul>
+      </div>
+      <div class="path token">
+        <div class="ptag">路径二 &middot; 商店</div>
+        <div class="pprice">约 $94 或更低</div>
+        <div class="psub">最多花这么多现金，把免费代币算进来后还要低得多</div>
+        <ul>
+          <li>一整套需要 11,340 枚软货币代币</li>
+          <li>对耐心积攒的玩家而言约 9 个月免费到手，以每周稳定 $5 计约 3 个月</li>
+          <li>问题在于：对那 10 套较老的套装来说，这扇门是关着的</li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="body reveal">充值选项让耐心路径走得轻松：最划算的是 $0.99 买 120 枚代币的礼包，每周限购 5 次，约 $5 换 600 枚代币。更大的礼包（$4.99 买 300 枚、$19.99 买 1,280 枚、$49.99 买 3,280 枚、$99.99 买 6,480 枚）则没有每周上限，适合赶时间的玩家。</p>
+    <p class="body reveal">所以对那 10 套较老的套装来说，高价的门多年前就已关闭，而负担得起的门从未打开过。Birch 无论如何都没法用一个合理的价格买到它们。其结果并不是更多的高价消费，而是一位玩家正悄悄地从他最喜欢的那部分游戏内容中疏远开来。</p>
+  </section>
+
+  <!-- ============ CHAPTER 4 - THE CATALOGUE ============ -->
+  <section>
+    <div class="narrow">
+      <div class="kicker reveal"><span class="num">4</span> 整面货架</div>
+      <h2 class="reveal">全部 23 套，一览无余。</h2>
+      <p class="lede reveal">这是完整的目录，按颜色分组。本故事讲的是珊瑚色那一组：那些静静等待、却无路可入的较老套装。</p>
+    </div>
+
+    <div class="catlegend reveal" style="margin-top:22px">
+      <span><i style="background:#1f9e8c"></i> 目前在代币商店中（8 套）</span>
+      <span><i style="background:#e8694e"></i> 较老、被搁置、无负担得起途径（10 套）</span>
+      <span><i style="background:#f0a93a"></i> 较新、暂为高价、不在讨论范围（5 套）</span>
+    </div>
+
+    <div class="catgroup-title reveal">目前在代币商店中 <span class="ct">/ 轮换上架</span></div>
+    <div class="cat reveal" id="cat-store"></div>
+
+    <div class="catgroup-title reveal">本建议要释放的积压套装 <span class="ct">/ 由最老的开始</span></div>
+    <div class="cat reveal" id="cat-shelved"></div>
+
+    <div class="catgroup-title reveal">较新、暂为高价 <span class="ct">/ 保持不动</span></div>
+    <div class="cat reveal" id="cat-recent"></div>
+
+    <div class="narrow">
+      <p class="body reveal" style="margin-top:26px">与此同时，研发团队让目录始终保持活力，大约每 2.4 个月就推出一套全新套装。近来几次上新的间隔分别是 48、80、73 和 93 天，大致每年 4 到 5 套新套装。整条管线很健康。唯一缺的，是给最老的那些套装一个优雅的退场方式。</p>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 5 - INTERACTIVE ============ -->
+  <section>
+    <div class="narrow">
+      <div class="kicker reveal"><span class="num">5</span> 把目标重新放回 Birch 眼前</div>
+      <h2 class="reveal">动手试试：加快上新节奏，看目标如何靠近。</h2>
+      <p class="lede reveal">当一套终于开放时，Birch 又有了目标，攒下的代币也终于有了去处。拖动控件，看看一整年对一位玩家而言会如何展开。每一项假设都由你来调。</p>
+    </div>
+
+    <div class="lab reveal">
+      <h3>下一个目标滑块</h3>
+      <div class="labsub">这是一份覆盖 52 周的单玩家模拟。进店节奏越快，可获得的套装就越多，也就意味着 Birch 有更多周在积极追逐（并消费），而不是让免费代币闲置。</div>
+
+      <div class="controls">
+        <div class="ctrl">
+          <label for="cadence">上新节奏 <span class="v" id="cadence-v"></span></label>
+          <input type="range" id="cadence" min="0" max="6" step="1" value="5" aria-label="每年发布的新套装数量">
+        </div>
+        <div class="ctrl">
+          <label>Birch 的消费习惯</label>
+          <div class="segwrap" id="tiers">
+            <div class="seg" data-tier="0">免费</div>
+            <div class="seg on" data-tier="1">$5 / 周</div>
+            <div class="seg" data-tier="2">$25 / 周</div>
+            <div class="seg" data-tier="3">$100 / 周</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="goalmeter">
+        <div class="gl"><span id="goal-line">下一套已触手可及</span><span id="goal-pct">0%</span></div>
+        <div class="track"><div class="fill" id="goal-fill"></div></div>
+      </div>
+
+      <div class="goalout">
+        <div class="go"><div class="gn" id="o-sets">0</div><div class="gt">本年集齐的套装数</div></div>
+        <div class="go"><div class="gn" id="o-cash">$0</div><div class="gt">Birch 花掉的现金</div></div>
+        <div class="go"><div class="gn" id="o-stranded">0</div><div class="gt">闲置的免费代币</div></div>
+      </div>
+
+      <div class="verdict" id="verdict"></div>
+      <div class="disclaimer">示意性的单玩家模型，仅限于那 10 套较老的积压套装。常量：每套 11,340 枚代币、每周 300 枚免费代币、52 周时间跨度。上新礼包与每月弹窗礼包的收入不受此滑块影响。</div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 6 - STEADY VS DUMP ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">6</span> 从全服视角看</div>
+    <h2 class="reveal">稳定释放胜过一次性大放送。</h2>
+    <p class="lede reveal">把视角从 Birch 拉远，放到整整一个服的套装买家身上。释放积压套装有两种方式：要么一直攒着，在年底把全部 10 套一次性倾倒出来；要么让最老的那套稳定地进店，大约每 2.5 个月一套。耐心的路径能让玩家持续投入，而收入正藏在这份投入之中。</p>
+
+    <figure class="reveal">
+      <div class="figtitle">一年里积压套装的代币收入</div>
+      <div class="figsub">一个由 600 名活跃套装买家组成的群体（构成：55% 免费玩家、30% 每周 $5、12% 每周 $25、3% 每周 $100）。柱形仅显示那 10 套较老套装带来的代币商店收入。</div>
+      <svg class="chart" viewBox="0 0 640 320" role="img" aria-label="柱状图，对比积攒后一次性倾倒约 28,825 美元，与稳定进店约 76,501 美元的较老积压套装代币收入。">
+        <g>
+          <line class="gridln" x1="150" y1="40" x2="610" y2="40"/>
+          <line class="gridln" x1="150" y1="100" x2="610" y2="100"/>
+          <line class="gridln" x1="150" y1="160" x2="610" y2="160"/>
+          <line class="gridln" x1="150" y1="220" x2="610" y2="220"/>
+          <text class="axtxt" x="144" y="44" text-anchor="end">$80k</text>
+          <text class="axtxt" x="144" y="104" text-anchor="end">$60k</text>
+          <text class="axtxt" x="144" y="164" text-anchor="end">$40k</text>
+          <text class="axtxt" x="144" y="224" text-anchor="end">$20k</text>
+          <line class="axis" x1="150" y1="262" x2="610" y2="262"/>
+        </g>
+        <!-- hold and dump bar: 28825 -> height. scale: $80k over 222px (262-40). px per $ = 222/80000 -->
+        <rect x="210" y="182" width="120" height="80" rx="8" fill="#d8c39c"/>
+        <text class="serieslbl" x="270" y="172" text-anchor="middle" fill="#8a7d66">$28,825</text>
+        <text class="axtxt" x="270" y="282" text-anchor="middle" font-size="12.5">攒后一次性倾倒</text>
+        <text class="axtxt" x="270" y="300" text-anchor="middle">倾倒时约 30% 玩家流失</text>
+        <!-- steady bar: 76501 -> height = 76501 * 222/80000 = 212 -->
+        <rect x="430" y="50" width="120" height="212" rx="8" fill="#e8694e"/>
+        <text class="serieslbl" x="490" y="40" text-anchor="middle" fill="#cf4d33" font-size="15">$76,501</text>
+        <text class="axtxt" x="490" y="282" text-anchor="middle" font-size="12.5" fill="#cf4d33">稳定进店</text>
+        <text class="axtxt" x="490" y="300" text-anchor="middle" fill="#cf4d33">最老的套装约每 2.5 个月进店一套</text>
+      </svg>
+      <figcaption>稳定进店一整年下来多赚约 $47,676，约为攒后一次性倾倒所获积压套装代币收入的 2.7 倍。</figcaption>
+      <div class="disclaimer">这些数字仅作示意，且仅限于那 10 套较老套装带来的代币商店收入，并非游戏总收入。两条路径下，上新与每月弹窗礼包的收入完全一致。</div>
+    </figure>
+
+    <p class="body reveal">一次性倾倒会把远超玩家所能消化的内容一股脑塞给他们，于是绝大部分代币就这么闲置了，还有一批玩家干脆离场。而稳定的细水长流则让目标整整一年都挂在地平线上，这恰恰是把一位愿意积攒的玩家转化成持续小额付费者的关键。</p>
+  </section>
+
+  <!-- ============ CHAPTER 7 - THE ASK ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">7</span> 唯一的请求</div>
+    <div class="ask reveal">
+      <div class="ak">进一套，毕业一套</div>
+      <h2>每次新套装上线，就让被搁置的最老一套走进商店。</h2>
+      <p>每当一套新套装上线（大约每 2 到 3 个月一次），被搁置的最老一套就进入套装代币商店。最新的套装保持高价，每月的弹窗礼包原封不动，每次永远只移动那唯一最老的一套。这几乎不需要任何开发成本，因为这些套装本来就已经存在。</p>
+      <div class="oneone">
+        <div class="big">进 1 套 &rarr; 毕业 1 套</div>
+        <div class="lab2">一个会自我清空的积压队列，永远把最新鲜的内容留在高价档，并重新给耐心的玩家一个目标。</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CHAPTER 8 - REBUTTAL ============ -->
+  <section class="narrow">
+    <div class="kicker reveal"><span class="num">8</span> 一个公道的问题</div>
+    <h2 class="reveal">免费代币套装难道不会冲击礼包销量吗？</h2>
+    <p class="lede reveal">这是个该问的好问题，而诚实的回答是：不会。原因在于，进店毕业触及的，是和礼包完全不同的那类玩家。</p>
+    <div class="qa reveal">
+      <div class="item"><div class="q">只有最老的一套毕业</div><div class="a">较新的套装保持高价。礼包卖的还是它今天卖的那些。任何新鲜内容都不会离开高价货架。</div></div>
+      <div class="item"><div class="q">代币路径仍然要花数月</div><div class="a">通过商店拿到一套是一场耐心的苦磨。想马上拥有的玩家依旧会买礼包来跳过等待。</div></div>
+      <div class="item"><div class="q">升级照样要花钱</div><div class="a">升到 2 级意味着把一套集齐三次。商店只是打开了通往 1 级的门，并不会白送满级套装。</div></div>
+      <div class="item"><div class="q">弹窗礼包打包的东西多得多</div><div class="a">每月的弹窗礼包在裸套装之外还包进了额外价值。在那里下单的人，是在为整个礼包付费，而不只是为套装。</div></div>
+    </div>
+    <p class="body reveal" style="margin-top:8px">进店毕业触及的，是那位本来就绝不会按上新全价付款的耐心积攒者。它不会把任何一位高价买家拉到慢速路径上。它把一条死胡同变成一份小额、稳定、持续的消费来源，同时让悄然拉大的战力差距不至于把中等玩家越落越远。</p>
+  </section>
+
+  <!-- ============ CLOSE ============ -->
+  <section class="close narrow">
+    <div class="mark reveal" aria-hidden="true">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M5 13l4 4L19 7"/>
+      </svg>
+    </div>
+    <h2 class="reveal">再给 Birch 一个可以追逐的目标。</h2>
+    <p class="reveal">内容本就存在。货币本就在流动。愿意参与的玩家本就在这里，每天上线、努力朝着一个目前被锁起来的目标积攒。一次小小的、持续的进店毕业，就能把安静的货架变成一份稳定、友善的收入来源，也把一位渐行渐远的收藏家重新变回一位开心的收藏家。</p>
+    <p class="reveal">感谢您的阅读，也感谢您打造了一款值得收藏的游戏。</p>
+    <div class="signoff reveal">致以敬意，一位 2864 服玩家</div>
+  </section>
+
+</div>
+
+<footer>
+  这是一份独立的、由玩家撰写的建议，致研发团队 &middot; 口袋奇兵 &middot; 2864 服<br>
+  所有收入数字均仅作示意，且仅限于较老积压套装的代币收入，并非游戏总收入。
+</footer>
+
+<script>
+(function(){
+  "use strict";
+
+  /* ---------- catalogue data ---------- */
+  var STORE = [
+    "The Wizard of TW","Home, Sweet Home","Military Life","Moon and Starlight",
+    "Industrial Era","Rip Tides","Just For You","Happy 24h"
+  ];
+  var SHELVED = [
+    ["Holiday Decor Set","2021 年"],["Giggling Castle","2022 年"],["Thanksgiving Feast","2022 年"],
+    ["Magic Christmas","2022 年"],["Christmas Season","2023 年"],["Pawsome Moments","2023 年"],
+    ["Snowfall Season","2023 年 12 月"],["Metal Music Fans","2024 年 5 月"],
+    ["Kung Fu Saga","2024 年 9 月"],["Penguin World","2024 年 12 月"]
+  ];
+  var RECENT = [
+    ["Sea of Stars","2025 年 8 月"],["Magic & Dragons","2025 年 9 月"],["Sweet Haven","2025 年 12 月"],
+    ["Spring Festival Games","2026 年 2 月"],["World Tour","2026 年 5 月"]
+  ];
+
+  function esc(s){ return String(s).replace(/[&<>]/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;"}[c];}); }
+
+  function fillCat(id, items, cls, withYear){
+    var el = document.getElementById(id);
+    if(!el) return;
+    var html = "";
+    items.forEach(function(it){
+      var name = withYear ? it[0] : it;
+      var yr = withYear ? it[1] : "商店轮换";
+      html += '<div class="setchip '+cls+'"><span class="dot" aria-hidden="true"></span>'
+            + '<div class="sname">'+esc(name)+'</div>'
+            + '<div class="syr">'+esc(yr)+'</div></div>';
+    });
+    el.innerHTML = html;
+  }
+  fillCat("cat-store", STORE, "store", false);
+  fillCat("cat-shelved", SHELVED, "shelved", true);
+  fillCat("cat-recent", RECENT, "recent", true);
+
+  /* ---------- interactive model ---------- */
+  var SET_COST   = 11340;   // tokens per full set, level 1
+  var FREE_WK    = 300;     // free tokens per week
+  var WEEKS      = 52;
+  var BACKLOG    = 10;      // older sets available to graduate
+
+  // spender tiers: [weekly paid tokens beyond free, weekly cash]
+  var TIERS = [
+    {paid:0,    cash:0,      label:"免费玩家"},
+    {paid:600,  cash:4.95,   label:"每周 $5"},
+    {paid:1880, cash:24.94,  label:"每周 $25"},
+    {paid:7080, cash:104.93, label:"每周 $100"}
+  ];
+
+  // cadence index 0..6 -> sets released across the year
+  var CADENCE = [0,1,2,3,4,5,6];
+
+  /* For a given cadence (sets/year over 52 weeks), how many older sets are
+     available by each week. Releases are spread evenly across the horizon,
+     with the last one landing near week 52. */
+  function availabilityByWeek(setsPerYear){
+    var avail = new Array(WEEKS+1).fill(0);
+    var n = Math.min(setsPerYear, BACKLOG);
+    var times = [];
+    for(var k=1;k<=n;k++){
+      var wk = Math.min(WEEKS, Math.round(k * WEEKS / n));
+      times.push(wk);
+    }
+    for(var w=1;w<=WEEKS;w++){
+      var c=0;
+      for(var i=0;i<times.length;i++){ if(times[i]<=w) c++; }
+      avail[w]=c;
+    }
+    return avail;
+  }
+
+  /* Per player simulation following the exact rules:
+     each week bank 300 free tokens; if an unowned available set exists (a goal)
+     and the tier pays, add tier paid tokens and spend tier cash; then complete
+     as many full sets as tokens allow; if no goal, paid buying stops (zero cash)
+     and free tokens pile up as stranded. */
+  function simulate(setsPerYear, tier){
+    var avail = availabilityByWeek(setsPerYear);
+    var tokens = 0, owned = 0, cash = 0, stranded = 0;
+    var t = TIERS[tier];
+    for(var w=1; w<=WEEKS; w++){
+      tokens += FREE_WK;                 // bank free tokens
+      var goalExists = avail[w] > owned; // an unowned, available set
+      if(goalExists && t.paid > 0){
+        tokens += t.paid;                // top up toward the goal
+        cash   += t.cash;
+      }
+      // complete as many full sets as tokens + availability allow
+      while(tokens >= SET_COST && owned < avail[w]){
+        tokens -= SET_COST;
+        owned  += 1;
+      }
+    }
+    // any tokens left when no further goal is reachable count as stranded
+    // (free tokens that piled up with nowhere to go)
+    stranded = tokens;
+    return { sets:owned, cash:cash, stranded:stranded, finalGoalAvail:avail[WEEKS], tokens:tokens };
+  }
+
+  /* progress toward NEXT goal at end of year, for the meter:
+     how close are banked tokens to the next full set the player could still want */
+  function nextGoalProgress(res, setsPerYear){
+    // if more sets are available than owned, show progress of leftover tokens
+    // toward one more set; otherwise show stranded saturation
+    var pct;
+    if(res.finalGoalAvail > res.sets){
+      pct = Math.min(100, Math.round((res.tokens / SET_COST) * 100));
+    } else {
+      // no goal: meter reflects how far past a set's worth the strand has gone
+      pct = Math.min(100, Math.round((res.tokens / SET_COST) * 100));
+    }
+    return pct;
+  }
+
+  var elCad   = document.getElementById("cadence");
+  var elCadV  = document.getElementById("cadence-v");
+  var segs    = Array.prototype.slice.call(document.querySelectorAll("#tiers .seg"));
+  var oSets   = document.getElementById("o-sets");
+  var oCash   = document.getElementById("o-cash");
+  var oStr    = document.getElementById("o-stranded");
+  var gFill   = document.getElementById("goal-fill");
+  var gPct    = document.getElementById("goal-pct");
+  var gLine   = document.getElementById("goal-line");
+  var vBox    = document.getElementById("verdict");
+
+  var curTier = 1;
+
+  function fmtCash(n){ return "$" + (Math.round(n)).toLocaleString("en-US"); }
+  function fmtNum(n){ return Math.round(n).toLocaleString("en-US"); }
+
+  function render(){
+    var ci = parseInt(elCad.value,10);
+    var setsPerYear = CADENCE[ci];
+    elCadV.textContent = (setsPerYear === 0) ? "凝固，每年 0 套" : ("每年 " + setsPerYear + " 套新套装");
+
+    var res = simulate(setsPerYear, curTier);
+    oSets.textContent = res.sets;
+    oCash.textContent = fmtCash(res.cash);
+    oStr.textContent  = fmtNum(res.stranded);
+
+    var pct = nextGoalProgress(res, setsPerYear);
+    gFill.style.width = pct + "%";
+    gPct.textContent = pct + "%";
+
+    var t = TIERS[curTier];
+
+    if(setsPerYear === 0){
+      gLine.textContent = "商店凝固，没有目标开放";
+      vBox.innerHTML = "在商店<b>凝固</b>的情况下，即便是一位付费收藏家，整年也只花掉 <b>"+fmtCash(res.cash)
+        +"</b>，还闲置了 <b>"+fmtNum(res.stranded)+" 枚代币</b>。一位愿意付费的顾客，就这样闲置着。";
+    } else if(res.sets === 0){
+      gLine.textContent = "目标即将开放";
+      vBox.innerHTML = "在每年 "+setsPerYear+" 套、按<b>"+t.label+"</b>习惯的情况下，第一个目标开放了，但免费路径太慢。加快上新节奏，或稍微花点钱，才能集齐一套。";
+    } else {
+      gLine.textContent = "正在追逐下一套";
+      vBox.innerHTML = "在每年稳定 "+setsPerYear+" 套的情况下，一位<b>"+t.label
+        +"</b>玩家在较老的积压套装上大约集齐 <b>"+res.sets+" 套</b>，花费约 <b>"+fmtCash(res.cash)
+        +"</b>。代币顺畅流动，而不再闲置。";
+    }
+  }
+
+  elCad.addEventListener("input", render);
+  segs.forEach(function(s){
+    s.addEventListener("click", function(){
+      segs.forEach(function(x){ x.classList.remove("on"); });
+      s.classList.add("on");
+      curTier = parseInt(s.getAttribute("data-tier"),10);
+      render();
+    });
+  });
+  render();
+
+  /* ---------- scroll reveal ---------- */
+  if(document.documentElement.classList.contains("js") && "IntersectionObserver" in window){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); }
+      });
+    }, { threshold:0.12, rootMargin:"0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(function(n){ io.observe(n); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(n){ n.classList.add("in"); });
+  }
+
+  /* ---------- progress bar ---------- */
+  var prog = document.getElementById("progress");
+  function onScroll(){
+    var h = document.documentElement;
+    var max = h.scrollHeight - h.clientHeight;
+    var p = max > 0 ? (h.scrollTop / max) * 100 : 0;
+    prog.style.width = p + "%";
+  }
+  window.addEventListener("scroll", onScroll, { passive:true });
+  onScroll();
+
+})();
+</script>
+</body>
+</html>

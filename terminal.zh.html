@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<!-- 本文件为「数据室」视图（terminal.html）的简体中文版本。仅翻译人类可见文案，未改动任何代码、模型常量或计算公式。 -->
+<html lang="zh-CN">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
-<title>Decor Set Store: Backlog Graduation Desk</title>
+<meta name="referrer" content="no-referrer">
+<title>装饰套装商店：库存套装上架推演台</title>
+<meta name="description" content="对口袋奇兵装饰套装商店的量化分析：把每一笔提案当作一个仓位来定价，估算其期望价值并对下行风险做压力测试。所有金额均为示意性估算，仅覆盖 10 套较早套装的套装商店收入，不代表游戏整体收入。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070b10'/%3E%3Crect x='2' y='9' width='2' height='5' fill='%237dffd6'/%3E%3Crect x='6' y='5' width='2' height='9' fill='%237dffd6'/%3E%3Crect x='10' y='2' width='2' height='12' fill='%23ffb454'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Chivo:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600;700&family=Chivo:wght@400;500;700;900&family=Noto+Sans+SC:wght@400;500;700;900&display=swap" rel="stylesheet">
 <script>
 /* Gate scroll-reveal behind a class so content is never permanently hidden.
    Only enable when JS runs and motion is allowed. */
@@ -34,8 +37,8 @@
   --neg:#ffb454;     /* warm signal: loss / status quo */
   --negdim:#8a6526;
   --accent:#6fb4ff;
-  --mono:'IBM Plex Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  --sans:'Chivo',system-ui,sans-serif;
+  --mono:'IBM Plex Mono','Noto Sans SC',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --sans:'Chivo','Noto Sans SC',system-ui,sans-serif;
 }
 *{box-sizing:border-box}
 html,body{margin:0;padding:0}
@@ -237,137 +240,137 @@ td .delta-neg{color:var(--neg)}
 
 <div class="ticker" aria-hidden="true">
   <div class="ticker-track" id="ticker">
-    <span>DECOR SET STORE DESK</span>
-    <span>SETS TOTAL <b>23</b></span>
-    <span>TOKEN-STORE LIVE <b>8</b></span>
-    <span>SHELVED BACKLOG <i>10</i></span>
-    <span>FULL SET <b>11,340 TOK</b></span>
-    <span>FREE INCOME <b>300 TOK/WK</b></span>
-    <span>SHIP CADENCE <b>~2.4 MO</b></span>
-    <span>SINCE DEC 2023 IN STORE <i>0 of 9</i></span>
-    <span>STEADY vs HOLD (ILLUSTRATIVE, BACKLOG ONLY) <b>+$47,676</b></span>
-    <span>POSITION <b>LONG GRADUATION</b></span>
-    <span>BUILD COST <b>$0</b></span>
+    <span>装饰套装商店推演台</span>
+    <span>套装总数 <b>23</b></span>
+    <span>商店在售 <b>8</b></span>
+    <span>积压库存 <i>10</i></span>
+    <span>整套需求 <b>11,340 代币</b></span>
+    <span>免费收入 <b>300 代币/周</b></span>
+    <span>上新节奏 <b>约 2.4 月</b></span>
+    <span>2023 年 12 月以来进入商店 <i>9 套中 0 套</i></span>
+    <span>稳定上架 vs 囤积倾倒（示意，仅限库存） <b>+$47,676</b></span>
+    <span>仓位 <b>做多上架</b></span>
+    <span>开发成本 <b>$0</b></span>
   </div>
 </div>
 
 <div class="wrap">
 
   <header class="mast">
-    <div class="tag"><span class="dot"></span> Numbers Desk Re-Analysis &nbsp;/&nbsp; Server 2864 &nbsp;/&nbsp; Top War by RiverGame</div>
-    <h1>The shelved <span class="hl">decoration backlog</span> is unbooked revenue sitting at zero.</h1>
-    <p class="sub">A quantitative read on the Decor Set Store. We price the proposal as a position with an expected value and stress-test the downside. All money figures below are illustrative and scoped strictly to token-store revenue from the 10 older sets, not total game revenue.</p>
+    <div class="tag"><span class="dot"></span> 数据室再分析 &nbsp;/&nbsp; 2864 服 &nbsp;/&nbsp; 口袋奇兵</div>
+    <h1>那批被搁置的<span class="hl">装饰库存</span>，是一笔归零挂账、尚未入账的收入。</h1>
+    <p class="sub">这是一份关于装饰套装商店的量化解读。我们把这项提案当作一个仓位来定价，给出它的期望价值，并对下行风险做压力测试。下文所有金额均为示意性估算，严格限定于 10 套较早套装在套装商店内产生的收入，不代表游戏整体收入。</p>
     <div class="desk">
-      <span>HORIZON: 52 WEEKS</span>
-      <span>UNIT: TOKEN-STORE REV, OLDER BACKLOG ONLY</span>
-      <span>BENCHMARK: HOLD-AND-DUMP</span>
-      <span>STATUS: PROPOSAL, NOT FORECAST</span>
+      <span>周期：52 周</span>
+      <span>口径：套装商店收入，仅限较早库存</span>
+      <span>对照基准：囤积倾倒</span>
+      <span>性质：提案，非预测</span>
     </div>
   </header>
 
   <!-- KPI STRIP -->
   <div class="kpis reveal">
-    <div class="kpi"><div class="lab">Sets shipped</div><div class="val">23</div><div class="meta">total decoration sets</div></div>
-    <div class="kpi"><div class="lab">Token-store live</div><div class="val pos">8</div><div class="meta">on rotation now</div></div>
-    <div class="kpi"><div class="lab">Shelved backlog</div><div class="val neg">10</div><div class="meta">no affordable path</div></div>
-    <div class="kpi"><div class="lab">Per full set</div><div class="val">11,340</div><div class="meta">tokens, level 1</div></div>
-    <div class="kpi"><div class="lab">Ship cadence</div><div class="val">~2.4 mo</div><div class="meta">about 4 to 5 a year</div></div>
-    <div class="kpi"><div class="lab">Illustrative delta</div><div class="val pos">+$47,676</div><div class="meta">steady over hold, backlog only</div></div>
+    <div class="kpi"><div class="lab">已上线套装</div><div class="val">23</div><div class="meta">装饰套装总数</div></div>
+    <div class="kpi"><div class="lab">商店在售</div><div class="val pos">8</div><div class="meta">目前轮换在架</div></div>
+    <div class="kpi"><div class="lab">积压库存</div><div class="val neg">10</div><div class="meta">没有可负担的获取途径</div></div>
+    <div class="kpi"><div class="lab">每整套</div><div class="val">11,340</div><div class="meta">代币，1 级</div></div>
+    <div class="kpi"><div class="lab">上新节奏</div><div class="val">约 2.4 月</div><div class="meta">每年约 4 到 5 套</div></div>
+    <div class="kpi"><div class="lab">示意性差额</div><div class="val pos">+$47,676</div><div class="meta">稳定上架优于囤积，仅限库存</div></div>
   </div>
-  <p class="disc" style="margin-top:8px;border-top:0;padding-top:0">Headline delta is the illustrative one-year token-store revenue from the 10 older sets under steady graduation minus the same metric under hold-and-dump, at default desk assumptions. Launch-pack and monthly pop-up revenue are identical under both paths and are excluded.</p>
+  <p class="disc" style="margin-top:8px;border-top:0;padding-top:0">这一头条差额，是在推演台默认假设下，10 套较早套装在「稳定上架」路径下一年的示意性套装商店收入，减去同一指标在「囤积倾倒」路径下的数值。上新礼包与每月弹窗礼包的收入在两条路径下完全相同，已被排除在外。</p>
 
   <!-- THE STRUCTURE -->
   <section class="reveal">
-    <div class="shead"><span class="num">01</span><h2>The two acquisition paths</h2><span class="note">SOURCE: IN-GAME ECONOMY</span></div>
-    <p class="lede">Every completed set grants a permanent march-size bonus, a gameplay stat, and the bonuses stack. Owning more sets quietly widens the gap between the top and the broad mid-tier. Keeping that mid-tier collecting and engaged is the commercial reason to widen access, not a complaint. There are exactly two ways to own a set.</p>
+    <div class="shead"><span class="num">01</span><h2>两条获取路径</h2><span class="note">来源：游戏内经济系统</span></div>
+    <p class="lede">每完成一套套装，都会带来一份永久的行军规模加成，这是一项实打实的玩法属性，而且这些加成可以叠加。拥有的套装越多，就在悄然之间拉大了顶端玩家与广大中坚玩家之间的差距。让这群中坚玩家持续收集、保持活跃，正是拓宽获取途径的商业理由，而非一句抱怨。要拥有一套套装，恰好只有两条路。</p>
     <div class="tablebox">
       <table>
-        <thead><tr><th>Path</th><th>Currency</th><th>Level 1 cost</th><th>Level 2 cost</th><th>Window</th><th>Speed</th></tr></thead>
+        <thead><tr><th>路径</th><th>货币</th><th>1 级花费</th><th>2 级花费</th><th>窗口期</th><th>速度</th></tr></thead>
         <tbody>
-          <tr><td>Launch packs (premium)</td><td>real money</td><td>~$175</td><td>~$525</td><td>launch only</td><td class="pos">instant</td></tr>
-          <tr><td>Decor Set Store</td><td>Decor Set Tokens (soft)</td><td class="pos">~$94 max, less with free tokens</td><td>still paid to level</td><td>while listed</td><td class="neg">months</td></tr>
+          <tr><td>上新礼包（付费）</td><td>真实货币</td><td>约 $175</td><td>约 $525</td><td>仅限上新期</td><td class="pos">即时到手</td></tr>
+          <tr><td>装饰套装商店</td><td>套装代币（软货币）</td><td class="pos">最高约 $94，配合免费代币更省</td><td>升级仍需付费</td><td>在架期间</td><td class="neg">需数月</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="lede" style="margin-top:14px">The store path is the affordable lane. A full set is 11,340 tokens. Players earn about 300 free tokens a week and can top up: the best value is a $0.99 pack (120 tokens) capped at 5 buys a week, about $5 for 600 tokens. Larger uncapped packs run $4.99 = 300, $19.99 = 1,280, $49.99 = 3,280, $99.99 = 6,480. Free over about 9 months, or about 3 months for a steady $5-a-week earner. Level 2 still requires collecting a set three times, so levelling stays a paid motion.</p>
-    <div class="callout"><b>The defect:</b> of 23 sets, only 8 are in the store and they merely cycle on rotation. 10 older sets (released 2021 to 2024) are shelved with no affordable path at all: their launch window closed years ago and they never entered the store. A verifiable fact anchors this desk: not one of the nine sets released since December 2023 has reached the token store. The remaining 5 are recent and stay premium; this position does not touch them.</p>
+    <p class="lede" style="margin-top:14px">商店路径是那条可负担的车道。一整套套装需要 11,340 代币。玩家每周可免费获得约 300 代币，还可以加购：性价比最高的是 $0.99 礼包（120 代币），每周上限 5 次，约 $5 换 600 代币。更大的、不限量的礼包则为 $4.99 = 300、$19.99 = 1,280、$49.99 = 3,280、$99.99 = 6,480。纯靠免费途径约需 9 个月，对一名每周稳定花 $5 的玩家来说约需 3 个月。2 级仍要求把同一套套装集齐三次，因此升级始终是一项付费动作。</p>
+    <div class="callout"><b>症结所在：</b>23 套套装里，只有 8 套进入了商店，而且它们仅仅是在轮换中循环。10 套较早套装（2021 至 2024 年推出）被搁置一旁，根本没有任何可负担的获取途径：它们的上新窗口早在数年前就已关闭，而且从未进入商店。有一个可被核实的事实为这张推演台定下了基调：自 2023 年 12 月以来推出的 9 套套装，没有一套进入过套装商店。其余 5 套较新，仍保持付费；本仓位不触及它们。</div>
   </section>
 
   <!-- THE MODEL -->
   <section class="reveal">
-    <div class="shead"><span class="num">02</span><h2>Live model: hold-and-dump versus steady graduation</h2><span class="note">RECOMPUTES ON INPUT</span></div>
-    <p class="lede">A per-player simulation across 52 weeks, summed over a population. Each week a player banks 300 free tokens. If an unowned, available older set exists and the player is a payer, they add their tier's paid tokens and spend that tier's cash, then complete as many full sets as their balance allows. With no available goal, paid buying stops and free tokens pile up as stranded balance. Adjust the inputs; the chart and tables update live. Every dollar shown is illustrative token-store revenue from the older backlog only.</p>
+    <div class="shead"><span class="num">02</span><h2>实时模型：囤积倾倒 对 稳定上架</h2><span class="note">输入即重算</span></div>
+    <p class="lede">这是一套跨 52 周、逐玩家的模拟，再在整个人群上汇总。每一周，玩家存入 300 枚免费代币。如果存在一套尚未拥有、当前可获取的较早套装，且该玩家是付费者，他便加上所在档位的付费代币、花掉该档位的现金，然后用余额尽可能多地集齐整套套装。一旦没有可追求的目标，付费购买便停止，免费代币只能堆积成无处可用的余额。调整下方的输入，图表与表格会实时更新。这里展示的每一美元，都是仅来自较早库存的示意性套装商店收入。</p>
 
     <div class="model">
       <div class="controls">
         <div class="ctrl">
-          <div class="cl"><span>Spender tier (single-player readout)</span><span class="cv" id="tierLab">$5 / wk</span></div>
+          <div class="cl"><span>付费档位（单玩家读数）</span><span class="cv" id="tierLab">$5 / 周</span></div>
           <div class="seg" id="tierSeg">
-            <button data-tier="free">Free</button>
+            <button data-tier="free">免费</button>
             <button data-tier="5" class="on">$5</button>
             <button data-tier="25">$25</button>
             <button data-tier="100">$100</button>
           </div>
-          <div class="ctrl-note" id="tierNote">600 paid tokens/wk on a goal, $4.95 cash.</div>
+          <div class="ctrl-note" id="tierNote">有目标时每周 600 枚付费代币，现金 $4.95。</div>
         </div>
 
         <div class="ctrl">
-          <div class="cl"><span>Release cadence</span><span class="cv">one set every <span id="spyVal">2.5</span> mo</span></div>
+          <div class="cl"><span>上架节奏</span><span class="cv">每 <span id="spyVal">2.5</span> 月上架一套</span></div>
           <input type="range" id="spy" min="1.5" max="6" step="0.5" value="2.5">
-          <div class="ctrl-note">Months between graduations. The default of one set every 2.5 months matches the proposal's about 4 to 5 a year.</div>
+          <div class="ctrl-note">两次上架之间的间隔月数。默认每 2.5 个月一套，与提案中每年约 4 到 5 套相吻合。</div>
         </div>
 
         <div class="ctrl">
-          <div class="cl"><span>Active set-buyers</span><span class="cv" id="popVal">600</span></div>
+          <div class="cl"><span>活跃套装买家</span><span class="cv" id="popVal">600</span></div>
           <input type="range" id="pop" min="100" max="1500" step="50" value="600">
-          <div class="ctrl-note">Population size. Tier mix held at 55% free, 30% $5, 12% $25, 3% $100.</div>
+          <div class="ctrl-note">人群规模。档位结构固定为 55% 免费、30% $5、12% $25、3% $100。</div>
         </div>
 
         <div class="ctrl">
-          <div class="cl"><span>Dump give-up rate</span><span class="cv" id="guVal">30%</span></div>
+          <div class="cl"><span>倾倒放弃率</span><span class="cv" id="guVal">30%</span></div>
           <input type="range" id="gu" min="0" max="60" step="5" value="30">
-          <div class="ctrl-note">Share of players who disengage when 10 sets land at once with no runway. Applies to hold-and-dump only.</div>
+          <div class="ctrl-note">当 10 套套装毫无缓冲地一次性砸下时选择离场的玩家比例。仅适用于囤积倾倒路径。</div>
         </div>
 
-        <button class="reset" id="reset">RESET TO DESK DEFAULTS</button>
-        <div class="ctrl-note" style="margin-top:12px">Defaults reproduce the proposal's illustrative anchors: one set every 2.5 months, 600 active buyers, 30% dump give-up.</div>
+        <button class="reset" id="reset">恢复推演台默认值</button>
+        <div class="ctrl-note" style="margin-top:12px">默认值复现提案中的示意性锚点：每 2.5 个月一套、600 名活跃买家、30% 倾倒放弃率。</div>
       </div>
 
       <div class="viz">
-        <div class="panel-h" style="border:0;padding:0 0 12px"><span>CUMULATIVE BACKLOG TOKEN-STORE REVENUE / 52 WK</span><span class="rt" id="vizDelta">+$0</span></div>
+        <div class="panel-h" style="border:0;padding:0 0 12px"><span>库存套装商店累计收入 / 52 周</span><span class="rt" id="vizDelta">+$0</span></div>
         <div class="chart-wrap">
-          <svg class="chart" id="chart" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="Cumulative revenue chart: steady graduation versus hold and dump"></svg>
+          <svg class="chart" id="chart" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid meet" role="img" aria-label="累计收入图表：稳定上架 对 囤积倾倒"></svg>
         </div>
         <div class="legend">
-          <span><i class="sw swatch-pos"></i>Steady graduation</span>
-          <span><i class="sw swatch-neg"></i>Hold and dump</span>
+          <span><i class="sw swatch-pos"></i>稳定上架</span>
+          <span><i class="sw swatch-neg"></i>囤积倾倒</span>
         </div>
 
         <div class="rt-grid">
-          <div class="rt-cell"><div class="l">Steady, 1 yr</div><div class="v pos" id="rSteady">$0</div><div class="d">backlog token revenue</div></div>
-          <div class="rt-cell"><div class="l">Hold and dump, 1 yr</div><div class="v neg" id="rDump">$0</div><div class="d">backlog token revenue</div></div>
-          <div class="rt-cell"><div class="l">Delta (steady wins)</div><div class="v pos" id="rDelta">$0</div><div class="d"><span id="rRatio">0x</span> the hold total</div></div>
+          <div class="rt-cell"><div class="l">稳定上架，1 年</div><div class="v pos" id="rSteady">$0</div><div class="d">库存代币收入</div></div>
+          <div class="rt-cell"><div class="l">囤积倾倒，1 年</div><div class="v neg" id="rDump">$0</div><div class="d">库存代币收入</div></div>
+          <div class="rt-cell"><div class="l">差额（稳定上架胜出）</div><div class="v pos" id="rDelta">$0</div><div class="d">是囤积总额的 <span id="rRatio">0x</span></div></div>
         </div>
 
-        <div class="panel-h" style="border:0;padding:14px 0 8px"><span>SINGLE-PLAYER READOUT, SELECTED TIER, STEADY PATH</span></div>
+        <div class="panel-h" style="border:0;padding:14px 0 8px"><span>单玩家读数，所选档位，稳定上架路径</span></div>
         <div class="tablebox">
           <table>
-            <thead><tr><th>Scenario</th><th>Sets completed</th><th>Cash spent</th><th>Tokens stranded</th></tr></thead>
+            <thead><tr><th>情景</th><th>集齐套装数</th><th>花费现金</th><th>滞留代币</th></tr></thead>
             <tbody id="spBody"></tbody>
           </table>
         </div>
-        <p class="disc" style="border-top:0;padding-top:8px;margin-top:8px">Single-player figures are illustrative. Frozen store: a payer spends nothing all year and strands thousands of tokens. Steady at one set every 2.5 months: the $5 tier completes about 3 sets near $203, the $25 tier about 4 sets near $424.</p>
+        <p class="disc" style="border-top:0;padding-top:8px;margin-top:8px">单玩家数字仅作示意。商店冻结时：付费者一整年什么都不花，却让数千枚代币白白滞留。每 2.5 个月稳定上架一套时：$5 档玩家约集齐 3 套、花费约 $203，$25 档玩家约集齐 4 套、花费约 $424。</p>
       </div>
     </div>
   </section>
 
   <!-- SENSITIVITY -->
   <section class="reveal">
-    <div class="shead"><span class="num">03</span><h2>Sensitivity of the delta</h2><span class="note">DELTA = STEADY MINUS HOLD</span></div>
-    <p class="lede">How the illustrative one-year backlog revenue advantage of steady graduation moves as assumptions shift, holding everything else at desk defaults. The delta stays firmly positive across population and give-up swings; it only narrows toward zero if graduations slow to roughly twice a year, which is itself the argument for a steady cadence.</p>
+    <div class="shead"><span class="num">03</span><h2>差额的敏感性</h2><span class="note">差额 = 稳定上架 减 囤积倾倒</span></div>
+    <p class="lede">当假设发生变化、而其余一切保持推演台默认值时，稳定上架在一年期库存收入上的示意性优势会如何移动。无论人群规模与放弃率如何摆动，这一差额都稳稳为正；只有当上架放慢到每年大约两套时，它才会向零收窄，而这本身恰恰就是支持稳定节奏的论据。</p>
     <div class="tablebox">
       <table>
-        <thead><tr><th>Assumption swept</th><th>Low</th><th>Default</th><th>High</th><th>Delta sign</th></tr></thead>
+        <thead><tr><th>所扫变量</th><th>低</th><th>默认</th><th>高</th><th>差额符号</th></tr></thead>
         <tbody id="sensBody"></tbody>
       </table>
     </div>
@@ -375,60 +378,60 @@ td .delta-neg{color:var(--neg)}
 
   <!-- STRESS TEST -->
   <section class="reveal">
-    <div class="shead"><span class="num">04</span><h2>Cannibalization stress-test</h2><span class="note">PESSIMISTIC CASE</span></div>
-    <p class="lede">The fair objection: do free-earned token sets undercut premium pack sales? We load the worst-case assumptions and the position still clears.</p>
+    <div class="shead"><span class="num">04</span><h2>蚕食效应压力测试</h2><span class="note">悲观情景</span></div>
+    <p class="lede">公允的质疑是：靠免费代币换来的套装，会不会侵蚀付费礼包的销售？我们把最坏情况的假设全部加满，而这个仓位依然站得住。</p>
     <div class="stress">
       <div class="col">
-        <h4>Why pack revenue holds</h4>
+        <h4>为什么礼包收入不会受损</h4>
         <ul>
-          <li><b>Only the oldest graduates.</b> Recent and current sets stay premium. The newest 5 are never in scope.</li>
-          <li><b>The token path still takes months.</b> Impatient and competitive players keep buying packs to skip the wait.</li>
-          <li><b>Levelling stays paid.</b> Level 2 needs three copies of a set; that motion is unchanged by graduation.</li>
-          <li><b>Pop-up packs bundle far more</b> than the bare set: extra currency, speedups, and exclusives. Those keep selling.</li>
+          <li><b>只有最老的那套上架。</b>较新和当下的套装仍保持付费。最新的 5 套永远不在范围内。</li>
+          <li><b>代币路径仍要耗费数月。</b>急于求成、追求竞技的玩家依然会购买礼包来跳过等待。</li>
+          <li><b>升级照旧付费。</b>2 级需要同一套套装的三份；上架并不会改变这项动作。</li>
+          <li><b>弹窗礼包打包的内容远多于裸套装</b>本身：额外货币、加速道具与专属内容。这些会照常热销。</li>
         </ul>
       </div>
       <div class="col">
-        <h4>Who graduation actually reaches</h4>
+        <h4>上架真正惠及的是谁</h4>
         <ul>
-          <li><b>The patient earner</b> who was never going to pay full launch price. Today they get nothing and bank stranded tokens.</li>
-          <li><b>Lapsing mid-tier players</b> given a reachable goal, which lifts session frequency and soft-currency top-ups.</li>
-          <li><b>A converted token spender</b> is incremental revenue, since the alternative is zero, not a lost pack sale.</li>
-          <li><b>The whale segment is untouched:</b> under any path, top spenders still chase day-one completion via packs.</li>
+          <li><b>那位耐心的攒币玩家</b>，他本来就不会去付全价上新。如今他什么也得不到，只能眼看代币白白滞留。</li>
+          <li><b>正在流失的中坚玩家</b>有了一个够得着的目标，这会拉高他们的上线频率与软货币加购。</li>
+          <li><b>一名被转化的代币付费者</b>是纯增量收入，因为另一种可能是零，而非一笔损失掉的礼包销售。</li>
+          <li><b>鲸鱼玩家这一群体毫发无损：</b>无论哪条路径，高额付费玩家依然会通过礼包追求首日集齐。</li>
         </ul>
       </div>
     </div>
     <div class="verdict">
-      STRESS RESULT: even crediting the displaced-pack-sale objection in full, every graduated token sale is incremental against a baseline of <span class="neg">$0</span> on shelved sets. The model's downside is bounded by zero; the upside is the illustrative <span class="pos">+$47,676</span> backlog delta. <span class="pos">Position survives the pessimistic case.</span>
+      压力测试结论：即便把「挤占礼包销售」这一质疑全额计入，对于那些被搁置的套装而言，基线本就是 <span class="neg">$0</span>，因此每一笔上架后的代币销售都是纯增量。模型的下行被零牢牢托住；上行则是那笔示意性的 <span class="pos">+$47,676</span> 库存差额。<span class="pos">该仓位在悲观情景下依然成立。</span>
     </div>
   </section>
 
   <!-- CATALOGUE -->
   <section class="reveal">
-    <div class="shead"><span class="num">05</span><h2>Set catalogue and status</h2><span class="note">23 SETS</span></div>
-    <p class="lede">The full book. <span class="pill live">LIVE</span> in store now, <span class="pill shelf">SHELVED</span> older backlog this position releases, <span class="pill prem">PREMIUM</span> recent and not contested.</p>
+    <div class="shead"><span class="num">05</span><h2>套装目录与状态</h2><span class="note">23 套</span></div>
+    <p class="lede">这是完整的清单。<span class="pill live">在售</span> 表示当前在商店中，<span class="pill shelf">搁置</span> 表示本仓位要释放的较早库存，<span class="pill prem">付费</span> 表示较新、不在争议之列。</p>
     <div class="tablebox">
       <table>
-        <thead><tr><th>Set</th><th>Released</th><th>Status</th><th>Affordable path</th></tr></thead>
+        <thead><tr><th>套装</th><th>推出时间</th><th>状态</th><th>可负担途径</th></tr></thead>
         <tbody id="catBody"></tbody>
       </table>
     </div>
-    <p class="disc" style="border-top:0;padding-top:8px">Order within each group is oldest first. Shelved release dates span 2021 to 2024; Snowfall Season closes the holiday cluster at December 2023, followed by Metal Music Fans (May 2024), Kung Fu Saga (Sep 2024), and Penguin World (Dec 2024).</p>
+    <p class="disc" style="border-top:0;padding-top:8px">每组内部按从旧到新排列。搁置套装的推出时间横跨 2021 至 2024 年；「Snowfall Season」于 2023 年 12 月收尾了那一批节日套装，随后是「Metal Music Fans」（2024 年 5 月）、「Kung Fu Saga」（2024 年 9 月）与「Penguin World」（2024 年 12 月）。</p>
   </section>
 
   <!-- THE ASK -->
   <div class="position reveal">
-    <div class="lab">The position, one line</div>
-    <div class="line">Each time a new set launches, about every <span class="hl">2 to 3 months</span>, let the <span class="hl">oldest shelved set</span> graduate into the token store. One in, one graduates.</div>
+    <div class="lab">一句话的仓位</div>
+    <div class="line">每当一套新套装上线，大约每 <span class="hl">2 到 3 个月</span> 一次，就让 <span class="hl">最老的那套搁置套装</span> 进入套装商店。一套进来，一套上架。</div>
     <div class="meta">
-      Keeps the newest sets premium. Keeps the monthly pop-up packs intact. Only ever moves the oldest set.<br>
-      Build cost: <span style="color:var(--pos)">$0</span>, the sets already exist. Downside: bounded at zero. Illustrative upside: a recurring backlog token-revenue stream that today reads as nothing.
+      让最新的套装保持付费。让每月的弹窗礼包原封不动。永远只动那最老的一套。<br>
+      开发成本：<span style="color:var(--pos)">$0</span>，这些套装早已存在。下行：被锁定在零。示意性上行：一条循环不断的库存代币收入流，而它今天读出来却等于零。
     </div>
   </div>
 
   <p class="disc">
-    METHODOLOGY: 52-week per-player simulation summed over a tiered population. Constants: full set 11,340 tokens, 300 free tokens per week, 10-set older backlog. Tiers, as weekly paid tokens beyond free and cash: Free 0 / $0; $5 tier 600 / $4.95; $25 tier 1,880 / $24.94; $100 tier 7,080 / $104.93. Mix 55 / 30 / 12 / 3 percent. Steady graduation releases the oldest set on the chosen cadence, one set every 2.5 months at default; hold-and-dump releases nothing for about 10 months then all 10 at once with the give-up haircut applied to the buyer count. All revenue figures are illustrative and scoped to token-store revenue from the 10 older sets only. Launch-pack and pop-up revenue are identical under both paths and are not modelled here. This is a proposal and a position, not a forecast of total game revenue.
+    方法说明：跨 52 周、逐玩家的模拟，再在分档人群上汇总。常量：每整套 11,340 代币，每周 300 枚免费代币，10 套较早库存。各档位（按超出免费部分的每周付费代币与现金计）：免费档 0 / $0；$5 档 600 / $4.95；$25 档 1,880 / $24.94；$100 档 7,080 / $104.93。结构为 55 / 30 / 12 / 3 个百分点。稳定上架按所选节奏释放最老的一套，默认每 2.5 个月一套；囤积倾倒则约 10 个月内不放出任何套装，随后将 10 套一次性全部砸下，并对买家人数施加放弃折损。所有收入数字均为示意性估算，仅覆盖 10 套较早套装在套装商店内的收入。上新礼包与弹窗礼包的收入在两条路径下完全相同，未在此建模。这是一份提案与一个仓位，并非对游戏整体收入的预测。
   </p>
-  <div class="sig">Filed by <b>a Server 2864 player</b>. A partner proposal offered in good faith to RiverGame's product and revenue desks.</div>
+  <div class="sig">由 <b>一名 2864 服玩家</b> 提交。这是一份本着善意、面向贵公司产品与营收团队的合作伙伴提案。</div>
 
 </div>
 
@@ -443,10 +446,10 @@ td .delta-neg{color:var(--neg)}
   var BACKLOG = 10;
 
   var TIERS = {
-    free: { paid:0,    cash:0.0,    label:"Free",  note:"0 paid tokens, $0 cash. Banks free tokens only." },
-    "5":  { paid:600,  cash:4.95,   label:"$5 / wk",   note:"600 paid tokens/wk on a goal, $4.95 cash." },
-    "25": { paid:1880, cash:24.94,  label:"$25 / wk",  note:"1,880 paid tokens/wk on a goal, $24.94 cash." },
-    "100":{ paid:7080, cash:104.93, label:"$100 / wk", note:"7,080 paid tokens/wk on a goal, $104.93 cash." }
+    free: { paid:0,    cash:0.0,    label:"免费",  note:"0 枚付费代币，$0 现金。仅存入免费代币。" },
+    "5":  { paid:600,  cash:4.95,   label:"$5 / 周",   note:"有目标时每周 600 枚付费代币，现金 $4.95。" },
+    "25": { paid:1880, cash:24.94,  label:"$25 / 周",  note:"有目标时每周 1,880 枚付费代币，现金 $24.94。" },
+    "100":{ paid:7080, cash:104.93, label:"$100 / 周", note:"有目标时每周 7,080 枚付费代币，现金 $104.93。" }
   };
   var MIX = { free:0.55, "5":0.30, "25":0.12, "100":0.03 };
 
@@ -546,7 +549,7 @@ td .delta-neg{color:var(--neg)}
     [0,13,26,39,51].forEach(function(i){
       var tx = x(i);
       var t = el("text",{x:tx,y:Hh-8,fill:"#5f7385","font-size":"9","font-family":"'IBM Plex Mono',monospace","text-anchor":"middle"});
-      t.textContent = "wk"+i;
+      t.textContent = "第"+i+"周";
       svg.appendChild(t);
     });
 
@@ -598,8 +601,8 @@ td .delta-neg{color:var(--neg)}
     var steadySP = simulate(state.tier, steadyFn);
     var body = document.getElementById("spBody");
     body.innerHTML =
-      '<tr><td>Frozen store (no graduation)</td><td>'+frozen.sets+'</td><td class="neg">'+fmt$(frozen.cash)+'</td><td>'+fmtTok(frozen.stranded)+'</td></tr>' +
-      '<tr class="win-row"><td>Steady, one set every '+fmtMonths(state.months)+' mo</td><td class="pos">'+steadySP.sets+'</td><td class="pos">'+fmt$(steadySP.cash)+'</td><td>'+fmtTok(steadySP.stranded)+'</td></tr>';
+      '<tr><td>商店冻结（不上架）</td><td>'+frozen.sets+'</td><td class="neg">'+fmt$(frozen.cash)+'</td><td>'+fmtTok(frozen.stranded)+'</td></tr>' +
+      '<tr class="win-row"><td>稳定上架，每 '+fmtMonths(state.months)+' 月一套</td><td class="pos">'+steadySP.sets+'</td><td class="pos">'+fmt$(steadySP.cash)+'</td><td>'+fmtTok(steadySP.stranded)+'</td></tr>';
 
     renderSensitivity();
   }
@@ -612,15 +615,15 @@ td .delta-neg{color:var(--neg)}
   }
   function renderSensitivity(){
     var rows = [
-      { name:"Release cadence (months between)", lo:["6 mo", deltaAt(6, state.pop, state.gu)], def:[fmtMonths(state.months)+" mo", deltaAt(state.months, state.pop, state.gu)], hi:["1.5 mo", deltaAt(1.5, state.pop, state.gu)] },
-      { name:"Active set-buyers", lo:["200", deltaAt(state.months, 200, state.gu)], def:[String(state.pop), deltaAt(state.months, state.pop, state.gu)], hi:["1,200", deltaAt(state.months, 1200, state.gu)] },
-      { name:"Dump give-up rate", lo:["0%", deltaAt(state.months, state.pop, 0)], def:[Math.round(state.gu*100)+"%", deltaAt(state.months, state.pop, state.gu)], hi:["60%", deltaAt(state.months, state.pop, 0.60)] }
+      { name:"上架节奏（间隔月数）", lo:["6 月", deltaAt(6, state.pop, state.gu)], def:[fmtMonths(state.months)+" 月", deltaAt(state.months, state.pop, state.gu)], hi:["1.5 月", deltaAt(1.5, state.pop, state.gu)] },
+      { name:"活跃套装买家", lo:["200", deltaAt(state.months, 200, state.gu)], def:[String(state.pop), deltaAt(state.months, state.pop, state.gu)], hi:["1,200", deltaAt(state.months, 1200, state.gu)] },
+      { name:"倾倒放弃率", lo:["0%", deltaAt(state.months, state.pop, 0)], def:[Math.round(state.gu*100)+"%", deltaAt(state.months, state.pop, state.gu)], hi:["60%", deltaAt(state.months, state.pop, 0.60)] }
     ];
     var html="";
     rows.forEach(function(r){
       function cell(c){ return '<span style="color:#8aa0b2">'+c[0]+'</span> <span class="'+(c[1]>=0?'delta-pos':'delta-neg')+'">'+ (c[1]>=0?'+':'') + fmt$(c[1]) +'</span>'; }
       var allPos = (r.lo[1] >= 0 && r.def[1] >= 0 && r.hi[1] >= 0);
-      html += '<tr><td>'+r.name+'</td><td>'+cell(r.lo)+'</td><td>'+cell(r.def)+'</td><td>'+cell(r.hi)+'</td><td class="'+(allPos?'pos':'neg')+'">'+(allPos?'positive':'mixed')+'</td></tr>';
+      html += '<tr><td>'+r.name+'</td><td>'+cell(r.lo)+'</td><td>'+cell(r.def)+'</td><td>'+cell(r.hi)+'</td><td class="'+(allPos?'pos':'neg')+'">'+(allPos?'为正':'有正有负')+'</td></tr>';
     });
     document.getElementById("sensBody").innerHTML = html;
   }
@@ -628,25 +631,25 @@ td .delta-neg{color:var(--neg)}
   /* ---------- catalogue ---------- */
   var CATALOGUE = [
     /* live */
-    ["The Wizard of TW","rotation","live"],["Home Sweet Home","rotation","live"],["Military Life","rotation","live"],
-    ["Moon and Starlight","rotation","live"],["Industrial Era","rotation","live"],["Rip Tides","rotation","live"],
-    ["Just For You","rotation","live"],["Happy 24h","rotation","live"],
+    ["The Wizard of TW","轮换","live"],["Home Sweet Home","轮换","live"],["Military Life","轮换","live"],
+    ["Moon and Starlight","轮换","live"],["Industrial Era","轮换","live"],["Rip Tides","轮换","live"],
+    ["Just For You","轮换","live"],["Happy 24h","轮换","live"],
     /* shelved, oldest first */
-    ["Holiday Decor Set","2021 to 2022","shelf"],["Giggling Castle","2022","shelf"],["Thanksgiving Feast","2022","shelf"],
+    ["Holiday Decor Set","2021 至 2022","shelf"],["Giggling Castle","2022","shelf"],["Thanksgiving Feast","2022","shelf"],
     ["Magic Christmas","2022","shelf"],["Christmas Season","2023","shelf"],["Pawsome Moments","2023","shelf"],
-    ["Snowfall Season","Dec 2023","shelf"],["Metal Music Fans","May 2024","shelf"],["Kung Fu Saga","Sep 2024","shelf"],
-    ["Penguin World","Dec 2024","shelf"],
+    ["Snowfall Season","2023 年 12 月","shelf"],["Metal Music Fans","2024 年 5 月","shelf"],["Kung Fu Saga","2024 年 9 月","shelf"],
+    ["Penguin World","2024 年 12 月","shelf"],
     /* premium, recent */
-    ["Sea of Stars","Aug 2025","prem"],["Magic and Dragons","Sep 2025","prem"],["Sweet Haven","Dec 2025","prem"],
-    ["Spring Festival Games","Feb 2026","prem"],["World Tour","May 2026","prem"]
+    ["Sea of Stars","2025 年 8 月","prem"],["Magic and Dragons","2025 年 9 月","prem"],["Sweet Haven","2025 年 12 月","prem"],
+    ["Spring Festival Games","2026 年 2 月","prem"],["World Tour","2026 年 5 月","prem"]
   ];
   function renderCatalogue(){
     var html="";
     CATALOGUE.forEach(function(c){
       var status, path;
-      if(c[2]==="live"){ status='<span class="pill live">LIVE</span>'; path='<span class="pos">token store</span>'; }
-      else if(c[2]==="shelf"){ status='<span class="pill shelf">SHELVED</span>'; path='<span class="neg">none</span>'; }
-      else { status='<span class="pill prem">PREMIUM</span>'; path='packs only'; }
+      if(c[2]==="live"){ status='<span class="pill live">在售</span>'; path='<span class="pos">套装商店</span>'; }
+      else if(c[2]==="shelf"){ status='<span class="pill shelf">搁置</span>'; path='<span class="neg">无</span>'; }
+      else { status='<span class="pill prem">付费</span>'; path='仅限礼包'; }
       html += '<tr><td>'+c[0]+'</td><td>'+c[1]+'</td><td style="text-align:right">'+status+'</td><td>'+path+'</td></tr>';
     });
     document.getElementById("catBody").innerHTML = html;
