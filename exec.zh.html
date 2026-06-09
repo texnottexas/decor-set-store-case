@@ -1,4 +1,4 @@
-<!-- 视图：账本（The Ledger）。以财务 / 致股东信的口吻，把装饰套装商店的积压套装看作一项闲置资产与白白流失的收入。这是同一份商业提案的七个可切换视图之一，面向口袋奇兵 2864 服。本文件为该视图的简体中文版本。 -->
+<!-- 视图：账本（The Ledger）。以财务 / 致股东信的口吻，把装饰套装商店的积压套装与套装升级看作一项闲置资产与白白流失的经常性收入。这是同一份商业提案的七个可切换视图之一，面向口袋奇兵 2864 服。本文件为该视图的简体中文版本。 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
-<meta name="description" content="一份财务视角的提案：十套已完工的装饰套装被长期搁置、零收入产出，而愿意付费的玩家正囤积着花不出去的代币。让旧套装按既有节奏稳定进入套装商店，本服一年示意性可多实现约 47,676 美元的代币收入。仅作示意，范围限于 10 套旧套装的代币商店收入，非全游戏收入。">
+<meta name="description" content="一份财务视角的提案：完成一套装饰套装可获得永久行军规模提升，且套装可通过收集重复整套来升级；按周小额分期付费、奔向一个看得见的等级目标，正是玩家乐意持续掏钱的黏性经常性收入，而这条收入线如今记账为 $0。本服一年示意性的按周分期收入约 $69,000，与套装完成收入完全叠加。仅作示意，范围限于装饰代币经济，非全游戏收入。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='13' fill='%23c9a24a'/%3E%3Ccircle cx='16' cy='16' r='9.5' fill='none' stroke='%238a6d27' stroke-width='1.4'/%3E%3Ctext x='16' y='21' font-size='12' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%236b5316'%3E%24%3C/text%3E%3C/svg%3E">
 <title>账本：一项被搁置的资产</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -274,14 +274,89 @@
   footer .sig{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--ink-soft)}
   footer .sig .by{display:block;font-family:var(--grotesk);font-style:normal;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted-2);margin-top:4px}
 
+  /* ============ leveling: lump vs installment ============ */
+  .lvl-lede{margin-top:6px}
+  .contrast{
+    display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;
+  }
+  .contrast .col{
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:20px 20px 18px;position:relative;overflow:hidden;
+  }
+  .contrast .col.wall::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--rust),rgba(220,107,75,.3),transparent)}
+  .contrast .col.flow::after{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--green),rgba(92,186,159,.3),transparent)}
+  .contrast .col .hd{font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;margin-bottom:4px}
+  .contrast .col.wall .hd{color:var(--rust)}
+  .contrast .col.flow .hd{color:var(--green)}
+  .contrast .col .big-n{font-family:var(--serif);font-weight:600;font-size:clamp(26px,5vw,38px);color:var(--ink);letter-spacing:-.01em;margin:2px 0 4px;font-variant-numeric:tabular-nums}
+  .contrast .col .sub{font-size:12.5px;color:var(--muted);line-height:1.5}
+  .contrast .col .sub b{color:var(--ink-soft)}
+  .contrast .col .foot{margin-top:13px;padding-top:12px;border-top:1px solid var(--line-soft);font-size:12.5px;line-height:1.55}
+  .contrast .col.wall .foot{color:#f0a488}
+  .contrast .col.flow .foot{color:#8fd9c4}
+  .contrast .col .foot b{color:var(--ink)}
+
+  .l3-note{
+    margin-top:18px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;
+    padding:16px 18px;background:rgba(201,162,74,.05);border:1px solid var(--gold-deep);border-radius:4px;
+  }
+  .l3-note .badge{
+    font-family:var(--serif);font-weight:600;font-size:13px;color:#3c2f0e;flex:0 0 auto;
+    background:radial-gradient(circle at 35% 30%,#e7c878,#c9a24a 60%,#9a7a2e);border-radius:4px;padding:7px 11px;letter-spacing:.02em;white-space:nowrap;
+  }
+  .l3-note p{font-size:13px;color:var(--ink-soft);line-height:1.55}
+  .l3-note p b{color:var(--gold-bright)}
+
+  /* level token table */
+  .lvltbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:4px;margin-top:18px}
+  .lvltbl{
+    width:100%;border-collapse:collapse;
+    background:linear-gradient(180deg, var(--panel) 0%, var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;overflow:hidden;
+  }
+  .lvltbl caption{
+    caption-side:top;text-align:left;padding:14px 18px 10px;
+    font-family:var(--grotesk);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:700;
+    border-bottom:1px solid var(--line);
+  }
+  .lvltbl th,.lvltbl td{padding:12px 16px;text-align:right;font-size:13.5px;border-bottom:1px solid var(--line-soft);font-variant-numeric:tabular-nums;white-space:nowrap}
+  .lvltbl th:first-child,.lvltbl td:first-child{text-align:left}
+  .lvltbl thead th{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted-2);font-weight:700;background:rgba(0,0,0,.18)}
+  .lvltbl tbody td:first-child{color:var(--ink-soft);font-weight:600}
+  .lvltbl .march{color:var(--gold-bright);font-weight:700}
+  .lvltbl .wallc{color:#f0a488}
+  .lvltbl .flowc{color:#8fd9c4}
+  .lvltbl tr:last-child td{border-bottom:none}
+
+  /* level calculator */
+  .lvlcalc{
+    background:linear-gradient(180deg,var(--panel) 0%,var(--panel-2) 100%);
+    border:1px solid var(--line);border-radius:4px;padding:clamp(16px,3vw,26px);margin-top:18px;
+  }
+  .lvlcalc .seg{margin-bottom:4px}
+  .lvlcalc .calc-out{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:4px;overflow:hidden;margin-top:18px}
+  .lvlcalc .calc-out .co{background:var(--panel-2);padding:15px 14px}
+  .lvlcalc .calc-out .co .cl{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted-2);font-weight:700}
+  .lvlcalc .calc-out .co .cv{font-family:var(--serif);font-weight:600;font-size:clamp(18px,3.4vw,26px);color:var(--ink);margin-top:5px;letter-spacing:-.01em;font-variant-numeric:tabular-nums}
+  .lvlcalc .calc-out .co.march .cv{color:var(--gold-bright)}
+  .lvlcalc .calc-out .co.wallc .cv{color:var(--rust)}
+  .lvlcalc .calc-out .co.flowc .cv{color:var(--green)}
+  .lvlcalc .calc-out .co .cnote{font-size:10.5px;color:var(--muted-2);margin-top:4px;line-height:1.4}
+  .lvlcalc .calc-verdict{margin-top:16px;font-size:13.5px;line-height:1.6;color:var(--ink-soft);padding:14px 16px;border-left:2px solid var(--green);background:rgba(92,186,159,.06);border-radius:0 4px 4px 0}
+  .lvlcalc .calc-verdict b{color:var(--ink)}
+
   @media (max-width:560px){
     .hero-fig{grid-template-columns:1fr}
     .readouts{grid-template-columns:1fr}
     .risk{grid-template-columns:1fr}
+    .contrast{grid-template-columns:1fr}
+    .l3-note{grid-template-columns:1fr}
+    .lvlcalc .calc-out{grid-template-columns:1fr 1fr}
     .pnl th,.pnl td{padding:10px 9px;font-size:12.5px}
     .pnl thead th.amt{white-space:normal}
     .pnl .ln-item .note{font-size:11px}
     .pnl tr.total td.amt{font-size:18px}
+    .lvltbl th,.lvltbl td{padding:10px 10px;font-size:12.5px}
     .pad{padding:0 18px}
   }
 </style>
@@ -296,7 +371,7 @@
         <div class="seal">$</div>
         <div class="brand">
           <div class="k">账本</div>
-          <div class="s">装饰套装商店，一份财务复盘</div>
+          <div class="s">装饰套装商店与套装升级，一份财务复盘</div>
         </div>
       </div>
       <div class="filed">
@@ -309,46 +384,144 @@
   <!-- COVER -->
   <div class="pad">
     <div class="cover">
-      <span class="eyebrow"><span class="ln"></span> 收入流失情况说明</span>
-      <h1>我们把一项已完工的资产 <em>挂在账外，</em>而愿意掏钱的买家正攒着一笔花不出去的代币。</h1>
-      <p class="lede">十套已经完整做好的装饰套装被原封不动地搁置着。它们的付费上新窗口几年前就关闭了，所以今天它们一分钱都赚不到。与此同时，玩家仍在不断攒着原本用来兑换它们的游戏内代币。下面这道缺口并不是再去开发什么所要花的成本，而是一笔早已触手可及、只等入账的收入。</p>
+      <span class="eyebrow"><span class="ln"></span> 经常性收入说明：目前记账为零</span>
+      <h1>奔向一个看得见的目标、按周交一笔小额分期，是付费玩家 <em>一周接一周、心甘情愿掏的钱。</em></h1>
+      <p class="lede">完成一套装饰套装会带来永久的行军规模加成，而这套套装还能通过收集重复的整套继续升级，每升一级都再多加一截行军规模、永久生效。几乎没人会为这样一个等级，一次性掏出几百美元。但奔向一个看得见、正在被一点点填满的等级，每周大约 5 美元的分期付费却很黏，是付费玩家乐于掏出的经常性收入。可眼下，商店里根本没有任何可供攒兑的目标，于是这整条经常性收入线被记成了 $0。下面的数字，是早已触手可及、只等被打开的收入。</p>
 
       <div class="hero-fig">
-        <div class="big"><span class="pre">+$</span>47,676</div>
+        <div class="big"><span class="pre">~$</span>69,000</div>
         <div class="cap">
-          <span class="lbl">先把结论摆在前面</span>
-          一批积压套装。一个服务器。<b>一整年。</b>把这些套装继续冻在账上，与按照新套装本就在用的节奏让它们逐步进入商店，两者之间的差额就是这个数。这大约是把它们攒到最后一次性集中放出所能带来的代币收入的 <b>2.7 倍</b>，而且这一规律可以推广到更广泛的服务器群体。
+          <span class="lbl">那条经常性收入线，今天记为零</span>
+          一个服务器。<b>一整年。</b>玩家通过每周小额充值追逐套装等级，所形成的示意性年度分期收入流，目前约为 <b>$0</b>——因为没有任何套装够得着、可供攒兑。按每位坚持追逐的鲸鱼玩家约 <b>每年 $257</b> 计，这正是现行设计白白丢掉的黏性终身价值，而且年复一年都在重演。
         </div>
       </div>
-      <span class="illus">所有数字仅作示意，范围限于 10 套旧套装的代币商店收入，绝非全游戏收入</span>
+      <span class="illus">所有数字仅作示意，范围限于单一服务器的装饰代币经济，绝非全游戏收入</span>
     </div>
   </div>
 
-  <!-- SECTION 1: P&L -->
+  <!-- SECTION I: LEVELING, the headline -->
   <section>
     <div class="pad">
       <div class="sec-head">
         <span class="sec-no">I</span>
-        <h2>当下的处境</h2>
-        <span class="sub">以一个示意性的 600 名活跃玩家群体、为期一年为口径，简单陈述这一批积压套装当前正在实现的收入，与它本可实现的收入之间的差距。</span>
+        <h2>升级追逐：一条我们从未开通的经常性收入线</h2>
+        <span class="sub">把一套装饰套装的每一件都集齐，就是满级 1 级——永久 +2 行军规模，无需摆放即可生效。此后每升一级再 +2，而升级靠的是收集重复的整套。然而今天，通往任何一级的路只有两条：昂贵的一次性限时礼包；或者对那些旧套装而言，窗口一关便彻底无路可走。</span>
       </div>
 
-      <p class="body">没有什么要开发，也没有什么要打折。产品已经完工，就躺在库存里。唯一发生变化的，是获取它的途径：让旧套装进入代币商店这件事，已经实质性地停摆了约一年。这次停摆的影响，可以干净利落地用两栏数字读出来。</p>
+      <p class="body lvl-lede">先把机制讲清楚。一整套是 <b>11,340 枚代币</b>，达到 1 级，永久 <b class="gold">+2 行军规模</b>。三整套达到 2 级，需 <b>34,020 枚代币</b>，换 <b class="gold">+4 行军规模</b>。五整套达到 3 级，需 <b>56,700 枚代币</b>，换 <b class="gold">+6 行军规模</b>。而在全部 23 套套装中，能升到 3 级的<b>只有两套</b>：<b>Metal Music Fans</b>（2024 年 5 月推出）与 <b>Sweet Haven</b>（2025 年 12 月推出）。其余 21 套封顶只能到 2 级。</p>
+
+      <div class="l3-note">
+        <span class="badge">可达 3 级</span>
+        <p>只有 <b>Metal Music Fans</b> 与 <b>Sweet Haven</b> 能升到 3 级（+6 行军规模，56,700 枚代币）。其他每一套都封顶在 2 级（+4 行军规模，34,020 枚代币）。从 1 级到 2 级是再加两整套、即 +22,680 枚代币，这一点已确认。这里把 2 级到 3 级同样写成再加两整套，仅作示意、可调整。</p>
+      </div>
+
+      <div class="lvltbl-wrap">
+      <table class="lvltbl num">
+        <caption>附表 A：各路径下达成一级的成本（仅作示意）</caption>
+        <thead>
+          <tr>
+            <th>等级</th>
+            <th>行军规模</th>
+            <th>整套数</th>
+            <th>代币</th>
+            <th>一次性付清，每套约 $175</th>
+            <th>按周分期路径</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1 级</td>
+            <td class="march">+2</td>
+            <td>1</td>
+            <td>11,340</td>
+            <td class="wallc">约 $175</td>
+            <td class="flowc">按最低礼包价约 $94</td>
+          </tr>
+          <tr>
+            <td>2 级</td>
+            <td class="march">+4</td>
+            <td>3</td>
+            <td>34,020</td>
+            <td class="wallc">约 $525</td>
+            <td class="flowc">约 38 周（约 9 个月），实付约 $188</td>
+          </tr>
+          <tr>
+            <td>3 级 <span style="color:var(--muted-2);font-weight:500">（仅 2 套可达）</span></td>
+            <td class="march">+6</td>
+            <td>5</td>
+            <td>56,700</td>
+            <td class="wallc">约 $875</td>
+            <td class="flowc">约 63 周（约 15 个月），实付约 $312</td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+      <p class="body" style="margin-top:10px;font-size:12.5px;color:var(--muted)">达成各级所需代币遵循 11,340 ×（2 × 等级 − 1）：1 级 = 11,340（1 套），2 级 = 34,020（3 套），3 级 = 56,700（5 套）。按周分期路径为 $0.99 礼包（120 枚代币，每周封顶 5 份，即每周约 $4.95 换 600 枚代币）加上每周约 300 枚免费代币，合计每周约 900 枚，周数等于 ceil(代币 ÷ 900)。表中 3 级成本仅作示意。</p>
+
+      <p class="body" style="margin-top:18px">这道对比就是全部论点所在。靠套装升级换取行军规模，是付费玩家真心想要的收益，但一次性付清来买断它，却是一堵几乎没人愿意付的墙。同一个玩家，若改成奔向同一个目标、按周交一笔小额分期，却会心甘情愿地交上好几个月。</p>
+
+      <div class="contrast">
+        <div class="col wall">
+          <div class="hd">一次性付清的高墙</div>
+          <div class="big-n">$175 至 $875</div>
+          <div class="sub">通过限时礼包一次性买断一级，每整套约 <b>$175</b>。1 级约 $175，2 级约 $525，3 级约 $875。</div>
+          <div class="foot">为 <b>+2 行军规模</b> 一次性掏出几百美元，<b>几乎没人会付</b>。需求是真实的，卡住的是价格门槛。而一旦某套套装的窗口关闭，连这条一次性付清的路也跟着消失。</div>
+        </div>
+        <div class="col flow">
+          <div class="hd">按周分期</div>
+          <div class="big-n">每周约 $5</div>
+          <div class="sub">同样的一级，改在商店里小额一点点充，约 <b>每周 $4.95</b>，奔向一个玩家能眼看着被填满的目标。</div>
+          <div class="foot">单升一级，即 <b>+2 行军规模、再加 2 整套、22,680 枚代币</b>，约需 26 周（约 6 个月），实付约 <b>$129</b>。这是付费玩家一周接一周、心甘情愿掏的黏性经常性收入。</div>
+        </div>
+      </div>
+
+      <p class="body" style="margin-top:20px">现在把它当作终身价值来读。一名坚持追逐等级的付费玩家，会<b class="gold">无限期地每周交约 $4.95</b>，即<b class="gold">每年约 $257、年年如此</b>。放到一个示意性的 <b>600 名活跃玩家</b>群体上、约 <b>45% 付费</b>，那就是仅凭 $0.99 礼包分期的<b class="gold">每年约 $69,000</b>。可今天这条线读数约为 <b>$0</b>，因为商店里没有任何可供攒兑的目标。这条经常性收入流，与后面几节谈到的套装完成收入完全叠加，二者绝不可混为一谈。</p>
+
+      <!-- compact level calculator -->
+      <div class="lvlcalc">
+        <div class="seg" id="lvl-seg" role="group" aria-label="目标等级">
+          <button data-lvl="1">1 级，+2 行军规模</button>
+          <button data-lvl="2" class="on">2 级，+4 行军规模</button>
+          <button data-lvl="3">3 级，+6 行军规模</button>
+        </div>
+
+        <div class="calc-out">
+          <div class="co march"><div class="cl">行军规模</div><div class="cv num" id="lc-march">+4</div><div class="cnote">永久</div></div>
+          <div class="co"><div class="cl">达成所需代币</div><div class="cv num" id="lc-tokens">34,020</div><div class="cnote" id="lc-sets">3 整套</div></div>
+          <div class="co wallc"><div class="cl">一次性付清</div><div class="cv num" id="lc-lump">$525</div><div class="cnote">限时礼包，每套约 $175</div></div>
+          <div class="co flowc"><div class="cl">分期路径</div><div class="cv num" id="lc-paid">$188</div><div class="cnote" id="lc-weeks">约 38 周</div></div>
+        </div>
+
+        <div class="calc-verdict" id="lc-verdict"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECTION II: P&L -->
+  <section>
+    <div class="pad">
+      <div class="sec-head">
+        <span class="sec-no">II</span>
+        <h2>当下的处境：套装完成</h2>
+        <span class="sub">套装升级只能在某套套装于商店中够得着之后才能开始。让旧套装逐步进入商店、从而获得这种"可触达"，正是后续几张附表所要讲的前提。这里先看：在一个示意性的 600 名活跃玩家群体、为期一年的口径下，那 10 套旧套装的完成实际带来了多少收入，又本可带来多少。</span>
+      </div>
+
+      <p class="body">没有什么要开发，也没有什么要打折。产品已经完工，就躺在库存里。唯一发生变化的，是获取它的途径：让旧套装逐步进入代币商店这件事，已经实质性地停摆了约一年。这次停摆的影响，可以干净利落地用两栏数字读出来。</p>
 
       <div class="pnl-wrap">
       <table class="pnl num">
-        <caption><span class="cx">附表 A</span>积压套装代币收入，仅作示意，为期一年，单一服务器</caption>
+        <caption><span class="cx">附表 B</span>装饰代币收入，仅作示意，为期一年，单一服务器</caption>
         <thead>
           <tr><th>项目</th><th class="amt">冻结搁置</th><th class="amt">稳定进入商店</th></tr>
         </thead>
         <tbody>
           <tr class="ln-item">
-            <td class="nm">已实现的积压套装代币收入 <span class="note">这 10 套被搁置的套装在一年里实际带来的收入。</span></td>
+            <td class="nm">已实现的套装完成收入 <span class="note">这 10 套被搁置的套装在一年里实际带来的收入。</span></td>
             <td class="amt">$28,825</td>
             <td class="amt">$76,501</td>
           </tr>
           <tr class="ln-item zero">
-            <td class="nm">付费玩家够得着的套装 <span class="note">有一个够得着的目标，玩家才会持续充值。</span></td>
+            <td class="nm">付费玩家够得着的套装 <span class="note">有一个够得着的目标，玩家才会持续充值；这也正是让一场升级追逐得以开始的前提。</span></td>
             <td class="amt">无限期推迟</td>
             <td class="amt">每 2.5 个月 1 套</td>
           </tr>
@@ -368,35 +541,40 @@
             <td class="amt"><span class="tag on">在产出</span></td>
           </tr>
           <tr class="realized">
-            <td>已实现收入</td>
+            <td>已实现的完成收入</td>
             <td class="amt">$28,825</td>
             <td class="amt">$76,501</td>
           </tr>
           <tr class="forgone">
-            <td>相对稳定方案流失的收入</td>
+            <td>相对稳定方案流失的完成收入</td>
             <td class="amt">$47,676</td>
             <td class="amt">$0</td>
           </tr>
+          <tr class="ln-item" style="background:rgba(92,186,159,.05)">
+            <td class="nm">外加：经常性的升级追逐分期收入 <span class="note">叠加的收入流，绝不与完成收入混为一谈。每位追逐的付费玩家每周约 $4.95、每年约 $257，600 名玩家中约 45% 付费。只有在套装逐步进入商店后才够得着。</span></td>
+            <td class="amt" style="color:var(--rust);font-weight:700">约 $0</td>
+            <td class="amt" style="color:var(--green);font-weight:700">约 $69,000</td>
+          </tr>
           <tr class="total">
-            <td>净机会，本批积压，本年度</td>
-            <td class="amt">+$47,676</td>
-            <td class="amt" style="color:var(--green)">已捕获</td>
+            <td>净机会，本经济，本年度</td>
+            <td class="amt">闲置</td>
+            <td class="amt" style="color:var(--green)">+$47,676 完成 外加 约 $69,000 经常性</td>
           </tr>
         </tbody>
       </table>
       </div>
 
-      <p class="body" style="margin-top:18px">说白了：冻结这批积压套装并不是省钱，而是在让钱白白溜走。资产继续闲置，愿意付费的买家转身离开，而两者之间的差额，也就是本批积压、本服务器一年示意性的 <b class="gold">+$47,676</b>，正是眼下每年被白白放在桌上没人去拿的那笔钱。</p>
+      <p class="body" style="margin-top:18px">说白了：冻结这批积压套装并不是省钱，而是在让钱白白溜走。被留在桌上的，是两条相互叠加的收入线。完成收入的缺口，是示意性的一年 <b class="gold">+$47,676</b>。在它之上，还叠着经常性的升级追逐分期收入流，约 <b class="gold">$69,000</b> 一年——而只要套装继续冻结、没有任何等级目标够得着，这条线就根本无从存在。经常性那条线，正是年复一年滚雪球的那一条。</p>
     </div>
   </section>
 
-  <!-- SECTION 2: WATERFALL -->
+  <!-- SECTION III: WATERFALL -->
   <section>
     <div class="pad">
       <div class="sec-head">
-        <span class="sec-no">II</span>
-        <h2>流失的收入去了哪里</h2>
-        <span class="sub">从这批积压套装在稳定节奏下本可实现的收入，一步步降到它在冻结状态下实际实现的收入。每一步落差都是今天就存在、却根本没有去收的钱。</span>
+        <span class="sec-no">III</span>
+        <h2>流失的完成收入去了哪里</h2>
+        <span class="sub">从这批积压套装在稳定节奏下本可实现的完成收入，一步步降到它在冻结状态下实际实现的收入。每一步落差都是今天就存在、却根本没有去收的钱。这里只看完成这一层，尚未把经常性的升级追逐收入流叠加上去。</span>
       </div>
 
       <div class="water-wrap">
@@ -412,11 +590,11 @@
     </div>
   </section>
 
-  <!-- SECTION 3: EXHIBIT, per-player -->
+  <!-- SECTION IV: EXHIBIT, per-player -->
   <section>
     <div class="pad">
       <div class="sec-head">
-        <span class="sec-no">III</span>
+        <span class="sec-no">IV</span>
         <h2>买家会买无可买</h2>
         <span class="sub">在所提议的节奏下，一名玩家一整年的情况，即每 2.5 个月放出 1 套。请注意：哪怕是消费最高的玩家也会撞到天花板、积压代币。那笔积压的余额，就是没有被满足的需求。</span>
       </div>
@@ -452,11 +630,11 @@
     </div>
   </section>
 
-  <!-- SECTION 4: LIVE MODEL -->
+  <!-- SECTION V: LIVE MODEL -->
   <section>
     <div class="pad">
       <div class="sec-head">
-        <span class="sec-no">IV</span>
+        <span class="sec-no">V</span>
         <h2>检验这些假设</h2>
         <span class="sub">一个建立在上文同一组数字上的可交互模型。拖动放出节奏和玩家规模，看着已实现收入与那堵积压代币之墙此消彼长。把节奏拉到零，就能看到今天的冻结状态。</span>
       </div>
@@ -533,25 +711,25 @@
     </div>
   </section>
 
-  <!-- SECTION 5: THE ASK -->
+  <!-- SECTION VI: THE ASK -->
   <section style="border-top:none;padding-bottom:0">
     <div class="pad">
       <div class="sec-head">
-        <span class="sec-no">V</span>
+        <span class="sec-no">VI</span>
         <h2>我们的诉求</h2>
-        <span class="sub">不必新做内容，不必给付费套装打折，不必改动线上运营。只需一条排期规则。</span>
+        <span class="sub">不必新做内容，不必给付费套装打折，不必改动线上运营。只需让玩家能在商店里、以按周小额分期的方式把一套套装升到满级，并让旧套装逐步进入商店、使那个等级够得着。</span>
       </div>
 
       <div class="ask">
         <div class="inner">
           <div class="lbl">建议</div>
-          <h3>把进入商店这件事绑定到本就存在的节奏上：<em>每当一套全新套装上线时，最旧的那套被搁置套装就进入代币商店。</em></h3>
-          <p class="one">一进一出，大约每 2.5 个月一次。付费上新依旧维持付费。每月的限时礼包返场也原封不动。永远只有这 10 套旧套装会进入商店，先旧后新，而这套排期早已写在日历上。这是把一项闲置资产开关打开，而不是要立项投钱的新项目。</p>
-          <p class="one" style="margin-top:12px">还有一个不动声色的附带好处：由于完成一套套装会带来永久的行军规模提升，稳定进入商店也能温和地缩小消费较少玩家的差距——不向任何人施压，只是让整体曲线更健康。</p>
+          <h3>让玩家能在商店里、<em>以按周小额代币分期把一套套装升到满级，</em>而不再只能靠昂贵的限时礼包，或者干脆无路可走。</h3>
+          <p class="one">为 +2 行军规模一次性掏出 <b>$350 至 $875 的一笔款，几乎没人会付</b>。而同一个目标，改成约 <b>每周 $5、奔向一个看得见的进度条</b>，付费玩家却会一周接一周、心甘情愿地交。这正是现行设计白白丢掉的黏性经常性收入与留存。把"等级"当作分期来卖，才是真正的主角。</p>
+          <p class="one" style="margin-top:12px">支撑它的前提是可触达：一个等级只有在它所属套装于商店中够得着之后，才追得起来。所以把"进入商店"绑定到本就存在的节奏上：每当一套全新套装上线时，最旧的那套被搁置套装就进入商店，大约每 2.5 个月一次，先旧后新。付费上新依旧维持付费。每月的限时礼包返场原封不动。最新的 5 套丝毫不动。这是把一项闲置资产开关打开，而不是要立项投钱的新项目。</p>
 
           <div class="qline">
             <span class="who">给产品团队的唯一一个问题</span>
-            我们手里有一项零收入的成品资产，还有愿意为它付费的买家。那么，是什么在阻止我们按照新套装本就在用的节奏，放出一套旧套装呢？
+            我们手里有一项玩家想要的收益——靠套装等级换行军规模，它作为一次性付清几乎没人会买，可作为按周分期却有许多人愿意掏钱。那么，是什么在阻止我们把它在商店里当作分期来卖呢？
           </div>
         </div>
       </div>
@@ -563,7 +741,7 @@
         </div>
         <div>
           <div class="ttl">正面回应"会不会抢生意"的顾虑</div>
-          <p>最可能的担忧是：放出旧套装会蚕食付费上新礼包的销量。其实并不会。<b>这 10 套旧套装的付费窗口几年前就已关闭，今天产出的收入是 $0</b>，所以根本没有什么可被蚕食。最新的 5 套依旧维持付费，本提案丝毫不触碰它们。而代币商店里一个够得着的目标，恰恰是促使玩家持续充值的根本所在。从这个角度看，这项改动是在做大收入，而不是在和现有收入抢生意。</p>
+          <p>最可能的担忧是：把等级当分期来卖、又放出旧套装，会蚕食付费上新礼包的销量。其实并不会。<b>这 10 套旧套装的付费窗口几年前就已关闭，今天产出的收入是 $0</b>，所以根本没有什么可被蚕食。最新的 5 套依旧维持付费，本提案丝毫不触碰它们。而分期买家，本就是那些一开始绝不会一次性掏出几百美元的人，所以这条按周收入流是净增量，而非对现有交易的打折。一个够得着的目标，恰恰是促使玩家持续充值的根本所在。从这个角度看，这项改动是在做大收入，而不是在和现有收入抢生意。</p>
         </div>
       </div>
     </div>
@@ -650,7 +828,7 @@
   function fmt(n){return Math.round(n).toLocaleString();}
   function byId(id){return document.getElementById(id);}
 
-  /* =================== SECTION IV chart =================== */
+  /* =================== SECTION V chart =================== */
   var curTier='drip';
   function relPerYear(){var r=byId('rel');return r?parseFloat(r.value):2.5;}
 
@@ -719,7 +897,7 @@
     }
   }
 
-  /* =================== SECTION IV strategy comparison =================== */
+  /* =================== SECTION V strategy comparison =================== */
   function drawMini(id,cum,maxAll,color){
     var svg=byId(id); if(!svg) return; svg.innerHTML='';
     var W=320,H=110,pad=6;
@@ -759,7 +937,7 @@
     }
   }
 
-  /* =================== SECTION II waterfall =================== */
+  /* =================== SECTION III waterfall =================== */
   function drawWaterfall(){
     var svg=byId('waterfall'); if(!svg) return;
     svg.innerHTML='';
@@ -813,8 +991,54 @@
     });
   }
 
+  /* =================== SECTION I level calculator =================== */
+  /* canonical leveling formulas, illustrative:
+     tokensToReach = 11340 * (2*L - 1);  weeks = ceil(tokens / 900);
+     paid = weeks * 4.95;  lump = 175 * (2*L - 1);  march = 2*L  */
+  var LVL_SET = 11340;        // tokens per full set / level 1
+  var LVL_WEEK = 900;         // about 600 paid plus about 300 free tokens a week
+  var LVL_WEEKLY_PAID = 4.95; // about $4.95 a week of $0.99 packs
+  var LVL_LUMP_SET = 175;     // about $175 per full set at launch-pack rate
+  var curLvl = 2;
+
+  function calcLevel(){
+    var march = byId('lc-march'), tokensEl = byId('lc-tokens'), setsEl = byId('lc-sets'),
+        lumpEl = byId('lc-lump'), paidEl = byId('lc-paid'), weeksEl = byId('lc-weeks'),
+        vEl = byId('lc-verdict');
+    if(!march) return;
+    var L = curLvl;
+    var sets = 2*L - 1;
+    var tokens = LVL_SET * sets;
+    var weeks = Math.ceil(tokens / LVL_WEEK);
+    var paid = weeks * LVL_WEEKLY_PAID;
+    var lump = LVL_LUMP_SET * sets;
+    var months = Math.round(weeks/52*12);
+
+    march.textContent = '+' + (2*L);
+    tokensEl.textContent = fmt(tokens);
+    if(setsEl) setsEl.textContent = sets + ' 整套';
+    if(lumpEl) lumpEl.textContent = '$' + fmt(lump);
+    if(paidEl) paidEl.textContent = '$' + fmt(paid);
+    if(weeksEl) weeksEl.textContent = '约 ' + weeks + ' 周';
+
+    if(vEl){
+      var l3 = (L===3) ? '只有 Metal Music Fans 与 Sweet Haven 能升到 3 级，且此处 3 级成本仅作示意。' : '';
+      vEl.innerHTML = '' + L + ' 级即 <b>+' + (2*L) + ' 行军规模</b>，需 ' + sets + ' 整套、' +
+        fmt(tokens) + ' 枚代币。作为一次性付清，那是 <b>$' + fmt(lump) + '</b>，一堵几乎没人愿意付的墙。换成按周分期，则约为 <b>实付 $' + fmt(paid) +
+        '</b>，分摊在约 ' + weeks + ' 周（约 ' + months + ' 个月）里、每周约 $4.95——奔向一个看得见的目标，付费玩家乐于掏这笔钱。' + l3;
+    }
+  }
+
   /* =================== wire up listeners =================== */
   function init(){
+    var lvlBtns=document.querySelectorAll('#lvl-seg button');
+    lvlBtns.forEach(function(b){
+      b.addEventListener('click',function(){
+        lvlBtns.forEach(function(x){x.classList.remove('on');});
+        b.classList.add('on'); curLvl=parseInt(b.dataset.lvl,10); calcLevel();
+      });
+    });
+
     var segBtns=document.querySelectorAll('#seg-tier button');
     segBtns.forEach(function(b){
       b.addEventListener('click',function(){
@@ -841,6 +1065,7 @@
       }
     });
 
+    calcLevel();
     drawWaterfall();
     drawWall();
     drawStrategies();

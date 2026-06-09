@@ -1,4 +1,4 @@
-<!-- 视图：「付费玩家」——付费玩家（大额玩家）面向研发团队的发声（本文为该视图的简体中文版本）。高级黑卡会员俱乐部风格：暖调黑曜石 + 金箔、会员卡元素、收据/账单卡片、锁定的钱包计数器。这是「装饰套装商店」商业方案七个可切换视图之一。 -->
+<!-- 视图：「付费玩家」——付费玩家（大额玩家）面向研发团队的发声（本文为该视图的简体中文版本）。高级黑卡会员俱乐部风格：暖调黑曜石 + 金箔、会员卡元素、收据/账单卡片、锁定的钱包计数器。开篇主线已改为「满级装饰套装的分期付费」故事：用每周少量套装代币分期，去攒满级套装，而不是用昂贵的限时礼包一次性付清。这是「装饰套装商店」商业方案七个可切换视图之一。 -->
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -6,9 +6,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
-<meta name="description" content="致口袋奇兵研发团队的一封公开信：让我们付钱。手握满钱包却被锁在柜台外的付费玩家，恳请贵公司把积压的旧装饰套装按稳定节奏放入套装代币商店。所有数字均为示意。">
+<meta name="description" content="致口袋奇兵研发团队的一封公开信：让我们每周给你付钱。付费玩家恳请贵公司，允许我们用每周少量套装代币分期，把装饰套装攒到满级，而不是只靠昂贵的限时礼包一次性付清。所有数字均为示意。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='35%25'%3E%3Cstop offset='0' stop-color='%23ffe9a8'/%3E%3Cstop offset='0.55' stop-color='%23e7b24a'/%3E%3Cstop offset='1' stop-color='%23a9791f'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='13' fill='url(%23g)' stroke='%238a6014' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23fff3cf' stroke-width='1' opacity='0.6'/%3E%3Ctext x='16' y='21' font-size='11' text-anchor='middle' fill='%237a560f' font-family='Georgia,serif'%3ET%3C/text%3E%3C/svg%3E">
-<title>付费玩家：让我们给你付钱</title>
+<title>付费玩家：让我们每周给你付钱</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&family=Cormorant:wght@500;600&family=Noto+Serif+SC:wght@400;500;600;700&family=Noto+Sans+SC:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -97,7 +97,7 @@ h1{
 h1 em{font-style:italic;font-weight:500}
 .subhero{
   font-family:'Cormorant Garamond','Noto Serif SC',serif;font-style:italic;font-weight:400;
-  font-size:clamp(19px,3.6vw,29px);color:var(--ink2);max-width:680px;margin:14px auto 0;line-height:1.35;
+  font-size:clamp(19px,3.6vw,29px);color:var(--ink2);max-width:700px;margin:14px auto 0;line-height:1.35;
 }
 .signoff{margin-top:24px;font-size:12.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
 .signoff b{color:var(--ink);font-weight:500}
@@ -127,7 +127,7 @@ h1 em{font-style:italic;font-weight:500}
 }
 .chip::after{content:"";position:absolute;inset:6px;border:1px solid rgba(122,86,15,0.5);border-radius:3px}
 .memcard .cnum{
-  font-family:'Cormorant','Noto Serif SC';font-weight:500;letter-spacing:0.22em;font-size:clamp(17px,4vw,24px);
+  font-family:'Cormorant','Noto Serif SC';font-weight:500;letter-spacing:0.22em;font-size:clamp(16px,3.7vw,23px);
   margin:clamp(14px,4vw,30px) 0 6px;color:var(--ink);position:relative;
 }
 .memcard .cbot{display:flex;justify-content:space-between;align-items:flex-end;position:relative}
@@ -139,7 +139,7 @@ h1 em{font-style:italic;font-weight:500}
 /* ===== wallet counter ===== */
 .wallet{max-width:560px;margin:22px auto 0;text-align:center}
 .wallet .wlbl{font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--muted)}
-.wallet .wnum{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(46px,11vw,74px);line-height:1;margin:6px 0 2px;letter-spacing:0.01em}
+.wallet .wnum{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(40px,10vw,70px);line-height:1;margin:6px 0 10px;letter-spacing:0.01em}
 .wallet .wsub{font-size:12.5px;color:var(--ink2);letter-spacing:0.04em}
 .wallet .wsub b{color:var(--rust);font-weight:500}
 .locktag{
@@ -156,9 +156,104 @@ section{padding:54px 0}
 .eyebrow .tx{font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:var(--muted);font-weight:500}
 h2{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-weight:600;font-size:clamp(28px,5.4vw,46px);line-height:1.04;margin:0 0 16px;letter-spacing:-0.005em}
 h2 em{font-style:italic;color:var(--gold)}
-.lede{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:clamp(18px,2.6vw,23px);color:var(--ink2);max-width:680px;line-height:1.45;font-weight:400}
-p{max-width:680px;color:var(--ink2);font-size:15.5px}
+.lede{font-family:'Cormorant Garamond','Noto Serif SC',serif;font-size:clamp(18px,2.6vw,23px);color:var(--ink2);max-width:700px;line-height:1.45;font-weight:400}
+p{max-width:700px;color:var(--ink2);font-size:15.5px}
 p b{color:var(--ink);font-weight:500}
+
+/* ===== pull line (the sharpest quote) ===== */
+.pull{
+  max-width:760px;margin:32px auto 0;text-align:center;
+  font-family:'Cormorant Garamond','Noto Serif SC';font-style:italic;font-weight:500;
+  font-size:clamp(22px,4.4vw,38px);line-height:1.22;color:var(--ink);
+}
+.pull .x{color:#e89478;font-style:normal;font-weight:600;font-family:'Cormorant','Noto Serif SC'}
+.pull .o{color:var(--gold);font-style:normal;font-weight:600;font-family:'Cormorant','Noto Serif SC'}
+@media(min-width:680px){.pull .x,.pull .o{white-space:nowrap}}
+.pull cite{display:block;margin-top:16px;font-style:normal;font-family:'Jost','Noto Sans SC';font-weight:400;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--faint)}
+
+/* ===== level ladder ===== */
+.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+@media(max-width:620px){.ladder{grid-template-columns:1fr}}
+.rung{
+  position:relative;border:1px solid var(--line);border-radius:14px;padding:20px 18px 18px;
+  background:linear-gradient(180deg,#17110a,#110c06);overflow:hidden;
+}
+.rung.peak{border-color:#6a4f1c;box-shadow:0 0 0 1px rgba(231,178,74,0.16),0 22px 48px -22px rgba(0,0,0,0.9)}
+.rung .lvl{font-family:'Jost','Noto Sans SC';font-weight:600;letter-spacing:0.26em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.rung .march{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(30px,6.6vw,44px);line-height:1;margin:8px 0 2px;color:var(--gold)}
+.rung .march small{font-family:'Jost','Noto Sans SC';font-weight:400;font-size:12px;letter-spacing:0.04em;color:var(--ink2);display:block;margin-top:4px}
+.rung .ld{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:6px 0;border-top:1px dashed var(--line);color:var(--ink2)}
+.rung .ld:first-of-type{margin-top:14px}
+.rung .ld .v{font-variant-numeric:tabular-nums;color:var(--ink)}
+.rung .peaktag{
+  position:absolute;top:13px;right:-30px;transform:rotate(18deg);
+  font-family:'Jost','Noto Sans SC';font-weight:600;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:#1a1305;background:var(--foil);background-size:200% 200%;padding:3px 34px;
+}
+
+/* ===== price contrast (lump vs installment) ===== */
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+@media(max-width:600px){.contrast{grid-template-columns:1fr}}
+.col{border:1px solid var(--line);border-radius:14px;padding:22px;background:linear-gradient(180deg,#17110a,#120d07)}
+.col.cold{border-color:#2f3942}
+.col.warm{border-color:#5b431b}
+.col h3{margin:0 0 4px;font-family:'Jost','Noto Sans SC';font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-size:11px}
+.col.cold h3{color:#9aa8b0}
+.col.warm h3{color:var(--gold)}
+.col .head-fig{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(30px,6.4vw,46px);line-height:1;margin:6px 0 2px}
+.col.cold .head-fig{color:#bcc7cd}
+.col.warm .head-fig{color:var(--gold-hi)}
+.col .head-sub{font-size:12.5px;color:var(--ink2);font-style:italic;font-family:'Cormorant Garamond','Noto Serif SC'}
+.col .row{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:7px 0;border-top:1px dashed var(--line);color:var(--ink2)}
+.col .row:first-of-type{margin-top:14px}
+.col .row .v{font-variant-numeric:tabular-nums;color:var(--ink)}
+.col .verdict-mini{margin-top:14px;font-size:12.5px;line-height:1.45;font-style:italic;font-family:'Cormorant Garamond','Noto Serif SC'}
+.col.cold .verdict-mini{color:#aebac1}
+.col.warm .verdict-mini{color:#7fd0b8}
+
+/* ===== leveling calculator ===== */
+.calc{
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:30px;
+  background:linear-gradient(180deg,#15100a,#100c06);
+  box-shadow:0 26px 60px -30px rgba(0,0,0,0.9);
+}
+.calc .chead{padding:18px 22px;border-bottom:1px solid var(--line2);background:rgba(28,22,13,0.5)}
+.calc .chead .t{font-family:'Cormorant Garamond','Noto Serif SC';font-style:italic;font-size:21px;color:var(--ink)}
+.calc .chead .s{font-size:11.5px;color:var(--muted);letter-spacing:0.04em}
+.cbody{display:grid;grid-template-columns:1fr 1fr;gap:0}
+@media(max-width:720px){.cbody{grid-template-columns:1fr}}
+.cctrl{padding:22px;display:flex;flex-direction:column;gap:20px}
+.cout{padding:22px;border-left:1px solid var(--line2);display:flex;flex-direction:column;gap:16px}
+@media(max-width:720px){.cout{border-left:0;border-top:1px solid var(--line2)}}
+.fld label{display:block;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.fld label b{color:var(--gold);font-family:'Cormorant','Noto Serif SC';font-size:15px;letter-spacing:0.02em}
+.seg{display:flex;flex-wrap:wrap;gap:7px}
+.seg button{
+  font-family:'Jost','Noto Sans SC';font-weight:400;font-size:11.5px;letter-spacing:0.06em;cursor:pointer;
+  background:transparent;color:var(--ink2);border:1px solid var(--line);border-radius:30px;padding:7px 13px;transition:.2s;
+}
+.seg button:hover{border-color:var(--gold-lo);color:var(--ink)}
+.seg button.on{background:var(--foil);background-size:200% 200%;color:#1a1305;border-color:transparent;font-weight:600}
+.seg button:disabled{opacity:0.34;cursor:not-allowed}
+.seg button:disabled:hover{border-color:var(--line);color:var(--ink2)}
+.cnote{font-size:11.5px;color:var(--faint);line-height:1.5;font-style:italic;font-family:'Cormorant Garamond','Noto Serif SC'}
+.cstat{border:1px solid var(--line2);border-radius:11px;padding:15px 16px;background:rgba(20,16,9,0.6)}
+.cstat .cl{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.cstat .cn{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(24px,5.4vw,32px);line-height:1;color:var(--ink)}
+.cstat .cn .unit{font-family:'Jost','Noto Sans SC';font-weight:400;font-size:12px;letter-spacing:0.04em;color:var(--ink2);margin-left:4px}
+.cstat.lump .cn{color:#bcc7cd}
+.cstat.inst .cn{color:var(--gold)}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cverdict{font-family:'Cormorant Garamond','Noto Serif SC';font-size:15.5px;line-height:1.45;color:var(--ink2);border-left:2px solid var(--teal);padding-left:14px}
+.cverdict b{color:var(--ink);font-weight:600}
+.cverdict .g{color:var(--gold)}
+
+/* ===== recurring revenue ===== */
+.recur{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:28px}
+.rcard{border:1px solid var(--line);border-radius:12px;padding:20px;background:linear-gradient(180deg,#17110a,#120d07)}
+.rcard .rfig{font-family:'Cormorant','Noto Serif SC';font-weight:600;font-size:clamp(30px,6.6vw,44px);line-height:1;color:var(--gold);margin-bottom:6px}
+.rcard .rl{font-size:12.5px;color:var(--ink2);line-height:1.45}
+.rcard .rl b{color:var(--ink);font-weight:500}
 
 /* ===== receipts ===== */
 .receipts{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:18px;margin-top:30px}
@@ -284,7 +379,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .close .crown{width:46px;height:46px;margin:0 auto 18px;display:block}
 .close h2{margin-bottom:14px}
 .ask{
-  max-width:620px;margin:18px auto 0;font-family:'Cormorant Garamond','Noto Serif SC';font-size:clamp(18px,3vw,23px);
+  max-width:640px;margin:18px auto 0;font-family:'Cormorant Garamond','Noto Serif SC';font-size:clamp(18px,3vw,23px);
   font-style:italic;color:var(--ink2);line-height:1.5;
 }
 .ask b{color:var(--gold);font-style:normal;font-weight:600}
@@ -312,51 +407,220 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       </svg>
       <div class="lbl">2864 服尊享会员<small>装饰套装商店</small></div>
     </div>
-    <div class="memno">会员俱乐部 &middot; <b>主题：让我们给你付钱</b></div>
+    <div class="memno">会员俱乐部 &middot; <b>主题：让我们每周给你付钱</b></div>
   </div>
 </div>
 
-<!-- hero -->
+<!-- hero: NEW LEAD = the level-3 installment-whale ask -->
 <header class="hero wrap">
-  <span class="kicker reveal">来自付费玩家</span>
-  <h1 class="reveal">我们要的不是<br><em class="foil">免费的东西。</em></h1>
-  <p class="subhero reveal">我们要的，是被允许付钱。我们有这份钱、有这份热情，也有满满一墙下不了的订单——只因为商店不让我们买。</p>
-  <div class="signoff reveal">这是一封致工作室的公开信，来自 <b>2864 服的付费玩家</b></div>
+  <span class="kicker reveal">来自每周都在付费的玩家</span>
+  <h1 class="reveal">让我们一点一点付，<br><em class="foil">一直付下去。</em></h1>
+  <p class="subhero reveal">为了一级行军规模，我们绝不会一次性签下 $525 的支票。但每周用少量套装代币分期，一点一点把一套装饰套装攒到满级，周复一周地付——这是我们最痛快答应的一件事。</p>
+  <div class="signoff reveal">这是一封致研发团队的公开信，来自 <b>2864 服的付费玩家</b></div>
 </header>
 
-<!-- membership card + wallet -->
+<!-- membership card + wallet (reframed around weekly installments) -->
 <div class="cardstage wrap reveal">
   <div class="memcard" aria-label="付费玩家会员卡">
     <div class="ctop">
-      <div class="tier">创始尊享会员<small>每周 $100，心甘情愿</small></div>
+      <div class="tier">创始尊享会员<small>每周约 $5，心甘情愿，永不停手</small></div>
       <div class="chip" aria-hidden="true"></div>
     </div>
-    <div class="cnum">7080 &nbsp; 代币 &nbsp; 每周 &nbsp; 待用</div>
+    <div class="cnum">目标 &nbsp; Sweet Haven &nbsp; 满级 3 级 &nbsp; +6 行军规模</div>
     <div class="cbot">
-      <div class="nm">持卡人：一位愿意掏钱的买家</div>
-      <div class="vd"><span>状态</span><b>被拒之门外</b></div>
+      <div class="nm">持卡人：一位愿意持续付费的买家</div>
+      <div class="vd"><span>状态</span><b>无分期可付</b></div>
     </div>
   </div>
 </div>
 
 <div class="wallet wrap reveal">
-  <div class="wlbl">此刻可用于消费</div>
-  <div class="wnum foil" id="walletNum">0</div>
-  <div class="wsub">我们最大额的玩家整整攒了一年的代币，而 <b>商店里根本没有任何东西可以让他们花掉</b>。</div>
+  <div class="wlbl">被白白搁置的每周分期</div>
+  <div class="wnum foil" id="walletNum">$0</div>
+  <div class="wsub">只要有一个可以攒的等级，我们的付费玩家每年就会用每周的少量代币礼包，为一套满级套装掏出这么多钱；可眼下 <b>这笔收入约为 $0，只因为根本没有任何目标值得去攒</b>。</div>
   <span class="locktag">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-    货架已上锁
+    无等级可追
   </span>
 </div>
 
 <hr class="rule wrap" style="margin-top:48px">
 
-<!-- 1: the receipts of demand -->
+<!-- 1: THE PIVOT - the sharpest line + level ladder -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">i.</span><span class="tx">我们需求的收据</span></div>
-    <h2>就连 <em>我们最重的消费</em><br>也会被货架掐断。</h2>
-    <p class="lede">如果最久未上架的套装大约每两个半月就有一套进入套装代币商店，那么一位玩家在一年里会做出怎样的消费？以下就是我们乐意下的那些订单。请留意它们在哪里戛然而止。</p>
+    <div class="eyebrow"><span class="no">i.</span><span class="tx">我们愿意攒一辈子的那个等级</span></div>
+    <h2>那笔一次性付清，<br><em>我们不会掏。</em></h2>
+    <p class="lede">把一套装饰套装的每一件都集齐，也只是 1 级而已。此后每升一级，都会带来更多永久的行军规模——也就是我们军队的规模——而升级的方式，是去收集重复的整套套装。能一路攀到 3 级的只有两套：<b>Metal Music Fans</b>（2024 年 5 月上线）与 <b>Sweet Haven</b>（2025 年 12 月上线）。其余二十一套，最高只能到 2 级。这就是那道台阶，也是那堵墙。</p>
+  </div>
+
+  <div class="pull reveal">
+    <span class="x">为了 +4 行军规模，我绝不会一次性付清 $525。</span><br>
+    但为了 Sweet Haven 的 +6，我乐意 <span class="o">每周付约 $5，一直付下去。</span>
+    <cite>整个方案，浓缩成一句话</cite>
+  </div>
+
+  <div class="ladder">
+    <div class="rung reveal">
+      <div class="lvl">1 级</div>
+      <div class="march">+2<small>行军规模，永久</small></div>
+      <div class="ld"><span class="k">需集齐整套套装</span><span class="v">1 套</span></div>
+      <div class="ld"><span class="k">套装代币</span><span class="v">11,340</span></div>
+      <div class="ld"><span class="k">限时礼包一次付清</span><span class="v">约 $175</span></div>
+    </div>
+    <div class="rung reveal">
+      <div class="lvl">2 级</div>
+      <div class="march">+4<small>行军规模，永久</small></div>
+      <div class="ld"><span class="k">需集齐整套套装</span><span class="v">3 套</span></div>
+      <div class="ld"><span class="k">套装代币</span><span class="v">34,020</span></div>
+      <div class="ld"><span class="k">限时礼包一次付清</span><span class="v">约 $525</span></div>
+    </div>
+    <div class="rung peak reveal">
+      <span class="peaktag">3 级：仅 2 套可达</span>
+      <div class="lvl">3 级</div>
+      <div class="march">+6<small>行军规模，永久</small></div>
+      <div class="ld"><span class="k">需集齐整套套装</span><span class="v">5 套</span></div>
+      <div class="ld"><span class="k">套装代币</span><span class="v">56,700</span></div>
+      <div class="ld"><span class="k">限时礼包一次付清</span><span class="v">约 $875</span></div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">满级 3 级只存在于 <b>Metal Music Fans</b> 和 <b>Sweet Haven</b> 这两套身上。靠限时礼包一次性付清攒到那里，大约要 <b>$875</b>，2 级约 <b>$525</b>，就连 1 级也要约 <b>$175</b>。这就是那堵几乎没人愿意付的墙。对我们大多数人来说，一级 +2 的行军规模，根本不值得一次性签下一张几百美元的支票，于是这个等级永远没人买，贵公司也分文未收。这里展示的 2 级升到 3 级所需的代币，是示意值，可以调整。所有数字均为示意；统计范围仅限装饰套装的代币经济，绝非游戏总收入。</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 2: lump vs installment contrast -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">ii.</span><span class="tx">同一个等级，两种卖法</span></div>
+    <h2>一张支票，我们拒签。<br>另一张，我们 <em>每周都签。</em></h2>
+    <p class="lede">就拿任意一套的 2 级来说，同样是 +4 行军规模，两种卖法。左边那张支票，我们谢绝；右边那笔分期，我们想都不想就签。终点一模一样，掏钱的意愿却天差地别。所有数字均为示意。</p>
+  </div>
+
+  <div class="contrast">
+    <div class="col cold reveal">
+      <h3>一次性付清 · 限时礼包</h3>
+      <div class="head-fig">约 $525</div>
+      <div class="head-sub">为了 +4 行军规模，一次性签下一张大额支票。</div>
+      <div class="row"><span class="k">买到的是</span><span class="v">2 级，+4 行军规模</span></div>
+      <div class="row"><span class="k">整套套装</span><span class="v">3 套</span></div>
+      <div class="row"><span class="k">何时能卖给我们</span><span class="v">仅限上新窗口</span></div>
+      <div class="verdict-mini">这就是那堵几乎没人愿意付的墙。一旦上新窗口关闭，这个等级在任何地方都不再出售，挣的约是 $0。</div>
+    </div>
+    <div class="col warm reveal">
+      <h3>分期付费 · 每周代币礼包</h3>
+      <div class="head-fig">每周约 $5</div>
+      <div class="head-sub">$0.99 礼包，每周封顶五份，朝着一个看得见的目标攒。</div>
+      <div class="row"><span class="k">买到的是</span><span class="v">2 级，+4 行军规模</span></div>
+      <div class="row"><span class="k">攒满所需时间</span><span class="v">约 38 周</span></div>
+      <div class="row"><span class="k">合计支付</span><span class="v">约 $188</span></div>
+      <div class="verdict-mini">每周几美元，朝着一个看得见在一点点填满的目标。这张我们签得痛快，周复一周，而且我们中大多数人从不停手。</div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">终点完全相同：<b>+4 行军规模，一个永久的 2 级</b>。唯一变的，只是「问我们要钱」的方式。为了一级 +2 而一次性掏几百美元，几乎没人会答应；而朝着一个看得见在填满的目标，每周分期付约五美元，我们中很多人都会答应，周复一周。这条分期之路，走的是 $0.99 礼包，约 120 枚代币，每周封顶五份，再加上我们本就每周能赚到的约 300 枚免费代币，于是每周约有 900 枚代币入账。这就是「永远收不到的收入」和「不断累积的收入」之间的差别。</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 3: leveling calculator -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">iii.</span><span class="tx">看着这张分期收据一点点累积</span></div>
+    <h2>一套 <em>满级套装</em> 的收据。</h2>
+    <p class="lede">选一套套装，再选一个目标等级。看看我们掉头不付的那笔一次性付清，对比我们愿意每周一点点掏出的那笔小额分期，周复一周，直到攒满目标。所有数字均为示意，并建立在标准的代币经济之上。</p>
+  </div>
+
+  <div class="calc reveal">
+    <div class="chead">
+      <div class="t">从零开始，攒到指定等级</div>
+      <div class="s">一次性付清的限时礼包之路，对比每周约 $5 的分期之路。</div>
+    </div>
+    <div class="cbody">
+      <div class="cctrl">
+        <div class="fld">
+          <label>选择哪套套装</label>
+          <div class="seg" id="seg-set">
+            <button data-set="mmf" class="on">Metal Music Fans</button>
+            <button data-set="sh">Sweet Haven</button>
+            <button data-set="other">一套 2 级套装</button>
+          </div>
+        </div>
+        <div class="fld">
+          <label>目标等级</label>
+          <div class="seg" id="seg-lvl">
+            <button data-lvl="1">1 级（+2）</button>
+            <button data-lvl="2" class="on">2 级（+4）</button>
+            <button data-lvl="3">3 级（+6）</button>
+          </div>
+        </div>
+        <div class="cnote" id="calc-note"></div>
+      </div>
+      <div class="cout">
+        <div class="crow">
+          <div class="cstat lump">
+            <div class="cl">一次付清 · 已拒</div>
+            <div class="cn" id="c-lump">$525</div>
+          </div>
+          <div class="cstat inst">
+            <div class="cl">分期付费 · 已付</div>
+            <div class="cn" id="c-paid">$188</div>
+          </div>
+        </div>
+        <div class="crow">
+          <div class="cstat">
+            <div class="cl">攒满所需代币</div>
+            <div class="cn" id="c-tok">34,020</div>
+          </div>
+          <div class="cstat">
+            <div class="cl">分期周数</div>
+            <div class="cn" id="c-wk">38<span class="unit">周</span></div>
+          </div>
+        </div>
+        <div class="cverdict" id="c-verdict"></div>
+      </div>
+    </div>
+  </div>
+  <p class="reveal" style="margin-top:22px;font-size:13.5px;color:var(--faint)">单独升一级，签起来同样轻松：把一套套装从 1 级提到 2 级，再多攒两套整套，约 22,680 枚代币，约 26 周，用每周的小额分期付出约 $129。3 级的数字采用的是同一组示意性的递进步长。只有 <b>Metal Music Fans</b> 和 <b>Sweet Haven</b> 能攀到 3 级。</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 4: recurring revenue / lifetime value -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">iv.</span><span class="tx">你正白白放走的那条收入流</span></div>
+    <h2>同一位玩家，<br><em>年年都在付费。</em></h2>
+    <p class="lede">一次性付清，只收一次，玩家付完就没下文了。而朝着一个等级的分期，会自己续上。一位始终在追逐下一级的玩家，会无限期地一直买那份每周小额礼包——这正是当前设计白白扔掉的、黏性十足的经常性收入和留存。所有数字均为示意；统计范围仅限装饰套装的代币经济，绝非游戏总收入。</p>
+  </div>
+
+  <div class="recur">
+    <div class="rcard reveal">
+      <div class="rfig">约 $5</div>
+      <div class="rl">每周，$0.99 礼包封顶五份；只要还有一个等级可追，一位愿意付费的玩家就会 <b>无限期</b> 一直买下去。</div>
+    </div>
+    <div class="rcard reveal">
+      <div class="rfig">约 $257</div>
+      <div class="rl">每位玩家，<b>每年，年年如此</b>，纯靠 $0.99 礼包的分期；只要一个等级还能让他们一直攒。</div>
+    </div>
+    <div class="rcard reveal">
+      <div class="rfig">约 $69,000</div>
+      <div class="rl">一年的总额，按一个示意性的 600 名活跃玩家、约 45% 付费来算，仅靠分期，眼下却是 <b>约 $0</b>。</div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">请把最后那个数字看明白：这是一条示意性的、经常性的、年复一年的收入流，而装饰套装的代币经济 <b>今天从中只收到约 $0</b>，纯粹因为没有任何等级值得我们去攒。这笔升级收入，叠加在下文那笔「集齐套装」的收入之上，两者绝不重叠。一笔是完成一套套装的价钱，另一笔是把它攒到满级的价钱——每次几美元，只要我们还在玩，就一直付下去。</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 5: the receipts of demand (EXISTING COMPLETION MODEL, intact) -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">v.</span><span class="tx">我们需求的收据</span></div>
+    <h2>而就连 <em>集齐套装</em><br>也会被货架掐断。</h2>
+    <p class="lede">升级，是上文那条经常性收入流；集齐，则是下文这条「准入」收入流，也是前提条件：只有当一套套装能在商店里够得着时，我们才有可能去把它攒到满级。下面是，如果最久未上架的套装大约每两个半月就有一套毕业进入套装代币商店，一位玩家在一年里会做出怎样的消费。请留意订单在哪里戛然而止。</p>
   </div>
 
   <div class="receipts">
@@ -393,17 +657,17 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     </div>
   </div>
 
-  <p class="reveal" style="margin-top:26px">请再看一眼最后这两张收据。手头最阔绰、最愿意掏钱的买家，完成的套装数量和那位稳定消费者一模一样，最后却揣着 <b>数千枚根本变不成任何东西的代币</b> 离场。我们想花却被拦下的那道缺口，并不是流失的需求，而是被搁置的需求，正等着贵公司打开一格货架。</p>
+  <p class="reveal" style="margin-top:26px">请再看一眼最后这两张收据。手头最阔绰、最愿意掏钱的买家，完成的套装数量和那位稳定消费者一模一样，最后却揣着 <b>数千枚根本变不成任何东西的代币</b> 离场。我们想花却被拦下的那道缺口，并不是流失的需求，而是被搁置的需求，正等着贵公司打开一格货架，好让我们先把套装集齐，再开始攒等级。</p>
 </section>
 
 <hr class="goldrule wrap">
 
-<!-- 2: the orders we could not place -->
+<!-- 6: the orders we could not place (EXISTING, intact) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">ii.</span><span class="tx">在冻结的商店之下</span></div>
+    <div class="eyebrow"><span class="no">vi.</span><span class="tx">在冻结的商店之下</span></div>
     <h2>那些我们<br><em>下不了的订单。</em></h2>
-    <p class="lede">大约一整年里，没有任何一套旧套装进入过套装代币商店。当没有可触及的目标可追时，追逐本身也就消失了。当货架始终紧闭，同样这几位玩家在整整一年里又做了什么——请看下面。</p>
+    <p class="lede">大约一整年里，没有任何一套旧套装进入过套装代币商店。当没有可触及的目标可追时，追逐本身也就消失了，攒等级的过程更是无从开始。当货架始终紧闭，同样这几位玩家在整整一年里又做了什么——请看下面。</p>
   </div>
 
   <div class="declined">
@@ -435,12 +699,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <hr class="goldrule wrap">
 
-<!-- 3: the scales -->
+<!-- 7: the scales (EXISTING, intact) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">iii.</span><span class="tx">一个可触及的目标值多少</span></div>
+    <div class="eyebrow"><span class="no">vii.</span><span class="tx">一个可触及的目标值多少</span></div>
     <h2>同样这群玩家，<br>两扇 <em>不同的门。</em></h2>
-    <p class="lede">以一个示意性的 600 名活跃玩家群体为例，下面是在两种做法下，旧套装积压在一年里各能带来多少收入。唯一的区别，仅在于我们是否得到了一个可以追逐的目标。所有数字均为示意；统计范围仅限那 10 套旧套装在套装代币商店中产生的收入，绝非游戏总收入。</p>
+    <p class="lede">以一个示意性的 600 名活跃玩家群体为例，下面是在两种做法下，那批旧套装积压在一年里各能带来多少收入——这还是在任何攒等级开始之前。唯一的区别，仅在于我们是否得到了一个可以追逐的目标。所有数字均为示意；统计范围仅限那批旧套装在套装代币商店中产生的收入，绝非游戏总收入。</p>
   </div>
 
   <div class="scales">
@@ -457,15 +721,15 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <div class="barwrap"><div class="bar" id="barDrip" style="width:0%"></div></div>
     </div>
   </div>
-  <div class="delta reveal">仅靠这批旧套装积压，稳定上架在一年里就能多挣大约 <b>$47,676</b>，约是囤着不放再倾倒所收的 <b>2.7 倍</b>；而且它能让我们全程保持投入，而不是只在一次短暂的爆发里热闹一阵。</div>
+  <div class="delta reveal">仅靠这批旧套装积压，稳定上架在一年里就能多挣大约 <b>$47,676</b>，约是囤着不放再倾倒所收的 <b>2.7 倍</b>；而且它能让我们全程保持投入，而不是只在一次短暂的爆发里热闹一阵。它每让一套套装变得够得着，那套套装就成了一套我们随后可以去攒等级的套装。</div>
 </section>
 
 <hr class="goldrule wrap">
 
-<!-- 4: live model -->
+<!-- 8: live model (EXISTING, intact JS) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">iv.</span><span class="tx">看就连付费玩家也会撞墙</span></div>
+    <div class="eyebrow"><span class="no">viii.</span><span class="tx">看就连付费玩家也会撞墙</span></div>
     <h2>那堵墙，<em>近在眼前。</em></h2>
     <p class="lede">选一位玩家，再选一个上架节奏。金线代表我们赚到的全部，青线代表我们被允许花掉的全部。两条线之间那片阴影，就是躺在我们钱包里、却无处可去的钱。所有数字均为示意。</p>
   </div>
@@ -508,37 +772,37 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       </div>
     </div>
   </div>
-  <p class="reveal" style="margin-top:22px;font-size:13.5px;color:var(--faint)">把上架节奏滑到 <b>0</b>，就能看到今天这座冻结的商店：消费读数掉到 $0，搁浅的代币越堆越高。这正是我们一次次撞上的那堵墙。</p>
+  <p class="reveal" style="margin-top:22px;font-size:13.5px;color:var(--faint)">把上架节奏滑到 <b>0</b>，就能看到今天这座冻结的商店：消费读数掉到 $0，搁浅的代币越堆越高。这正是我们一次次撞上的那堵墙——我们甚至还没机会去攒上一个等级。</p>
 </section>
 
 <hr class="goldrule wrap">
 
-<!-- 5: objection -->
+<!-- 9: objection (updated to lead with leveling cannibalization rebuttal) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">v.</span><span class="tx">一个合理的顾虑，正面回应</span></div>
-    <h2>「这会不会 <em>抢走</em><br>付费上新礼包的生意？」</h2>
+    <div class="eyebrow"><span class="no">ix.</span><span class="tx">一个合理的顾虑，正面回应</span></div>
+    <h2>「分期会不会 <em>抢走</em><br>高价上新礼包的生意？」</h2>
   </div>
   <div class="obj reveal">
     <div class="q">
       <span class="tag">担忧所在</span>
-      <span class="txt">如果旧套装进入套装代币商店，玩家会干脆等它进商店，而不去买付费的上新礼包。</span>
+      <span class="txt">如果玩家每周花几美元就能一点点分期攒到满级，他们就会跳过高价上新礼包，那笔一次性付清的钱我们就拿不到了。</span>
     </div>
     <div class="a">
       <span class="tag">为什么它反而会做大收入</span>
-      <p>我们所请求的这 10 套旧套装，它们的 <b>付费售卖窗口早在数年前就已关闭</b>。如今它们在任何地方都不再出售，就这样搁着，挣 <b>$0</b>。让它们毕业上架，等于不与任何东西竞争——因为眼下它们根本没在卖。</p>
-      <p>最新的 5 套付费套装则原封不动：依旧 <b>付费、依旧售卖，本方案完全不去碰它们</b>。每月的限时礼包返场也照样保留。我们要动的，自始至终只有那批旧套装积压。</p>
-      <p>而对我们所有人来说最关键的一点是：<b>一个可触及的套装代币商店目标，恰恰是让我们愿意持续充值的根本原因。</b>把目标拿走，消费就停了——我们自己的收据已经证明了这一点。把目标还回来，卡就又会被掏出来。这是把蛋糕做大，而不是把它切开分掉。</p>
+      <p>这里说的那笔一次性付清，本就是 <b>几乎没人会签的支票</b>。为了一级 +2 的行军规模一次性付几百美元，只有极少数人会答应。分期之路并没有抢走这些销售，因为在那样的价格、换那样的回报下，<b>这些交易本来大多就不会发生</b>。朝着一个看得见的目标每周买一份小礼包，是新增的需求，而不是被转移走的需求。</p>
+      <p>最新的 5 套高价套装依旧原封不动：依旧 <b>高价、依旧付费，本方案完全不去碰它们</b>。它们的上新窗口，仍然是直接买断它们的地方。每月的限时礼包返场也照样保留。分期升级只适用于那些已经能在套装代币商店里够得着的套装——也就是那些早在数年前就关闭的旧窗口，如今挣的约是 $0。</p>
+      <p>而最关键的一点是：<b>一个够得着的等级，恰恰是让我们愿意持续付费的根本原因。</b>有目标的玩家，会每周付约 $5，周复一周，只要还在攒就一直付；没有目标的玩家，则分文不付。分期，把一张几乎没人会签的一次性支票，变成了我们中很多人都乐意签下的经常性收入流。这是把蛋糕做大，而不是把它切开分掉。</p>
     </div>
   </div>
 </section>
 
-<!-- 6: the soft secondary note -->
+<!-- 10: the soft secondary note (EXISTING, intact) -->
 <section class="wrap reveal">
   <hr class="rule" style="margin-bottom:34px">
-  <div class="eyebrow"><span class="no">vi.</span><span class="tx">一点轻声的题外话</span></div>
+  <div class="eyebrow"><span class="no">x.</span><span class="tx">一点轻声的题外话</span></div>
   <h2 style="font-size:clamp(24px,4.6vw,36px)">还有一个更安静的 <em>好处，轻轻奉上。</em></h2>
-  <p class="lede" style="font-size:clamp(17px,2.4vw,21px)">完成的套装会带来一点点永久的行军规模加成，也就是我们军队的规模。随着套装一点一点稳定上架，假以时日，这会温和地缩小消费较少的玩家在军队规模上的差距。我们只是轻轻一提，把它当作这套节奏顺带捎来的一份善意，而绝非一项要求。这个方案本身，单凭实打实的收入就足以立得住脚。</p>
+  <p class="lede" style="font-size:clamp(17px,2.4vw,21px)">每升一级，都会带来一点点永久的行军规模加成，也就是我们军队的规模。随着套装一点一点稳定上架，再加上一条可以攒等级的分期之路，假以时日，这会温和地缩小消费较少的玩家在军队规模上的差距。我们只是轻轻一提，把它当作这套节奏顺带捎来的一份善意，而绝非一项要求。这个方案本身，单凭实打实的经常性收入就足以立得住脚。</p>
 </section>
 
 <!-- closing -->
@@ -549,22 +813,22 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <path d="M4 28 L8 8 L18 20 L24 4 L30 20 L40 8 L44 28 Z" fill="url(#cg)" stroke="#7a560f" stroke-width="1"/>
       <circle cx="8" cy="8" r="2.4" fill="#fff3cf"/><circle cx="24" cy="4" r="2.6" fill="#fff3cf"/><circle cx="40" cy="8" r="2.4" fill="#fff3cf"/>
     </svg>
-    <h2 class="reveal">打开货架。<br><em class="foil">我们乐意把它填满。</em></h2>
-    <p class="ask reveal">把上架与贵公司本就在跑的上新节奏绑在一起。每当一套全新套装上线，就让最久未上架的那套旧套装进入套装代币商店。上一套，毕业一套。付费的依旧付费，限时礼包返场照旧保留。任何时候挪动的，都只有那 10 套旧套装。<b>这就是我们全部的请求。</b></p>
-    <p class="ask reveal" style="margin-top:18px">我们就是那群手握满钱包、却被挡在锁着的柜台外的玩家。我们要的不是折扣，而是那扇门。给我们一个够得着的目标，我们就会让卡整整一年都摆在手边。收入早已在这里，<b>它只是在等着被放进门来。</b></p>
+    <h2 class="reveal">让我们去攒那个等级。<br><em class="foil">我们会每周给你付钱。</em></h2>
+    <p class="ask reveal">让一套套装能通过装饰套装商店攒到满级，用每周的小额套装代币分期来付，而不是只能靠昂贵的限时礼包，或者一旦窗口关闭就再也无从谈起。让那批旧套装继续按贵公司现成的上新节奏毕业上架，好让每一套都够得着。高价上新礼包依旧高价，限时礼包返场照旧保留。变的，只有这条攒等级的路径。<b>这就是我们全部的请求。</b></p>
+    <p class="ask reveal" style="margin-top:18px">我们就是那群玩家——为了 +4 行军规模，绝不会签下 $525 的支票，却乐意为 Sweet Haven 的 +6，每周付约 $5，一直付下去。我们要的不是折扣，而是被允许一点一点付给你，付上很长很长的时间。<b>经常性收入早已在这里，它只是在等着被放进门来。</b></p>
   </div>
 </div>
 
 <div class="footer">
-  <div class="il">所有数字均为示意，并已清楚标注。统计范围仅限那 10 套积压旧套装在套装代币商店中产生的收入，绝非游戏总收入。</div>
-  <div class="cred">由一位 2864 服玩家执笔，代表那些愿意付出更多的付费玩家</div>
+  <div class="il">所有数字均为示意，并已清楚标注。统计范围仅限装饰套装的代币经济，绝非游戏总收入。</div>
+  <div class="cred">由一位 2864 服玩家执笔，代表那些愿意每周付出更多的付费玩家</div>
 </div>
 
 <script>
 (function(){
   "use strict";
 
-  /* =================== canonical model, ported exactly =================== */
+  /* =================== canonical completion model, ported exactly (UNTOUCHED) =================== */
   var SET_COST = 11340;       // tokens for one full set (level 1)
   var FREE_WK  = 300;         // free tokens per week
   var WEEKS    = 52;
@@ -599,7 +863,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   function fmt(n){return Math.round(n).toLocaleString();}
   function byId(id){return document.getElementById(id);}
 
-  /* =================== live model chart =================== */
+  /* =================== live model chart (UNTOUCHED) =================== */
   var curTier='drip';
   var relEl = byId('rel');
 
@@ -694,17 +958,113 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
   drawWall();
 
-  /* =================== wallet count-up to 15,600 (free tokens a top spender banks while the store is frozen) =================== */
+  /* =================== NEW: leveling calculator (canonical formulas) =================== */
+  /* tokensToReach = 11340*(2*L-1); weeks = ceil(tokens/900); paid = weeks*4.95; lump = 175*(2*L-1); march = 2*L */
+  var SET_TOK = 11340;     // tokens per full set
+  var WK_TOK  = 900;       // about 600 paid + about 300 free per week
+  var WK_PAID = 4.95;      // five $0.99 packs a week, in dollars
+  var LUMP_PER_SET = 175;  // launch-pack lump cost per full set, about $
+
+  var calcSet = 'mmf';     // mmf | sh | other
+  var calcLvl = 2;
+  var SET_NAMES = { mmf:'Metal Music Fans', sh:'Sweet Haven', other:'这套 2 级套装' };
+
+  function levelDataObj(L){
+    var tokens = SET_TOK * (2*L - 1);
+    var weeks  = Math.ceil(tokens / WK_TOK);
+    var paid   = weeks * WK_PAID;
+    var lump   = LUMP_PER_SET * (2*L - 1);
+    var march  = 2 * L;
+    return {tokens:tokens, weeks:weeks, paid:paid, lump:lump, march:march};
+  }
+
+  function renderCalc(){
+    var d = levelDataObj(calcLvl);
+    var cLump=byId('c-lump'), cPaid=byId('c-paid'), cTok=byId('c-tok'), cWk=byId('c-wk'), cV=byId('c-verdict'), cN=byId('calc-note');
+
+    if(cLump) cLump.textContent = '$' + fmt(d.lump);
+    if(cPaid) cPaid.textContent = '$' + fmt(d.paid);
+    if(cTok)  cTok.textContent  = fmt(d.tokens);
+    if(cWk)   cWk.innerHTML     = d.weeks + '<span class="unit">周</span>';
+
+    var setName = SET_NAMES[calcSet];
+    var months = Math.round(d.weeks / 4.33);
+
+    if(cV){
+      cV.innerHTML = "把 " + setName + " 攒到 <b>" + calcLvl + " 级（+" + d.march +
+        " 行军规模）</b>，意味着掉头不付那笔 <b>$" + fmt(d.lump) + "</b> 的一次性付清，转而在约 <span class=\"g\">" + d.weeks +
+        " 周</span>、约 <b>" + months + " 个月</b> 里，以每周约 $5 累计付出约 <b>$" + fmt(d.paid) +
+        "</b>。这是最痛快答应的一笔。";
+    }
+
+    if(cN){
+      if(calcSet === 'other'){
+        cN.innerHTML = "其余二十一套最高只能到 2 级（+4 行军规模）。只有 Metal Music Fans 和 Sweet Haven 能攀到 3 级。这里展示的 3 级递进步长为示意值，可以调整。";
+      } else {
+        cN.innerHTML = setName + " 是仅有的两套能攀到 3 级（+6 行军规模）的套装之一。其中 2 级升到 3 级的步长为示意值，可以调整；其余每一个数字都遵循标准的代币经济。";
+      }
+    }
+  }
+
+  /* set buttons */
+  var setBtns = document.querySelectorAll('#seg-set button');
+  var lvlBtns = document.querySelectorAll('#seg-lvl button');
+
+  function refreshLvlAvailability(){
+    /* only mmf + sh can reach L3 */
+    var allowL3 = (calcSet === 'mmf' || calcSet === 'sh');
+    for(var k=0;k<lvlBtns.length;k++){
+      var lv = parseInt(lvlBtns[k].getAttribute('data-lvl'),10);
+      if(lv === 3){
+        lvlBtns[k].disabled = !allowL3;
+      }
+    }
+    if(!allowL3 && calcLvl === 3){
+      calcLvl = 2;
+      for(var j=0;j<lvlBtns.length;j++){
+        lvlBtns[j].classList.toggle('on', parseInt(lvlBtns[j].getAttribute('data-lvl'),10) === 2);
+      }
+    }
+  }
+
+  for(var s=0;s<setBtns.length;s++){
+    (function(btn){
+      btn.addEventListener('click',function(){
+        for(var j=0;j<setBtns.length;j++){ setBtns[j].classList.remove('on'); }
+        btn.classList.add('on');
+        calcSet = btn.getAttribute('data-set');
+        refreshLvlAvailability();
+        renderCalc();
+      });
+    })(setBtns[s]);
+  }
+
+  for(var L=0;L<lvlBtns.length;L++){
+    (function(btn){
+      btn.addEventListener('click',function(){
+        if(btn.disabled) return;
+        for(var j=0;j<lvlBtns.length;j++){ lvlBtns[j].classList.remove('on'); }
+        btn.classList.add('on');
+        calcLvl = parseInt(btn.getAttribute('data-lvl'),10);
+        renderCalc();
+      });
+    })(lvlBtns[L]);
+  }
+
+  refreshLvlAvailability();
+  renderCalc();
+
+  /* =================== wallet count-up to $69,000 (installments left on the table per year) =================== */
   var walletNum = byId('walletNum');
   function animateWallet(){
     if(!walletNum) return;
-    var target = 15600;
+    var target = 69000;
     var start = null, dur = 1500;
     function step(ts){
       if(start===null) start=ts;
       var p=Math.min(1,(ts-start)/dur);
       var eased = 1-Math.pow(1-p,3);
-      walletNum.textContent = Math.round(target*eased).toLocaleString();
+      walletNum.textContent = '$' + Math.round(target*eased).toLocaleString();
       if(p<1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -750,7 +1110,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   } else {
     var allRev=document.querySelectorAll('.reveal');
     for(var ai=0;ai<allRev.length;ai++){ allRev[ai].classList.add('in'); }
-    if(walletNum) walletNum.textContent='15,600';
+    if(walletNum) walletNum.textContent='$69,000';
     var bd=byId('barDump'), bp=byId('barDrip');
     if(bd) bd.style.width='37.7%';
     if(bp) bp.style.width='100%';

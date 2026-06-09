@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Simplified Chinese (zh-CN) version of "The Brief" (brief.html) — 装饰套装商店：稳定上新的商业论证 -->
+<!-- Simplified Chinese (zh-CN) version of "The Brief" (brief.html) — 装饰套装商店：可分期购买的套装升级 -->
 <html lang="zh-CN">
 <head>
 <meta charset="UTF-8">
@@ -7,9 +7,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e7b24a'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23a8761f' stroke-width='1.4'/%3E%3Cpath d='M16 9v14M11.5 13h7a2.5 2.5 0 010 5h-7' fill='none' stroke='%237a5410' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
-<title>装饰套装商店：稳定上新的商业论证</title>
+<title>装饰套装商店：可分期购买的套装升级</title>
 <script>document.documentElement.classList.add('js');</script>
-<meta name="description" content="一份以数据为依据的商业论证：与其把装饰套装压在仓库里，不如让它们按稳定节奏进入装饰套装商店。">
+<meta name="description" content="一份以数据为依据的商业论证：与其只通过昂贵的限时礼包出售装饰套装升级，不如让玩家在装饰套装商店里用每周的小额代币分期，朝着一个看得见的目标逐步购买。">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -138,6 +138,44 @@ table.packs tr.hl td{color:var(--gold)}
 .fact .big.gold{color:var(--gold)} .fact .big.teal{color:var(--teal)}
 .fact .cap{font-size:12.5px;color:var(--muted);margin-top:3px}
 
+/* ---------- leveling section ---------- */
+.lvlcompare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:8px 0 0}
+@media(max-width:720px){.lvlcompare{grid-template-columns:1fr}}
+.lvlside{background:var(--panel);padding:26px}
+.lvlside.wall{background:linear-gradient(180deg,rgba(220,107,75,.07),transparent)}
+.lvlside.steady{background:linear-gradient(180deg,rgba(92,186,159,.07),transparent)}
+.lvlside .stitle{font-family:'Fraunces','Noto Serif SC',serif;font-weight:700;font-size:21px;margin-bottom:4px}
+.lvlside.wall .stitle{color:var(--clay)} .lvlside.steady .stitle{color:var(--teal)}
+.lvlside .ssub{font-size:13px;color:var(--muted);margin-bottom:18px;min-height:2.6em}
+.lvlside .big{font-family:'Fraunces','Noto Serif SC',serif;font-weight:900;font-size:clamp(30px,4.4vw,46px);line-height:1;letter-spacing:-.02em}
+.lvlside.wall .big{color:var(--clay)} .lvlside.steady .big{color:var(--teal)}
+.lvlside .bigcap{font-size:12.5px;color:var(--muted);margin-top:7px}
+.lvlside ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.lvlside li{font-size:13.5px;color:#cdc3b1;padding-left:20px;position:relative;line-height:1.6}
+.lvlside li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:7px;border-radius:50%}
+.lvlside.wall li::before{background:var(--clay)} .lvlside.steady li::before{background:var(--teal)}
+
+table.lvl{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+table.lvl th{font-family:'IBM Plex Mono','Noto Sans SC',monospace;font-size:10.5px;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:right;padding:0 0 12px 12px;font-weight:500;border-bottom:1px solid var(--line)}
+table.lvl th:first-child{text-align:left;padding-left:0}
+table.lvl td{padding:13px 0 13px 12px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+table.lvl td:first-child{text-align:left;font-weight:600;padding-left:0;font-family:'Fraunces','Noto Serif SC',serif;font-size:16px}
+table.lvl td.wallc{color:var(--clay)}
+table.lvl td.steadyc{color:var(--teal)}
+table.lvl .mono{font-family:'IBM Plex Mono','Noto Sans SC',monospace}
+table.lvl tr.l3 td:first-child small{display:block;font-family:'IBM Plex Mono','Noto Sans SC',monospace;font-size:10px;font-weight:400;color:var(--muted2);letter-spacing:.04em;text-transform:uppercase;margin-top:2px;font-style:normal}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* leveling mini calculator */
+.lvlcalc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:18px}
+.lvlcalc .calcgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:center}
+@media(max-width:720px){.lvlcalc .calcgrid{grid-template-columns:1fr}}
+.lvlcalc .outs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lvlcalc .out{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:15px 17px}
+.lvlcalc .out .ov{font-family:'Fraunces','Noto Serif SC',serif;font-weight:700;font-size:25px;letter-spacing:-.01em;line-height:1}
+.lvlcalc .out.gold .ov{color:var(--gold)} .lvlcalc .out.teal .ov{color:var(--teal)} .lvlcalc .out.clay .ov{color:var(--clay)}
+.lvlcalc .out .oc{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.5}
+
 /* ---------- interactive controls ---------- */
 .sim{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:8px}
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:26px}
@@ -258,31 +296,195 @@ html.js .reveal.in{opacity:1;transform:none}
       <svg class="coin" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="#e7b24a"/><circle cx="16" cy="16" r="14" stroke="#c8902a" stroke-width="1.5"/><circle cx="16" cy="16" r="10" stroke="#a8761f" stroke-width="1.2" fill="none"/><path d="M16 9v14M11 13h7.5a2.5 2.5 0 010 5H11" stroke="#7a5410" stroke-width="2" stroke-linecap="round"/></svg>
       <span class="eyebrow">口袋奇兵 · 装饰套装商店 · 一份增长提案</span>
     </div>
-    <h1 class="reveal">套装早已做好，<br><span class="hl">货架却空空如也。</span></h1>
-    <p class="lede reveal">口袋奇兵里现有二十三套装饰套装，但玩家真正能在装饰套装商店买到的只有八套——那里是玩家用每周赚取和小额购买的套装代币去兑换装饰的地方。其余的套装都被压在仓库里，于是最投入的那批玩家已经没有东西可买了。本文要看的，正是这背后的代价，以及为什么稳定的上新节奏比把套装压着不放更能带来收入。</p>
+    <h1 class="reveal">没人会花 $875 买 <span class="hl">+6 行军规模。</span>可愿意每周花 $5 的人很多。</h1>
+    <p class="lede reveal">集齐一套装饰套装，会永久提升玩家的行军规模；而每多集齐一份完整套装，这份加成就再升一级。如今想给套装升级，唯一的途径就是一份昂贵的限时上新礼包——而一旦窗口关闭，便彻底无路可走。这是一笔几乎没人会一次性付清的升级。可同样的升级，若改在装饰套装商店里、用每周的小额代币分期，朝着一个看得见的目标逐步购买，付费玩家便会心甘情愿地买单，周复一周。本文要看的，正是当前设计白白放掉的那份经常性收入与留存。</p>
     <div class="sig reveal">致口袋奇兵研发团队 · 2864 服 · 数据实时读取自游戏客户端</div>
 
     <div class="tldr reveal">
-      <div class="cell"><div class="n gold">8</div><div class="l"><b>已在代币商店</b>，按轮换上架</div></div>
-      <div class="cell"><div class="n clay">10</div><div class="l"><b>更早的套装被压在仓库。</b>它们的付费首发窗口早已关闭，至今却仍没有一条玩家负担得起的获取途径。<b>这正是本提案所求。</b></div></div>
-      <div class="cell"><div class="n" style="color:var(--muted)">5</div><div class="l"><b>近期套装</b>仍以付费礼包形式出售。不在本提案讨论之列。</div></div>
-      <div class="cell"><div class="n">23</div><div class="l"><b>套装总数</b>，全部已制作并存在于游戏数据中</div></div>
+      <div class="cell"><div class="n gold">+2</div><div class="l"><b>每升一级，行军规模 +2。</b>1、2、3 级分别为 +2、+4、+6，永久生效，无需摆放。</div></div>
+      <div class="cell"><div class="n clay">$875</div><div class="l"><b>通过上新礼包一次性付清升到 3 级</b>（每份完整套装约 $175）。这是一堵几乎没人愿意付的墙。</div></div>
+      <div class="cell"><div class="n teal">约 $5</div><div class="l"><b>每周，人们乐意付。</b>同一笔升级，改用 $0.99 礼包分期、朝着一个目标逐步买。这正是本提案所求。</div></div>
+      <div class="cell"><div class="n">约 $69k</div><div class="l"><b>每年</b>商店今天收不到的示意性分期收入，只因没有任何东西可供攒。</div></div>
     </div>
   </div>
 </header>
 
-<!-- ============ 01 · THE STORE TODAY ============ -->
-<section id="store">
+<!-- ============ 01 · THE UPGRADE PLAYERS WOULD PAY FOR ============ -->
+<section id="leveling">
   <div class="wrap">
     <div class="sechead reveal">
       <div class="secnum">01</div>
       <div class="ht">
-        <span class="eyebrow">商店现状</span>
-        <h2>一份多半锁在橱窗后的目录</h2>
+        <span class="eyebrow">玩家真正愿意为之付费的升级</span>
+        <h2>付费玩家最想要的那样东西，商店却卖不了</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:62ch;margin-bottom:8px">装饰套装商店用<em>装饰套装代币</em>出售套装——这是一种玩家每周可赚取、并能通过小额购买补充的软通货。它是获取装饰的那条负担得起、可反复走通的途径。在现存的 23 套套装里，目前只有这几套能在这里买到：</p>
+    <p class="lede reveal" style="max-width:64ch">套装升级是一项已经确认的永久战力机制。集齐一套装饰套装的每一件，就算作 <em>1 级</em>：永久 <strong>+2 行军规模</strong>，无需摆放即可生效。再集齐这套套装的第二份、第三份完整副本，加成便会攀升：2 级 <strong>+4</strong>，3 级 <strong>+6</strong>。升级意味着不断集齐重复的<em>完整</em>套装——而这恰恰是代币经济本就为之设计的那种长线、可反复的目标。</p>
+
+    <div class="card reveal" style="margin-top:8px">
+      <p class="tight" style="margin-bottom:14px">在 23 套套装中，目前只有<strong>两套</strong>能升到 3 级：<em>Metal Music Fans</em>（2024 年 5 月上线）和 <em>Sweet Haven</em>（2025 年 12 月上线）。其余 21 套封顶在 2 级，对应 <strong>+4 行军规模</strong>。所以上限是有限且克制的：这并非一条无尽攀升的战力螺旋，而是一份小小的永久加成，需要投入的玩家用数月时间慢慢去追。</p>
+      <p style="margin-bottom:0;color:#cdc3b1;font-size:15px">问题就在这里。升级需要重复的完整套装，可唯一能反复、负担得起地买到完整套装的地方——代币商店——却大多不上架它们。昂贵的上新礼包是升级唯一的付费途径，而它在套装窗口关闭时便消失了。于是，一名本愿意慢慢攒、把心爱的套装升到 2 级的付费玩家根本做不到，研发团队也什么都收不到。</p>
+      <div class="foot-illus">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>升级效果（每级 +2 行军规模，L1/L2/L3 = +2/+4/+6）以及那两套可达 3 级的套装，均已从实时游戏客户端确认。收入数字仅作示意，且只限定在装饰代币经济范围之内。</span>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin:42px 0 6px">没人会付的一次性大额，与人们愿意付的分期，并排来看</h3>
+    <p class="reveal" style="max-width:66ch;color:#cdc3b1;font-size:15px;margin-bottom:18px">升到某一级所需的代币遵循一条简单规律：<span class="mono">11,340 × (2 × 级数 − 1)</span>。1 级是一份完整套装，2 级是三份，3 级是五份。下表展示了通往同一份永久行军规模加成的两条路径。所有数字均作示意。</p>
+
+    <div class="scroller reveal">
+    <table class="lvl">
+      <thead>
+        <tr>
+          <th>等级</th><th>行军</th><th>代币</th><th>完整套装</th>
+          <th>一次性礼包</th><th>分期</th><th>分期总付</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1 级<small>集齐这套</small></td>
+          <td class="mono">+2</td>
+          <td class="mono">11,340</td>
+          <td>1</td>
+          <td class="wallc mono">约 $175</td>
+          <td class="steadyc mono">约 13 周</td>
+          <td class="steadyc mono">约 $64</td>
+        </tr>
+        <tr>
+          <td>2 级<small>集齐这套 3 次</small></td>
+          <td class="mono">+4</td>
+          <td class="mono">34,020</td>
+          <td>3</td>
+          <td class="wallc mono">约 $525</td>
+          <td class="steadyc mono">约 38 周</td>
+          <td class="steadyc mono">约 $188</td>
+        </tr>
+        <tr class="l3">
+          <td>3 级<small>仅两套可达</small></td>
+          <td class="mono">+6</td>
+          <td class="mono">56,700</td>
+          <td>5</td>
+          <td class="wallc mono">约 $875</td>
+          <td class="steadyc mono">约 63 周</td>
+          <td class="steadyc mono">约 $312</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note reveal" style="margin-top:14px">一次性付清路径：上新礼包每份完整套装约 <strong>$175</strong>，需一次付清，且仅限上新窗口开放期间。分期路径：<strong>$0.99 礼包</strong>（120 代币，每周限购五次，约 $4.95 换 600 代币）加上每周约 300 枚免费代币，约 <strong>每周 900 代币</strong>，升到某一级所需周数为 <span class="mono">ceil(代币 ÷ 900)</span>。1 级到 2 级再加两份完整套装、即 +22,680 代币，这一点已确认。表中所示的 3 级那一步沿用了同样的加法（再加两份），属于<em>示意且可调</em>：3 级的确切成本可由研发团队自行调整。全表数字均作示意。</p>
+
+    <div class="lvlcompare reveal" style="margin-top:26px">
+      <div class="lvlside wall">
+        <div class="stitle">一次性付清这堵墙</div>
+        <div class="ssub">只能靠上新礼包，需一次付清，窗口一关便不复存在。</div>
+        <div class="big">约 $350 至约 $875</div>
+        <div class="bigcap">为 +4 至 +6 行军规模预先掏出的现金</div>
+        <ul>
+          <li>几乎没人会为一份小小的永久加成，一口气掏出数百美元。</li>
+          <li>窗口一关，对大多数套装而言，这级升级便彻底成了不可能。</li>
+          <li>一笔大额请求、一次决定，而答案通常是不。</li>
+        </ul>
+      </div>
+      <div class="lvlside steady">
+        <div class="stitle">付费玩家愿意点头的那种分期 <span style="font-size:13px;color:var(--teal)">（提案）</span></div>
+        <div class="ssub">同一笔升级，在商店里以约每周 $5、朝着一个看得见的目标慢慢攒出来。</div>
+        <div class="big">约 $5 / 周</div>
+        <div class="bigcap">是一种反复发生的习惯，而非一次性的墙</div>
+        <ul>
+          <li>朝着一个会逐渐填满的进度条，每周花一点小钱，是个轻松、可反复的"好"。</li>
+          <li>目标会持续摆在眼前好几个月——而那正是留存最难维系的时段。</li>
+          <li>一名为追下一级而保持投入的付费玩家，每周约付 $4.95，约合每年 <strong>$257</strong>，且年年如此。</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== leveling calculator ===== -->
+    <div class="lvlcalc reveal">
+      <div class="ctl-l" style="font-family:'IBM Plex Mono','Noto Sans SC',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:18px">升级计算器 · 选一个目标等级（示意）</div>
+      <div class="calcgrid">
+        <div>
+          <div class="seg" id="seg-lvl">
+            <button data-lvl="1">1 级<span class="sub">+2 行军</span></button>
+            <button data-lvl="2" class="on">2 级<span class="sub">+4 行军</span></button>
+            <button data-lvl="3">3 级<span class="sub">+6 行军</span></button>
+          </div>
+          <p class="note" style="margin:16px 0 0">基于标准公式：代币 = <span class="mono">11,340 × (2L − 1)</span>，周数 = <span class="mono">ceil(代币 ÷ 900)</span>，分期总付 = <span class="mono">周数 × $4.95</span>，一次性 = <span class="mono">$175 × (2L − 1)</span>，行军 = <span class="mono">2L</span>。3 级仅 <em>Metal Music Fans</em> 与 <em>Sweet Haven</em> 可达；所有数字均作示意。</p>
+        </div>
+        <div class="outs">
+          <div class="out gold"><div class="ov mono" id="lc-march">+4</div><div class="oc">此级的永久行军规模</div></div>
+          <div class="out"><div class="ov mono" id="lc-tokens">34,020</div><div class="oc">代币，也就是 <span id="lc-sets">3</span> 份完整套装</div></div>
+          <div class="out clay"><div class="ov mono" id="lc-lump">约 $525</div><div class="oc">一次性上新礼包成本，需一次付清</div></div>
+          <div class="out teal"><div class="ov mono" id="lc-weeks">约 38 周</div><div class="oc">按约每周 $5，分期总付 <span id="lc-paid">约 $188</span></div></div>
+        </div>
+      </div>
+      <div class="foot-illus" style="margin-top:18px">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>代币成本与赚取速率均为实时游戏数据。3 级那一步的成本仅作示意，可由研发团队自行调整。收入限定在装饰代币经济范围之内，绝非全游戏总收入。</span>
+      </div>
+    </div>
+
+    <p class="pull reveal" style="margin-top:42px">$875 买 +6 升级，很难卖得出去。<span class="u">而朝着一个目标、约每周 $5，它便会自己卖出去。</span></p>
+  </div>
+</section>
+
+<!-- ============ 02 · THE RECURRING REVENUE ============ -->
+<section id="recurring">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="secnum">02</div>
+      <div class="ht">
+        <span class="eyebrow">经常性收入</span>
+        <h2>每周的习惯，胜过一次性的墙</h2>
+      </div>
+    </div>
+
+    <p class="lede reveal" style="max-width:64ch">分期的价值，不仅在于更多人会点头，更在于同一个人会一直点头。一名正在给某套套装升级、或只是为追下一套而保持着某一级的付费玩家，每周会点开 $0.99 礼包五次。那是约 <strong>每周 $4.95、每年约 $257</strong>，只要还有东西可供攒，便年年续费。</p>
+
+    <div class="econ">
+      <div class="facts reveal">
+        <div class="fact">
+          <div class="big teal mono">约 $257</div>
+          <div class="cap">来自一名为追下一级而保持投入的付费玩家，约每周 $4.95，年年续费。</div>
+        </div>
+        <div class="fact">
+          <div class="big mono">约 600</div>
+          <div class="cap">在这个示意性玩家群里活跃购买套装的玩家，其中约 <strong>45% 付费</strong>。</div>
+        </div>
+        <div class="fact">
+          <div class="big gold mono">约 $69,000</div>
+          <div class="cap">这个玩家群每年贡献的纯 $0.99 礼包分期收入，而今天约为 <strong>$0</strong>，只因没有任何东西可供攒。仅作示意。</div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="eyebrow" style="margin-bottom:16px;color:var(--muted)">为什么终身价值才是重点</div>
+        <p class="note" style="margin:0 0 14px">上新礼包是一笔有硬上限的单次交易。以分期出售的升级则是一笔年金：小额、反复、持续续费。研发团队并不需要在两者之间二选一。上新礼包原样保留，而这份分期收入是在其之上的<strong>叠加</strong>，触及的恰恰是那位本就不会按全价首发掏钱的耐心攒币者。</p>
+        <p class="note" style="margin:0">在一个约 600 名活跃玩家、约 45% 付费的示意性玩家群里，这便是每年约 <strong>$69,000</strong> 的纯分期收入，且限定在装饰代币经济范围之内。今天这个数字接近于零，并非因为玩家不愿意付，而是因为商店没给他们任何可<em>供攒</em>的目标。</p>
+        <div class="foot-illus">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>玩家规模、付费比例与人均消费均为示意性假设，特此公开列出以便质疑。这是叠加在上新礼包收入之上的部分，绝不与之混为一谈。</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="pull reveal" style="margin-top:40px">一堵 $875 的墙只赚一次。<span class="u">一个每周 $5 的目标，则年年、周周都在赚。</span></p>
+  </div>
+</section>
+
+<!-- ============ 03 · ACCESS, THE PREREQUISITE ============ -->
+<section id="store">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="secnum">03</div>
+      <div class="ht">
+        <span class="eyebrow">前提条件</span>
+        <h2>你只能攒一套自己够得着的套装</h2>
+      </div>
+    </div>
+
+    <p class="lede reveal" style="max-width:64ch;margin-bottom:8px">分期升级取决于一件事：这套套装必须在代币商店里<em>够得着</em>，玩家才能一遍又一遍地把它集齐。而今天的目录恰恰挡在这里。装饰套装商店用<em>装饰套装代币</em>出售套装——这是一种玩家每周可赚取、并能通过小额购买补充的软通货。在现存的 23 套套装里，目前只有这几套能在这里买到：</p>
 
     <div class="catwrap reveal">
       <div class="catlabel">
@@ -308,8 +510,8 @@ html.js .reveal.in{opacity:1;transform:none}
     </div>
 
     <div class="card reveal" style="margin-top:30px">
-      <p class="tight" style="margin-bottom:14px"><strong>问题不在新套装。</strong>把最新的套装先以付费礼包形式推出，是合理的——上新收入正来自于此，本提案对这部分完全不动。真正的症结，是那<em>十套更早的套装</em>，其中一些可以追溯到 2021 至 2023 年，它们同样从未进入过代币商店。它们的付费窗口早已关闭，可任何当初错过的玩家，至今仍没有一条负担得起的途径去拿到它们。</p>
-      <p style="margin-bottom:0;color:#cdc3b1;font-size:15px">商店来来回回，永远只在轮换那同样的八套。事实上，<em>自 2023 年 12 月以来上线的九套套装，没有一套进入过代币商店</em>，于是更早的积压越堆越多，而那八套却仍在原地反复洗牌。解法很简单：每当一套新套装上线，就让<strong>最早被压着的那套毕业</strong>进入商店——完全按照研发团队本就在推进的上新速度。</p>
+      <p class="tight" style="margin-bottom:14px"><strong>够得着，是让升级成为可能的前提。</strong>玩家只有在一套套装进入商店、变得够得着之后，才能攒着把它升到满级。把最新的套装在上线时先保持付费是合理的，本提案对这点完全不动。真正的症结，是那<em>十套更早的套装</em>，其中一些可以追溯到 2021 至 2023 年，它们同样从未进入过代币商店。它们的付费窗口早已关闭，所以如今它们根本无法被升级——任何人、任何价格都不行。</p>
+      <p style="margin-bottom:0;color:#cdc3b1;font-size:15px">商店来来回回，永远只在轮换那同样的八套。事实上，<em>自 2023 年 12 月以来上线的九套套装，没有一套进入过代币商店</em>，于是更早的积压越堆越多，而那八套却仍在原地反复洗牌。配套的解法很简单：每当一套新套装上线，就让<strong>最早被压着的那套毕业</strong>进入商店——完全按照研发团队本就在推进的上新速度。正是这次毕业，解锁了上文那份分期升级。</p>
       <div class="foot-illus">
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
         <span>套装清单、价格与上线日期均直接读取自实时游戏客户端（decoration_contents 与装饰套装商店）。</span>
@@ -322,25 +524,25 @@ html.js .reveal.in{opacity:1;transform:none}
         <div class="note" style="max-width:15ch;margin-top:5px">最近五套套装之间的平均间隔</div>
       </div>
       <div style="flex:1;min-width:280px">
-        <p class="note" style="margin:0">每<strong>两到三个月</strong>就有一套新套装上线（每年约 4 到 5 套），可没有一套进入代币商店。本提案只是请求商店保持同样的节奏：<em>每当一套新套装上线，就让最早被压着的那套毕业进来。</em>一套进，一套毕业。没有任何新内容要做，每月的弹窗礼包也照旧不受影响。</p>
+        <p class="note" style="margin:0">每<strong>两到三个月</strong>就有一套新套装上线（每年约 4 到 5 套），可没有一套进入代币商店。本提案只是请求商店保持同样的节奏：<em>每当一套新套装上线，就让最早被压着的那套毕业进来。</em>一套进，一套毕业。没有任何新内容要做，每月的弹窗礼包也照旧不受影响。每一套毕业的套装，随即成为一个全新、可供升级的目标。</p>
         <div class="mono" style="font-size:11px;color:var(--muted2);letter-spacing:.06em;margin-top:12px">最近间隔：最后五套套装之间相隔 48 · 80 · 73 · 93 天</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 02 · HOW A PLAYER EARNS ============ -->
+<!-- ============ 04 · HOW A PLAYER EARNS ============ -->
 <section id="earn">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">02</div>
+      <div class="secnum">04</div>
       <div class="ht">
         <span class="eyebrow">节奏</span>
         <h2>这套商店本就是为细水长流而设计的</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:60ch">看看一名玩家是怎样攒下代币的，设计意图便一目了然：小额、可反复、按周。连最便宜的礼包都<em>设有每周上限</em>。整个系统都在主动把消费摊到时间里。</p>
+    <p class="lede reveal" style="max-width:60ch">看看一名玩家是怎样攒下代币的，设计意图便一目了然：小额、可反复、按周。连最便宜的礼包都<em>设有每周上限</em>。整个系统都在主动把消费摊到时间里，而这正是分期升级能如此自然契合的原因。</p>
 
     <div class="econ">
       <div class="card reveal">
@@ -388,25 +590,25 @@ html.js .reveal.in{opacity:1;transform:none}
           <p class="note" style="margin-top:12px;margin-bottom:0"><strong>代币商店</strong>：同一套套装，现金成本至多只要一半，把每周免费代币算进去后还更低，有耐心的话甚至完全免费。这是唯一一条<em>长期有效</em>、负担得起的途径。</p>
         </div>
       </div>
-      <p class="note" style="margin-top:16px;margin-bottom:0">对那十套更早的套装来说，首发窗口几年前就关闭了，所以代币商店是它们<em>唯一</em>剩下的负担得起的途径。而这条途径，恰恰是被锁住的那条。</p>
+      <p class="note" style="margin-top:16px;margin-bottom:0">对那十套更早的套装来说，首发窗口几年前就关闭了，所以代币商店是它们<em>唯一</em>剩下的负担得起的途径，也是唯一一条有朝一日能让玩家给它们升级的途径。而这条途径，恰恰是被锁住的那条。</p>
     </div>
 
     <p class="pull reveal" style="margin-top:40px">攒齐一套要花上数月。<span class="u">这个节奏本身就是产品</span>——前提是货架上得有一套值得去攒。</p>
   </div>
 </section>
 
-<!-- ============ 03 · THE WALL (INTERACTIVE) ============ -->
+<!-- ============ 05 · THE WALL (INTERACTIVE) ============ -->
 <section id="wall">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">03</div>
+      <div class="secnum">05</div>
       <div class="ht">
         <span class="eyebrow">互动 · 那堵墙</span>
         <h2>当再没有东西可买，会发生什么</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:64ch">选一名玩家，再选一个上新速度。他们早已集齐了今天的八套套装。商店一旦冻结，他们便不再充值，而仍在免费赚取的代币只能一味堆积，随时准备零成本领走未来的任意一次更新。把上新转盘往上拨，目标就会重新出现：随着新套装上线（每年约 4 到 5 套），最早被压着的那套毕业进来。</p>
+    <p class="lede reveal" style="max-width:64ch">选一名玩家，再选一个上新速度。他们早已集齐了今天的八套套装。商店一旦冻结，他们便不再充值，而仍在免费赚取的代币只能一味堆积，随时准备零成本领走未来的任意一次更新。把上新转盘往上拨，目标就会重新出现：随着新套装上线（每年约 4 到 5 套），最早被压着的那套毕业进来——而那也正是给它升级第一次成为可能的时刻。</p>
 
     <div class="sim reveal">
       <div class="controls">
@@ -454,18 +656,18 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- ============ 04 · TWO STRATEGIES ============ -->
+<!-- ============ 06 · TWO STRATEGIES ============ -->
 <section id="strategies">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">04</div>
+      <div class="secnum">06</div>
       <div class="ht">
         <span class="eyebrow">互动 · 对比</span>
         <h2>压着一次性甩货，还是稳定上新</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:66ch">同样十套更早的积压套装，同样的玩家群，同样一年。左边是当前的做法：把它们全压着，再一口气把积压甩出来补课。右边是稳定毕业，按新套装上线的速度，每两到三个月让最早的那套进入商店。下面的数字仅为<em>这十套更早套装在代币商店中带来的收入</em>，并非全游戏总收入——两条路下的总收入是一样的，因为上新礼包和弹窗礼包无论如何都照常进行。</p>
+    <p class="lede reveal" style="max-width:66ch">同样十套更早的积压套装，同样的玩家群，同样一年。左边是当前的做法：把它们全压着，再一口气把积压甩出来补课。右边是稳定毕业，按新套装上线的速度，每两到三个月让最早的那套进入商店。下面的数字仅为<em>这十套更早套装在代币商店中带来的收入</em>，并非全游戏总收入——两条路下的总收入是一样的，因为上新礼包和弹窗礼包无论如何都照常进行。这份"集齐套装"的收入，与上文那份分期升级收入彼此独立，且相互叠加。</p>
 
     <div class="card reveal" style="margin:8px 0 26px">
       <div class="controls" style="margin-bottom:0">
@@ -522,65 +724,65 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- ============ 05 · WHO THIS REACHES ============ -->
+<!-- ============ 07 · WHO THIS REACHES ============ -->
 <section id="who">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">05</div>
+      <div class="secnum">07</div>
       <div class="ht">
         <span class="eyebrow">行为</span>
         <h2>两类玩家，同一个触发点</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:62ch">稳定上新之所以奏效，是因为两类付费玩家都对同一件事有反应：一个<em>几乎</em>触手可及的奖励。</p>
+    <p class="lede reveal" style="max-width:62ch">分期升级之所以奏效，是因为两类付费玩家都对同一件事有反应：一个<em>几乎</em>触手可及的奖励。</p>
 
     <div class="personas">
       <div class="persona reveal">
         <div class="tag">耐心型付费玩家</div>
         <h3>一块钱一块钱地缩小差距</h3>
-        <p>赚取免费代币，每周再买五次 $1 礼包补足，一点点逼近下一套。月消费不高，但稳定可靠，月复一月——只要下一套套装还在那里等着去追。</p>
-        <div class="trigger"><b>触发条件：</b>一套套装只差几周，而不是几年。</div>
+        <p>赚取免费代币，每周再买五次 $1 礼包补足，一点点逼近下一套或下一级。月消费不高，但稳定可靠，月复一月——只要还有一个目标可追。</p>
+        <div class="trigger"><b>触发条件：</b>一级升级只差几周，而不是几年，且从不以一堵大墙的形式标价。</div>
       </div>
       <div class="persona reveal">
         <div class="tag">急切型付费玩家</div>
         <h3>花钱跳过等待</h3>
-        <p>看到一套自己没有的套装，就买更大的礼包当下拿到。单次消费更高，但只在某套套装刚上线、且自己收藏中还缺它时才会出手。</p>
-        <div class="trigger"><b>触发条件：</b>出现了一套他们还没有的新东西。</div>
+        <p>看到一套或一级自己还没有的东西，就买更大的礼包当下拿到。单次消费更高，但只在目标当真够得着时才会出手。</p>
+        <div class="trigger"><b>触发条件：</b>眼前出现了一样他们还没有的东西，且近在视野之内。</div>
       </div>
     </div>
 
-    <p class="pull reveal" style="margin:42px auto 0;text-align:center;max-width:34ch">把套装压着不放，<span class="u">两类玩家都没有理由花钱。</span>货架已满，目标却没了。</p>
+    <p class="pull reveal" style="margin:42px auto 0;text-align:center;max-width:34ch">把一级升级标成一堵 $875 的墙，<span class="u">两类玩家都不会点头。</span>按周来卖，两类都会。</p>
   </div>
 </section>
 
-<!-- ============ 06 · CLOSE ============ -->
+<!-- ============ 08 · CLOSE ============ -->
 <section id="close" style="border-bottom:none">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">06</div>
+      <div class="secnum">08</div>
       <div class="ht">
         <span class="eyebrow">结论</span>
-        <h2>把套装压着，没有任何一方获益</h2>
+        <h2>卖出玩家真正会买的那笔升级</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:62ch">稳定的上新节奏并不是白送。它是这套系统中双方都能更好的那个版本。</p>
+    <p class="lede reveal" style="max-width:62ch">让玩家在商店里、用每周的小额分期为套装升级，并不是白送。它是这套系统中、研发团队能收到今天根本够不着的经常性收入，而玩家也得到一条公平、有节奏的途径去换取一份小小的永久加成的那个版本。</p>
 
     <div class="close-grid">
       <div class="who studio reveal">
         <div class="h"><div class="ic"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 17V9m5 8V5m5 12v-6m5 6V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div class="t">对研发团队而言</div></div>
         <ul>
-          <li><b>更平稳的收入。</b>商店里有一个长期存在的目标，能让每周的细水长流和那些冲动购买持续流动，而不是停滞。</li>
-          <li><b>更高的生命周期价值，更少的浪费。</b>代币被花在目标上，而不是攒起来等甩货时免费兑换。</li>
-          <li><b>重新激活你最核心的玩家。</b>那些已经集齐一切的人，恰恰是眼下没东西可买的那批人。</li>
+          <li><b>经常性收入，而非一次性的墙。</b>以约每周 $5 出售的升级，是每名付费玩家约每年 $257 的一笔年金，叠加在上新礼包之上。</li>
+          <li><b>它收到的，正是那堵墙永远收不到的。</b>几乎没人会一次性掏出 $350 至 $875，所以今天这份收入接近于零。分期则抓住了那些乐意分时间慢慢付的玩家。</li>
+          <li><b>重新激活你最核心的玩家。</b>那些已经集齐一切的人，恰恰是只要你给机会、就还有一级可追的那批人。</li>
         </ul>
       </div>
       <div class="who player reveal">
         <div class="h"><div class="ic"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="t">对玩家而言</div></div>
         <ul>
-          <li><b>差距在收窄。</b>每套套装都带有永久的行军规模加成，所以让更多套装更易获取，能让新人和中坚玩家随时间逐步缩小实力差距，这也有助于留住他们。</li>
-          <li><b>有理由继续玩下去。</b>地平线上有一个新目标，而不是一面只能看不能碰的货架。</li>
+          <li><b>一笔够得着的升级。</b>每升一级套装就是永久 +2 行军规模；一条负担得起、有节奏的途径，能让新人和中坚玩家逐步缩小实力差距，而不是对着一堵墙发愣。</li>
+          <li><b>有理由继续玩下去。</b>地平线上有一级正在填满的进度，而不是一面只能看不能碰的货架。</li>
           <li><b>一条公平的路。</b>赚来的代币和小额消费都通向某处，无论预算多少。</li>
         </ul>
       </div>
@@ -588,13 +790,13 @@ html.js .reveal.in{opacity:1;transform:none}
 
     <div class="card reveal" style="margin:0 0 12px">
       <div class="eyebrow" style="color:var(--muted);margin-bottom:12px">一个公允的疑问：这会不会拖累礼包销量？</div>
-      <p class="note" style="margin:0">简短的回答：不会。只有<strong>最早的</strong>那一套毕业，所以每一款近期上线的套装都保持付费、保留它的上新礼包。代币这条路仍要攒上数月，因此急切型玩家照样会买礼包跳过等待，而任何想给套装升级的人也仍会为额外的份数付费（升到 2 级意味着把整套集齐三次）。每月的弹窗礼包打包的东西远不止那一套裸套装，所以它们的吸引力同样不减。毕业只是触及了另一类玩家：那位本就不会按全价首发掏钱的耐心攒币者。</p>
+      <p class="note" style="margin:0">简短的回答：不会。近期套装仍保持付费、保留它们完整的上新礼包，所以上新收入丝毫不受影响。代币这条路每升一级仍要攒上数月，因此急切型玩家照样会买礼包跳过等待。每月的弹窗礼包打包的东西远不止一套裸套装，所以它们的吸引力同样不减。只有<strong>最早的</strong>那几套会变得够得着，也只有它们才有一级可供玩家攒着去追。这份收入是纯粹的叠加：它抓住的，是那位本就不会预先掏出 $350 至 $875 的耐心攒币者，把那笔本会流失的销售，变成了一种每周的习惯。</p>
     </div>
 
     <div class="askbox reveal">
       <span class="eyebrow">提案</span>
-      <div class="big">每当一套新套装上线，就让<em>最早被压着的那套毕业</em>进入代币商店（一套进，一套毕业），同时让最新的套装保持付费，每月的弹窗礼包照旧进行。越早开始，需要消化的积压库存和代币囤积就越少。</div>
-      <p>这对新套装收入毫无索求，对弹窗礼包也毫无索求。那些更早的套装早已制作完毕，它们的首发窗口已是几年前的事，把它们按研发团队本就在推进的速度摆到玩家面前，制作成本为零。在上面模型的每一种假设下，稳定上新都比压着不放赚得更多，而且一路上还悄悄收窄了一道日益拉大的差距。</p>
+      <div class="big">让玩家能在装饰套装商店里、用每周的小额代币分期，把一套套装升到<em>满级</em>，而不是只能靠昂贵的限时上新礼包，或干脆无路可走。</div>
+      <p>为让这一切成为可能，每当一套新套装上线，就让最早被压着的那套毕业进入商店（一套进，一套毕业），同时让最新的套装保持付费，每月的弹窗礼包照旧进行。一次性付几百美元买 +2 升级，很难卖出去；可朝着一个看得见的目标、约每周 $5，它便是一个轻松、可反复的"好"。这是当前设计白白扔掉的那份黏性经常性收入与更强留存，且叠加在研发团队现有的一切销售之上。</p>
     </div>
   </div>
 </section>
@@ -602,7 +804,7 @@ html.js .reveal.in{opacity:1;transform:none}
 <footer>
   <div class="wrap">
     <div>口袋奇兵 · 装饰套装商店 · 一份增长提案<br>数据实时读取自游戏客户端 · 由一名 2864 服玩家本着善意整理。</div>
-    <div style="text-align:right">23 套 · 8 套在售 · 10 套更早被压着 · 5 套付费<br>1 套 = 11,340 代币 · 每周 $5 约 3 个月</div>
+    <div style="text-align:right">23 套 · 每升一级行军规模 +2 · L1/L2/L3 = +2/+4/+6<br>可达 3 级的套装：Metal Music Fans、Sweet Haven · 约每周 $5 对比约 $875 一次性</div>
   </div>
 </footer>
 
@@ -662,9 +864,47 @@ function setCard(s, kind){ // kind: 'live' | 'older' | 'recent'
   else { cls+=' older'; badge='<span class="badge older">被压着</span>'; meta=s.date?(s.date+' 上线'):'更早套装'; }
   return `<div class="${cls}"><div class="nm">${s.name}</div><div class="meta">${meta}</div>${badge}</div>`;
 }
-document.getElementById('grid-live').innerHTML   = SETS_LIVE.map(s=>setCard(s,'live')).join('');
-document.getElementById('grid-older').innerHTML  = SETS_OLDER.map(s=>setCard(s,'older')).join('');
-document.getElementById('grid-recent').innerHTML = SETS_RECENT.map(s=>setCard(s,'recent')).join('');
+(function buildGrids(){
+  const gl=document.getElementById('grid-live');
+  const go=document.getElementById('grid-older');
+  const gr=document.getElementById('grid-recent');
+  if(gl) gl.innerHTML  = SETS_LIVE.map(s=>setCard(s,'live')).join('');
+  if(go) go.innerHTML  = SETS_OLDER.map(s=>setCard(s,'older')).join('');
+  if(gr) gr.innerHTML  = SETS_RECENT.map(s=>setCard(s,'recent')).join('');
+})();
+
+/* =================== LEVELING CALCULATOR (canonical formulas) =================== */
+// tokensToReach = 11340*(2*L-1); weeks = ceil(tokens/900); paid = weeks*4.95;
+// lump = 175*(2*L-1); march = 2*L
+(function levelingCalc(){
+  const seg=document.getElementById('seg-lvl');
+  if(!seg) return;
+  const TOK_PER_SET=11340, WK_TOKENS=900, WK_COST=4.95, LUMP_PER_SET=175;
+  function fmtNum(n){return Math.round(n).toLocaleString();}
+  function render(L){
+    const tokens=TOK_PER_SET*(2*L-1);
+    const sets=2*L-1;
+    const weeks=Math.ceil(tokens/WK_TOKENS);
+    const paid=weeks*WK_COST;
+    const lump=LUMP_PER_SET*(2*L-1);
+    const march=2*L;
+    const set=function(id,v){const e=document.getElementById(id);if(e)e.textContent=v;};
+    set('lc-march','+'+march);
+    set('lc-tokens',fmtNum(tokens));
+    set('lc-sets',sets);
+    set('lc-lump','约 $'+fmtNum(lump));
+    set('lc-weeks','约 '+weeks+' 周');
+    set('lc-paid','约 $'+fmtNum(paid));
+  }
+  seg.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      render(parseInt(b.dataset.lvl,10));
+    });
+  });
+  render(2); // default Level 2
+})();
 
 /* =================== per-player simulation engine =================== */
 // releasesSchedule(week) -> cumulative NEW sets available in store by that week
@@ -688,15 +928,17 @@ function simulate(tier, cumAvailFn){
   return {owned, dollars, stranded, earnedCum, spentCum};
 }
 
-/* =================== SECTION 3 chart =================== */
+/* =================== SECTION chart =================== */
 const NS='http://www.w3.org/2000/svg';
 function el(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function fmt(n){return Math.round(n).toLocaleString();}
 
 let curTier='drip';
-function relPerYear(){return parseFloat(document.getElementById('rel').value);}
+function relPerYear(){const r=document.getElementById('rel');return r?parseFloat(r.value):0;}
 
 function drawWall(){
+  const chartEl=document.getElementById('chart');
+  if(!chartEl) return;
   const tier=TIERS[curTier];
   const perYear=relPerYear();
   const everyWk = perYear>0 ? 52/perYear : Infinity;
@@ -710,7 +952,7 @@ function drawWall(){
   const X=i=>pad.l + (i/(WEEKS-1))*ix;
   const Y=v=>pad.t + iy - (v/maxY)*iy;
 
-  const svg=document.getElementById('chart');
+  const svg=chartEl;
   svg.innerHTML='';
 
   // gridlines + y labels (token thousands)
@@ -747,28 +989,32 @@ function drawWall(){
   svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.spentCum[WEEKS-1]),r:4,fill:'#5cba9f'}));
 
   // readouts
-  document.getElementById('ro-sets').textContent=r.owned;
-  document.getElementById('ro-rev').textContent='$'+fmt(r.dollars);
-  document.getElementById('ro-dead').textContent=fmt(r.stranded);
+  const roSets=document.getElementById('ro-sets'); if(roSets) roSets.textContent=r.owned;
+  const roRev=document.getElementById('ro-rev'); if(roRev) roRev.textContent='$'+fmt(r.dollars);
+  const roDead=document.getElementById('ro-dead'); if(roDead) roDead.textContent=fmt(r.stranded);
 
   // policy tag
   const pol=document.getElementById('policy');
-  if(perYear===0){pol.className='policytag now';pol.textContent="当前政策：毕业冻结";}
-  else if(perYear<=5){pol.className='policytag prop';pol.textContent='提案：按新套装上线的速度让最早的那套毕业';}
-  else if(perYear<=8){pol.className='policytag prop';pol.textContent='更快：主动清理积压库存';}
-  else {pol.className='policytag prop';pol.textContent='接近每月一次：会开始挤压弹窗礼包';}
+  if(pol){
+    if(perYear===0){pol.className='policytag now';pol.textContent="当前政策：毕业冻结";}
+    else if(perYear<=5){pol.className='policytag prop';pol.textContent='提案：按新套装上线的速度让最早的那套毕业';}
+    else if(perYear<=8){pol.className='policytag prop';pol.textContent='更快：主动清理积压库存';}
+    else {pol.className='policytag prop';pol.textContent='接近每月一次：会开始挤压弹窗礼包';}
+  }
 
   // verdict
   const vd=document.getElementById('verdict');
-  if(perYear===0){
-    vd.className='verdict';
-    vd.innerHTML = curTier==='free'
-      ? `商店冻结后，${tier.label}攒下了 <b>${fmt(r.stranded)} 枚代币</b>，却没有任何东西可花，未来任何一次更新都会被零成本领走。`
-      : `商店冻结后，${tier.label}没有目标可追，于是停止充值：全年 <b>花费 $0</b>，并有 <b>${fmt(r.stranded)} 枚代币</b> 无处可用。`;
-  } else {
-    const monthsBetween=(12/perYear).toFixed(1);
-    vd.className='verdict good';
-    vd.innerHTML = `按每年 ${perYear} 套（约每 ${monthsBetween} 个月一套），${tier.label}集齐了 <b>${r.owned} 套</b>，花费 <b>$${fmt(r.dollars)}</b>，几乎没有代币被闲置。目标回来了。`;
+  if(vd){
+    if(perYear===0){
+      vd.className='verdict';
+      vd.innerHTML = curTier==='free'
+        ? `商店冻结后，${tier.label}攒下了 <b>${fmt(r.stranded)} 枚代币</b>，却没有任何东西可花，未来任何一次更新都会被零成本领走。`
+        : `商店冻结后，${tier.label}没有目标可追，于是停止充值：全年 <b>花费 $0</b>，并有 <b>${fmt(r.stranded)} 枚代币</b> 无处可用。`;
+    } else {
+      const monthsBetween=(12/perYear).toFixed(1);
+      vd.className='verdict good';
+      vd.innerHTML = `按每年 ${perYear} 套（约每 ${monthsBetween} 个月一套），${tier.label}集齐了 <b>${r.owned} 套</b>，花费 <b>$${fmt(r.dollars)}</b>，几乎没有代币被闲置。目标回来了。`;
+    }
   }
 }
 
@@ -778,12 +1024,12 @@ document.querySelectorAll('#seg-tier button').forEach(b=>{
     b.classList.add('on'); curTier=b.dataset.tier; drawWall();
   });
 });
-document.getElementById('rel').addEventListener('input',e=>{
-  document.getElementById('rel-v').textContent=parseFloat(e.target.value);
+(function(){const rel=document.getElementById('rel');if(rel)rel.addEventListener('input',e=>{
+  const rv=document.getElementById('rel-v'); if(rv) rv.textContent=parseFloat(e.target.value);
   drawWall();
-});
+});})();
 
-/* =================== SECTION 4 strategy comparison =================== */
+/* =================== strategy comparison =================== */
 const TIER_MIX = [   // illustrative population split
   {tier:'free',  share:0.55},
   {tier:'drip',  share:0.30},
@@ -814,7 +1060,7 @@ function strategyRevenue(cumAvailFn, opts){
 }
 
 function drawMini(id,cum,maxAll,color){
-  const svg=document.getElementById(id); svg.innerHTML='';
+  const svg=document.getElementById(id); if(!svg) return; svg.innerHTML='';
   const W=320,H=110,pad=6;
   const X=i=>pad+(i/(WEEKS-1))*(W-2*pad);
   const Y=v=>H-pad-(v/maxAll)*(H-2*pad);
@@ -828,8 +1074,10 @@ function drawMini(id,cum,maxAll,color){
 }
 
 function drawStrategies(){
-  const pop=parseInt(document.getElementById('pop').value);
-  const giveUp=parseInt(document.getElementById('giveup').value)/100;
+  const popEl=document.getElementById('pop'); const giveEl=document.getElementById('giveup');
+  if(!popEl||!giveEl) return;
+  const pop=parseInt(popEl.value);
+  const giveUp=parseInt(giveEl.value)/100;
   // dump: hold all back, then a catch-up dump ~month 10 (gives the dump a fair ~8-week tail)
   const dumpFn = w => w>=44 ? BACKLOG : 0;
   // drip: one set graduates per new-set launch, ~every 2.5 months (~5 / year)
@@ -840,20 +1088,23 @@ function drawStrategies(){
   const drip=strategyRevenue(dripFn,{pop,giveUp:0,dump:false});
   const maxAll=Math.max(dump.cum[WEEKS-1],drip.cum[WEEKS-1],1);
 
-  document.getElementById('rev-dump').textContent='$'+fmt(dump.total);
-  document.getElementById('rev-drip').textContent='$'+fmt(drip.total);
+  const rd=document.getElementById('rev-dump'); if(rd) rd.textContent='$'+fmt(dump.total);
+  const rp=document.getElementById('rev-drip'); if(rp) rp.textContent='$'+fmt(drip.total);
   drawMini('mc-dump',dump.cum,maxAll,'rgb(220,107,75)');
   drawMini('mc-drip',drip.cum,maxAll,'rgb(92,186,159)');
 
   const mult = dump.total>0 ? (drip.total/dump.total) : Infinity;
   const sv=document.getElementById('strat-verdict');
-  const multTxt = isFinite(mult) ? mult.toFixed(1)+' 倍' : '数倍';
-  sv.innerHTML = `在这些示意性假设下，稳定毕业一年内能从这批更早积压中多赚约 <b>$${fmt(drip.total-dump.total)}</b>（大约是压着甩货下该积压代币收入的 ${multTxt}），而且全程都在留住玩家，而非只热闹一阵。`;
+  if(sv){
+    const multTxt = isFinite(mult) ? mult.toFixed(1)+' 倍' : '数倍';
+    sv.innerHTML = `在这些示意性假设下，稳定毕业一年内能从这批更早积压中多赚约 <b>$${fmt(drip.total-dump.total)}</b>（大约是压着甩货下该积压代币收入的 ${multTxt}），而且全程都在留住玩家，而非只热闹一阵。这份"集齐套装"的收入，与分期升级收入彼此独立，且相互叠加。`;
+  }
 }
 
 ['pop','giveup'].forEach(id=>{
-  document.getElementById(id).addEventListener('input',e=>{
-    document.getElementById(id+'-v').textContent=e.target.value;
+  const e=document.getElementById(id);
+  if(e) e.addEventListener('input',ev=>{
+    const out=document.getElementById(id+'-v'); if(out) out.textContent=ev.target.value;
     drawStrategies();
   });
 });

@@ -1,9 +1,13 @@
-# Decor Set Store: A Case for Steady Releases
+# Decor Set Store: A Case for Sellable Level-Ups
 
-A data-grounded case for letting Top War's older decoration-set backlog graduate into the
-Decor Set Store on the studio's existing release cadence, instead of holding it back. The
-newest sets stay premium and the monthly pop-up packs stay intact; only the oldest shelved
-set ever moves.
+A data-grounded case for letting Top War players reach a decoration set's maximum level
+through the Decor Set Store, paid in small weekly token installments, instead of only through
+expensive time-limited launch packs. A level-up is worth +2 march size; almost nobody pays a
+$350 to $875 lump sum for that, but a roughly $5-a-week habit toward a visible goal is one a
+spender pays gladly, week after week. Getting the older backlog into the store on the studio's
+existing cadence is the access step that makes the grind possible; the newest sets stay
+premium and the monthly pop-up packs stay intact. Only Metal Music Fans and Sweet Haven can
+reach level 3; every other set caps at level 2.
 
 **Live: https://texnottexas.github.io/decor-set-store-case/**
 

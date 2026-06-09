@@ -6,9 +6,9 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='14' fill='%23e7b24a'/%3E%3Ccircle cx='16' cy='16' r='10' fill='none' stroke='%23a8761f' stroke-width='1.4'/%3E%3Cpath d='M16 9v14M11.5 13h7a2.5 2.5 0 010 5h-7' fill='none' stroke='%237a5410' stroke-width='2.4' stroke-linecap='round'/%3E%3C/svg%3E">
-<title>The Decor Set Store: A Case for Steady Releases</title>
+<title>The Decor Set Store: A Case for Sellable Level-Ups</title>
 <script>document.documentElement.classList.add('js');</script>
-<meta name="description" content="A data-grounded business case for releasing decoration sets into the Decor Set Store on a steady cadence rather than withholding them.">
+<meta name="description" content="A data-grounded business case for selling decoration set level-ups through the Decor Set Store in small weekly token installments, instead of only via expensive time-limited launch packs.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,500&family=Hanken+Grotesk:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -74,9 +74,9 @@ a{color:var(--teal);text-decoration:none;border-bottom:1px solid rgba(92,186,159
 header.hero{padding:clamp(70px,12vh,150px) 0 60px;border-bottom:1px solid var(--line)}
 .hero .klabel{display:flex;align-items:center;gap:14px;margin-bottom:30px}
 .hero .klabel .coin{width:30px;height:30px;flex:none}
-.hero h1{margin:0 0 26px;max-width:16ch}
+.hero h1{margin:0 0 26px;max-width:18ch}
 .hero h1 .hl{color:var(--gold);font-style:italic;font-weight:500}
-.hero .lede{max-width:62ch}
+.hero .lede{max-width:64ch}
 .hero .sig{margin-top:30px;font-family:'IBM Plex Mono',monospace;font-size:12.5px;color:var(--muted2);letter-spacing:.04em}
 
 /* ---------- summary strip ---------- */
@@ -137,6 +137,44 @@ table.packs tr.hl td{color:var(--gold)}
 .fact .big.gold{color:var(--gold)} .fact .big.teal{color:var(--teal)}
 .fact .cap{font-size:12.5px;color:var(--muted);margin-top:3px}
 
+/* ---------- leveling section ---------- */
+.lvlcompare{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin:8px 0 0}
+@media(max-width:720px){.lvlcompare{grid-template-columns:1fr}}
+.lvlside{background:var(--panel);padding:26px}
+.lvlside.wall{background:linear-gradient(180deg,rgba(220,107,75,.07),transparent)}
+.lvlside.steady{background:linear-gradient(180deg,rgba(92,186,159,.07),transparent)}
+.lvlside .stitle{font-family:'Fraunces',serif;font-weight:700;font-size:21px;margin-bottom:4px}
+.lvlside.wall .stitle{color:var(--clay)} .lvlside.steady .stitle{color:var(--teal)}
+.lvlside .ssub{font-size:13px;color:var(--muted);margin-bottom:18px;min-height:2.6em}
+.lvlside .big{font-family:'Fraunces',serif;font-weight:900;font-size:clamp(30px,4.4vw,46px);line-height:1;letter-spacing:-.02em}
+.lvlside.wall .big{color:var(--clay)} .lvlside.steady .big{color:var(--teal)}
+.lvlside .bigcap{font-size:12.5px;color:var(--muted);margin-top:7px}
+.lvlside ul{list-style:none;margin-top:18px;display:flex;flex-direction:column;gap:8px}
+.lvlside li{font-size:13.5px;color:#cdc3b1;padding-left:20px;position:relative;line-height:1.45}
+.lvlside li::before{content:"";position:absolute;left:0;top:8px;width:7px;height:7px;border-radius:50%}
+.lvlside.wall li::before{background:var(--clay)} .lvlside.steady li::before{background:var(--teal)}
+
+table.lvl{width:100%;border-collapse:collapse;font-size:14px;margin-top:8px}
+table.lvl th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.09em;text-transform:uppercase;color:var(--muted);text-align:right;padding:0 0 12px 12px;font-weight:500;border-bottom:1px solid var(--line)}
+table.lvl th:first-child{text-align:left;padding-left:0}
+table.lvl td{padding:13px 0 13px 12px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+table.lvl td:first-child{text-align:left;font-weight:600;padding-left:0;font-family:'Fraunces',serif;font-size:16px}
+table.lvl td.wallc{color:var(--clay)}
+table.lvl td.steadyc{color:var(--teal)}
+table.lvl .mono{font-family:'IBM Plex Mono',monospace}
+table.lvl tr.l3 td:first-child small{display:block;font-family:'IBM Plex Mono',monospace;font-size:10px;font-weight:400;color:var(--muted2);letter-spacing:.04em;text-transform:uppercase;margin-top:2px;font-style:normal}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* leveling mini calculator */
+.lvlcalc{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:18px}
+.lvlcalc .calcgrid{display:grid;grid-template-columns:1fr 1.1fr;gap:26px;align-items:center}
+@media(max-width:720px){.lvlcalc .calcgrid{grid-template-columns:1fr}}
+.lvlcalc .outs{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.lvlcalc .out{background:var(--panel2);border:1px solid var(--line);border-radius:11px;padding:15px 17px}
+.lvlcalc .out .ov{font-family:'Fraunces',serif;font-weight:700;font-size:25px;letter-spacing:-.01em;line-height:1}
+.lvlcalc .out.gold .ov{color:var(--gold)} .lvlcalc .out.teal .ov{color:var(--teal)} .lvlcalc .out.clay .ov{color:var(--clay)}
+.lvlcalc .out .oc{font-size:12px;color:var(--muted);margin-top:5px;line-height:1.35}
+
 /* ---------- interactive controls ---------- */
 .sim{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:8px}
 .controls{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-bottom:26px}
@@ -177,7 +215,7 @@ table.packs tr.hl td{color:var(--gold)}
 .verdict b{color:#fff}
 
 /* pull quote */
-.pull{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:clamp(22px,3.3vw,33px);line-height:1.28;letter-spacing:-.01em;color:#f3ecdf;max-width:24ch;margin:8px 0}
+.pull{font-family:'Fraunces',serif;font-weight:500;font-style:italic;font-size:clamp(22px,3.3vw,33px);line-height:1.28;letter-spacing:-.01em;color:#f3ecdf;max-width:26ch;margin:8px 0}
 .pull .u{color:var(--gold)}
 
 /* persona cards */
@@ -218,13 +256,13 @@ table.packs tr.hl td{color:var(--gold)}
 .who .h .t{font-family:'Fraunces',serif;font-weight:700;font-size:20px}
 .who ul{list-style:none;display:flex;flex-direction:column;gap:11px}
 .who li{font-size:14.5px;color:#cdc3b1;padding-left:24px;position:relative}
-.who li::before{content:"→";position:absolute;left:0;color:var(--muted2)}
+.who li::before{content:"\2192";position:absolute;left:0;color:var(--muted2)}
 .who li b{color:#fff;font-weight:600}
 .askbox{background:linear-gradient(135deg,rgba(231,178,74,.10),rgba(92,186,159,.05));border:1px solid var(--line2);border-radius:16px;padding:clamp(28px,4vw,44px);text-align:center;margin-top:10px}
 .askbox .eyebrow{margin-bottom:18px}
-.askbox .big{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(22px,3.2vw,34px);line-height:1.2;max-width:24ch;margin:0 auto 18px}
+.askbox .big{font-family:'Fraunces',serif;font-weight:700;font-size:clamp(22px,3.2vw,34px);line-height:1.2;max-width:26ch;margin:0 auto 18px}
 .askbox .big em{font-style:italic}
-.askbox p{max-width:54ch;margin:0 auto;color:#cdc3b1;font-size:15px}
+.askbox p{max-width:56ch;margin:0 auto;color:#cdc3b1;font-size:15px}
 
 /* footer */
 footer{padding:46px 0 70px;color:var(--muted2);font-size:12.5px;font-family:'IBM Plex Mono',monospace;letter-spacing:.03em;line-height:1.7}
@@ -255,60 +293,224 @@ html.js .reveal.in{opacity:1;transform:none}
   <div class="wrap">
     <div class="klabel reveal">
       <svg class="coin" viewBox="0 0 32 32" fill="none"><circle cx="16" cy="16" r="14" fill="#e7b24a"/><circle cx="16" cy="16" r="14" stroke="#c8902a" stroke-width="1.5"/><circle cx="16" cy="16" r="10" stroke="#a8761f" stroke-width="1.2" fill="none"/><path d="M16 9v14M11 13h7.5a2.5 2.5 0 010 5H11" stroke="#7a5410" stroke-width="2" stroke-linecap="round"/></svg>
-      <span class="eyebrow">Top War · Decor Set Store · A growth proposal</span>
+      <span class="eyebrow">Top War &middot; Decor Set Store &middot; A growth proposal</span>
     </div>
-    <h1 class="reveal">The sets are built.<br><span class="hl">The store is empty.</span></h1>
-    <p class="lede reveal">Twenty-three decoration sets exist in Top War. Only eight are reachable through the Decor Set Store, where players spend the tokens they earn and buy. The rest sit on a shelf, and the most engaged players have run out of things to buy. This is a look at what that costs, and why a steady release cadence earns more than holding sets back.</p>
-    <div class="sig reveal">Prepared for the Top War team · Server 2864 · Figures read live from the game client</div>
+    <h1 class="reveal">Nobody pays $875 for <span class="hl">+6 march size.</span> Plenty would pay $5 a week.</h1>
+    <p class="lede reveal">Completing a decoration set permanently raises a player's march size, and each duplicate full set levels that bonus higher. Today the only way to level a set is an expensive, time-limited launch pack, or, once the window closes, no way at all. That is a level-up almost nobody buys as a lump sum. The same upgrade, sold through the Decor Set Store in small weekly token installments toward a visible goal, is something a spender pays for gladly, week after week. This is a look at the recurring revenue and retention that the current design leaves on the table.</p>
+    <div class="sig reveal">Prepared for the Top War team &middot; Server 2864 &middot; Figures read live from the game client</div>
 
     <div class="tldr reveal">
-      <div class="cell"><div class="n gold">8</div><div class="l"><b>in the token store</b>, cycling on rotation</div></div>
-      <div class="cell"><div class="n clay">10</div><div class="l"><b>older sets shelved.</b> Their paid launch window closed long ago, yet still no affordable path. <b>The ask.</b></div></div>
-      <div class="cell"><div class="n" style="color:var(--muted)">5</div><div class="l"><b>recent sets</b> still sold as premium packs. Not part of this ask.</div></div>
-      <div class="cell"><div class="n">23</div><div class="l"><b>sets total</b> built and live in the game's data</div></div>
+      <div class="cell"><div class="n gold">+2</div><div class="l"><b>march size per set level.</b> Level 1, 2, 3 give +2, +4, +6, permanent, no placement needed.</div></div>
+      <div class="cell"><div class="n clay">$875</div><div class="l"><b>lump sum for Level 3</b> via launch packs (about $175 per full set). The wall almost nobody pays.</div></div>
+      <div class="cell"><div class="n teal">~$5</div><div class="l"><b>a week, paid gladly.</b> The same level-up, in $0.99-pack installments toward a goal. The ask.</div></div>
+      <div class="cell"><div class="n">~$69k</div><div class="l"><b>a year</b> in illustrative installment revenue the store cannot collect today, because there is nothing to grind toward.</div></div>
     </div>
   </div>
 </header>
 
-<!-- ============ 01 · THE STORE TODAY ============ -->
-<section id="store">
+<!-- ============ 01 · THE UPGRADE PLAYERS WOULD PAY FOR ============ -->
+<section id="leveling">
   <div class="wrap">
     <div class="sechead reveal">
       <div class="secnum">01</div>
       <div class="ht">
-        <span class="eyebrow">The store today</span>
-        <h2>A catalogue mostly behind glass</h2>
+        <span class="eyebrow">The upgrade players would pay for</span>
+        <h2>The store cannot sell the one thing spenders want</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:62ch;margin-bottom:8px">The Decor Set Store sells sets for <em>Decor Set Tokens</em>, a soft currency players earn weekly and can top up with small purchases. It's the affordable, repeatable path to decorations. Of the 23 sets that exist, only these are currently buyable there:</p>
+    <p class="lede reveal" style="max-width:64ch">Set leveling is a confirmed, permanent power mechanic. Complete every piece of a decoration set and that counts as <em>Level 1</em>: a flat <strong>+2 march size</strong>, applied for good, with no placement needed. Collect a second and third full copy of the same set and it climbs: Level 2 is <strong>+4</strong>, Level 3 is <strong>+6</strong>. Leveling up means collecting duplicate <em>full</em> sets, and that is precisely the kind of long, repeatable goal the token economy is built to feed.</p>
+
+    <div class="card reveal" style="margin-top:8px">
+      <p class="tight" style="margin-bottom:14px">Only <strong>two of the 23 sets</strong> can currently reach Level 3: <em>Metal Music Fans</em> (released May 2024) and <em>Sweet Haven</em> (released December 2025). The other 21 sets cap at Level 2, worth <strong>+4 march size</strong>. So the ceiling is modest and bounded: this is not an open-ended power spiral, it is a small permanent bonus that a dedicated player chases over many months.</p>
+      <p style="margin-bottom:0;color:#cdc3b1;font-size:15px">Here is the problem. Leveling needs duplicate full sets, but the only place to buy full sets repeatedly and affordably, the token store, does not stock most of them. The expensive launch packs are the only paid path to level, and they vanish when a set's window closes. So a spender who would happily grind toward Level 2 of a set they love simply cannot, and the studio collects nothing.</p>
+      <div class="foot-illus">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Leveling effect (+2 march per level, L1/L2/L3 = +2/+4/+6) and the two Level 3 sets confirmed from the live game client. Revenue figures are illustrative and scoped to the decoration token economy only.</span>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="margin:42px 0 6px">The lump sum nobody pays, beside the installment they would</h3>
+    <p class="reveal" style="max-width:66ch;color:#cdc3b1;font-size:15px;margin-bottom:18px">Tokens to reach a level follow a simple rule: <span class="mono">11,340 &times; (2 &times; level minus 1)</span>. Level 1 is one full set, Level 2 is three full sets, Level 3 is five. The numbers below show both paths to the same permanent march-size bonus. All figures illustrative.</p>
+
+    <div class="scroller reveal">
+    <table class="lvl">
+      <thead>
+        <tr>
+          <th>Level</th><th>March</th><th>Tokens</th><th>Full sets</th>
+          <th>Lump-sum packs</th><th>Installments</th><th>Paid over time</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Level 1<small>complete the set</small></td>
+          <td class="mono">+2</td>
+          <td class="mono">11,340</td>
+          <td>1</td>
+          <td class="wallc mono">~$175</td>
+          <td class="steadyc mono">~13 wk</td>
+          <td class="steadyc mono">~$64</td>
+        </tr>
+        <tr>
+          <td>Level 2<small>collect it 3 times</small></td>
+          <td class="mono">+4</td>
+          <td class="mono">34,020</td>
+          <td>3</td>
+          <td class="wallc mono">~$525</td>
+          <td class="steadyc mono">~38 wk</td>
+          <td class="steadyc mono">~$188</td>
+        </tr>
+        <tr class="l3">
+          <td>Level 3<small>two sets only</small></td>
+          <td class="mono">+6</td>
+          <td class="mono">56,700</td>
+          <td>5</td>
+          <td class="wallc mono">~$875</td>
+          <td class="steadyc mono">~63 wk</td>
+          <td class="steadyc mono">~$312</td>
+        </tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="note reveal" style="margin-top:14px">Lump-sum path: launch packs at about <strong>$175 per full set</strong>, paid all at once and only while the launch window is open. Installment path: the <strong>$0.99 pack</strong> (120 tokens, capped at five a week, about $4.95 for 600 tokens) plus roughly 300 free tokens a week, about <strong>900 tokens a week</strong>, with weeks to reach a level being <span class="mono">ceil(tokens &divide; 900)</span>. Level 1 to Level 2 is two more full sets, +22,680 tokens, confirmed. The Level 3 step shown here repeats that, two more sets again, which is <em>illustrative and adjustable</em>: the exact Level 3 cost can be tuned by the studio. Figures illustrative throughout.</p>
+
+    <div class="lvlcompare reveal" style="margin-top:26px">
+      <div class="lvlside wall">
+        <div class="stitle">The lump-sum wall</div>
+        <div class="ssub">Launch packs only, paid in full, gone when the window closes.</div>
+        <div class="big">~$350 to ~$875</div>
+        <div class="bigcap">cash up front for +4 to +6 march size</div>
+        <ul>
+          <li>Almost nobody pays hundreds of dollars in one go for a small permanent bonus.</li>
+          <li>The window closes, so for most sets the level-up becomes flatly impossible.</li>
+          <li>One large ask, one decision, and usually the answer is no.</li>
+        </ul>
+      </div>
+      <div class="lvlside steady">
+        <div class="stitle">The installment a spender says yes to <span style="font-size:13px;color:var(--teal)">(proposed)</span></div>
+        <div class="ssub">The same level-up, ground out in the store at about $5 a week toward a visible goal.</div>
+        <div class="big">~$5 / week</div>
+        <div class="bigcap">a recurring habit, not a one-time wall</div>
+        <ul>
+          <li>A small weekly cost toward a bar that fills is an easy, repeated yes.</li>
+          <li>The goal stays visible for months, which is exactly when retention is hardest.</li>
+          <li>A spender keeping a level to chase pays about $4.95 a week, roughly <strong>$257 a year</strong>, every year.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- ===== leveling calculator ===== -->
+    <div class="lvlcalc reveal">
+      <div class="ctl-l" style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:18px">Leveling calculator &middot; pick a target level (illustrative)</div>
+      <div class="calcgrid">
+        <div>
+          <div class="seg" id="seg-lvl">
+            <button data-lvl="1">Level 1<span class="sub">+2 march</span></button>
+            <button data-lvl="2" class="on">Level 2<span class="sub">+4 march</span></button>
+            <button data-lvl="3">Level 3<span class="sub">+6 march</span></button>
+          </div>
+          <p class="note" style="margin:16px 0 0">Built on the canonical formulas: tokens = <span class="mono">11,340 &times; (2L minus 1)</span>, weeks = <span class="mono">ceil(tokens &divide; 900)</span>, installment paid = <span class="mono">weeks &times; $4.95</span>, lump = <span class="mono">$175 &times; (2L minus 1)</span>, march = <span class="mono">2L</span>. Level 3 is reachable only on <em>Metal Music Fans</em> and <em>Sweet Haven</em>; all figures illustrative.</p>
+        </div>
+        <div class="outs">
+          <div class="out gold"><div class="ov mono" id="lc-march">+4</div><div class="oc">permanent march size at this level</div></div>
+          <div class="out"><div class="ov mono" id="lc-tokens">34,020</div><div class="oc">tokens, that is <span id="lc-sets">3</span> full sets</div></div>
+          <div class="out clay"><div class="ov mono" id="lc-lump">~$525</div><div class="oc">lump-sum launch-pack cost, paid all at once</div></div>
+          <div class="out teal"><div class="ov mono" id="lc-weeks">~38 wk</div><div class="oc">at about $5 a week, paid <span id="lc-paid">~$188</span></div></div>
+        </div>
+      </div>
+      <div class="foot-illus" style="margin-top:18px">
+        <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
+        <span>Token costs and earn rates are live game values. The Level 3 step cost is illustrative and adjustable by the studio. Revenue scoped to the decoration token economy, never total game revenue.</span>
+      </div>
+    </div>
+
+    <p class="pull reveal" style="margin-top:42px">A +6 march level-up is a hard sell at $875. <span class="u">At about $5 a week toward a goal, it sells itself.</span></p>
+  </div>
+</section>
+
+<!-- ============ 02 · THE RECURRING REVENUE ============ -->
+<section id="recurring">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="secnum">02</div>
+      <div class="ht">
+        <span class="eyebrow">The recurring revenue</span>
+        <h2>A weekly habit beats a one-time wall</h2>
+      </div>
+    </div>
+
+    <p class="lede reveal" style="max-width:64ch">The value of an installment is not just that more people say yes. It is that the same person keeps saying yes. A spender who is leveling a set, or simply keeping a level to chase on the next, taps the $0.99 pack five times a week. That is about <strong>$4.95 a week, roughly $257 a year</strong>, and it renews every year for as long as there is something to grind toward.</p>
+
+    <div class="econ">
+      <div class="facts reveal">
+        <div class="fact">
+          <div class="big teal mono">~$257</div>
+          <div class="cap">a year from one spender who keeps a level to chase, at about $4.95 a week, recurring every year.</div>
+        </div>
+        <div class="fact">
+          <div class="big mono">~600</div>
+          <div class="cap">active set-buying players in this illustrative population, with about <strong>45% paying</strong>.</div>
+        </div>
+        <div class="fact">
+          <div class="big gold mono">~$69,000</div>
+          <div class="cap">a year in pure $0.99-pack installments across that population, currently about <strong>$0</strong> because there is nothing to grind toward. Illustrative.</div>
+        </div>
+      </div>
+
+      <div class="card reveal">
+        <div class="eyebrow" style="margin-bottom:16px;color:var(--muted)">Why the lifetime value is the point</div>
+        <p class="note" style="margin:0 0 14px">A launch pack is a single transaction with a hard ceiling. A level-up sold in installments is an annuity: small, repeated, and renewing. The studio is not choosing between the two. The launch packs stay exactly as they are, and this installment revenue is <strong>additive</strong> on top, reaching the patient spender who was never going to pay full launch price anyway.</p>
+        <p class="note" style="margin:0">Across an illustrative 600 active players at about 45% paying, that is roughly <strong>$69,000 a year</strong> in installment revenue alone, scoped to the decoration token economy. Today that figure is close to zero, not because players would not pay, but because the store gives them nothing to pay <em>toward</em>.</p>
+        <div class="foot-illus">
+          <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
+          <span>Population, paying share and per-player spend are illustrative assumptions, exposed so they can be challenged. Additive to launch-pack revenue, never conflated with it.</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="pull reveal" style="margin-top:40px">One $875 wall earns once. <span class="u">A $5-a-week goal earns every week, for years.</span></p>
+  </div>
+</section>
+
+<!-- ============ 03 · ACCESS, THE PREREQUISITE ============ -->
+<section id="store">
+  <div class="wrap">
+    <div class="sechead reveal">
+      <div class="secnum">03</div>
+      <div class="ht">
+        <span class="eyebrow">The prerequisite</span>
+        <h2>You can only grind a set you can reach</h2>
+      </div>
+    </div>
+
+    <p class="lede reveal" style="max-width:64ch;margin-bottom:8px">Installment leveling depends on one thing: the set has to be <em>reachable</em> in the token store so a player can collect it again and again. That is where today's catalogue gets in the way. The Decor Set Store sells sets for <em>Decor Set Tokens</em>, the soft currency players earn weekly and top up with small purchases. Of the 23 sets that exist, only these are currently buyable there:</p>
 
     <div class="catwrap reveal">
       <div class="catlabel">
         <span class="t">In the affordable token store</span>
-        <span class="c">8 SETS · ON ROTATION</span>
+        <span class="c">8 SETS &middot; ON ROTATION</span>
         <span class="rule"></span>
       </div>
       <div class="setgrid" id="grid-live"></div>
 
       <div class="catlabel" style="margin-top:34px">
         <span class="t" style="color:var(--clay)">Older sets shelved from the store</span>
-        <span class="c">10 SETS · 2021 TO 2024 · THE BACKLOG</span>
+        <span class="c">10 SETS &middot; 2021 TO 2024 &middot; THE BACKLOG</span>
         <span class="rule"></span>
       </div>
       <div class="setgrid" id="grid-older"></div>
 
       <div class="catlabel" style="margin-top:34px">
         <span class="t">Recent sets: premium for now</span>
-        <span class="c">5 SETS · PREMIUM PACKS · NOT CONTESTED</span>
+        <span class="c">5 SETS &middot; PREMIUM PACKS &middot; NOT CONTESTED</span>
         <span class="rule"></span>
       </div>
       <div class="setgrid" id="grid-recent"></div>
     </div>
 
     <div class="card reveal" style="margin-top:30px">
-      <p class="tight" style="margin-bottom:14px"><strong>The point isn't the new sets.</strong> Releasing the freshest sets as premium packs first is reasonable. That's where launch revenue lives, and this proposal leaves it alone. The issue is the <em>ten older sets</em>, some dating back to 2021 to 2023, that also never reached the token store. Their paid window closed long ago, yet anyone who missed them still has no affordable path to them.</p>
-      <p style="margin-bottom:0;color:#cdc3b1;font-size:15px">The store only ever cycles the same eight on rotation. In fact, <em>not one of the nine sets released since December 2023 has reached the token store</em>, so the older backlog keeps growing while the same eight reshuffle. The fix is simple: each time a new set launches, let the <strong>oldest shelved set graduate</strong> into the store, at the pace the studio already ships.</p>
+      <p class="tight" style="margin-bottom:14px"><strong>Access is the prerequisite that makes leveling possible.</strong> A player can only grind a set toward its max level once that set is reachable in the store. The freshest sets staying premium at launch is reasonable, and this proposal leaves that alone. The issue is the <em>ten older sets</em>, some dating to 2021 to 2023, that never reached the token store. Their paid window closed long ago, so today they cannot be leveled at all, by anyone, at any price.</p>
+      <p style="margin-bottom:0;color:#cdc3b1;font-size:15px">The store only ever cycles the same eight on rotation. In fact, <em>not one of the nine sets released since December 2023 has reached the token store</em>, so the older backlog keeps growing while the same eight reshuffle. The supporting fix is simple: each time a new set launches, let the <strong>oldest shelved set graduate</strong> into the store, at the pace the studio already ships. That graduation is what unlocks the installment leveling above.</p>
       <div class="foot-illus">
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="7" stroke="#7d725f"/><path d="M8 4.5v4.5M8 11h.01" stroke="#7d725f" stroke-width="1.6" stroke-linecap="round"/></svg>
         <span>Set list, prices and release dates read directly from the live game client (decoration_contents + Decor Set Store).</span>
@@ -321,25 +523,25 @@ html.js .reveal.in{opacity:1;transform:none}
         <div class="note" style="max-width:15ch;margin-top:5px">average gap between the last five sets</div>
       </div>
       <div style="flex:1;min-width:280px">
-        <p class="note" style="margin:0">A new set ships every <strong>2 to 3 months</strong> (about 4 to 5 a year), yet not one of them reaches the token store. The proposal just asks the store to keep that same pace: <em>each time a new set launches, the oldest shelved set graduates in.</em> One in, one graduates. Nothing new to build, and the monthly pop-up packs carry on untouched.</p>
-        <div class="mono" style="font-size:11px;color:var(--muted2);letter-spacing:.06em;margin-top:12px">RECENT GAPS: 48 · 80 · 73 · 93 DAYS BETWEEN THE LAST FIVE SETS</div>
+        <p class="note" style="margin:0">A new set ships every <strong>2 to 3 months</strong> (about 4 to 5 a year), yet not one of them reaches the token store. The proposal just asks the store to keep that same pace: <em>each time a new set launches, the oldest shelved set graduates in.</em> One in, one graduates. Nothing new to build, and the monthly pop-up packs carry on untouched. Each graduated set then becomes a fresh, levelable goal.</p>
+        <div class="mono" style="font-size:11px;color:var(--muted2);letter-spacing:.06em;margin-top:12px">RECENT GAPS: 48 &middot; 80 &middot; 73 &middot; 93 DAYS BETWEEN THE LAST FIVE SETS</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============ 02 · HOW A PLAYER EARNS ============ -->
+<!-- ============ 04 · HOW A PLAYER EARNS ============ -->
 <section id="earn">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">02</div>
+      <div class="secnum">04</div>
       <div class="ht">
         <span class="eyebrow">The rhythm</span>
         <h2>The store is built for a weekly drip</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:60ch">Look at how a player accumulates tokens and the design intent is obvious: small, repeatable, weekly. The cheap pack is even <em>capped per week</em>. The system actively spreads spending out over time.</p>
+    <p class="lede reveal" style="max-width:60ch">Look at how a player accumulates tokens and the design intent is obvious: small, repeatable, weekly. The cheap pack is even <em>capped per week</em>. The system actively spreads spending out over time, which is exactly what makes installment leveling fit so naturally.</p>
 
     <div class="econ">
       <div class="card reveal">
@@ -347,7 +549,7 @@ html.js .reveal.in{opacity:1;transform:none}
         <table class="packs">
           <thead><tr><th>Pack</th><th>Tokens</th><th>Per $</th><th>Weekly cap</th></tr></thead>
           <tbody>
-            <tr class="hl"><td>$0.99 ×5</td><td class="mono">600</td><td class="mono">121</td><td class="mono">5 / wk</td></tr>
+            <tr class="hl"><td>$0.99 &times;5</td><td class="mono">600</td><td class="mono">121</td><td class="mono">5 / wk</td></tr>
             <tr><td>$4.99</td><td class="mono">300</td><td class="mono">60</td><td class="mono">None</td></tr>
             <tr><td>$19.99</td><td class="mono">1,280</td><td class="mono">64</td><td class="mono">None</td></tr>
             <tr><td>$49.99</td><td class="mono">3,280</td><td class="mono">66</td><td class="mono">None</td></tr>
@@ -377,35 +579,35 @@ html.js .reveal.in{opacity:1;transform:none}
       <div class="eyebrow" style="color:var(--muted);margin-bottom:18px">Two ways to get the very same set</div>
       <div class="grid2">
         <div>
-          <div style="font-family:'Fraunces',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:var(--clay);line-height:1">$175<span style="font-size:15px;color:var(--muted);font-weight:400"> · level 1</span></div>
-          <div class="mono" style="font-size:13px;color:var(--clay);margin-top:8px">$525 · level 2 &nbsp;<span style="color:var(--muted2)">(collect it three times)</span></div>
+          <div style="font-family:'Fraunces',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:var(--clay);line-height:1">$175<span style="font-size:15px;color:var(--muted);font-weight:400"> &middot; level 1</span></div>
+          <div class="mono" style="font-size:13px;color:var(--clay);margin-top:8px">$525 &middot; level 2 &nbsp;<span style="color:var(--muted2)">(collect it three times)</span></div>
           <p class="note" style="margin-top:12px;margin-bottom:0"><strong>Launch packs</strong>: the $4.99 + $19.99 + $49.99 + $99.99 ladder, paid only and time-limited to the set's launch window. Levelling to 2 means collecting the set three times. Once the window closes, this path is gone for good.</p>
         </div>
         <div>
-          <div style="font-family:'Fraunces',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:var(--teal);line-height:1">~$94<span style="font-size:15px;color:var(--muted);font-weight:400"> · or free</span></div>
-          <div class="mono" style="font-size:13px;color:var(--teal);margin-top:8px">about 3 mo at $5/wk &nbsp;<span style="color:var(--muted2)">· ~9 mo free</span></div>
+          <div style="font-family:'Fraunces',serif;font-weight:700;font-size:34px;letter-spacing:-.01em;color:var(--teal);line-height:1">~$94<span style="font-size:15px;color:var(--muted);font-weight:400"> &middot; or free</span></div>
+          <div class="mono" style="font-size:13px;color:var(--teal);margin-top:8px">about 3 mo at $5/wk &nbsp;<span style="color:var(--muted2)">&middot; ~9 mo free</span></div>
           <p class="note" style="margin-top:12px;margin-bottom:0"><strong>Token store</strong>: the same set for about half the cash at most, and less once the free weekly tokens are counted, or nothing at all with patience. The only <em>lasting</em>, affordable path.</p>
         </div>
       </div>
-      <p class="note" style="margin-top:16px;margin-bottom:0">For the ten older sets, the launch window closed years ago, so the token store is the <em>only</em> affordable path left to them. And it is the one that is locked.</p>
+      <p class="note" style="margin-top:16px;margin-bottom:0">For the ten older sets, the launch window closed years ago, so the token store is the <em>only</em> affordable path left to them, and the only path that could ever let a player level them. And it is the one that is locked.</p>
     </div>
 
     <p class="pull reveal" style="margin-top:40px">A set takes months to earn. <span class="u">That cadence is the product</span>, as long as there's a set worth earning.</p>
   </div>
 </section>
 
-<!-- ============ 03 · THE WALL (INTERACTIVE) ============ -->
+<!-- ============ 05 · THE WALL (INTERACTIVE) ============ -->
 <section id="wall">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">03</div>
+      <div class="secnum">05</div>
       <div class="ht">
-        <span class="eyebrow">Interactive · the wall</span>
+        <span class="eyebrow">Interactive &middot; the wall</span>
         <h2>What happens when there's nothing left to buy</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:64ch">Pick a player and a release pace. They've already collected today's eight sets. With the store frozen, they stop topping up, and the tokens they still earn for free just pile up, ready to claim any future drop for nothing. Drag the release dial up and a goal reappears: the oldest shelved set graduating in as new ones launch (about 4 to 5 a year).</p>
+    <p class="lede reveal" style="max-width:64ch">Pick a player and a release pace. They've already collected today's eight sets. With the store frozen, they stop topping up, and the tokens they still earn for free just pile up, ready to claim any future drop for nothing. Drag the release dial up and a goal reappears: the oldest shelved set graduating in as new ones launch (about 4 to 5 a year), which is also when leveling that set becomes possible at all.</p>
 
     <div class="sim reveal">
       <div class="controls">
@@ -453,18 +655,18 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- ============ 04 · TWO STRATEGIES ============ -->
+<!-- ============ 06 · TWO STRATEGIES ============ -->
 <section id="strategies">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">04</div>
+      <div class="secnum">06</div>
       <div class="ht">
-        <span class="eyebrow">Interactive · the comparison</span>
+        <span class="eyebrow">Interactive &middot; the comparison</span>
         <h2>Hold and dump, or release steadily</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:66ch">Same older backlog of ten sets, same player base, one year. On the left, the current approach: hold them all back, then release the backlog in a burst to catch up. On the right, a steady graduation at the pace new sets ship, the oldest entering the store every 2 to 3 months. The figures below are the <em>token-store revenue from these ten older sets only</em>, not total game revenue, which is the same under both paths because launch packs and pop-up packs continue regardless.</p>
+    <p class="lede reveal" style="max-width:66ch">Same older backlog of ten sets, same player base, one year. On the left, the current approach: hold them all back, then release the backlog in a burst to catch up. On the right, a steady graduation at the pace new sets ship, the oldest entering the store every 2 to 3 months. The figures below are the <em>token-store revenue from these ten older sets only</em>, not total game revenue, which is the same under both paths because launch packs and pop-up packs continue regardless. This completion revenue is separate from, and additive to, the installment leveling revenue above.</p>
 
     <div class="card reveal" style="margin:8px 0 26px">
       <div class="controls" style="margin-bottom:0">
@@ -490,7 +692,7 @@ html.js .reveal.in{opacity:1;transform:none}
         <div class="stitle">Hold &amp; dump</div>
         <div class="ssub">Nothing new for about 10 months, then all ten older sets at once.</div>
         <div class="rev" id="rev-dump">$0</div>
-        <div class="revcap">older-backlog token revenue · 12 mo (illustrative)</div>
+        <div class="revcap">older-backlog token revenue &middot; 12 mo (illustrative)</div>
         <div class="minichart"><svg id="mc-dump" viewBox="0 0 320 110" preserveAspectRatio="none"></svg></div>
         <ul>
           <li>Caught-up players have no goal for most of the year, so spending stalls.</li>
@@ -502,7 +704,7 @@ html.js .reveal.in{opacity:1;transform:none}
         <div class="stitle">Steady graduation <span style="font-size:13px;color:var(--teal)">(proposed)</span></div>
         <div class="ssub">The oldest set graduates in as each new one launches, about every 2 to 3 months.</div>
         <div class="rev" id="rev-drip">$0</div>
-        <div class="revcap">older-backlog token revenue · 12 mo (illustrative)</div>
+        <div class="revcap">older-backlog token revenue &middot; 12 mo (illustrative)</div>
         <div class="minichart"><svg id="mc-drip" viewBox="0 0 320 110" preserveAspectRatio="none"></svg></div>
         <ul>
           <li>There's always one set just within reach, so spending keeps flowing.</li>
@@ -521,65 +723,65 @@ html.js .reveal.in{opacity:1;transform:none}
   </div>
 </section>
 
-<!-- ============ 05 · WHO THIS REACHES ============ -->
+<!-- ============ 07 · WHO THIS REACHES ============ -->
 <section id="who">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">05</div>
+      <div class="secnum">07</div>
       <div class="ht">
         <span class="eyebrow">The behaviour</span>
         <h2>Two players, one trigger</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:62ch">Steady releases work because both kinds of paying players respond to the same thing: a reward that's <em>almost</em> in reach.</p>
+    <p class="lede reveal" style="max-width:62ch">Installment leveling works because both kinds of paying players respond to the same thing: a reward that's <em>almost</em> in reach.</p>
 
     <div class="personas">
       <div class="persona reveal">
         <div class="tag">The patient spender</div>
         <h3>Closes the gap a dollar at a time</h3>
-        <p>Earns free tokens, tops up with the $1 pack five times a week to inch toward the next set. Low monthly spend, but reliable, month after month, as long as the next set is there to chase.</p>
-        <div class="trigger"><b>Fires when:</b> a set is weeks away, not years.</div>
+        <p>Earns free tokens, tops up with the $1 pack five times a week to inch toward the next set or the next level. Low monthly spend, but reliable, month after month, as long as there's a goal to chase.</p>
+        <div class="trigger"><b>Fires when:</b> a level-up is weeks away, not years, and never priced as one big wall.</div>
       </div>
       <div class="persona reveal">
         <div class="tag">The impatient spender</div>
         <h3>Pays to skip the wait</h3>
-        <p>Sees a set they don't own and buys the bigger pack to have it now. Higher spend per event, but only when a set is freshly available and still missing from their collection.</p>
-        <div class="trigger"><b>Fires when:</b> there's something new they don't have yet.</div>
+        <p>Sees a set or a level they don't have and buys the bigger pack to have it now. Higher spend per event, but only when the goal is actually reachable.</p>
+        <div class="trigger"><b>Fires when:</b> there's something they don't have yet, within sight.</div>
       </div>
     </div>
 
-    <p class="pull reveal" style="margin:42px auto 0;text-align:center;max-width:30ch">Withhold the sets and <span class="u">neither player has a reason to spend.</span> The shelf is full; the goal is gone.</p>
+    <p class="pull reveal" style="margin:42px auto 0;text-align:center;max-width:32ch">Price a level-up as one $875 wall and <span class="u">neither player says yes.</span> Sell it by the week and both do.</p>
   </div>
 </section>
 
-<!-- ============ 06 · CLOSE ============ -->
+<!-- ============ 08 · CLOSE ============ -->
 <section id="close" style="border-bottom:none">
   <div class="wrap">
     <div class="sechead reveal">
-      <div class="secnum">06</div>
+      <div class="secnum">08</div>
       <div class="ht">
         <span class="eyebrow">The case</span>
-        <h2>No one gains from holding sets back</h2>
+        <h2>Sell the level-up players would actually buy</h2>
       </div>
     </div>
 
-    <p class="lede reveal" style="max-width:62ch">A steady release cadence isn't a giveaway. It's the version of this system where both sides come out ahead.</p>
+    <p class="lede reveal" style="max-width:62ch">Letting players level sets through the store in small weekly installments isn't a giveaway. It's the version of this system where the studio collects recurring revenue it cannot reach today, and players get a fair, paced path to a small permanent bonus.</p>
 
     <div class="close-grid">
       <div class="who studio reveal">
         <div class="h"><div class="ic"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><path d="M3 17V9m5 8V5m5 12v-6m5 6V3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></div><div class="t">For the studio</div></div>
         <ul>
-          <li><b>Steadier revenue.</b> A standing goal in the store keeps the weekly drip and the impulse buys flowing instead of stalling.</li>
-          <li><b>More lifetime value, less waste.</b> Tokens get spent toward goals rather than banked and redeemed for free at a dump.</li>
-          <li><b>Re-engages your best players.</b> The ones who've collected everything are exactly the ones with nothing to buy right now.</li>
+          <li><b>Recurring revenue, not a one-time wall.</b> A level-up sold at about $5 a week is an annuity of roughly $257 a year per spender, additive on top of launch packs.</li>
+          <li><b>It collects what the wall never could.</b> Almost nobody pays $350 to $875 in a lump sum, so today that revenue is close to zero. Installments capture the players who would gladly pay over time.</li>
+          <li><b>Re-engages your best players.</b> The ones who've collected everything are exactly the ones with a level still to chase, if you let them.</li>
         </ul>
       </div>
       <div class="who player reveal">
         <div class="h"><div class="ic"><svg width="18" height="18" viewBox="0 0 20 20" fill="none"><circle cx="10" cy="6" r="3.2" stroke="currentColor" stroke-width="1.8"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></div><div class="t">For players</div></div>
         <ul>
-          <li><b>A narrowing gap.</b> Every set carries a permanent march-size bonus, so spreading access to more of them lets newer and mid-tier players close the power gap over time, which helps keep them playing.</li>
-          <li><b>A reason to keep playing.</b> A fresh goal on the horizon instead of a shelf they can only look at.</li>
+          <li><b>A reachable upgrade.</b> Each set level is a permanent +2 march size; an affordable, paced path lets newer and mid-tier players close the power gap instead of staring at a wall.</li>
+          <li><b>A reason to keep playing.</b> A level filling on the horizon instead of a shelf they can only look at.</li>
           <li><b>A fair path.</b> Earned tokens and small spend both lead somewhere, at any budget.</li>
         </ul>
       </div>
@@ -587,21 +789,21 @@ html.js .reveal.in{opacity:1;transform:none}
 
     <div class="card reveal" style="margin:0 0 12px">
       <div class="eyebrow" style="color:var(--muted);margin-bottom:12px">The fair question: won't this undercut pack sales?</div>
-      <p class="note" style="margin:0">Short answer: no. Only the <strong>oldest</strong> set graduates, so every recent release stays premium and keeps its launch packs. The token path still takes months of earning, so impatient players keep buying packs to skip the wait, and anyone levelling a set keeps paying for the extra copies (level 2 means collecting it three times). The monthly pop-up packs bundle far more than the bare set, so they hold their pull too. Graduation simply reaches a different player: the patient earner who was never going to pay full launch price in the first place.</p>
+      <p class="note" style="margin:0">Short answer: no. The recent sets stay premium and keep their full launch packs, so launch revenue is untouched. The installment path still takes months of earning per level, so impatient players keep buying packs to skip the wait. The monthly pop-up packs bundle far more than a bare set, so they hold their pull too. Only the <strong>oldest</strong> sets become reachable, and only those reach a level a player can grind toward. This revenue is purely additive: it captures the patient spender who was never going to pay $350 to $875 up front in the first place, and turns that lost sale into a weekly habit.</p>
     </div>
 
     <div class="askbox reveal">
       <span class="eyebrow">The proposal</span>
-      <div class="big">Each time a new set launches, let the <em>oldest shelved set graduate</em> into the token store (one in, one graduates), while the newest stay premium and the monthly pop-up packs carry on. The sooner it starts, the smaller the backlog and the token stockpiles it has to work through.</div>
-      <p>This asks nothing of the new-set revenue and nothing of the pop-up packs. The older sets are already built, their launch window is years gone, and putting them in front of players at the pace the studio already ships costs nothing to make. On every assumption in the models above, steady release earns more than holding, and it quietly closes a growing gap along the way.</p>
+      <div class="big">Let players reach a set's <em>max level</em> through the Decor Set Store, paid in small weekly token installments, instead of only via expensive time-limited launch packs or not at all.</div>
+      <p>To make it possible, let the oldest shelved set graduate into the store each time a new set launches (one in, one graduates), keeping the newest premium and the pop-up packs untouched. A +2 march level-up is a hard sell at a lump sum of hundreds of dollars, but an easy, repeated yes at about $5 a week toward a visible goal. That is sticky recurring revenue and stronger retention the current design simply throws away, additive to everything the studio already sells.</p>
     </div>
   </div>
 </section>
 
 <footer>
   <div class="wrap">
-    <div>TOP WAR · DECOR SET STORE · A GROWTH PROPOSAL<br>Figures read live from the game client · prepared in good faith by a Server 2864 player.</div>
-    <div style="text-align:right">23 sets · 8 live · 10 older shelved · 5 premium<br>1 set = 11,340 tokens · ~3 months at $5/wk</div>
+    <div>TOP WAR &middot; DECOR SET STORE &middot; A GROWTH PROPOSAL<br>Figures read live from the game client &middot; prepared in good faith by a Server 2864 player.</div>
+    <div style="text-align:right">23 sets &middot; +2 march per level &middot; L1/L2/L3 = +2/+4/+6<br>L3 sets: Metal Music Fans, Sweet Haven &middot; ~$5/wk vs ~$875 lump</div>
   </div>
 </footer>
 
@@ -661,9 +863,47 @@ function setCard(s, kind){ // kind: 'live' | 'older' | 'recent'
   else { cls+=' older'; badge='<span class="badge older">Shelved</span>'; meta=s.date?('Released '+s.date):'Older set'; }
   return `<div class="${cls}"><div class="nm">${s.name}</div><div class="meta">${meta}</div>${badge}</div>`;
 }
-document.getElementById('grid-live').innerHTML   = SETS_LIVE.map(s=>setCard(s,'live')).join('');
-document.getElementById('grid-older').innerHTML  = SETS_OLDER.map(s=>setCard(s,'older')).join('');
-document.getElementById('grid-recent').innerHTML = SETS_RECENT.map(s=>setCard(s,'recent')).join('');
+(function buildGrids(){
+  const gl=document.getElementById('grid-live');
+  const go=document.getElementById('grid-older');
+  const gr=document.getElementById('grid-recent');
+  if(gl) gl.innerHTML  = SETS_LIVE.map(s=>setCard(s,'live')).join('');
+  if(go) go.innerHTML  = SETS_OLDER.map(s=>setCard(s,'older')).join('');
+  if(gr) gr.innerHTML  = SETS_RECENT.map(s=>setCard(s,'recent')).join('');
+})();
+
+/* =================== LEVELING CALCULATOR (canonical formulas) =================== */
+// tokensToReach = 11340*(2*L-1); weeks = ceil(tokens/900); paid = weeks*4.95;
+// lump = 175*(2*L-1); march = 2*L
+(function levelingCalc(){
+  const seg=document.getElementById('seg-lvl');
+  if(!seg) return;
+  const TOK_PER_SET=11340, WK_TOKENS=900, WK_COST=4.95, LUMP_PER_SET=175;
+  function fmtNum(n){return Math.round(n).toLocaleString();}
+  function render(L){
+    const tokens=TOK_PER_SET*(2*L-1);
+    const sets=2*L-1;
+    const weeks=Math.ceil(tokens/WK_TOKENS);
+    const paid=weeks*WK_COST;
+    const lump=LUMP_PER_SET*(2*L-1);
+    const march=2*L;
+    const set=function(id,v){const e=document.getElementById(id);if(e)e.textContent=v;};
+    set('lc-march','+'+march);
+    set('lc-tokens',fmtNum(tokens));
+    set('lc-sets',sets);
+    set('lc-lump','~$'+fmtNum(lump));
+    set('lc-weeks','~'+weeks+' wk');
+    set('lc-paid','~$'+fmtNum(paid));
+  }
+  seg.querySelectorAll('button').forEach(b=>{
+    b.addEventListener('click',()=>{
+      seg.querySelectorAll('button').forEach(x=>x.classList.remove('on'));
+      b.classList.add('on');
+      render(parseInt(b.dataset.lvl,10));
+    });
+  });
+  render(2); // default Level 2
+})();
 
 /* =================== per-player simulation engine =================== */
 // releasesSchedule(week) -> cumulative NEW sets available in store by that week
@@ -687,15 +927,17 @@ function simulate(tier, cumAvailFn){
   return {owned, dollars, stranded, earnedCum, spentCum};
 }
 
-/* =================== SECTION 3 chart =================== */
+/* =================== SECTION chart =================== */
 const NS='http://www.w3.org/2000/svg';
 function el(tag,attrs){const e=document.createElementNS(NS,tag);for(const k in attrs)e.setAttribute(k,attrs[k]);return e;}
 function fmt(n){return Math.round(n).toLocaleString();}
 
 let curTier='drip';
-function relPerYear(){return parseFloat(document.getElementById('rel').value);}
+function relPerYear(){const r=document.getElementById('rel');return r?parseFloat(r.value):0;}
 
 function drawWall(){
+  const chartEl=document.getElementById('chart');
+  if(!chartEl) return;
   const tier=TIERS[curTier];
   const perYear=relPerYear();
   const everyWk = perYear>0 ? 52/perYear : Infinity;
@@ -709,7 +951,7 @@ function drawWall(){
   const X=i=>pad.l + (i/(WEEKS-1))*ix;
   const Y=v=>pad.t + iy - (v/maxY)*iy;
 
-  const svg=document.getElementById('chart');
+  const svg=chartEl;
   svg.innerHTML='';
 
   // gridlines + y labels (token thousands)
@@ -746,28 +988,32 @@ function drawWall(){
   svg.appendChild(el('circle',{cx:X(WEEKS-1),cy:Y(r.spentCum[WEEKS-1]),r:4,fill:'#5cba9f'}));
 
   // readouts
-  document.getElementById('ro-sets').textContent=r.owned;
-  document.getElementById('ro-rev').textContent='$'+fmt(r.dollars);
-  document.getElementById('ro-dead').textContent=fmt(r.stranded);
+  const roSets=document.getElementById('ro-sets'); if(roSets) roSets.textContent=r.owned;
+  const roRev=document.getElementById('ro-rev'); if(roRev) roRev.textContent='$'+fmt(r.dollars);
+  const roDead=document.getElementById('ro-dead'); if(roDead) roDead.textContent=fmt(r.stranded);
 
   // policy tag
   const pol=document.getElementById('policy');
-  if(perYear===0){pol.className='policytag now';pol.textContent="Today's policy: graduation frozen";}
-  else if(perYear<=5){pol.className='policytag prop';pol.textContent='Proposed: graduate the oldest at the pace new sets ship';}
-  else if(perYear<=8){pol.className='policytag prop';pol.textContent='Faster: actively clearing the backlog';}
-  else {pol.className='policytag prop';pol.textContent='Near-monthly: would start crowding the pop-up packs';}
+  if(pol){
+    if(perYear===0){pol.className='policytag now';pol.textContent="Today's policy: graduation frozen";}
+    else if(perYear<=5){pol.className='policytag prop';pol.textContent='Proposed: graduate the oldest at the pace new sets ship';}
+    else if(perYear<=8){pol.className='policytag prop';pol.textContent='Faster: actively clearing the backlog';}
+    else {pol.className='policytag prop';pol.textContent='Near-monthly: would start crowding the pop-up packs';}
+  }
 
   // verdict
   const vd=document.getElementById('verdict');
-  if(perYear===0){
-    vd.className='verdict';
-    vd.innerHTML = curTier==='free'
-      ? `With the store frozen, ${tier.label} banks <b>${fmt(r.stranded)} tokens</b> with nothing to spend them on, and any future drop is claimed for free.`
-      : `With the store frozen, ${tier.label} has no goal to chase, so they stop topping up: <b>$0 spent</b> all year and <b>${fmt(r.stranded)} tokens</b> stranded.`;
-  } else {
-    const monthsBetween=(12/perYear).toFixed(1);
-    vd.className='verdict good';
-    vd.innerHTML = `At ${perYear} a year (about one every ${monthsBetween} months) ${tier.label} completes <b>${r.owned} set${r.owned===1?'':'s'}</b>, spends <b>$${fmt(r.dollars)}</b>, and little is stranded. The goal is back.`;
+  if(vd){
+    if(perYear===0){
+      vd.className='verdict';
+      vd.innerHTML = curTier==='free'
+        ? `With the store frozen, ${tier.label} banks <b>${fmt(r.stranded)} tokens</b> with nothing to spend them on, and any future drop is claimed for free.`
+        : `With the store frozen, ${tier.label} has no goal to chase, so they stop topping up: <b>$0 spent</b> all year and <b>${fmt(r.stranded)} tokens</b> stranded.`;
+    } else {
+      const monthsBetween=(12/perYear).toFixed(1);
+      vd.className='verdict good';
+      vd.innerHTML = `At ${perYear} a year (about one every ${monthsBetween} months) ${tier.label} completes <b>${r.owned} set${r.owned===1?'':'s'}</b>, spends <b>$${fmt(r.dollars)}</b>, and little is stranded. The goal is back.`;
+    }
   }
 }
 
@@ -777,12 +1023,12 @@ document.querySelectorAll('#seg-tier button').forEach(b=>{
     b.classList.add('on'); curTier=b.dataset.tier; drawWall();
   });
 });
-document.getElementById('rel').addEventListener('input',e=>{
-  document.getElementById('rel-v').textContent=parseFloat(e.target.value);
+(function(){const rel=document.getElementById('rel');if(rel)rel.addEventListener('input',e=>{
+  const rv=document.getElementById('rel-v'); if(rv) rv.textContent=parseFloat(e.target.value);
   drawWall();
-});
+});})();
 
-/* =================== SECTION 4 strategy comparison =================== */
+/* =================== strategy comparison =================== */
 const TIER_MIX = [   // illustrative population split
   {tier:'free',  share:0.55},
   {tier:'drip',  share:0.30},
@@ -813,7 +1059,7 @@ function strategyRevenue(cumAvailFn, opts){
 }
 
 function drawMini(id,cum,maxAll,color){
-  const svg=document.getElementById(id); svg.innerHTML='';
+  const svg=document.getElementById(id); if(!svg) return; svg.innerHTML='';
   const W=320,H=110,pad=6;
   const X=i=>pad+(i/(WEEKS-1))*(W-2*pad);
   const Y=v=>H-pad-(v/maxAll)*(H-2*pad);
@@ -827,8 +1073,10 @@ function drawMini(id,cum,maxAll,color){
 }
 
 function drawStrategies(){
-  const pop=parseInt(document.getElementById('pop').value);
-  const giveUp=parseInt(document.getElementById('giveup').value)/100;
+  const popEl=document.getElementById('pop'); const giveEl=document.getElementById('giveup');
+  if(!popEl||!giveEl) return;
+  const pop=parseInt(popEl.value);
+  const giveUp=parseInt(giveEl.value)/100;
   // dump: hold all back, then a catch-up dump ~month 10 (gives the dump a fair ~8-week tail)
   const dumpFn = w => w>=44 ? BACKLOG : 0;
   // drip: one set graduates per new-set launch, ~every 2.5 months (~5 / year)
@@ -839,20 +1087,23 @@ function drawStrategies(){
   const drip=strategyRevenue(dripFn,{pop,giveUp:0,dump:false});
   const maxAll=Math.max(dump.cum[WEEKS-1],drip.cum[WEEKS-1],1);
 
-  document.getElementById('rev-dump').textContent='$'+fmt(dump.total);
-  document.getElementById('rev-drip').textContent='$'+fmt(drip.total);
+  const rd=document.getElementById('rev-dump'); if(rd) rd.textContent='$'+fmt(dump.total);
+  const rp=document.getElementById('rev-drip'); if(rp) rp.textContent='$'+fmt(drip.total);
   drawMini('mc-dump',dump.cum,maxAll,'rgb(220,107,75)');
   drawMini('mc-drip',drip.cum,maxAll,'rgb(92,186,159)');
 
   const mult = dump.total>0 ? (drip.total/dump.total) : Infinity;
   const sv=document.getElementById('strat-verdict');
-  const multTxt = isFinite(mult) ? mult.toFixed(1)+'×' : 'many times';
-  sv.innerHTML = `On these illustrative assumptions, steady graduation earns about <b>$${fmt(drip.total-dump.total)} more</b> from this older backlog over the year (roughly ${multTxt} the backlog's token revenue under hold-and-dump), and it keeps players engaged the whole time instead of for one burst.`;
+  if(sv){
+    const multTxt = isFinite(mult) ? mult.toFixed(1)+'×' : 'many times';
+    sv.innerHTML = `On these illustrative assumptions, steady graduation earns about <b>$${fmt(drip.total-dump.total)} more</b> from this older backlog over the year (roughly ${multTxt} the backlog's token revenue under hold-and-dump), and it keeps players engaged the whole time instead of for one burst. This completion revenue is separate from, and additive to, the installment leveling revenue.`;
+  }
 }
 
 ['pop','giveup'].forEach(id=>{
-  document.getElementById(id).addEventListener('input',e=>{
-    document.getElementById(id+'-v').textContent=e.target.value;
+  const e=document.getElementById(id);
+  if(e) e.addEventListener('input',ev=>{
+    const out=document.getElementById(id+'-v'); if(out) out.textContent=ev.target.value;
     drawStrategies();
   });
 });

@@ -1,4 +1,4 @@
-<!-- VIEW: "The Spender" - the voice of the paying players (whales) addressed to RiverGame. Premium black-card members-lounge aesthetic: warm obsidian + gold foil, membership-card motif, receipt/invoice cards, locked wallet counter. One of seven toggleable views of the Decor Set Store business case. -->
+<!-- VIEW: "The Spender" - the voice of the paying players (whales) addressed to the studio. Premium black-card members-lounge aesthetic: warm obsidian + gold foil, membership-card motif, receipt/invoice cards, locked wallet counter. LEAD is now the level-3 installment-whale story (max-level decoration sets via small weekly token installments instead of expensive launch-pack lump sums). One of seven toggleable views of the Decor Set Store business case. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; script-src 'unsafe-inline'; base-uri 'none'">
 <meta name="referrer" content="no-referrer">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Cdefs%3E%3CradialGradient id='g' cx='40%25' cy='35%25'%3E%3Cstop offset='0' stop-color='%23ffe9a8'/%3E%3Cstop offset='0.55' stop-color='%23e7b24a'/%3E%3Cstop offset='1' stop-color='%23a9791f'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='13' fill='url(%23g)' stroke='%238a6014' stroke-width='1.5'/%3E%3Ccircle cx='16' cy='16' r='9' fill='none' stroke='%23fff3cf' stroke-width='1' opacity='0.6'/%3E%3Ctext x='16' y='21' font-size='11' text-anchor='middle' fill='%237a560f' font-family='Georgia,serif'%3ET%3C/text%3E%3C/svg%3E">
-<title>The Spender: Let Us Pay You</title>
+<title>The Spender: Let Us Pay You, Weekly</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Jost:wght@300;400;500;600&family=Cormorant:wght@500;600&display=swap" rel="stylesheet">
@@ -91,12 +91,12 @@ a{color:var(--gold)}
 }
 h1{
   font-family:'Cormorant Garamond',serif;font-weight:600;
-  font-size:clamp(40px,8.5vw,82px);line-height:0.98;margin:0 0 6px;letter-spacing:-0.01em;
+  font-size:clamp(38px,8vw,80px);line-height:0.98;margin:0 0 6px;letter-spacing:-0.01em;
 }
 h1 em{font-style:italic;font-weight:500}
 .subhero{
   font-family:'Cormorant Garamond',serif;font-style:italic;font-weight:400;
-  font-size:clamp(19px,3.6vw,29px);color:var(--ink2);max-width:680px;margin:14px auto 0;line-height:1.35;
+  font-size:clamp(19px,3.6vw,29px);color:var(--ink2);max-width:700px;margin:14px auto 0;line-height:1.35;
 }
 .signoff{margin-top:24px;font-size:12.5px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted)}
 .signoff b{color:var(--ink);font-weight:500}
@@ -126,7 +126,7 @@ h1 em{font-style:italic;font-weight:500}
 }
 .chip::after{content:"";position:absolute;inset:6px;border:1px solid rgba(122,86,15,0.5);border-radius:3px}
 .memcard .cnum{
-  font-family:'Cormorant';font-weight:500;letter-spacing:0.22em;font-size:clamp(17px,4vw,24px);
+  font-family:'Cormorant';font-weight:500;letter-spacing:0.22em;font-size:clamp(16px,3.7vw,23px);
   margin:clamp(14px,4vw,30px) 0 6px;color:var(--ink);position:relative;
 }
 .memcard .cbot{display:flex;justify-content:space-between;align-items:flex-end;position:relative}
@@ -138,7 +138,7 @@ h1 em{font-style:italic;font-weight:500}
 /* ===== wallet counter ===== */
 .wallet{max-width:560px;margin:22px auto 0;text-align:center}
 .wallet .wlbl{font-size:11px;letter-spacing:0.32em;text-transform:uppercase;color:var(--muted)}
-.wallet .wnum{font-family:'Cormorant';font-weight:600;font-size:clamp(46px,11vw,74px);line-height:1;margin:6px 0 2px;letter-spacing:0.01em}
+.wallet .wnum{font-family:'Cormorant';font-weight:600;font-size:clamp(40px,10vw,70px);line-height:1;margin:6px 0 10px;letter-spacing:0.01em}
 .wallet .wsub{font-size:12.5px;color:var(--ink2);letter-spacing:0.04em}
 .wallet .wsub b{color:var(--rust);font-weight:500}
 .locktag{
@@ -155,9 +155,104 @@ section{padding:54px 0}
 .eyebrow .tx{font-size:11px;letter-spacing:0.34em;text-transform:uppercase;color:var(--muted);font-weight:500}
 h2{font-family:'Cormorant Garamond',serif;font-weight:600;font-size:clamp(28px,5.4vw,46px);line-height:1.04;margin:0 0 16px;letter-spacing:-0.005em}
 h2 em{font-style:italic;color:var(--gold)}
-.lede{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.6vw,23px);color:var(--ink2);max-width:680px;line-height:1.45;font-weight:400}
-p{max-width:680px;color:var(--ink2);font-size:15.5px}
+.lede{font-family:'Cormorant Garamond',serif;font-size:clamp(18px,2.6vw,23px);color:var(--ink2);max-width:700px;line-height:1.45;font-weight:400}
+p{max-width:700px;color:var(--ink2);font-size:15.5px}
 p b{color:var(--ink);font-weight:500}
+
+/* ===== pull line (the sharpest quote) ===== */
+.pull{
+  max-width:760px;margin:32px auto 0;text-align:center;
+  font-family:'Cormorant Garamond';font-style:italic;font-weight:500;
+  font-size:clamp(22px,4.4vw,38px);line-height:1.22;color:var(--ink);
+}
+.pull .x{color:#e89478;font-style:normal;font-weight:600;font-family:'Cormorant'}
+.pull .o{color:var(--gold);font-style:normal;font-weight:600;font-family:'Cormorant'}
+@media(min-width:680px){.pull .x,.pull .o{white-space:nowrap}}
+.pull cite{display:block;margin-top:16px;font-style:normal;font-family:'Jost';font-weight:400;font-size:11px;letter-spacing:0.24em;text-transform:uppercase;color:var(--faint)}
+
+/* ===== level ladder ===== */
+.ladder{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:30px}
+@media(max-width:620px){.ladder{grid-template-columns:1fr}}
+.rung{
+  position:relative;border:1px solid var(--line);border-radius:14px;padding:20px 18px 18px;
+  background:linear-gradient(180deg,#17110a,#110c06);overflow:hidden;
+}
+.rung.peak{border-color:#6a4f1c;box-shadow:0 0 0 1px rgba(231,178,74,0.16),0 22px 48px -22px rgba(0,0,0,0.9)}
+.rung .lvl{font-family:'Jost';font-weight:600;letter-spacing:0.26em;text-transform:uppercase;font-size:11px;color:var(--muted)}
+.rung .march{font-family:'Cormorant';font-weight:600;font-size:clamp(30px,6.6vw,44px);line-height:1;margin:8px 0 2px;color:var(--gold)}
+.rung .march small{font-family:'Jost';font-weight:400;font-size:12px;letter-spacing:0.04em;color:var(--ink2);display:block;margin-top:4px}
+.rung .ld{display:flex;justify-content:space-between;gap:10px;font-size:12.5px;padding:6px 0;border-top:1px dashed var(--line);color:var(--ink2)}
+.rung .ld:first-of-type{margin-top:14px}
+.rung .ld .v{font-variant-numeric:tabular-nums;color:var(--ink)}
+.rung .peaktag{
+  position:absolute;top:13px;right:-30px;transform:rotate(18deg);
+  font-family:'Jost';font-weight:600;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;
+  color:#1a1305;background:var(--foil);background-size:200% 200%;padding:3px 34px;
+}
+
+/* ===== price contrast (lump vs installment) ===== */
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:28px}
+@media(max-width:600px){.contrast{grid-template-columns:1fr}}
+.col{border:1px solid var(--line);border-radius:14px;padding:22px;background:linear-gradient(180deg,#17110a,#120d07)}
+.col.cold{border-color:#2f3942}
+.col.warm{border-color:#5b431b}
+.col h3{margin:0 0 4px;font-family:'Jost';font-weight:500;letter-spacing:0.2em;text-transform:uppercase;font-size:11px}
+.col.cold h3{color:#9aa8b0}
+.col.warm h3{color:var(--gold)}
+.col .head-fig{font-family:'Cormorant';font-weight:600;font-size:clamp(30px,6.4vw,46px);line-height:1;margin:6px 0 2px}
+.col.cold .head-fig{color:#bcc7cd}
+.col.warm .head-fig{color:var(--gold-hi)}
+.col .head-sub{font-size:12.5px;color:var(--ink2);font-style:italic;font-family:'Cormorant Garamond'}
+.col .row{display:flex;justify-content:space-between;gap:10px;font-size:13px;padding:7px 0;border-top:1px dashed var(--line);color:var(--ink2)}
+.col .row:first-of-type{margin-top:14px}
+.col .row .v{font-variant-numeric:tabular-nums;color:var(--ink)}
+.col .verdict-mini{margin-top:14px;font-size:12.5px;line-height:1.45;font-style:italic;font-family:'Cormorant Garamond'}
+.col.cold .verdict-mini{color:#aebac1}
+.col.warm .verdict-mini{color:#7fd0b8}
+
+/* ===== leveling calculator ===== */
+.calc{
+  border:1px solid var(--line);border-radius:16px;overflow:hidden;margin-top:30px;
+  background:linear-gradient(180deg,#15100a,#100c06);
+  box-shadow:0 26px 60px -30px rgba(0,0,0,0.9);
+}
+.calc .chead{padding:18px 22px;border-bottom:1px solid var(--line2);background:rgba(28,22,13,0.5)}
+.calc .chead .t{font-family:'Cormorant Garamond';font-style:italic;font-size:21px;color:var(--ink)}
+.calc .chead .s{font-size:11.5px;color:var(--muted);letter-spacing:0.04em}
+.cbody{display:grid;grid-template-columns:1fr 1fr;gap:0}
+@media(max-width:720px){.cbody{grid-template-columns:1fr}}
+.cctrl{padding:22px;display:flex;flex-direction:column;gap:20px}
+.cout{padding:22px;border-left:1px solid var(--line2);display:flex;flex-direction:column;gap:16px}
+@media(max-width:720px){.cout{border-left:0;border-top:1px solid var(--line2)}}
+.fld label{display:block;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+.fld label b{color:var(--gold);font-family:'Cormorant';font-size:15px;letter-spacing:0.02em}
+.seg{display:flex;flex-wrap:wrap;gap:7px}
+.seg button{
+  font-family:'Jost';font-weight:400;font-size:11.5px;letter-spacing:0.06em;cursor:pointer;
+  background:transparent;color:var(--ink2);border:1px solid var(--line);border-radius:30px;padding:7px 13px;transition:.2s;
+}
+.seg button:hover{border-color:var(--gold-lo);color:var(--ink)}
+.seg button.on{background:var(--foil);background-size:200% 200%;color:#1a1305;border-color:transparent;font-weight:600}
+.seg button:disabled{opacity:0.34;cursor:not-allowed}
+.seg button:disabled:hover{border-color:var(--line);color:var(--ink2)}
+.cnote{font-size:11.5px;color:var(--faint);line-height:1.5;font-style:italic;font-family:'Cormorant Garamond'}
+.cstat{border:1px solid var(--line2);border-radius:11px;padding:15px 16px;background:rgba(20,16,9,0.6)}
+.cstat .cl{font-size:10px;letter-spacing:0.18em;text-transform:uppercase;color:var(--faint);margin-bottom:6px}
+.cstat .cn{font-family:'Cormorant';font-weight:600;font-size:clamp(24px,5.4vw,32px);line-height:1;color:var(--ink)}
+.cstat .cn .unit{font-family:'Jost';font-weight:400;font-size:12px;letter-spacing:0.04em;color:var(--ink2);margin-left:4px}
+.cstat.lump .cn{color:#bcc7cd}
+.cstat.inst .cn{color:var(--gold)}
+.crow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cverdict{font-family:'Cormorant Garamond';font-size:15.5px;line-height:1.45;color:var(--ink2);border-left:2px solid var(--teal);padding-left:14px}
+.cverdict b{color:var(--ink);font-weight:600}
+.cverdict .g{color:var(--gold)}
+
+/* ===== recurring revenue ===== */
+.recur{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:28px}
+.rcard{border:1px solid var(--line);border-radius:12px;padding:20px;background:linear-gradient(180deg,#17110a,#120d07)}
+.rcard .rfig{font-family:'Cormorant';font-weight:600;font-size:clamp(30px,6.6vw,44px);line-height:1;color:var(--gold);margin-bottom:6px}
+.rcard .rl{font-size:12.5px;color:var(--ink2);line-height:1.45}
+.rcard .rl b{color:var(--ink);font-weight:500}
 
 /* ===== receipts ===== */
 .receipts{display:grid;grid-template-columns:repeat(auto-fit,minmax(232px,1fr));gap:18px;margin-top:30px}
@@ -242,13 +337,6 @@ p b{color:var(--ink);font-weight:500}
 .legend i{display:inline-block;width:16px;height:3px;border-radius:2px;vertical-align:middle;margin-right:6px}
 .mctrl{padding:20px 22px;border-left:1px solid var(--line2);display:flex;flex-direction:column;gap:18px}
 @media(max-width:720px){.mctrl{border-left:0;border-top:1px solid var(--line2)}}
-.seg{display:flex;flex-wrap:wrap;gap:7px}
-.seg button{
-  font-family:'Jost';font-weight:400;font-size:11.5px;letter-spacing:0.06em;cursor:pointer;
-  background:transparent;color:var(--ink2);border:1px solid var(--line);border-radius:30px;padding:7px 13px;transition:.2s;
-}
-.seg button:hover{border-color:var(--gold-lo);color:var(--ink)}
-.seg button.on{background:var(--foil);background-size:200% 200%;color:#1a1305;border-color:transparent;font-weight:600}
 .fld label{display:block;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
 .fld label b{color:var(--gold);font-family:'Cormorant';font-size:15px;letter-spacing:0.02em}
 input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:3px;border-radius:3px;background:#332811;outline:none}
@@ -283,7 +371,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 .close .crown{width:46px;height:46px;margin:0 auto 18px;display:block}
 .close h2{margin-bottom:14px}
 .ask{
-  max-width:620px;margin:18px auto 0;font-family:'Cormorant Garamond';font-size:clamp(18px,3vw,23px);
+  max-width:640px;margin:18px auto 0;font-family:'Cormorant Garamond';font-size:clamp(18px,3vw,23px);
   font-style:italic;color:var(--ink2);line-height:1.5;
 }
 .ask b{color:var(--gold);font-style:normal;font-weight:600}
@@ -311,51 +399,220 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       </svg>
       <div class="lbl">Server 2864 Patrons<small>Decor Set Store</small></div>
     </div>
-    <div class="memno">Members Lounge &middot; <b>Re: let us pay you</b></div>
+    <div class="memno">Members Lounge &middot; <b>Re: let us pay you, weekly</b></div>
   </div>
 </div>
 
-<!-- hero -->
+<!-- hero: NEW LEAD = the level-3 installment-whale ask -->
 <header class="hero wrap">
-  <span class="kicker reveal">From the players who pay</span>
-  <h1 class="reveal">We are not asking<br>for <em class="foil">free things.</em></h1>
-  <p class="subhero reveal">We are asking to be allowed to pay. We have the money, the appetite, and a wall of orders we cannot place, because the store will not let us.</p>
+  <span class="kicker reveal">From the players who pay, every week</span>
+  <h1 class="reveal">Let us pay you<br>a little, <em class="foil">forever.</em></h1>
+  <p class="subhero reveal">We will never write a $525 cheque for a single march-size level. But a small weekly token installment toward a maxed set, paid week after week, is the easiest yes we will ever give.</p>
   <div class="signoff reveal">An open note to the studio, from <b>the spenders of Server 2864</b></div>
 </header>
 
-<!-- membership card + wallet -->
+<!-- membership card + wallet (reframed around weekly installments) -->
 <div class="cardstage wrap reveal">
   <div class="memcard" aria-label="Spender membership card">
     <div class="ctop">
-      <div class="tier">Founding Patron<small>$100 a week, gladly</small></div>
+      <div class="tier">Founding Patron<small>about $5 a week, gladly, forever</small></div>
       <div class="chip" aria-hidden="true"></div>
     </div>
-    <div class="cnum">7080 &nbsp; tokens &nbsp; ready &nbsp; weekly</div>
+    <div class="cnum">Goal &nbsp; Sweet Haven &nbsp; Level 3 &nbsp; +6 march</div>
     <div class="cbot">
-      <div class="nm">Card holder: a willing buyer</div>
-      <div class="vd"><span>Status</span><b>Turned away</b></div>
+      <div class="nm">Card holder: a willing recurring buyer</div>
+      <div class="vd"><span>Status</span><b>No installment</b></div>
     </div>
   </div>
 </div>
 
 <div class="wallet wrap reveal">
-  <div class="wlbl">Available to spend, right now</div>
-  <div class="wnum foil" id="walletNum">0</div>
-  <div class="wsub">A full year of currency banked by our biggest spenders, with <b>nothing in the store to spend it on</b>.</div>
+  <div class="wlbl">Weekly installments left on the table</div>
+  <div class="wnum foil" id="walletNum">$0</div>
+  <div class="wsub">What our spenders would pay every year in small weekly token packs toward a maxed set, if there were a level to grind, currently <b>about $0 because there is nothing to grind toward</b>.</div>
   <span class="locktag">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
-    Store shelf locked
+    No level to chase
   </span>
 </div>
 
 <hr class="rule wrap" style="margin-top:48px">
 
-<!-- 1: the receipts of demand -->
+<!-- 1: THE PIVOT - the sharpest line + level ladder -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">i.</span><span class="tx">The receipts of our demand</span></div>
-    <h2>Even <em>our heaviest spend</em><br>runs out of shelf.</h2>
-    <p class="lede">Here is what one player does over a year if the oldest shelved set graduates into the token store about every two and a half months. These are the orders we would happily place. Notice where they stop.</p>
+    <div class="eyebrow"><span class="no">i.</span><span class="tx">The level we would grind for life</span></div>
+    <h2>The lump sum we<br><em>will not pay.</em></h2>
+    <p class="lede">Completing every piece of a decoration set is only Level 1. Each further level grants more permanent march size, the size of our armies, and you reach it by collecting duplicate full sets. Two sets can climb all the way to Level 3: <b>Metal Music Fans</b> (released May 2024) and <b>Sweet Haven</b> (released December 2025). The other twenty-one cap at Level 2. Here is the ladder, and here is the wall.</p>
+  </div>
+
+  <div class="pull reveal">
+    <span class="x">I will never pay a $525 lump sum for +4 march.</span><br>
+    But I will gladly pay <span class="o">about $5 a week, forever,</span> toward +6 on Sweet Haven.
+    <cite>The whole case, in one sentence</cite>
+  </div>
+
+  <div class="ladder">
+    <div class="rung reveal">
+      <div class="lvl">Level 1</div>
+      <div class="march">+2<small>march size, permanent</small></div>
+      <div class="ld"><span class="k">Full sets to reach</span><span class="v">1 set</span></div>
+      <div class="ld"><span class="k">Tokens</span><span class="v">11,340</span></div>
+      <div class="ld"><span class="k">Launch-pack lump</span><span class="v">about $175</span></div>
+    </div>
+    <div class="rung reveal">
+      <div class="lvl">Level 2</div>
+      <div class="march">+4<small>march size, permanent</small></div>
+      <div class="ld"><span class="k">Full sets to reach</span><span class="v">3 sets</span></div>
+      <div class="ld"><span class="k">Tokens</span><span class="v">34,020</span></div>
+      <div class="ld"><span class="k">Launch-pack lump</span><span class="v">about $525</span></div>
+    </div>
+    <div class="rung peak reveal">
+      <span class="peaktag">L3 only: 2 sets</span>
+      <div class="lvl">Level 3</div>
+      <div class="march">+6<small>march size, permanent</small></div>
+      <div class="ld"><span class="k">Full sets to reach</span><span class="v">5 sets</span></div>
+      <div class="ld"><span class="k">Tokens</span><span class="v">56,700</span></div>
+      <div class="ld"><span class="k">Launch-pack lump</span><span class="v">about $875</span></div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">A maxed Level 3 lives only on <b>Metal Music Fans</b> and <b>Sweet Haven</b>. The lump-sum launch-pack path to get there runs about <b>$875</b>, with Level 2 around <b>$525</b> and even Level 1 around <b>$175</b>. That is the wall almost nobody pays. A +2 march level is simply not worth a single several-hundred-dollar cheque to most of us, so the level never gets bought and you collect nothing. The Level 2 to Level 3 step shown here is illustrative and adjustable. All figures illustrative; scope is the decoration token economy only, never total game revenue.</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 2: lump vs installment contrast -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">ii.</span><span class="tx">Two ways to sell us the very same level</span></div>
+    <h2>One cheque we refuse.<br>One we sign <em>every week.</em></h2>
+    <p class="lede">Take Level 2 on any set, the same +4 march, sold two ways. On the left, the cheque we decline. On the right, the installment we sign without a second thought. Same destination, wildly different willingness to pay. All figures illustrative.</p>
+  </div>
+
+  <div class="contrast">
+    <div class="col cold reveal">
+      <h3>Lump sum, launch pack</h3>
+      <div class="head-fig">about $525</div>
+      <div class="head-sub">One large cheque, all at once, for +4 march.</div>
+      <div class="row"><span class="k">What it buys</span><span class="v">Level 2, +4 march</span></div>
+      <div class="row"><span class="k">Full sets</span><span class="v">3 sets</span></div>
+      <div class="row"><span class="k">When you can sell it</span><span class="v">launch window only</span></div>
+      <div class="verdict-mini">The wall almost nobody pays. Once the launch window closes, this level is not for sale anywhere, and it earns about $0.</div>
+    </div>
+    <div class="col warm reveal">
+      <h3>Installment, weekly token pack</h3>
+      <div class="head-fig">about $5 a week</div>
+      <div class="head-sub">The $0.99 pack, capped at five a week, toward a visible goal.</div>
+      <div class="row"><span class="k">What it buys</span><span class="v">Level 2, +4 march</span></div>
+      <div class="row"><span class="k">Time to reach</span><span class="v">about 38 weeks</span></div>
+      <div class="row"><span class="k">Total paid</span><span class="v">about $188</span></div>
+      <div class="verdict-mini">A few dollars a week toward something we can see fill up. We sign this gladly, week after week, and most of us never stop.</div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">The destination is identical: <b>+4 march, a permanent Level 2</b>. The only thing that changes is the shape of the ask. A several-hundred-dollar lump sum for a +2 step is a yes from almost no one. A roughly five-dollar weekly installment toward a goal we watch fill up is a yes from a great many of us, week after week. The installment path runs through the $0.99 pack, about 120 tokens, capped at five a week, plus the roughly 300 free tokens a week we already earn, so about 900 tokens land per week. That is the difference between revenue you never collect and revenue that compounds.</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 3: leveling calculator -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">iii.</span><span class="tx">Watch the installment receipt build</span></div>
+    <h2>The receipt for a <em>maxed set.</em></h2>
+    <p class="lede">Pick a set and a target level. See the lump sum we walk away from, against the small weekly installment we would pay instead, week after week, until the goal is reached. All figures illustrative and built on the canonical token economics.</p>
+  </div>
+
+  <div class="calc reveal">
+    <div class="chead">
+      <div class="t">From scratch to a chosen level</div>
+      <div class="s">Lump-sum launch path against the about $5-a-week installment path.</div>
+    </div>
+    <div class="cbody">
+      <div class="cctrl">
+        <div class="fld">
+          <label>Which set</label>
+          <div class="seg" id="seg-set">
+            <button data-set="mmf" class="on">Metal Music Fans</button>
+            <button data-set="sh">Sweet Haven</button>
+            <button data-set="other">A Level 2 set</button>
+          </div>
+        </div>
+        <div class="fld">
+          <label>Target level</label>
+          <div class="seg" id="seg-lvl">
+            <button data-lvl="1">Level 1 (+2)</button>
+            <button data-lvl="2" class="on">Level 2 (+4)</button>
+            <button data-lvl="3">Level 3 (+6)</button>
+          </div>
+        </div>
+        <div class="cnote" id="calc-note"></div>
+      </div>
+      <div class="cout">
+        <div class="crow">
+          <div class="cstat lump">
+            <div class="cl">Lump sum, refused</div>
+            <div class="cn" id="c-lump">$525</div>
+          </div>
+          <div class="cstat inst">
+            <div class="cl">Installment, paid</div>
+            <div class="cn" id="c-paid">$188</div>
+          </div>
+        </div>
+        <div class="crow">
+          <div class="cstat">
+            <div class="cl">Tokens to reach</div>
+            <div class="cn" id="c-tok">34,020</div>
+          </div>
+          <div class="cstat">
+            <div class="cl">Weeks of installments</div>
+            <div class="cn" id="c-wk">38<span class="unit">wk</span></div>
+          </div>
+        </div>
+        <div class="cverdict" id="c-verdict"></div>
+      </div>
+    </div>
+  </div>
+  <p class="reveal" style="margin-top:22px;font-size:13.5px;color:var(--faint)">Single level-ups are just as cheap to sign: lifting a set from Level 1 to Level 2 is two more full sets, about 22,680 tokens, roughly 26 weeks, about $129 paid in small weekly installments. The Level 3 figures use the same illustrative step. Only <b>Metal Music Fans</b> and <b>Sweet Haven</b> can reach Level 3.</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 4: recurring revenue / lifetime value -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">iv.</span><span class="tx">The stream you are leaving on the table</span></div>
+    <h2>The same patron,<br>paying <em>every year.</em></h2>
+    <p class="lede">A lump sum is collected once and then the spender is done. An installment toward a level renews itself. A patron who keeps chasing the next level pays the small weekly pack indefinitely, which is the sticky recurring revenue and retention the current design throws away. All figures illustrative; scope is the decoration token economy only, never total game revenue.</p>
+  </div>
+
+  <div class="recur">
+    <div class="rcard reveal">
+      <div class="rfig">about $5</div>
+      <div class="rl">per week, the $0.99 pack capped at five, a willing patron pays it <b>indefinitely</b> while there is a level to chase.</div>
+    </div>
+    <div class="rcard reveal">
+      <div class="rfig">about $257</div>
+      <div class="rl">per patron, <b>per year, every year</b>, in pure $0.99-pack installments while a level keeps them grinding.</div>
+    </div>
+    <div class="rcard reveal">
+      <div class="rfig">about $69,000</div>
+      <div class="rl">a year across an illustrative 600 active players at about 45% paying, in installments alone, currently <b>about $0</b>.</div>
+    </div>
+  </div>
+
+  <p class="reveal" style="margin-top:26px">Read that last figure as what it is: an illustrative, recurring, year-after-year stream that the decoration token economy collects <b>about $0 of today</b>, purely because there is no level for us to grind toward. This leveling revenue sits on top of the set-completion revenue shown further down. The two never overlap. One is the price of finishing a set. The other is the price of maxing it, paid a few dollars at a time, for as long as we keep playing.</p>
+</section>
+
+<hr class="goldrule wrap">
+
+<!-- 5: the receipts of demand (EXISTING COMPLETION MODEL, intact) -->
+<section class="wrap">
+  <div class="reveal">
+    <div class="eyebrow"><span class="no">v.</span><span class="tx">The receipts of our demand</span></div>
+    <h2>And even <em>finishing sets</em><br>runs out of shelf.</h2>
+    <p class="lede">Leveling is the recurring stream above. Completion is the access stream below, and it is the prerequisite: we can only grind a set toward max level once it is reachable in the store. Here is what one player does over a year if the oldest shelved set graduates into the token store about every two and a half months. Notice where the orders stop.</p>
   </div>
 
   <div class="receipts">
@@ -392,17 +649,17 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
     </div>
   </div>
 
-  <p class="reveal" style="margin-top:26px">Read those last two slips again. The willing buyer with the deepest pockets completes the same four sets as the steady spender, and walks away with <b>thousands of tokens that cannot be turned into anything</b>. That gap between what we tried to spend and what we were allowed to spend is not lost demand. It is parked demand, waiting for you to open a shelf.</p>
+  <p class="reveal" style="margin-top:26px">Read those last two slips again. The willing buyer with the deepest pockets completes the same four sets as the steady spender, and walks away with <b>thousands of tokens that cannot be turned into anything</b>. That gap between what we tried to spend and what we were allowed to spend is not lost demand. It is parked demand, waiting for you to open a shelf so we can finish, and then start grinding levels.</p>
 </section>
 
 <hr class="goldrule wrap">
 
-<!-- 2: the orders we could not place -->
+<!-- 6: the orders we could not place (EXISTING, intact) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">ii.</span><span class="tx">Under the frozen store</span></div>
+    <div class="eyebrow"><span class="no">vi.</span><span class="tx">Under the frozen store</span></div>
     <h2>The orders we<br><em>could not place.</em></h2>
-    <p class="lede">No older set has graduated into the token store in roughly a year. With nothing reachable to chase, the chase disappears. Here is what the same patrons did across the whole year, when the shelf stayed shut.</p>
+    <p class="lede">No older set has graduated into the token store in roughly a year. With nothing reachable to chase, the chase disappears, and the level grind never even begins. Here is what the same patrons did across the whole year, when the shelf stayed shut.</p>
   </div>
 
   <div class="declined">
@@ -434,12 +691,12 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
 <hr class="goldrule wrap">
 
-<!-- 3: the scales -->
+<!-- 7: the scales (EXISTING, intact) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">iii.</span><span class="tx">What a reachable goal is worth</span></div>
+    <div class="eyebrow"><span class="no">vii.</span><span class="tx">What a reachable goal is worth</span></div>
     <h2>The same patrons,<br>two <em>different doors.</em></h2>
-    <p class="lede">Across an illustrative group of 600 active players, here is what the older backlog earns in a year under each approach. The only change is whether we are given something to chase. All figures illustrative; scope is token-store revenue from the 10 older sets only, never total game revenue.</p>
+    <p class="lede">Across an illustrative group of 600 active players, here is what the older backlog earns in a year under each approach, before any level grind even starts. The only change is whether we are given something to chase. All figures illustrative; scope is token-store revenue from the older sets only, never total game revenue.</p>
   </div>
 
   <div class="scales">
@@ -456,15 +713,15 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <div class="barwrap"><div class="bar" id="barDrip" style="width:0%"></div></div>
     </div>
   </div>
-  <div class="delta reveal">Steady graduation earns about <b>$47,676 more</b> from this older backlog in a single year, roughly <b>2.7 times</b> what hold and dump collects, and it keeps us engaged the whole way through rather than for one short burst.</div>
+  <div class="delta reveal">Steady graduation earns about <b>$47,676 more</b> from this older backlog in a single year, roughly <b>2.7 times</b> what hold and dump collects, and it keeps us engaged the whole way through rather than for one short burst. And every set it makes reachable becomes a set we can then grind for levels.</div>
 </section>
 
 <hr class="goldrule wrap">
 
-<!-- 4: live model -->
+<!-- 8: live model (EXISTING, intact JS) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">iv.</span><span class="tx">Watch even a patron hit the wall</span></div>
+    <div class="eyebrow"><span class="no">viii.</span><span class="tx">Watch even a patron hit the wall</span></div>
     <h2>The wall, <em>up close.</em></h2>
     <p class="lede">Pick a spender and a release pace. The gold line is everything we have earned. The teal line is everything we were allowed to spend. The shaded gap between them is the money sitting in our wallets with nowhere to go. All figures illustrative.</p>
   </div>
@@ -507,37 +764,37 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       </div>
     </div>
   </div>
-  <p class="reveal" style="margin-top:22px;font-size:13.5px;color:var(--faint)">Slide the release pace to <b>0</b> to see today's frozen store: the spend readout drops to $0 and the stranded pile climbs. That is the wall we keep walking into.</p>
+  <p class="reveal" style="margin-top:22px;font-size:13.5px;color:var(--faint)">Slide the release pace to <b>0</b> to see today's frozen store: the spend readout drops to $0 and the stranded pile climbs. That is the wall we keep walking into, before we ever get to grind a level.</p>
 </section>
 
 <hr class="goldrule wrap">
 
-<!-- 5: objection -->
+<!-- 9: objection (updated to lead with leveling cannibalization rebuttal) -->
 <section class="wrap">
   <div class="reveal">
-    <div class="eyebrow"><span class="no">v.</span><span class="tx">A fair concern, answered</span></div>
-    <h2>"Wouldn't this <em>cannibalize</em><br>premium launch packs?"</h2>
+    <div class="eyebrow"><span class="no">ix.</span><span class="tx">A fair concern, answered</span></div>
+    <h2>"Wouldn't installments <em>cannibalize</em><br>premium launch packs?"</h2>
   </div>
   <div class="obj reveal">
     <div class="q">
       <span class="tag">The worry</span>
-      <span class="txt">If older sets graduate into the token store, players will wait for them instead of buying the paid launch packs.</span>
+      <span class="txt">If players can install their way to a maxed level a few dollars a week, they will skip the premium launch packs and we lose the lump sums.</span>
     </div>
     <div class="a">
       <span class="tag">Why it grows revenue instead</span>
-      <p>The 10 older sets we are asking for had their <b>premium windows close years ago</b>. They are not for sale anywhere today, and they earn <b>$0</b> as they sit. Graduating them competes with nothing, because nothing is currently being sold.</p>
-      <p>The newest 5 premium sets stay exactly where they are: <b>premium, paid, and untouched</b> by this idea. The monthly pop-up pack re-releases stay intact too. We are only ever asking for the old backlog to move.</p>
-      <p>And here is the part that matters most to all of us: <b>a reachable token-store goal is what makes us keep topping up at all.</b> Take the goal away and the spend stops, as our own receipts show. Give it back and the card comes out again. This grows the pie. It does not split it.</p>
+      <p>The lump sums in question are <b>cheques almost nobody writes</b>. A several-hundred-dollar payment for a +2 march level is a yes from a tiny few. The installment path is not stealing those sales, because at that price for that reward, <b>most of them were never going to happen</b>. A small weekly pack toward a visible goal is additive demand, not redirected demand.</p>
+      <p>The newest five premium sets stay exactly where they are: <b>premium, paid, and untouched</b> by this. Their launch windows are still the place to buy them outright. The monthly pop-up re-releases stay intact too. Installment leveling only ever applies to sets already reachable in the token store, the older windows that closed years ago and earn about $0 today.</p>
+      <p>And here is the part that matters most: <b>a reachable level is what keeps us paying at all.</b> A spender with a goal pays about $5 a week, every week, for as long as they grind. A spender with no goal pays nothing. Installments turn a one-time cheque almost nobody signs into a recurring stream a great many of us sign gladly. This grows the pie. It does not split it.</p>
     </div>
   </div>
 </section>
 
-<!-- 6: the soft secondary note -->
+<!-- 10: the soft secondary note (EXISTING, intact) -->
 <section class="wrap reveal">
   <hr class="rule" style="margin-bottom:34px">
-  <div class="eyebrow"><span class="no">vi.</span><span class="tx">A gentle aside</span></div>
+  <div class="eyebrow"><span class="no">x.</span><span class="tx">A gentle aside</span></div>
   <h2 style="font-size:clamp(24px,4.6vw,36px)">A quieter <em>benefit, offered softly.</em></h2>
-  <p class="lede" style="font-size:clamp(17px,2.4vw,21px)">Completed sets grant a small permanent boost to march size, the size of our armies. A steady trickle of graduations would, over time, gently narrow the army-size gap for players who spend less. We mention it lightly, as a kindness the cadence happens to carry, never as a demand. The case stands on its own as simple revenue.</p>
+  <p class="lede" style="font-size:clamp(17px,2.4vw,21px)">Every level grants a small permanent boost to march size, the size of our armies. A steady trickle of graduations, plus an installment path to grind levels, would over time gently narrow the army-size gap for players who spend less. We mention it lightly, as a kindness the cadence happens to carry, never as a demand. The case stands on its own as simple recurring revenue.</p>
 </section>
 
 <!-- closing -->
@@ -548,22 +805,22 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
       <path d="M4 28 L8 8 L18 20 L24 4 L30 20 L40 8 L44 28 Z" fill="url(#cg)" stroke="#7a560f" stroke-width="1"/>
       <circle cx="8" cy="8" r="2.4" fill="#fff3cf"/><circle cx="24" cy="4" r="2.6" fill="#fff3cf"/><circle cx="40" cy="8" r="2.4" fill="#fff3cf"/>
     </svg>
-    <h2 class="reveal">Open the shelf.<br><em class="foil">We will gladly fill it.</em></h2>
-    <p class="ask reveal">Tie graduation to the new-set cadence you already run. Each time a brand-new set launches, let the oldest shelved set graduate into the token store. One in, one graduates. Premium stays premium. The pop-up re-releases stay. Only the 10 older sets ever move. <b>That is the whole ask.</b></p>
-    <p class="ask reveal" style="margin-top:18px">We are the players holding full wallets at a locked counter. We are not asking for a discount. We are asking for the door. Give us a goal we can reach, and we will keep the card out all year. The revenue is already here. <b>It is simply waiting to be let in.</b></p>
+    <h2 class="reveal">Let us grind the level.<br><em class="foil">We will pay you weekly.</em></h2>
+    <p class="ask reveal">Let a set reach its max level through the Decor Set Store, paid in small weekly token installments, instead of only through expensive time-limited launch packs or, once a window closes, not at all. Keep the older sets graduating in on your existing new-set cadence so each set is reachable. Premium launch packs stay premium. The pop-up re-releases stay. Only the level path changes. <b>That is the whole ask.</b></p>
+    <p class="ask reveal" style="margin-top:18px">We are the players who will never sign a $525 cheque for +4 march, but who will gladly pay about $5 a week, forever, toward +6 on Sweet Haven. We are not asking for a discount. We are asking to be allowed to pay you a little, every week, for a long time. <b>The recurring revenue is already here. It is simply waiting to be let in.</b></p>
   </div>
 </div>
 
 <div class="footer">
-  <div class="il">All figures illustrative and clearly labelled. Scope is token-store revenue from the 10 older shelved sets only, never total game revenue.</div>
-  <div class="cred">By a Server 2864 player, on behalf of the patrons who would happily pay more</div>
+  <div class="il">All figures illustrative and clearly labelled. Scope is the decoration token economy only, never total game revenue.</div>
+  <div class="cred">By a Server 2864 player, on behalf of the patrons who would happily pay more, weekly</div>
 </div>
 
 <script>
 (function(){
   "use strict";
 
-  /* =================== canonical model, ported exactly =================== */
+  /* =================== canonical completion model, ported exactly (UNTOUCHED) =================== */
   var SET_COST = 11340;       // tokens for one full set (level 1)
   var FREE_WK  = 300;         // free tokens per week
   var WEEKS    = 52;
@@ -598,7 +855,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   function fmt(n){return Math.round(n).toLocaleString();}
   function byId(id){return document.getElementById(id);}
 
-  /* =================== live model chart =================== */
+  /* =================== live model chart (UNTOUCHED) =================== */
   var curTier='drip';
   var relEl = byId('rel');
 
@@ -693,17 +950,113 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
 
   drawWall();
 
-  /* =================== wallet count-up to 15,600 (free tokens a top spender banks while the store is frozen) =================== */
+  /* =================== NEW: leveling calculator (canonical formulas) =================== */
+  /* tokensToReach = 11340*(2*L-1); weeks = ceil(tokens/900); paid = weeks*4.95; lump = 175*(2*L-1); march = 2*L */
+  var SET_TOK = 11340;     // tokens per full set
+  var WK_TOK  = 900;       // about 600 paid + about 300 free per week
+  var WK_PAID = 4.95;      // five $0.99 packs a week, in dollars
+  var LUMP_PER_SET = 175;  // launch-pack lump cost per full set, about $
+
+  var calcSet = 'mmf';     // mmf | sh | other
+  var calcLvl = 2;
+  var SET_NAMES = { mmf:'Metal Music Fans', sh:'Sweet Haven', other:'this Level 2 set' };
+
+  function levelDataObj(L){
+    var tokens = SET_TOK * (2*L - 1);
+    var weeks  = Math.ceil(tokens / WK_TOK);
+    var paid   = weeks * WK_PAID;
+    var lump   = LUMP_PER_SET * (2*L - 1);
+    var march  = 2 * L;
+    return {tokens:tokens, weeks:weeks, paid:paid, lump:lump, march:march};
+  }
+
+  function renderCalc(){
+    var d = levelDataObj(calcLvl);
+    var cLump=byId('c-lump'), cPaid=byId('c-paid'), cTok=byId('c-tok'), cWk=byId('c-wk'), cV=byId('c-verdict'), cN=byId('calc-note');
+
+    if(cLump) cLump.textContent = '$' + fmt(d.lump);
+    if(cPaid) cPaid.textContent = '$' + fmt(d.paid);
+    if(cTok)  cTok.textContent  = fmt(d.tokens);
+    if(cWk)   cWk.innerHTML     = d.weeks + '<span class="unit">wk</span>';
+
+    var setName = SET_NAMES[calcSet];
+    var months = Math.round(d.weeks / 4.33);
+
+    if(cV){
+      cV.innerHTML = "Maxing " + setName + " to <b>Level " + calcLvl + " (+" + d.march +
+        " march)</b> means walking away from a <b>$" + fmt(d.lump) + "</b> lump sum and instead paying about <b>$" + fmt(d.paid) +
+        "</b> over about <span class=\"g\">" + d.weeks + " weeks</span>, roughly <b>" + months +
+        " months</b>, at about $5 a week. The easy yes.";
+    }
+
+    if(cN){
+      if(calcSet === 'other'){
+        cN.innerHTML = "The other twenty-one sets cap at Level 2 (+4 march). Only Metal Music Fans and Sweet Haven reach Level 3. The Level 3 step shown is illustrative and adjustable.";
+      } else {
+        cN.innerHTML = setName + " is one of only two sets that can reach Level 3 (+6 march). The Level 2 to Level 3 step is illustrative and adjustable; every other figure follows the canonical token economics.";
+      }
+    }
+  }
+
+  /* set buttons */
+  var setBtns = document.querySelectorAll('#seg-set button');
+  var lvlBtns = document.querySelectorAll('#seg-lvl button');
+
+  function refreshLvlAvailability(){
+    /* only mmf + sh can reach L3 */
+    var allowL3 = (calcSet === 'mmf' || calcSet === 'sh');
+    for(var k=0;k<lvlBtns.length;k++){
+      var lv = parseInt(lvlBtns[k].getAttribute('data-lvl'),10);
+      if(lv === 3){
+        lvlBtns[k].disabled = !allowL3;
+      }
+    }
+    if(!allowL3 && calcLvl === 3){
+      calcLvl = 2;
+      for(var j=0;j<lvlBtns.length;j++){
+        lvlBtns[j].classList.toggle('on', parseInt(lvlBtns[j].getAttribute('data-lvl'),10) === 2);
+      }
+    }
+  }
+
+  for(var s=0;s<setBtns.length;s++){
+    (function(btn){
+      btn.addEventListener('click',function(){
+        for(var j=0;j<setBtns.length;j++){ setBtns[j].classList.remove('on'); }
+        btn.classList.add('on');
+        calcSet = btn.getAttribute('data-set');
+        refreshLvlAvailability();
+        renderCalc();
+      });
+    })(setBtns[s]);
+  }
+
+  for(var L=0;L<lvlBtns.length;L++){
+    (function(btn){
+      btn.addEventListener('click',function(){
+        if(btn.disabled) return;
+        for(var j=0;j<lvlBtns.length;j++){ lvlBtns[j].classList.remove('on'); }
+        btn.classList.add('on');
+        calcLvl = parseInt(btn.getAttribute('data-lvl'),10);
+        renderCalc();
+      });
+    })(lvlBtns[L]);
+  }
+
+  refreshLvlAvailability();
+  renderCalc();
+
+  /* =================== wallet count-up to $69,000 (installments left on the table per year) =================== */
   var walletNum = byId('walletNum');
   function animateWallet(){
     if(!walletNum) return;
-    var target = 15600;
+    var target = 69000;
     var start = null, dur = 1500;
     function step(ts){
       if(start===null) start=ts;
       var p=Math.min(1,(ts-start)/dur);
       var eased = 1-Math.pow(1-p,3);
-      walletNum.textContent = Math.round(target*eased).toLocaleString();
+      walletNum.textContent = '$' + Math.round(target*eased).toLocaleString();
       if(p<1) requestAnimationFrame(step);
     }
     requestAnimationFrame(step);
@@ -749,7 +1102,7 @@ input[type=range]::-moz-range-thumb{width:18px;height:18px;border-radius:50%;bac
   } else {
     var allRev=document.querySelectorAll('.reveal');
     for(var ai=0;ai<allRev.length;ai++){ allRev[ai].classList.add('in'); }
-    if(walletNum) walletNum.textContent='15,600';
+    if(walletNum) walletNum.textContent='$69,000';
     var bd=byId('barDump'), bp=byId('barDrip');
     if(bd) bd.style.width='37.7%';
     if(bp) bp.style.width='100%';

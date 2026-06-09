@@ -4,10 +4,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <meta name="referrer" content="no-referrer">
-<title>装饰套装商店：库存套装上架推演台</title>
-<meta name="description" content="对口袋奇兵装饰套装商店的量化分析：把每一笔提案当作一个仓位来定价，估算其期望价值并对下行风险做压力测试。所有金额均为示意性估算，仅覆盖 10 套较早套装的套装商店收入，不代表游戏整体收入。">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self' data:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; script-src 'self' 'unsafe-inline'; connect-src 'none'; base-uri 'none'; form-action 'none'">
+<title>装饰套装商店：满级分期付费推演台</title>
+<meta name="description" content="对口袋奇兵装饰套装商店的量化解读：玩家不会为「+2 行军规模」一次性付清，但愿意每周花约 $5、长期不断地朝它付费。我们为当前设计白白放弃掉的这条经常性分期收入流定价。所有金额均为示意性估算，仅覆盖装饰套装代币经济，不代表游戏整体收入。">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23070b10'/%3E%3Crect x='2' y='9' width='2' height='5' fill='%237dffd6'/%3E%3Crect x='6' y='5' width='2' height='9' fill='%237dffd6'/%3E%3Crect x='10' y='2' width='2' height='12' fill='%23ffb454'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -92,7 +92,7 @@ a:hover{text-decoration:underline}
   font-size:clamp(28px,5.4vw,52px);line-height:1.02;margin:14px 0 8px
 }
 .mast h1 .hl{color:var(--pos)}
-.mast .sub{color:var(--ink2);max-width:760px;font-size:15px}
+.mast .sub{color:var(--ink2);max-width:780px;font-size:15px}
 .mast .desk{
   font-family:var(--mono);font-size:11px;color:var(--ink3);margin-top:12px;
   display:flex;gap:18px;flex-wrap:wrap;letter-spacing:.04em
@@ -118,7 +118,7 @@ section{margin-top:40px}
 .shead .num{font-family:var(--mono);font-size:11px;color:var(--pos);letter-spacing:.1em}
 .shead h2{font-family:var(--sans);font-weight:700;font-size:clamp(18px,2.6vw,24px);margin:0;letter-spacing:-.01em}
 .shead .note{font-family:var(--mono);font-size:11px;color:var(--ink3);margin-left:auto}
-.lede{color:var(--ink2);max-width:820px;margin:0 0 18px}
+.lede{color:var(--ink2);max-width:840px;margin:0 0 18px}
 .lede b{color:var(--ink)}
 
 /* panels */
@@ -198,6 +198,7 @@ td .delta-neg{color:var(--neg)}
 .pill.live{background:rgba(125,255,214,.12);color:var(--pos);border:1px solid var(--posdim)}
 .pill.shelf{background:rgba(255,180,84,.12);color:var(--neg);border:1px solid var(--negdim)}
 .pill.prem{background:rgba(111,180,255,.12);color:var(--accent);border:1px solid #2c4a6b}
+.pill.l3{background:rgba(111,180,255,.12);color:var(--accent);border:1px solid #2c4a6b}
 
 /* stress test */
 .stress{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line)}
@@ -234,6 +235,23 @@ td .delta-neg{color:var(--neg)}
 .callout.good{border-left-color:var(--pos);background:rgba(125,255,214,.05)}
 .callout.good b{color:var(--pos)}
 .mono-inline{font-family:var(--mono);color:var(--ink)}
+
+/* ---- leveling section additions ---- */
+.contrast{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--line);border:1px solid var(--line);margin:18px 0}
+@media(max-width:640px){.contrast{grid-template-columns:1fr}}
+.contrast .side{background:var(--panel);padding:18px}
+.contrast .side.bad{background:rgba(255,180,84,.04)}
+.contrast .side.good{background:rgba(125,255,214,.04)}
+.contrast .side .h{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink2);margin-bottom:10px}
+.contrast .side .big{font-family:var(--mono);font-weight:700;font-size:clamp(22px,4vw,30px);line-height:1.05}
+.contrast .side.bad .big{color:var(--neg)}
+.contrast .side.good .big{color:var(--pos)}
+.contrast .side .cap{font-family:var(--mono);font-size:11px;color:var(--ink2);margin-top:8px;line-height:1.6}
+.contrast .side .row{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:12px;color:var(--ink2);padding:6px 0;border-top:1px solid var(--grid)}
+.contrast .side .row:first-of-type{border-top:0;margin-top:10px}
+.contrast .side .row b{color:var(--ink)}
+.l3-note{font-family:var(--mono);font-size:11.5px;color:var(--ink2);background:rgba(111,180,255,.05);border:1px solid #2c4a6b;border-radius:4px;padding:12px 14px;margin:16px 0;line-height:1.7}
+.l3-note b{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -242,14 +260,16 @@ td .delta-neg{color:var(--neg)}
   <div class="ticker-track" id="ticker">
     <span>装饰套装商店推演台</span>
     <span>套装总数 <b>23</b></span>
-    <span>商店在售 <b>8</b></span>
-    <span>积压库存 <i>10</i></span>
+    <span>套装 1 级 <b>+2 行军规模</b></span>
     <span>整套需求 <b>11,340 代币</b></span>
-    <span>免费收入 <b>300 代币/周</b></span>
-    <span>上新节奏 <b>约 2.4 月</b></span>
-    <span>2023 年 12 月以来进入商店 <i>9 套中 0 套</i></span>
-    <span>稳定上架 vs 囤积倾倒（示意，仅限库存） <b>+$47,676</b></span>
-    <span>仓位 <b>做多上架</b></span>
+    <span>升一级 +2 套 <b>22,680 代币</b></span>
+    <span>一次性付清至 2 级 <i>约 $525</i></span>
+    <span>分期付费至 2 级 <b>约 $188 已付</b></span>
+    <span>鲸鱼玩家终身年付 <b>约 $257/年</b></span>
+    <span>可达 3 级的套装 <b>23 套中仅 2 套</b></span>
+    <span>示意性分期收入池 <b>约 $69,000/年</b></span>
+    <span>当前可供攒升的目标价值 <i>$0</i></span>
+    <span>仓位 <b>做多分期付费</b></span>
     <span>开发成本 <b>$0</b></span>
   </div>
 </div>
@@ -258,48 +278,130 @@ td .delta-neg{color:var(--neg)}
 
   <header class="mast">
     <div class="tag"><span class="dot"></span> 数据室再分析 &nbsp;/&nbsp; 2864 服 &nbsp;/&nbsp; 口袋奇兵</div>
-    <h1>那批被搁置的<span class="hl">装饰库存</span>，是一笔归零挂账、尚未入账的收入。</h1>
-    <p class="sub">这是一份关于装饰套装商店的量化解读。我们把这项提案当作一个仓位来定价，给出它的期望价值，并对下行风险做压力测试。下文所有金额均为示意性估算，严格限定于 10 套较早套装在套装商店内产生的收入，不代表游戏整体收入。</p>
+    <h1>玩家不会为 <span class="hl">+2 行军规模</span> 一次性付清。但他们愿意每周花约 $5，永远不停地朝它付费。</h1>
+    <p class="sub">这是一份对装饰套装商店的量化解读。核心诉求只有一句：让玩家能够通过商店、以每周少量的套装代币分期，把一套套装攒到满级，而不是只能靠昂贵的限时上新礼包、甚至在套装窗口关闭后彻底无门可入。我们为当前设计白白放弃掉的这条经常性分期收入流定价。下文所有金额均为示意性估算，严格限定于装饰套装代币经济，不代表游戏整体收入。</p>
     <div class="desk">
-      <span>周期：52 周</span>
-      <span>口径：套装商店收入，仅限较早库存</span>
-      <span>对照基准：囤积倾倒</span>
+      <span>头条指标：分期终身价值</span>
+      <span>口径：仅装饰代币收入</span>
+      <span>对照基准：一次性付清高墙</span>
       <span>性质：提案，非预测</span>
     </div>
   </header>
 
-  <!-- KPI STRIP -->
+  <!-- KPI STRIP: leveling-led -->
   <div class="kpis reveal">
-    <div class="kpi"><div class="lab">已上线套装</div><div class="val">23</div><div class="meta">装饰套装总数</div></div>
-    <div class="kpi"><div class="lab">商店在售</div><div class="val pos">8</div><div class="meta">目前轮换在架</div></div>
-    <div class="kpi"><div class="lab">积压库存</div><div class="val neg">10</div><div class="meta">没有可负担的获取途径</div></div>
-    <div class="kpi"><div class="lab">每整套</div><div class="val">11,340</div><div class="meta">代币，1 级</div></div>
-    <div class="kpi"><div class="lab">上新节奏</div><div class="val">约 2.4 月</div><div class="meta">每年约 4 到 5 套</div></div>
-    <div class="kpi"><div class="lab">示意性差额</div><div class="val pos">+$47,676</div><div class="meta">稳定上架优于囤积，仅限库存</div></div>
+    <div class="kpi"><div class="lab">分期 ARPU</div><div class="val pos">约 $257/年</div><div class="meta">鲸鱼玩家追逐一个等级，年复一年</div></div>
+    <div class="kpi"><div class="lab">一次性付清高墙，2 级</div><div class="val neg">约 $525</div><div class="meta">几乎没人会付</div></div>
+    <div class="kpi"><div class="lab">分期付费，2 级</div><div class="val pos">约 $188</div><div class="meta">分摊在约 9 个月内付清</div></div>
+    <div class="kpi"><div class="lab">攒至满级所需周数（2 级）</div><div class="val">约 38 周</div><div class="meta">每周约 900 代币</div></div>
+    <div class="kpi"><div class="lab">可达 3 级的套装</div><div class="val">23 套中 2 套</div><div class="meta">其余均封顶在 2 级</div></div>
+    <div class="kpi"><div class="lab">示意性收入池</div><div class="val pos">约 $69,000</div><div class="meta">每年经常性收入，今天却近乎 $0</div></div>
   </div>
-  <p class="disc" style="margin-top:8px;border-top:0;padding-top:0">这一头条差额，是在推演台默认假设下，10 套较早套装在「稳定上架」路径下一年的示意性套装商店收入，减去同一指标在「囤积倾倒」路径下的数值。上新礼包与每月弹窗礼包的收入在两条路径下完全相同，已被排除在外。</p>
+  <p class="disc" style="margin-top:8px;border-top:0;padding-top:0">头条数字仅描述装饰套装代币经济。分期 ARPU 是指一名玩家为追逐一个等级、以每周约 $4.95 付费、坚持整整一年的金额。示意性收入池假设约 600 名活跃玩家、其中约 45% 选择分期付费，这是叠加在上新礼包收入之上的增量，而非从中切走的一块。本页每一个数字都仅作示意。</p>
 
   <!-- THE STRUCTURE -->
   <section class="reveal">
-    <div class="shead"><span class="num">01</span><h2>两条获取路径</h2><span class="note">来源：游戏内经济系统</span></div>
-    <p class="lede">每完成一套套装，都会带来一份永久的行军规模加成，这是一项实打实的玩法属性，而且这些加成可以叠加。拥有的套装越多，就在悄然之间拉大了顶端玩家与广大中坚玩家之间的差距。让这群中坚玩家持续收集、保持活跃，正是拓宽获取途径的商业理由，而非一句抱怨。要拥有一套套装，恰好只有两条路。</p>
+    <div class="shead"><span class="num">01</span><h2>套装升级：那项几乎没人付得起的永久属性</h2><span class="note">来源：游戏内经济系统</span></div>
+    <p class="lede">集齐一套套装的全部部件即为 1 级：在集齐时立刻获得一份永久的 <b>+2 行军规模</b>，无需摆放。此后每升一级，再叠加 <b>+2</b> 行军规模（1 级是 +2，2 级是 +4，3 级是 +6）。升级的方式是收集重复的整套套装。所以一次升级，是一份实打实、永久的玩法奖励，最投入的玩家都想要它；而今天唯一能快速买到它的途径，只有上新礼包式的一次性付清，可数据告诉我们：他们不会付这笔钱。</p>
+
+    <div class="l3-note">
+      <b>可达等级，已核实：</b>23 套套装中，只有 <b>两套</b> 能升到 3 级，即「Metal Music Fans」（2024 年 5 月推出）与「Sweet Haven」（2025 年 12 月推出）。其余 21 套均封顶在 2 级，也就是 +4 行军规模。没有任何其他套装能达到 3 级。
+    </div>
+
     <div class="tablebox">
       <table>
-        <thead><tr><th>路径</th><th>货币</th><th>1 级花费</th><th>2 级花费</th><th>窗口期</th><th>速度</th></tr></thead>
+        <thead><tr><th>等级</th><th>行军规模</th><th>需拥有整套数</th><th>所需代币</th><th>上新礼包一次性付清</th></tr></thead>
         <tbody>
-          <tr><td>上新礼包（付费）</td><td>真实货币</td><td>约 $175</td><td>约 $525</td><td>仅限上新期</td><td class="pos">即时到手</td></tr>
-          <tr><td>装饰套装商店</td><td>套装代币（软货币）</td><td class="pos">最高约 $94，配合免费代币更省</td><td>升级仍需付费</td><td>在架期间</td><td class="neg">需数月</td></tr>
+          <tr><td>1 级（集齐）</td><td class="pos">+2</td><td>1 套</td><td>11,340</td><td>约 $175</td></tr>
+          <tr><td>2 级</td><td class="pos">+4</td><td>3 套</td><td>34,020</td><td>约 $525</td></tr>
+          <tr><td>3 级（仅 2 套套装）</td><td class="pos">+6</td><td>5 套</td><td>56,700</td><td>约 $875</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="lede" style="margin-top:14px">商店路径是那条可负担的车道。一整套套装需要 11,340 代币。玩家每周可免费获得约 300 代币，还可以加购：性价比最高的是 $0.99 礼包（120 代币），每周上限 5 次，约 $5 换 600 代币。更大的、不限量的礼包则为 $4.99 = 300、$19.99 = 1,280、$49.99 = 3,280、$99.99 = 6,480。纯靠免费途径约需 9 个月，对一名每周稳定花 $5 的玩家来说约需 3 个月。2 级仍要求把同一套套装集齐三次，因此升级始终是一项付费动作。</p>
-    <div class="callout"><b>症结所在：</b>23 套套装里，只有 8 套进入了商店，而且它们仅仅是在轮换中循环。10 套较早套装（2021 至 2024 年推出）被搁置一旁，根本没有任何可负担的获取途径：它们的上新窗口早在数年前就已关闭，而且从未进入商店。有一个可被核实的事实为这张推演台定下了基调：自 2023 年 12 月以来推出的 9 套套装，没有一套进入过套装商店。其余 5 套较新，仍保持付费；本仓位不触及它们。</div>
+    <p class="lede" style="margin-top:14px">达到某一等级所需代币遵循 11,340 ×（2 × 等级 − 1）：1 级是 11,340 代币，即一整套，按最低礼包单价约合 $94。2 级是 34,020 代币，三整套。3 级是 56,700 代币，五整套。从 1 级到 2 级要再多两整套，也就是再加 22,680 代币，这一点已核实。此处展示的 2 级到 3 级一步，假设同样再加两套，仅作示意、可按需调整；凡涉及 3 级专属花费之处，均按示意性处理。</p>
+
+    <div class="callout"><b>症结所在：</b>通往任何一个等级的唯一快速路径，都是按每整套约 $175 计的上新礼包一次性付清，1 级约 $175、2 级约 $525、3 级约 $875。为了 +2 行军规模这一格属性，这是一道几乎没人愿意付的高墙。商店里没有一条分期车道，让玩家把一套套装慢慢攒到满级，于是这份奖励本应带来的经常性消费，如今读出来就是零。</p>
   </section>
 
-  <!-- THE MODEL -->
+  <!-- LEVELING ECONOMICS + CALCULATOR -->
   <section class="reveal">
-    <div class="shead"><span class="num">02</span><h2>实时模型：囤积倾倒 对 稳定上架</h2><span class="note">输入即重算</span></div>
-    <p class="lede">这是一套跨 52 周、逐玩家的模拟，再在整个人群上汇总。每一周，玩家存入 300 枚免费代币。如果存在一套尚未拥有、当前可获取的较早套装，且该玩家是付费者，他便加上所在档位的付费代币、花掉该档位的现金，然后用余额尽可能多地集齐整套套装。一旦没有可追求的目标，付费购买便停止，免费代币只能堆积成无处可用的余额。调整下方的输入，图表与表格会实时更新。这里展示的每一美元，都是仅来自较早库存的示意性套装商店收入。</p>
+    <div class="shead"><span class="num">02</span><h2>转向：一次性付清高墙 对 每周分期付费</h2><span class="note">头条指标：分期终身价值</span></div>
+    <p class="lede">为了 +2 行军规模升一级，几乎没有人愿意一口气掏 $350 到 $875 的一次性付清。但朝着一个看得见的目标、每周约 $5 地分期付费，玩家却会心甘情愿地一周接一周地付下去。这正是当前设计白白扔掉的那种黏性的经常性收入与留存。分期车道就是 $0.99 礼包：120 代币，每周上限 5 次，约 600 枚付费代币换约 $4.95；再加上每周约 300 枚免费代币，于是每周约 900 代币朝着选定的等级攒进。</p>
+
+    <div class="contrast">
+      <div class="side bad">
+        <div class="h">一次性付清高墙（上新礼包）</div>
+        <div class="big" id="lumpBig">约 $525</div>
+        <div class="cap">为所示等级，一次性、提前全额付清。为换一格行军规模，几乎没人会付的高墙。</div>
+        <div class="row"><span>1 级</span><b>约 $175</b></div>
+        <div class="row"><span>2 级</span><b>约 $525</b></div>
+        <div class="row"><span>3 级（仅 2 套套装）</span><b>约 $875</b></div>
+      </div>
+      <div class="side good">
+        <div class="h">每周分期付费（商店）</div>
+        <div class="big" id="instBig">约 $188 已付</div>
+        <div class="cap">每周约 $4.95，朝一个看得见的目标攒进。玩家会一周接一周地心甘情愿地付。</div>
+        <div class="row"><span>从零攒到 2 级</span><b>约 38 周，约 $188</b></div>
+        <div class="row"><span>从零攒到 3 级</span><b>约 63 周，约 $312</b></div>
+        <div class="row"><span>单升一级，+2 套</span><b>约 26 周，约 $129</b></div>
+      </div>
+    </div>
+
+    <div class="model">
+      <div class="controls">
+        <div class="ctrl">
+          <div class="cl"><span>目标等级（此套套装）</span><span class="cv" id="lvLab">2 级</span></div>
+          <div class="seg" id="lvSeg">
+            <button data-lv="1">1 级</button>
+            <button data-lv="2" class="on">2 级</button>
+            <button data-lv="3">3 级</button>
+          </div>
+          <div class="ctrl-note" id="lvNote">2 级是 +4 行军规模，三整套，全部 21 套封顶在 2 级的套装都可达成。</div>
+        </div>
+
+        <div class="ctrl">
+          <div class="cl"><span>每周免费代币</span><span class="cv" id="freeVal">300</span></div>
+          <input type="range" id="freeWk" min="0" max="600" step="50" value="300">
+          <div class="ctrl-note">玩家每周免费攒下的代币数。基准模型取约 300。</div>
+        </div>
+
+        <div class="ctrl">
+          <div class="cl"><span>每周购买 $0.99 礼包数</span><span class="cv" id="packVal">5 / 周</span></div>
+          <input type="range" id="packs" min="0" max="5" step="1" value="5">
+          <div class="ctrl-note">每个礼包 120 代币、$0.99，每周上限 5 次。五个礼包约 600 代币、约 $4.95。</div>
+        </div>
+
+        <button class="reset" id="lvReset">恢复基准值</button>
+        <div class="ctrl-note" style="margin-top:12px">基准：目标 2 级、每周约 300 枚免费代币、每周 5 个付费礼包。公式：代币 = 11,340 ×（2 × 等级 − 1）；周数 = ceil(代币 ÷ 每周代币)；已付 = 周数 × $4.95；一次性付清 = $175 ×（2 × 等级 − 1）。</div>
+      </div>
+
+      <div class="viz">
+        <div class="panel-h" style="border:0;padding:0 0 12px"><span>升级读数，所选目标，从零开始</span><span class="rt" id="lvHdr">+4 行军规模</span></div>
+
+        <div class="rt-grid">
+          <div class="rt-cell"><div class="l">所需代币</div><div class="v" id="lvTokens">34,020</div><div class="d"><span id="lvSets">3</span> 整套</div></div>
+          <div class="rt-cell"><div class="l">按此节奏所需周数</div><div class="v pos" id="lvWeeks">约 38 周</div><div class="d">约 <span id="lvMonths">约 9 月</span> 攒满</div></div>
+          <div class="rt-cell"><div class="l">分期已付</div><div class="v pos" id="lvPaid">约 $188</div><div class="d">对比 <span id="lvLump" class="neg">约 $525</span> 一次性付清</div></div>
+        </div>
+
+        <div class="panel-h" style="border:0;padding:14px 0 8px"><span>同一等级，两种付费方式</span></div>
+        <div class="tablebox">
+          <table>
+            <thead><tr><th>路径</th><th>付费时点</th><th>总花费</th><th>玩家态度</th></tr></thead>
+            <tbody id="lvBody"></tbody>
+          </table>
+        </div>
+        <p class="disc" style="border-top:0;padding-top:8px;margin-top:8px">升级数字仅作示意，仅限装饰套装代币经济。周数按基准输入下 ceil(代币 ÷ 每周约 900) 计算。2 级以上到 3 级的一步仅作示意，且只适用于能升到 3 级的两套套装：Metal Music Fans 与 Sweet Haven。</p>
+      </div>
+    </div>
+
+    <div class="callout good"><b>把这条经常性收入说白了：</b>一名鲸鱼玩家为持续追逐一个等级，会以每周约 $4.95 无限期付下去，约合 $257/年，年复一年。一个示意性人群——约 600 名活跃玩家、其中约 45% 选择分期付费——就是每年约 <span class="mono-inline">$69,000</span> 的纯 $0.99 礼包分期收入，而今天它读出来约为 $0，只因商店里没有任何可供攒升的目标。这是会反复发生的终身价值消费，而非一次性的礼包销售，并且它叠加在下文所建模的集齐收入之上。</p></div>
+  </section>
+
+  <!-- THE COMPLETION MODEL (UNCHANGED) -->
+  <section class="reveal">
+    <div class="shead"><span class="num">03</span><h2>先有入口：集齐收入，囤积倾倒 对 稳定上架</h2><span class="note">输入即重算</span></div>
+    <p class="lede">升级要成立，前提是这套套装首先得能在商店里够得着。这就是「入口」前提：每当一套新套装上线，约每 2.5 个月一次，就有一套较早套装毕业进入商店，玩家才能先集齐它、再把它攒到满级。第二个模型单独为这道入口的集齐收入定价。这是一套跨 52 周、逐玩家的模拟，再在整个人群上汇总。每一周，玩家存入 300 枚免费代币。如果存在一套尚未拥有、当前可获取的较早套装，且该玩家是付费者，他便加上所在档位的付费代币、花掉该档位的现金，然后用余额尽可能多地集齐整套套装。一旦没有可追求的目标，付费购买便停止，免费代币只能堆积成无处可用的余额。调整下方的输入，图表与表格会实时更新。这里展示的每一美元，都是仅来自较早库存的示意性集齐收入，与上文的升级分期收入相互独立、彼此叠加。</p>
 
     <div class="model">
       <div class="controls">
@@ -366,7 +468,7 @@ td .delta-neg{color:var(--neg)}
 
   <!-- SENSITIVITY -->
   <section class="reveal">
-    <div class="shead"><span class="num">03</span><h2>差额的敏感性</h2><span class="note">差额 = 稳定上架 减 囤积倾倒</span></div>
+    <div class="shead"><span class="num">04</span><h2>差额的敏感性</h2><span class="note">差额 = 稳定上架 减 囤积倾倒</span></div>
     <p class="lede">当假设发生变化、而其余一切保持推演台默认值时，稳定上架在一年期库存收入上的示意性优势会如何移动。无论人群规模与放弃率如何摆动，这一差额都稳稳为正；只有当上架放慢到每年大约两套时，它才会向零收窄，而这本身恰恰就是支持稳定节奏的论据。</p>
     <div class="tablebox">
       <table>
@@ -378,58 +480,58 @@ td .delta-neg{color:var(--neg)}
 
   <!-- STRESS TEST -->
   <section class="reveal">
-    <div class="shead"><span class="num">04</span><h2>蚕食效应压力测试</h2><span class="note">悲观情景</span></div>
-    <p class="lede">公允的质疑是：靠免费代币换来的套装，会不会侵蚀付费礼包的销售？我们把最坏情况的假设全部加满，而这个仓位依然站得住。</p>
+    <div class="shead"><span class="num">05</span><h2>蚕食效应压力测试</h2><span class="note">悲观情景</span></div>
+    <p class="lede">公允的质疑是：靠免费代币换来的套装、以及分期升级，会不会侵蚀付费礼包的销售？我们把最坏情况的假设全部加满，而这个仓位依然站得住。</p>
     <div class="stress">
       <div class="col">
         <h4>为什么礼包收入不会受损</h4>
         <ul>
-          <li><b>只有最老的那套上架。</b>较新和当下的套装仍保持付费。最新的 5 套永远不在范围内。</li>
-          <li><b>代币路径仍要耗费数月。</b>急于求成、追求竞技的玩家依然会购买礼包来跳过等待。</li>
-          <li><b>升级照旧付费。</b>2 级需要同一套套装的三份；上架并不会改变这项动作。</li>
+          <li><b>只有最老的那套毕业上架。</b>较新和当下的套装仍保持付费。最新的 5 套永远不在范围内，它们的上新窗口分毫不动。</li>
+          <li><b>窗口已关闭的套装今天本就一文不卖。</b>一套上新窗口数年前就已关闭的较早套装，如今根本不入账任何礼包收入；对它做分期升级，是纯增量，而非一笔被挤走的销售。</li>
+          <li><b>分期路径仍要耗费数月。</b>急于求成、追求竞技的玩家依然会购买礼包来跳过攒到某一等级的等待。</li>
           <li><b>弹窗礼包打包的内容远多于裸套装</b>本身：额外货币、加速道具与专属内容。这些会照常热销。</li>
         </ul>
       </div>
       <div class="col">
-        <h4>上架真正惠及的是谁</h4>
+        <h4>分期升级真正惠及的是谁</h4>
         <ul>
-          <li><b>那位耐心的攒币玩家</b>，他本来就不会去付全价上新。如今他什么也得不到，只能眼看代币白白滞留。</li>
-          <li><b>正在流失的中坚玩家</b>有了一个够得着的目标，这会拉高他们的上线频率与软货币加购。</li>
-          <li><b>一名被转化的代币付费者</b>是纯增量收入，因为另一种可能是零，而非一笔损失掉的礼包销售。</li>
-          <li><b>鲸鱼玩家这一群体毫发无损：</b>无论哪条路径，高额付费玩家依然会通过礼包追求首日集齐。</li>
+          <li><b>那位耐心的攒币玩家</b>，他本来就不会为 +4 或 +6 行军规模掏 $525 到 $875 的一次性付清。如今他朝它一分钱也没花。</li>
+          <li><b>正在流失的中坚玩家</b>有了一个够得着、看得见的目标，这会拉高他们的上线频率与每周软货币加购。</li>
+          <li><b>一名被转化的每周分期买家</b>是纯增量的经常性收入，因为另一种可能是零，而非一笔损失掉的礼包销售。</li>
+          <li><b>鲸鱼玩家这一群体只增不减：</b>一个值得以每周约 $5 去追逐的等级，让他们一周接一周地持续付费，而这之上首日礼包照买不误。</li>
         </ul>
       </div>
     </div>
     <div class="verdict">
-      压力测试结论：即便把「挤占礼包销售」这一质疑全额计入，对于那些被搁置的套装而言，基线本就是 <span class="neg">$0</span>，因此每一笔上架后的代币销售都是纯增量。模型的下行被零牢牢托住；上行则是那笔示意性的 <span class="pos">+$47,676</span> 库存差额。<span class="pos">该仓位在悲观情景下依然成立。</span>
+      压力测试结论：即便把「挤占礼包销售」这一质疑全额计入，对于那些被搁置的套装、以及升级而言，基线本就是 <span class="neg">$0</span>，因此每一笔毕业后的集齐销售、每一笔每周分期都是纯增量。模型的下行被零牢牢托住；上行则是那笔示意性的 <span class="pos">+$47,676</span> 集齐差额，再加上一条示意性的 <span class="pos">约 $69,000/年</span> 分期收入池。<span class="pos">该仓位在悲观情景下依然成立。</span>
     </div>
   </section>
 
   <!-- CATALOGUE -->
   <section class="reveal">
-    <div class="shead"><span class="num">05</span><h2>套装目录与状态</h2><span class="note">23 套</span></div>
-    <p class="lede">这是完整的清单。<span class="pill live">在售</span> 表示当前在商店中，<span class="pill shelf">搁置</span> 表示本仓位要释放的较早库存，<span class="pill prem">付费</span> 表示较新、不在争议之列。</p>
+    <div class="shead"><span class="num">06</span><h2>套装目录与状态</h2><span class="note">23 套</span></div>
+    <p class="lede">这是完整的清单。<span class="pill live">在售</span> 表示当前在商店中，<span class="pill shelf">搁置</span> 表示本仓位要释放的较早库存，<span class="pill prem">付费</span> 表示较新、不在争议之列。<span class="pill l3">L3</span> 标记则标注唯二能升到 3 级的两套套装。</p>
     <div class="tablebox">
       <table>
-        <thead><tr><th>套装</th><th>推出时间</th><th>状态</th><th>可负担途径</th></tr></thead>
+        <thead><tr><th>套装</th><th>推出时间</th><th>最高等级</th><th>状态</th><th>可负担途径</th></tr></thead>
         <tbody id="catBody"></tbody>
       </table>
     </div>
-    <p class="disc" style="border-top:0;padding-top:8px">每组内部按从旧到新排列。搁置套装的推出时间横跨 2021 至 2024 年；「Snowfall Season」于 2023 年 12 月收尾了那一批节日套装，随后是「Metal Music Fans」（2024 年 5 月）、「Kung Fu Saga」（2024 年 9 月）与「Penguin World」（2024 年 12 月）。</p>
+    <p class="disc" style="border-top:0;padding-top:8px">每组内部按从旧到新排列。只有 Metal Music Fans（2024 年 5 月）与 Sweet Haven（2025 年 12 月）能升到 3 级，即 +6 行军规模；其余每一套均封顶在 2 级，即 +4。搁置套装的推出时间横跨 2021 至 2024 年；「Snowfall Season」于 2023 年 12 月收尾了那一批节日套装。</p>
   </section>
 
   <!-- THE ASK -->
   <div class="position reveal">
     <div class="lab">一句话的仓位</div>
-    <div class="line">每当一套新套装上线，大约每 <span class="hl">2 到 3 个月</span> 一次，就让 <span class="hl">最老的那套搁置套装</span> 进入套装商店。一套进来，一套上架。</div>
+    <div class="line">让玩家能够通过商店、以少量的 <span class="hl">每周代币分期</span>，把一套套装攒到 <span class="hl">满级</span>，而不是只能靠昂贵的上新礼包、甚至在窗口关闭后彻底无门可入。</div>
     <div class="meta">
-      让最新的套装保持付费。让每月的弹窗礼包原封不动。永远只动那最老的一套。<br>
-      开发成本：<span style="color:var(--pos)">$0</span>，这些套装早已存在。下行：被锁定在零。示意性上行：一条循环不断的库存代币收入流，而它今天读出来却等于零。
+      先有入口：每当一套新套装上线，约每 2 到 3 个月一次，就让一套套装毕业进入商店，攒升才有目标。然后，那项没人愿意掏 $525 到 $875 去换的 +2 行军规模属性，就变成了玩家心甘情愿每周约 $5 的付费。<br>
+      让最新的 5 套保持付费。让每月的弹窗礼包原封不动。开发成本：<span style="color:var(--pos)">$0</span>，这些套装早已存在。下行：被锁定在零。示意性上行：一条经常性的分期收入流，约 <span style="color:var(--pos)">$69,000/年</span>，而它今天读出来却等于零。
     </div>
   </div>
 
   <p class="disc">
-    方法说明：跨 52 周、逐玩家的模拟，再在分档人群上汇总。常量：每整套 11,340 代币，每周 300 枚免费代币，10 套较早库存。各档位（按超出免费部分的每周付费代币与现金计）：免费档 0 / $0；$5 档 600 / $4.95；$25 档 1,880 / $24.94；$100 档 7,080 / $104.93。结构为 55 / 30 / 12 / 3 个百分点。稳定上架按所选节奏释放最老的一套，默认每 2.5 个月一套；囤积倾倒则约 10 个月内不放出任何套装，随后将 10 套一次性全部砸下，并对买家人数施加放弃折损。所有收入数字均为示意性估算，仅覆盖 10 套较早套装在套装商店内的收入。上新礼包与弹窗礼包的收入在两条路径下完全相同，未在此建模。这是一份提案与一个仓位，并非对游戏整体收入的预测。
+    方法说明：两个示意性模型，均仅限装饰套装代币经济，绝不涉及游戏整体收入。升级模型（常量，已从游戏核实）：集齐一套即 1 级，永久 +2 行军规模；每升一级再加 +2；升级方式是收集重复的整套套装；达到某级所需代币 = 11,340 ×（2 × 等级 − 1），故 1 级为 11,340（1 套）、2 级为 34,020（3 套）、3 级为 56,700（5 套）；按最低礼包单价，一整套约合 $94；一次性付清的上新礼包路径按每整套约 $175 计，故 1、2、3 级分别约 $175、$525、$875；分期路径为 $0.99 礼包（120 代币，每周上限 5 次，约 600 代币换约 $4.95）加每周约 300 枚免费代币，每周约 900 代币；周数 = ceil(代币 ÷ 900)，故 2 级约 38 周（约 9 个月）、约 $188 已付，3 级约 63 周（约 15 个月）、约 $312 已付，单升一级（+2 行军规模，2 套，22,680 代币）约 26 周（约 6 个月）、约 $129 已付；一名鲸鱼玩家为持续追逐一个等级，以每周约 $4.95 无限期付费，约合 $257/年；一个示意性人群约 600 名活跃玩家、其中约 45% 分期付费，约合 $69,000/年的分期收入，叠加在集齐收入之上。1 级到 2 级一步（+2 套，22,680 代币）已核实；2 级到 3 级一步仅作示意，且只适用于两套可达 3 级的套装：Metal Music Fans 与 Sweet Haven。集齐模型（常量）：每整套 11,340 代币，每周 300 枚免费代币，10 套较早库存，跨 52 周、逐玩家模拟并在分档人群上汇总。各档位（按超出免费部分的每周付费代币与现金计）：免费档 0 / $0；$5 档 600 / $4.95；$25 档 1,880 / $24.94；$100 档 7,080 / $104.93。结构为 55 / 30 / 12 / 3 个百分点。稳定上架按所选节奏释放最老的一套，默认每 2.5 个月一套；囤积倾倒则约 10 个月内不放出任何套装，随后将 10 套一次性全部砸下，并对买家人数施加放弃折损。上新礼包与弹窗礼包的收入在两条路径下完全相同，未在此建模。所有数字均为示意性估算。这是一份提案与一个仓位，并非对游戏整体收入的预测。
   </p>
   <div class="sig">由 <b>一名 2864 服玩家</b> 提交。这是一份本着善意、面向贵公司产品与营收团队的合作伙伴提案。</div>
 
@@ -438,6 +540,136 @@ td .delta-neg{color:var(--neg)}
 <script>
 (function(){
   "use strict";
+
+  /* ============================================================
+     PART A: LEVELING CALCULATOR (canonical formulas)
+       tokensToReach = 11340 * (2*L - 1)
+       weeks         = ceil(tokens / weeklyTokens)   (weeklyTokens ~ 900)
+       paid          = weeks * 4.95
+       lump          = 175 * (2*L - 1)
+       march         = 2*L
+     ============================================================ */
+  var SET_COST_L = 11340;     /* tokens per full set */
+  var PACK_TOK = 120;         /* tokens per $0.99 pack */
+  var PACK_CASH = 0.99;       /* dollars per pack */
+  var PACK_CAP = 5;           /* packs a week cap */
+
+  var lvState = { level:2, freeWk:300, packs:5 };
+
+  function tokensToReach(L){ return SET_COST_L * (2*L - 1); }
+  function setsForLevel(L){ return 2*L - 1; }
+  function lumpForLevel(L){ return 175 * (2*L - 1); }
+  function marchForLevel(L){ return 2*L; }
+  function weeklyTokens(){ return lvState.freeWk + lvState.packs * PACK_TOK; }
+  function weeklyCash(){ return lvState.packs * PACK_CASH; }
+
+  function fmtTokN(n){ return Math.round(n).toLocaleString("en-US"); }
+  function fmtApprox$(n){ return "约 $" + Math.round(n).toLocaleString("en-US"); }
+  function monthsFromWeeks(w){ return Math.round(w/4.33); }
+
+  function levelNote(L){
+    if(L===1){ return "1 级即集齐，+2 行军规模，一整套，商店内每一套套装都可达成。"; }
+    if(L===2){ return "2 级是 +4 行军规模，三整套，全部 21 套封顶在 2 级的套装都可达成。"; }
+    return "3 级是 +6 行军规模，五整套，仅 Metal Music Fans 与 Sweet Haven 可达成。2 级到 3 级一步仅作示意。";
+  }
+
+  function renderLeveling(){
+    var L = lvState.level;
+    var tok = tokensToReach(L);
+    var wkTok = weeklyTokens();
+    var weeks = wkTok > 0 ? Math.ceil(tok / wkTok) : 0;
+    var paid = weeks * PACK_CASH * lvState.packs;
+    var lump = lumpForLevel(L);
+    var march = marchForLevel(L);
+    var sets = setsForLevel(L);
+    var months = monthsFromWeeks(weeks);
+
+    var headerEl = document.getElementById("lvHdr");
+    if(headerEl) headerEl.textContent = "+" + march + " 行军规模";
+    var labEl = document.getElementById("lvLab");
+    if(labEl) labEl.textContent = L + " 级";
+    var noteEl = document.getElementById("lvNote");
+    if(noteEl) noteEl.textContent = levelNote(L);
+
+    var tokEl = document.getElementById("lvTokens");
+    if(tokEl) tokEl.textContent = fmtTokN(tok);
+    var setsEl = document.getElementById("lvSets");
+    if(setsEl) setsEl.textContent = sets;
+    var weeksEl = document.getElementById("lvWeeks");
+    if(weeksEl) weeksEl.textContent = "约 " + weeks + " 周";
+    var monthsEl = document.getElementById("lvMonths");
+    if(monthsEl) monthsEl.textContent = "约 " + months + " 月";
+    var paidEl = document.getElementById("lvPaid");
+    if(paidEl) paidEl.textContent = fmtApprox$(paid);
+    var lumpEl = document.getElementById("lvLump");
+    if(lumpEl) lumpEl.textContent = fmtApprox$(lump);
+
+    /* big contrast tiles track the selected level */
+    var lumpBig = document.getElementById("lumpBig");
+    if(lumpBig) lumpBig.textContent = fmtApprox$(lump);
+    var instBig = document.getElementById("instBig");
+    if(instBig) instBig.textContent = fmtApprox$(paid) + " 已付";
+
+    /* same level, two ways to pay */
+    var body = document.getElementById("lvBody");
+    if(body){
+      body.innerHTML =
+        '<tr><td>一次性付清，上新礼包</td><td>提前，一次付清</td><td class="neg">' + fmtApprox$(lump) + '</td><td>几乎没人会付</td></tr>' +
+        '<tr class="win-row"><td>每周分期，商店</td><td>约 ' + weeks + ' 周，约 $' + (Math.round(weeklyCash()*100)/100).toFixed(2) + '/周</td><td class="pos">' + fmtApprox$(paid) + '</td><td class="pos">心甘情愿地付</td></tr>';
+    }
+  }
+
+  function setLevel(L){
+    lvState.level = L;
+    var seg = document.getElementById("lvSeg");
+    if(seg){
+      Array.prototype.forEach.call(seg.querySelectorAll("button"), function(b){
+        b.classList.toggle("on", parseInt(b.getAttribute("data-lv"),10)===L);
+      });
+    }
+    renderLeveling();
+  }
+
+  var lvSeg = document.getElementById("lvSeg");
+  if(lvSeg){
+    lvSeg.addEventListener("click", function(e){
+      var b = e.target.closest("button");
+      if(b){ setLevel(parseInt(b.getAttribute("data-lv"),10)); }
+    });
+  }
+  var freeWk = document.getElementById("freeWk");
+  if(freeWk){
+    freeWk.addEventListener("input", function(){
+      lvState.freeWk = parseInt(freeWk.value,10);
+      var fv = document.getElementById("freeVal");
+      if(fv) fv.textContent = lvState.freeWk.toLocaleString("en-US");
+      renderLeveling();
+    });
+  }
+  var packs = document.getElementById("packs");
+  if(packs){
+    packs.addEventListener("input", function(){
+      lvState.packs = parseInt(packs.value,10);
+      var pv = document.getElementById("packVal");
+      if(pv) pv.textContent = lvState.packs + " / 周";
+      renderLeveling();
+    });
+  }
+  var lvReset = document.getElementById("lvReset");
+  if(lvReset){
+    lvReset.addEventListener("click", function(){
+      lvState = { level:2, freeWk:300, packs:5 };
+      if(freeWk) freeWk.value = 300;
+      if(packs) packs.value = 5;
+      var fv = document.getElementById("freeVal"); if(fv) fv.textContent = "300";
+      var pv = document.getElementById("packVal"); if(pv) pv.textContent = "5 / 周";
+      setLevel(2);
+    });
+  }
+
+  /* ============================================================
+     PART B: COMPLETION MODEL (UNCHANGED LOGIC AND NUMBERS)
+     ============================================================ */
 
   /* ---------- constants ---------- */
   var SET_COST = 11340;
@@ -629,19 +861,20 @@ td .delta-neg{color:var(--neg)}
   }
 
   /* ---------- catalogue ---------- */
+  /* [name, released, status, maxLevel] */
   var CATALOGUE = [
     /* live */
-    ["The Wizard of TW","轮换","live"],["Home Sweet Home","轮换","live"],["Military Life","轮换","live"],
-    ["Moon and Starlight","轮换","live"],["Industrial Era","轮换","live"],["Rip Tides","轮换","live"],
-    ["Just For You","轮换","live"],["Happy 24h","轮换","live"],
+    ["The Wizard of TW","轮换","live",2],["Home Sweet Home","轮换","live",2],["Military Life","轮换","live",2],
+    ["Moon and Starlight","轮换","live",2],["Industrial Era","轮换","live",2],["Rip Tides","轮换","live",2],
+    ["Just For You","轮换","live",2],["Happy 24h","轮换","live",2],
     /* shelved, oldest first */
-    ["Holiday Decor Set","2021 至 2022","shelf"],["Giggling Castle","2022","shelf"],["Thanksgiving Feast","2022","shelf"],
-    ["Magic Christmas","2022","shelf"],["Christmas Season","2023","shelf"],["Pawsome Moments","2023","shelf"],
-    ["Snowfall Season","2023 年 12 月","shelf"],["Metal Music Fans","2024 年 5 月","shelf"],["Kung Fu Saga","2024 年 9 月","shelf"],
-    ["Penguin World","2024 年 12 月","shelf"],
+    ["Holiday Decor Set","2021 至 2022","shelf",2],["Giggling Castle","2022","shelf",2],["Thanksgiving Feast","2022","shelf",2],
+    ["Magic Christmas","2022","shelf",2],["Christmas Season","2023","shelf",2],["Pawsome Moments","2023","shelf",2],
+    ["Snowfall Season","2023 年 12 月","shelf",2],["Metal Music Fans","2024 年 5 月","shelf",3],["Kung Fu Saga","2024 年 9 月","shelf",2],
+    ["Penguin World","2024 年 12 月","shelf",2],
     /* premium, recent */
-    ["Sea of Stars","2025 年 8 月","prem"],["Magic and Dragons","2025 年 9 月","prem"],["Sweet Haven","2025 年 12 月","prem"],
-    ["Spring Festival Games","2026 年 2 月","prem"],["World Tour","2026 年 5 月","prem"]
+    ["Sea of Stars","2025 年 8 月","prem",2],["Magic and Dragons","2025 年 9 月","prem",2],["Sweet Haven","2025 年 12 月","prem",3],
+    ["Spring Festival Games","2026 年 2 月","prem",2],["World Tour","2026 年 5 月","prem",2]
   ];
   function renderCatalogue(){
     var html="";
@@ -650,12 +883,13 @@ td .delta-neg{color:var(--neg)}
       if(c[2]==="live"){ status='<span class="pill live">在售</span>'; path='<span class="pos">套装商店</span>'; }
       else if(c[2]==="shelf"){ status='<span class="pill shelf">搁置</span>'; path='<span class="neg">无</span>'; }
       else { status='<span class="pill prem">付费</span>'; path='仅限礼包'; }
-      html += '<tr><td>'+c[0]+'</td><td>'+c[1]+'</td><td style="text-align:right">'+status+'</td><td>'+path+'</td></tr>';
+      var lvl = (c[3]===3) ? '<span class="pos">3 级（+6）</span>' : '2 级（+4）';
+      html += '<tr><td>'+c[0]+'</td><td>'+c[1]+'</td><td>'+lvl+'</td><td style="text-align:right">'+status+'</td><td>'+path+'</td></tr>';
     });
     document.getElementById("catBody").innerHTML = html;
   }
 
-  /* ---------- wiring ---------- */
+  /* ---------- wiring (completion model) ---------- */
   function setTier(key){
     state.tier = key;
     var seg = document.getElementById("tierSeg");
@@ -721,6 +955,8 @@ td .delta-neg{color:var(--neg)}
   }
 
   /* ---------- init ---------- */
+  renderLeveling();
+  setLevel(2);
   renderCatalogue();
   setTier("5"); /* triggers render */
   setupReveal();
